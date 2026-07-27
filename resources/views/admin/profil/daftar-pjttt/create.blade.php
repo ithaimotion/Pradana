@@ -1,0 +1,74 @@
+@extends('layouts.admin')
+
+@section('title', 'Buat Daftar PJT & TT')
+
+@section('content')
+<div class="space-y-6">
+    <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl">
+        <div class="mb-6">
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                Buat Daftar PJT & TT
+            </h2>
+            <p class="text-xs text-slate-400 mt-1">Isi form di bawah untuk membuat daftar PJT & TT baru</p>
+        </div>
+
+        <form action="{{ route('admin.profil.daftar-pjttt.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+            @csrf
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1 uppercase tracking-wider">Judul Header</label>
+                        <input type="text" name="judul" value="{{ old('judul') }}" placeholder="DAFTAR PJT & TT" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
+                        @error('judul')
+                            <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1 uppercase tracking-wider">Deskripsi Sub-Header</label>
+                        <textarea name="subjudul" rows="3" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-amber-500" placeholder="Daftar Penanggung Jawab Teknik (PJT) dan Tenaga Teknik (TT)...">{{ old('subjudul') }}</textarea>
+                        @error('subjudul')
+                            <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1 uppercase tracking-wider">Catatan Kualifikasi / Akreditasi ESDM</label>
+                        <textarea name="konten" rows="3" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-amber-500" placeholder="Seluruh Tenaga Teknik PT Pradana Nusa Energi telah memiliki Sertifikat Kompetensi...">{{ old('konten') }}</textarea>
+                        @error('konten')
+                            <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="space-y-3 bg-slate-950/50 p-5 rounded-xl border border-slate-800">
+                        <label class="block text-xs font-bold text-amber-400 uppercase tracking-wider">Dokumen PDF Resmi SK PJT & TT</label>
+                        <div class="border-2 border-dashed border-slate-800 rounded-xl p-4 text-center hover:border-amber-500/50 transition">
+                            <input type="file" name="dokumen" accept=".pdf" class="w-full text-xs text-slate-400 bg-slate-950 border border-slate-800 rounded-xl p-2.5">
+                            <p class="text-[11px] text-slate-500 mt-1">Upload SK / File PDF Resmi PJT & TT (maks 10MB)</p>
+                        </div>
+                        @error('dokumen')
+                            <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4 pt-4 border-t border-slate-800">
+                <a href="{{ route('admin.profil.daftar-pjttt.index') }}" class="px-6 py-2.5 rounded-xl border border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white text-sm font-medium transition">
+                    Batal
+                </a>
+                <button type="submit" class="px-6 py-2.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-white text-sm font-medium transition flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    Simpan & Lanjut ke Item
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+@endsection

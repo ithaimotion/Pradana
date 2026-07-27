@@ -1,0 +1,60 @@
+@extends('layouts.admin')
+
+@section('title', 'Tambah Konten SOP')
+
+@section('content')
+<div class="space-y-6">
+    <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl">
+        <div class="mb-6">
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                Tambah Konten SOP
+            </h2>
+            <p class="text-xs text-slate-400 mt-1">Isi form di bawah untuk menambahkan konten SOP baru</p>
+        </div>
+
+        <form action="{{ route('admin.profil.sop.store') }}" method="POST" class="space-y-6">
+            @csrf
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1 uppercase tracking-wider">Judul</label>
+                    <input type="text" name="judul" value="{{ old('judul') }}" placeholder="STANDAR OPERASI PROSEDUR" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
+                    @error('judul')
+                        <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1 uppercase tracking-wider">Subjudul</label>
+                    <textarea name="subjudul" rows="3" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-amber-500" placeholder="Seluruh SOP PT Pradana Nusa Energi disusun mengacu pada SNI ISO/IEC 17020:2012 dan peraturan ketenagalistrikan yang berlaku.">{{ old('subjudul') }}</textarea>
+                    @error('subjudul')
+                        <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1 uppercase tracking-wider">URL Dokumen (PDF)</label>
+                    <input type="url" name="url_dokumen" value="{{ old('url_dokumen') }}" placeholder="https://example.com/dokumen-sop.pdf" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
+                    <p class="text-[11px] text-slate-500 mt-1">Masukkan URL lengkap ke file PDF dokumen SOP</p>
+                    @error('url_dokumen')
+                        <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4 pt-4 border-t border-slate-800">
+                <a href="{{ route('admin.profil.sop.index') }}" class="px-6 py-2.5 rounded-xl border border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white text-sm font-medium transition">
+                    Batal
+                </a>
+                <button type="submit" class="px-6 py-2.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-white text-sm font-medium transition flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    Simpan Konten
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+@endsection
