@@ -1,8 +1,22 @@
+@props(['logos' => null])
+
 <nav class="sticky top-0 z-50 bg-white/40 backdrop-blur-xl border-b border-white/30 shadow-sm transition-all duration-300">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
 
-        <a href="{{ route('home') }}" class="text-2xl font-bold text-slate-900">
-            Pradana
+        <a href="{{ route('home') }}" class="flex items-center gap-3">
+            @if(isset($logos) && $logos->count() > 0)
+                @foreach($logos->take(1) as $logo)
+                    @if($logo->url_gambar)
+                        <img src="{{ asset('storage/' . $logo->url_gambar) }}" alt="{{ $logo->nama ?? 'Logo' }}" title="{{ $logo->nama ?? 'Logo' }}" class="h-10 w-auto object-contain">
+                    @elseif($logo->logo_url)
+                        <img src="{{ $logo->logo_url }}" alt="{{ $logo->nama ?? 'Logo' }}" title="{{ $logo->nama ?? 'Logo' }}" class="h-10 w-auto object-contain">
+                    @else
+                        <span class="text-2xl font-bold text-slate-900">Pradana</span>
+                    @endif
+                @endforeach
+            @else
+                <span class="text-2xl font-bold text-slate-900">Pradana</span>
+            @endif
         </a>
 
         <ul class="flex items-center gap-6">

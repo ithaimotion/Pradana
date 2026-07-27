@@ -569,7 +569,7 @@
                             <span class="text-[10px] text-slate-500 font-mono">Urutan: #{{ $item->urutan }}</span>
                         </div>
                         <div class="flex gap-2">
-                            <button onclick="editGaleriModal({{ $item->id }}, '{{ addslashes($item->judul) }}', '{{ addslashes($item->category) }}', '{{ addslashes($item->location_year) }}', {{ $item->urutan }})" class="text-xs bg-slate-800 hover:bg-blue-500/10 hover:text-blue-400 text-slate-300 border border-slate-700 px-3 py-1.5 rounded-lg font-medium transition">
+                            <button onclick="editGaleriModal({{ $item->id }}, '{{ addslashes($item->judul) }}', '{{ addslashes($item->category) }}', {{ $item->urutan }})" class="text-xs bg-slate-800 hover:bg-blue-500/10 hover:text-blue-400 text-slate-300 border border-slate-700 px-3 py-1.5 rounded-lg font-medium transition">
                                 Edit
                             </button>
                             <form action="{{ route('admin.galeri.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Hapus foto ini dari galeri?')">
@@ -585,6 +585,65 @@
             @empty
                 <div class="md:col-span-3 text-center py-12 bg-slate-900/60 rounded-2xl border border-dashed border-slate-800">
                     <p class="text-slate-400 text-sm">Belum ada foto galeri terupload.</p>
+                </div>
+            @endforelse
+        </div>
+    </div>
+
+    <!-- 11. LOGO MANAGEMENT PANEL -->
+    <div x-show="activeTab === 'logo'" class="space-y-6">
+        <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xl">
+            <div>
+                <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-violet-400"></span> 11. Manajemen Logo
+                </h2>
+                <p class="text-xs text-slate-400 mt-1">Upload logo perusahaan, atur URL logo, dan kelola tampilan logo.</p>
+            </div>
+            <button onclick="openLogoModal()" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2.5 rounded-xl text-sm font-bold flex items-center gap-2 shadow-lg shadow-orange-500/20">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                Tambah Logo
+            </button>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            @forelse($logos as $item)
+                <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group shadow-lg">
+                    <div class="h-48 bg-slate-950 relative overflow-hidden flex items-center justify-center p-4">
+                        @if($item->url_gambar)
+                            <img src="{{ asset('storage/' . $item->url_gambar) }}" alt="{{ $item->nama }}" title="{{ $item->nama }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
+                        @elseif($item->logo_url)
+                            <img src="{{ $item->logo_url }}" alt="{{ $item->nama }}" title="{{ $item->nama }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
+                        @else
+                            <div class="text-slate-500 text-sm">Tidak ada gambar</div>
+                        @endif
+                    </div>
+                    <div class="p-4 flex items-center justify-between border-t border-slate-800">
+                        <div>
+                            <h4 class="font-bold text-sm text-white">{{ $item->nama ?? 'Logo' }}</h4>
+                            <span class="text-[10px] text-slate-500 font-mono">Urutan: #{{ $item->urutan }}</span>
+                            @if($item->aktif)
+                                <span class="ml-2 text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full">Aktif</span>
+                            @else
+                                <span class="ml-2 text-[10px] bg-slate-700 text-slate-400 px-2 py-0.5 rounded-full">Non-aktif</span>
+                            @endif
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="editLogoModal({{ $item->id }}, '{{ addslashes($item->nama ?? '') }}', '{{ addslashes($item->logo_url ?? '') }}', {{ $item->urutan }}, {{ $item->aktif ? 'true' : 'false' }})" class="text-xs bg-slate-800 hover:bg-blue-500/10 hover:text-blue-400 text-slate-300 border border-slate-700 px-3 py-1.5 rounded-lg font-medium transition">
+                                Edit
+                            </button>
+                            <form action="{{ route('admin.logo.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Hapus logo ini?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-xs bg-slate-800 hover:bg-rose-500/10 hover:text-rose-400 text-slate-300 border border-slate-700 px-3 py-1.5 rounded-lg font-medium transition">
+                                    Hapus
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            @empty
+                <div class="md:col-span-3 text-center py-12 bg-slate-900/60 rounded-2xl border border-dashed border-slate-800">
+                    <p class="text-slate-400 text-sm">Belum ada logo terupload.</p>
                 </div>
             @endforelse
         </div>
@@ -720,10 +779,6 @@
                 <input type="text" name="judul" id="galeriTitle" placeholder="Contoh: Inspeksi Genset Sub-station" class="w-full text-sm bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-orange-500">
             </div>
             <div>
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Lokasi & Tahun</label>
-                <input type="text" name="location_year" id="galeriContent" placeholder="Contoh: Jakarta Selatan, 2026" class="w-full text-sm bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-orange-500">
-            </div>
-            <div>
                 <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Urutan Tampil</label>
                 <input type="number" name="urutan" id="galeriOrder" value="1" class="w-full text-sm bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white">
             </div>
@@ -731,6 +786,50 @@
             <div class="flex justify-end gap-2 pt-3 border-t border-slate-800">
                 <button type="button" onclick="closeGaleriModal()" class="px-4 py-2 text-xs text-slate-400 hover:text-white rounded-lg">Batal</button>
                 <button type="submit" class="px-4 py-2 text-xs bg-orange-500 hover:bg-orange-600 text-white rounded-xl font-bold shadow-lg shadow-orange-500/20">Simpan Foto</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- MODAL LOGO -->
+<div id="logoModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl max-w-md w-full p-6 space-y-4">
+        <h3 id="logoModalTitle" class="text-lg font-bold text-white">Tambah Logo</h3>
+        <form id="logoForm" action="{{ route('admin.logo.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
+            @csrf
+            <input type="hidden" name="_method" id="logoMethod" value="POST">
+
+            <div>
+                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Nama Logo</label>
+                <input type="text" name="nama" id="logoName" placeholder="Contoh: Logo Utama" class="w-full text-sm bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-orange-500">
+            </div>
+
+            <div>
+                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Upload File Logo</label>
+                <input type="file" name="gambar" id="logoImage" accept="image/*" class="w-full text-xs text-slate-400 bg-slate-950 border border-slate-800 rounded-xl p-2.5">
+                <p id="logoImageHelp" class="text-xs text-orange-400 mt-1 hidden">Kosongkan jika tidak ingin mengubah gambar.</p>
+            </div>
+
+            <div>
+                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Logo URL (Opsional)</label>
+                <input type="url" name="logo_url" id="logoUrl" placeholder="https://example.com/logo.png" class="w-full text-sm bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-orange-500">
+            </div>
+
+            <div>
+                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Urutan Tampil</label>
+                <input type="number" name="urutan" id="logoOrder" value="1" class="w-full text-sm bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white">
+            </div>
+
+            <div>
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="checkbox" name="aktif" id="logoActive" checked class="w-4 h-4 rounded border-slate-700 bg-slate-950 text-orange-500 focus:ring-orange-500 focus:ring-offset-slate-900">
+                    <span class="text-xs text-slate-300">Aktif</span>
+                </label>
+            </div>
+
+            <div class="flex justify-end gap-2 pt-3 border-t border-slate-800">
+                <button type="button" onclick="closeLogoModal()" class="px-4 py-2 text-xs text-slate-400 hover:text-white rounded-lg">Batal</button>
+                <button type="submit" class="px-4 py-2 text-xs bg-orange-500 hover:bg-orange-600 text-white rounded-xl font-bold shadow-lg shadow-orange-500/20">Simpan Logo</button>
             </div>
         </form>
     </div>
@@ -814,32 +913,65 @@
         document.getElementById('galeriMethod').value = 'POST';
         document.getElementById('galeriImage').required = true;
         document.getElementById('galeriImageHelp').classList.add('hidden');
-        
+
         document.getElementById('galeriCategory').value = 'inspeksi-tr';
         document.getElementById('galeriTitle').value = '';
-        document.getElementById('galeriContent').value = '';
         document.getElementById('galeriOrder').value = '1';
-        
+
         document.getElementById('galeriModal').classList.remove('hidden');
     }
     
-    function editGaleriModal(id, title, category, content, order) {
+    function editGaleriModal(id, title, category, order) {
         document.getElementById('galeriModalTitle').innerText = 'Edit Foto Galeri';
         document.getElementById('galeriForm').action = "/admin/galeri/" + id;
         document.getElementById('galeriMethod').value = 'PUT';
         document.getElementById('galeriImage').required = false;
         document.getElementById('galeriImageHelp').classList.remove('hidden');
-        
+
         document.getElementById('galeriTitle').value = title;
         document.getElementById('galeriCategory').value = category || 'inspeksi-tr';
-        document.getElementById('galeriContent').value = content;
         document.getElementById('galeriOrder').value = order;
-        
+
         document.getElementById('galeriModal').classList.remove('hidden');
     }
 
     function closeGaleriModal() {
         document.getElementById('galeriModal').classList.add('hidden');
+    }
+
+    // Modal Logo
+    function openLogoModal() {
+        document.getElementById('logoModalTitle').innerText = 'Tambah Logo';
+        document.getElementById('logoForm').action = "{{ route('admin.logo.store') }}";
+        document.getElementById('logoMethod').value = 'POST';
+        document.getElementById('logoImage').required = true;
+        document.getElementById('logoImageHelp').classList.add('hidden');
+
+        document.getElementById('logoName').value = '';
+        document.getElementById('logoUrl').value = '';
+        document.getElementById('logoOrder').value = '1';
+        document.getElementById('logoActive').checked = true;
+
+        document.getElementById('logoModal').classList.remove('hidden');
+    }
+
+    function editLogoModal(id, name, logoUrl, order, active) {
+        document.getElementById('logoModalTitle').innerText = 'Edit Logo';
+        document.getElementById('logoForm').action = "/admin/logo/" + id;
+        document.getElementById('logoMethod').value = 'PUT';
+        document.getElementById('logoImage').required = false;
+        document.getElementById('logoImageHelp').classList.remove('hidden');
+
+        document.getElementById('logoName').value = name;
+        document.getElementById('logoUrl').value = logoUrl;
+        document.getElementById('logoOrder').value = order;
+        document.getElementById('logoActive').checked = active;
+
+        document.getElementById('logoModal').classList.remove('hidden');
+    }
+
+    function closeLogoModal() {
+        document.getElementById('logoModal').classList.add('hidden');
     }
 </script>
 @endsection

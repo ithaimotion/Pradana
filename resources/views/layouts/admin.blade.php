@@ -13,7 +13,7 @@
         [x-cloak] { display: none !important; }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col md:flex-row antialiased selection:bg-orange-500 selection:text-white"
+<body class="bg-slate-950 text-slate-100 h-screen flex flex-col md:flex-row antialiased selection:bg-orange-500 selection:text-white overflow-hidden"
     x-data="{ sidebarOpen: false, activeTab: 'dashboard', openGroup: 'profil', openSub: '' }">
 
     <!-- MOBILE OVERLAY -->
@@ -169,6 +169,16 @@
                     </div>
                 </div>
 
+                {{-- ── LOGO ── --}}
+                <div>
+                    <button @click="activeTab = 'logo'; sidebarOpen = false"
+                        :class="activeTab === 'logo' ? 'bg-violet-500/15 text-violet-400 border-violet-500/30 font-bold' : 'text-slate-400 hover:text-white hover:bg-slate-800/60 border-transparent'"
+                        class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border text-xs transition-all font-medium">
+                        <svg class="w-4 h-4 shrink-0" :class="activeTab === 'logo' ? 'text-violet-400' : 'text-slate-500'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        Manajemen Logo
+                    </button>
+                </div>
+
                 {{-- ── KARIR ── --}}
                 <div>
                     <button @click="openGroup = openGroup === 'karir' ? '' : 'karir'"
@@ -229,10 +239,10 @@
     </aside>
 
     <!-- MAIN APP CONTENT AREA -->
-    <div class="flex-1 flex flex-col min-w-0 bg-slate-950 min-h-screen">
+    <div class="flex-1 flex flex-col min-w-0 bg-slate-950 overflow-hidden">
 
         <!-- TOP BAR -->
-        <header class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800/80 sticky top-0 z-30 px-6 py-4 flex items-center justify-between">
+        <header class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800/80 px-6 py-4 flex items-center justify-between flex-shrink-0">
             <div class="flex items-center gap-4">
                 <button @click="sidebarOpen = true" class="md:hidden text-slate-400 hover:text-white">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -258,8 +268,8 @@
         </header>
 
         <!-- DASHBOARD BODY CONTAINER -->
-        <main class="flex-1 p-6 md:p-8 max-w-7xl w-full mx-auto space-y-8">
-            
+        <main class="flex-1 overflow-y-auto p-6 md:p-8 max-w-7xl w-full mx-auto space-y-8">
+
             @if(session('success'))
                 <div class="bg-emerald-500/10 border border-emerald-500/30 p-4 rounded-xl flex items-center justify-between text-emerald-400 text-sm shadow-sm">
                     <div class="flex items-center space-x-3">
@@ -283,7 +293,8 @@
             @yield('content')
         </main>
 
-        <footer class="border-t border-slate-900 py-4 px-8 text-center text-xs text-slate-500">
+        <!-- FOOTER -->
+        <footer class="border-t border-slate-900 py-4 px-8 text-center text-xs text-slate-500 flex-shrink-0 bg-slate-950">
             &copy; {{ date('Y') }} PT Pradana Nusa Energi — Complete Landing Page CMS Studio
         </footer>
 

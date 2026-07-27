@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\KontenBeranda;
 use App\Models\Galeri;
+use App\Models\Logo;
 
 class BerandaController extends Controller
 {
@@ -24,12 +25,13 @@ class BerandaController extends Controller
         $mengapaItems = KontenBeranda::where('bagian', 'mengapa_item')->where('status_aktif', true)->orderBy('urutan')->get();
         $kontakKami = KontenBeranda::where('bagian', 'kontak_kami')->first();
         $galeri = Galeri::where('status_aktif', true)->orderBy('urutan')->get();
+        $logos = Logo::where('aktif', true)->orderBy('urutan')->get();
 
         return view('pages.landing', compact(
-            'hero', 'profilPradana', 'statistik', 'tentangPradana', 
-            'teknologiHeader', 'teknologiItems', 'keunggulanHeader', 'keunggulanItems', 
-            'energiHeader', 'energiItems', 'mengapaHeader', 'mengapaItems', 
-            'kontakKami', 'galeri'
+            'hero', 'profilPradana', 'statistik', 'tentangPradana',
+            'teknologiHeader', 'teknologiItems', 'keunggulanHeader', 'keunggulanItems',
+            'energiHeader', 'energiItems', 'mengapaHeader', 'mengapaItems',
+            'kontakKami', 'galeri', 'logos'
         ));
     }
 

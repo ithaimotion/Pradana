@@ -7,6 +7,7 @@ use App\Models\KontenHalaman;
 use App\Models\LowonganKarir;
 use App\Models\PesanMasuk;
 use App\Models\Galeri;
+use App\Models\Logo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -95,7 +96,10 @@ class AdminController extends Controller
         // 10. Galeri Media
         $galeri = Galeri::orderBy('urutan')->get();
 
-        // 11. Halaman Sub-Menu (Profil, SLO, Informasi Publik)
+        // 11. Logo Management
+        $logos = Logo::orderBy('urutan')->get();
+
+        // 12. Halaman Sub-Menu (Profil, SLO, Informasi Publik)
         $kontenHalamans = KontenHalaman::all()->groupBy('halaman');
 
         // 12. Lowongan Karir
@@ -119,6 +123,7 @@ class AdminController extends Controller
             'mengapaItems',
             'kontakKami',
             'galeri',
+            'logos',
             'kontenHalamans',
             'lowongans',
             'pesanMasuks'

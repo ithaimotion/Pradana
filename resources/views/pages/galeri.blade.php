@@ -63,7 +63,6 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                             <span class="{{ $badgeColor }} text-white text-xs font-bold px-2.5 py-1 rounded w-max mb-2">{{ $label }}</span>
                             <h3 class="text-white font-bold text-lg leading-tight">{{ $item->judul }}</h3>
-                            <p class="text-slate-300 text-xs mt-1">{{ $item->location_year }}</p>
                         </div>
                     </div>
                 @empty
@@ -167,14 +166,13 @@
         function openLightbox(el) {
             const img = el.querySelector('img');
             const title = el.querySelector('h3');
-            const desc = el.querySelector('p');
             const tag = el.querySelector('span');
 
             lbImg.src = img.src;
             lbTitle.textContent = title.textContent;
-            lbDesc.textContent = desc.textContent;
+            lbDesc.textContent = '';
             lbTag.textContent = tag.textContent;
-            
+
             // Set tag color based on original
             lbTag.className = tag.className;
 

@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\Profil\StrukturOrganisasiController;
 use App\Http\Controllers\Admin\Profil\LegalitasController;
 use App\Http\Controllers\Admin\Profil\PeralatanController;
 use App\Http\Controllers\Admin\Profil\SopController;
+use App\Http\Controllers\LogoController;
 
 Route::get('/', [BerandaController::class, 'index'])->name('home');
 
@@ -61,6 +62,11 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::post('/galeri', [GaleriController::class, 'store'])->name('galeri.store');
     Route::put('/galeri/{id}', [GaleriController::class, 'update'])->name('galeri.update');
     Route::delete('/galeri/{id}', [GaleriController::class, 'destroy'])->name('galeri.destroy');
+
+    // Logo Routes
+    Route::post('/logo', [LogoController::class, 'store'])->name('logo.store');
+    Route::put('/logo/{id}', [LogoController::class, 'update'])->name('logo.update');
+    Route::delete('/logo/{id}', [LogoController::class, 'destroy'])->name('logo.destroy');
 
     // Profil Perusahaan CRUD Routes
     Route::resource('profil/perusahaan', PerusahaanController::class)->names('profil.perusahaan');

@@ -1,9 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'PRADANA NUSA ENERGI - Inspeksi & Sertifikasi Ketenagalistrikan SLO')
+@section('title', (isset($logos) && $logos->count() > 0 ? ($logos->first()->nama ?? 'PRADANA NUSA ENERGI') : 'PRADANA NUSA ENERGI') . ' - Inspeksi & Sertifikasi Ketenagalistrikan SLO')
+
+@php
+    $__env->share('logos', $logos ?? null);
+@endphp
 
 @section('content')
-    <x-navbar />
+    <x-navbar :logos="$logos ?? null" />
     <x-hero :hero="$hero ?? null" />
     <x-profil-pradana :profil="$profilPradana ?? null" />
     <x-statistik-performa :statistik="$statistik ?? null" />
