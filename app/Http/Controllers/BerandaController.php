@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\KontenBeranda;
 use App\Models\Galeri;
 use App\Models\Logo;
+use App\Models\LowonganKerja;
 
 class BerandaController extends Controller
 {
@@ -39,5 +40,11 @@ class BerandaController extends Controller
     {
         $galeri = Galeri::where('status_aktif', true)->orderBy('urutan')->get();
         return view('pages.galeri', compact('galeri'));
+    }
+
+    public function karir()
+    {
+        $lowongans = LowonganKerja::aktif()->get();
+        return view('pages.karir', compact('lowongans'));
     }
 }

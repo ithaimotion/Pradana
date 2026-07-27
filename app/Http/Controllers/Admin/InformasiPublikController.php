@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class InformasiPublikController extends Controller
 {
     /**
-     * Update Konten Sub-Menu Informasi Publik (Maklumat, Uji Petik, Keluhan, Persyaratan, Harga, Prosedur, Alur).
+     * Update Konten Sub-Menu Informasi Publik (Uji Petik, Keluhan, Persyaratan, Harga, Prosedur, Alur).
      */
     public function update(Request $request)
     {

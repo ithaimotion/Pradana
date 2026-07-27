@@ -63,7 +63,7 @@
                     Halaman Profil
                 </div>
                 <p class="text-xs text-slate-400">Profil Perusahaan, PJT & TT, Struktur Organisasi, Legalitas, Peralatan, SOP.</p>
-                <button @click="openGroup = 'profil'; activeTab = 'profil-perusahaan'" class="w-full bg-slate-800 hover:bg-amber-500/20 hover:text-amber-300 text-slate-200 border border-slate-700 py-2 rounded-lg text-xs font-bold transition">
+                <button @click="switchTab('profil', 'profil')" class="w-full bg-slate-800 hover:bg-amber-500/20 hover:text-amber-300 text-slate-200 border border-slate-700 py-2 rounded-lg text-xs font-bold transition">
                     Kelola Halaman Profil
                 </button>
             </div>

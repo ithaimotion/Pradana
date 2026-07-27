@@ -664,7 +664,6 @@
     <x-admin.subpage-form tabName="slo-bidang-layanan" halamanKey="slo_bidang_layanan" title="Bidang Layanan SLO" badgeColor="bg-emerald-400" description="Kelola lingkup inspeksi pembangkit, transmisi, dan distribusi ketenagalistrikan." :actionRoute="route('admin.slo.halaman.update')" :data="$kontenHalamans['slo_bidang_layanan'][0] ?? null" />
 
     <!-- SUB-MENU CMS PANELS: INFORMASI PUBLIK -->
-    <x-admin.subpage-form tabName="maklumat-layanan" halamanKey="infopub_maklumat" title="Maklumat Layanan" badgeColor="bg-sky-400" description="Kelola isi komitmen Maklumat Layanan PT Pradana Nusa Energi." :actionRoute="route('admin.infopublik.halaman.update')" :data="$kontenHalamans['infopub_maklumat'][0] ?? null" />
     <x-admin.subpage-form tabName="uji-petik" halamanKey="infopub_uji_petik" title="Uji Petik Inspeksi" badgeColor="bg-sky-400" description="Kelola prosedur dan ketentuan uji petik mutu hasil inspeksi." :actionRoute="route('admin.infopublik.halaman.update')" :data="$kontenHalamans['infopub_uji_petik'][0] ?? null" />
     <x-admin.subpage-form tabName="keluhan-banding" halamanKey="infopub_keluhan" title="Keluhan & Banding" badgeColor="bg-sky-400" description="Kelola alur penanganan pengaduan dan banding hasil inspeksi." :actionRoute="route('admin.infopublik.halaman.update')" :data="$kontenHalamans['infopub_keluhan'][0] ?? null" />
     <x-admin.subpage-form tabName="persyaratan-slo" halamanKey="infopub_persyaratan" title="Persyaratan SLO" badgeColor="bg-sky-400" description="Kelola dokumen & daftar kelengkapan syarat permohonan SLO." :actionRoute="route('admin.infopublik.halaman.update')" :data="$kontenHalamans['infopub_persyaratan'][0] ?? null" />
@@ -682,8 +681,6 @@
 
 </div>
 
-
-</div>
 
 
 <!-- MODAL GENERIC ITEM (Statistik, Keunggulan, Energi, Mengapa, Teknologi) -->

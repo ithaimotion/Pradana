@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfilPageController;
 use App\Http\Controllers\Admin\ProfilController;
 use App\Http\Controllers\Admin\SloController;
 use App\Http\Controllers\Admin\InformasiPublikController;
+use App\Http\Controllers\Admin\InformasiPublik\MaklumatLayananController;
 use App\Http\Controllers\Admin\KarirController;
 use App\Http\Controllers\Admin\PesanController;
 use App\Http\Controllers\Admin\Profil\PerusahaanController;
@@ -15,7 +16,12 @@ use App\Http\Controllers\Admin\Profil\StrukturOrganisasiController;
 use App\Http\Controllers\Admin\Profil\LegalitasController;
 use App\Http\Controllers\Admin\Profil\PeralatanController;
 use App\Http\Controllers\Admin\Profil\SopController;
+use App\Http\Controllers\Admin\Slo\RegulasiController as AdminSloRegulasiController;
+use App\Http\Controllers\Admin\Slo\KategoriLayananController;
+use App\Http\Controllers\Admin\LowonganKerjaController;
 use App\Http\Controllers\LogoController;
+use App\Http\Controllers\SloPageController;
+use App\Http\Controllers\InformasiPublikPageController;
 
 Route::get('/', [BerandaController::class, 'index'])->name('home');
 
@@ -100,6 +106,19 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::post('profil/sop/items', [SopController::class, 'storeItem'])->name('profil.sop.items.store');
     Route::put('profil/sop/items/{id}', [SopController::class, 'updateItem'])->name('profil.sop.items.update');
     Route::delete('profil/sop/items/{id}', [SopController::class, 'destroyItem'])->name('profil.sop.items.destroy');
+
+    // SLO — Regulasi CRUD Routes
+    Route::resource('slo/regulasi', AdminSloRegulasiController::class)->names('slo.regulasi');
+
+    // SLO — Kategori Layanan CRUD Routes
+    Route::resource('slo/kategori-layanan', KategoriLayananController::class)->names('slo.kategori-layanan');
+
+    // Lowongan Kerja CRUD Routes
+    Route::resource('lowongan-kerja', LowonganKerjaController::class)->names('lowongan-kerja');
+
+    // Informasi Publik - Maklumat Layanan Routes
+    Route::get('informasi-publik/maklumat-layanan', [MaklumatLayananController::class, 'index'])->name('informasi-publik.maklumat.index');
+    Route::post('informasi-publik/maklumat-layanan', [MaklumatLayananController::class, 'update'])->name('informasi-publik.maklumat.update');
 });
 
 Route::post('/hubungi-kami', [PesanController::class, 'storePublik'])->name('hubungi-kami.store');
@@ -115,26 +134,20 @@ Route::get('/profil/peralatan', [ProfilPageController::class, 'peralatan'])->nam
 Route::get('/profil/sop', [ProfilPageController::class, 'sop'])->name('profil.sop');
 
 // SLO Routes
-Route::get('/slo/regulasi', function () {
-    return view('pages.slo.regulasi');
-})->name('slo.regulasi');
+Route::get('/slo/regulasi', [SloPageController::class, 'regulasi'])->name('slo.regulasi');
 
 Route::get('/slo/verifikasi', function () {
-    return view('pages.slo.verifikasi');
+    return redirect()->away('https://siujang.esdm.go.id/Cek-Validalitas-Sertifikat');
 })->name('slo.verifikasi');
 
 Route::get('/slo/cek-permohonan', function () {
     return view('pages.slo.cek-permohonan');
 })->name('slo.cek-permohonan');
 
-Route::get('/slo/bidang-layanan', function () {
-    return view('pages.slo.bidang-layanan');
-})->name('slo.bidang-layanan');
+Route::get('/slo/bidang-layanan', [SloPageController::class, 'bidangLayanan'])->name('slo.bidang-layanan');
 
 // Informasi Publik Routes
-Route::get('/informasi-publik/maklumat-layanan', function () {
-    return view('pages.informasi-publik.maklumat-layanan');
-})->name('informasi-publik.maklumat-layanan');
+Route::get('/informasi-publik/maklumat-layanan', [InformasiPublikPageController::class, 'maklumatLayanan'])->name('informasi-publik.maklumat-layanan');
 
 Route::get('/informasi-publik/uji-petik', function () {
     return view('pages.informasi-publik.uji-petik');
@@ -163,9 +176,7 @@ Route::get('/informasi-publik/alur-sertifikasi', function () {
 // Main Menu Routes
 Route::get('/galeri', [BerandaController::class, 'galeri'])->name('galeri');
 
-Route::get('/karir', function () {
-    return view('pages.karir');
-})->name('karir');
+Route::get('/karir', [BerandaController::class, 'karir'])->name('karir');
 
 Route::get('/hubungi-kami', function () {
     return view('pages.hubungi-kami');

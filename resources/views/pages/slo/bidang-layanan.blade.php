@@ -26,6 +26,7 @@
         <div class="max-w-7xl mx-auto px-6">
 
             <!-- Tegangan Rendah -->
+            @if($kategoriTR->count() > 0)
             <div class="mb-14 reveal-on-scroll">
                 <div class="flex items-center gap-3 mb-6">
                     <div class="w-10 h-10 bg-green-600 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
@@ -39,45 +40,26 @@
                     </div>
                 </div>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-
+                    @foreach($kategoriTR as $kategori)
                     <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                        <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-4 text-2xl">🏠</div>
-                        <h3 class="font-extrabold text-slate-900 mb-2 group-hover:text-green-700 transition-colors">Rumah Tinggal</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed mb-3">Inspeksi instalasi listrik rumah tinggal baru, renovasi, dan penambahan daya untuk mendapatkan SLO.</p>
+                        <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-4 text-2xl">
+                            {{ $kategori->ikon ?? '⚡' }}
+                        </div>
+                        <h3 class="font-extrabold text-slate-900 mb-2 group-hover:text-green-700 transition-colors">{{ $kategori->judul }}</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed mb-3">{{ $kategori->deskripsi }}</p>
                         <div class="flex flex-wrap gap-1.5">
-                            <span class="text-xs bg-green-50 text-green-700 border border-green-200 px-2 py-0.5 rounded-full font-medium">450 VA</span>
-                            <span class="text-xs bg-green-50 text-green-700 border border-green-200 px-2 py-0.5 rounded-full font-medium">900 VA</span>
-                            <span class="text-xs bg-green-50 text-green-700 border border-green-200 px-2 py-0.5 rounded-full font-medium">1.300 VA</span>
-                            <span class="text-xs bg-green-50 text-green-700 border border-green-200 px-2 py-0.5 rounded-full font-medium">2.200 VA+</span>
+                            @foreach($kategori->tags ?? [] as $tag)
+                            <span class="text-xs bg-green-50 text-green-700 border border-green-200 px-2 py-0.5 rounded-full font-medium">{{ $tag }}</span>
+                            @endforeach
                         </div>
                     </div>
-
-                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                        <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-4 text-2xl">🏢</div>
-                        <h3 class="font-extrabold text-slate-900 mb-2 group-hover:text-green-700 transition-colors">Gedung Komersial</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed mb-3">Inspeksi instalasi listrik gedung perkantoran, pusat perbelanjaan, hotel, dan bangunan komersial lainnya.</p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="text-xs bg-green-50 text-green-700 border border-green-200 px-2 py-0.5 rounded-full font-medium">Perkantoran</span>
-                            <span class="text-xs bg-green-50 text-green-700 border border-green-200 px-2 py-0.5 rounded-full font-medium">Mall</span>
-                            <span class="text-xs bg-green-50 text-green-700 border border-green-200 px-2 py-0.5 rounded-full font-medium">Hotel</span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                        <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-4 text-2xl">🏭</div>
-                        <h3 class="font-extrabold text-slate-900 mb-2 group-hover:text-green-700 transition-colors">Kawasan Industri (TR)</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed mb-3">Inspeksi instalasi pemanfaatan tegangan rendah pada pabrik, gudang, dan area produksi industri ringan.</p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="text-xs bg-green-50 text-green-700 border border-green-200 px-2 py-0.5 rounded-full font-medium">Pabrik</span>
-                            <span class="text-xs bg-green-50 text-green-700 border border-green-200 px-2 py-0.5 rounded-full font-medium">Gudang</span>
-                            <span class="text-xs bg-green-50 text-green-700 border border-green-200 px-2 py-0.5 rounded-full font-medium">Workshop</span>
-                        </div>
-                    </div>
-
+                    @endforeach
                 </div>
             </div>
+            @endif
 
             <!-- Tegangan Menengah -->
+            @if($kategoriTM->count() > 0)
             <div class="mb-14 reveal-on-scroll delay-100">
                 <div class="flex items-center gap-3 mb-6">
                     <div class="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
@@ -91,41 +73,26 @@
                     </div>
                 </div>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-
+                    @foreach($kategoriTM as $kategori)
                     <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4 text-2xl">🏗️</div>
-                        <h3 class="font-extrabold text-slate-900 mb-2 group-hover:text-orange-600 transition-colors">Gardu Distribusi</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed mb-3">Inspeksi gardu distribusi pasangan luar (outdoor) dan pasangan dalam (indoor) untuk memastikan kelaikan operasi trafo dan switchgear.</p>
+                        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4 text-2xl">
+                            {{ $kategori->ikon ?? '⚡' }}
+                        </div>
+                        <h3 class="font-extrabold text-slate-900 mb-2 group-hover:text-orange-600 transition-colors">{{ $kategori->judul }}</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed mb-3">{{ $kategori->deskripsi }}</p>
                         <div class="flex flex-wrap gap-1.5">
-                            <span class="text-xs bg-orange-50 text-orange-600 border border-orange-200 px-2 py-0.5 rounded-full font-medium">Pasangan Luar</span>
-                            <span class="text-xs bg-orange-50 text-orange-600 border border-orange-200 px-2 py-0.5 rounded-full font-medium">Pasangan Dalam</span>
+                            @foreach($kategori->tags ?? [] as $tag)
+                            <span class="text-xs bg-orange-50 text-orange-600 border border-orange-200 px-2 py-0.5 rounded-full font-medium">{{ $tag }}</span>
+                            @endforeach
                         </div>
                     </div>
-
-                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4 text-2xl">🔌</div>
-                        <h3 class="font-extrabold text-slate-900 mb-2 group-hover:text-orange-600 transition-colors">Saluran TM (SUTM / SKTM)</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed mb-3">Inspeksi saluran udara tegangan menengah (SUTM) dan saluran kabel tegangan menengah (SKTM) bawah tanah.</p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="text-xs bg-orange-50 text-orange-600 border border-orange-200 px-2 py-0.5 rounded-full font-medium">SUTM</span>
-                            <span class="text-xs bg-orange-50 text-orange-600 border border-orange-200 px-2 py-0.5 rounded-full font-medium">SKTM</span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4 text-2xl">🏭</div>
-                        <h3 class="font-extrabold text-slate-900 mb-2 group-hover:text-orange-600 transition-colors">Industri & Kawasan</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed mb-3">Inspeksi instalasi pemanfaatan TM untuk kawasan industri besar, data center, real estate, dan infrastruktur publik.</p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="text-xs bg-orange-50 text-orange-600 border border-orange-200 px-2 py-0.5 rounded-full font-medium">Data Center</span>
-                            <span class="text-xs bg-orange-50 text-orange-600 border border-orange-200 px-2 py-0.5 rounded-full font-medium">Infrastruktur</span>
-                        </div>
-                    </div>
-
+                    @endforeach
                 </div>
             </div>
+            @endif
 
             <!-- Pembangkit -->
+            @if($kategoriPembangkit->count() > 0)
             <div class="mb-14 reveal-on-scroll delay-200">
                 <div class="flex items-center gap-3 mb-6">
                     <div class="w-10 h-10 bg-blue-900 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
@@ -139,40 +106,23 @@
                     </div>
                 </div>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-
+                    @foreach($kategoriPembangkit as $kategori)
                     <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4 text-2xl">☀️</div>
-                        <h3 class="font-extrabold text-slate-900 mb-2 group-hover:text-blue-900 transition-colors">PLTS (Solar Panel)</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed mb-3">Inspeksi Pembangkit Listrik Tenaga Surya baik rooftop maupun ground-mounted untuk penerbitan SLO PLTS.</p>
+                        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4 text-2xl">
+                            {{ $kategori->ikon ?? '⚡' }}
+                        </div>
+                        <h3 class="font-extrabold text-slate-900 mb-2 group-hover:text-blue-900 transition-colors">{{ $kategori->judul }}</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed mb-3">{{ $kategori->deskripsi }}</p>
                         <div class="flex flex-wrap gap-1.5">
-                            <span class="text-xs bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full font-medium">Rooftop</span>
-                            <span class="text-xs bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full font-medium">Ground Mount</span>
+                            @foreach($kategori->tags ?? [] as $tag)
+                            <span class="text-xs bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full font-medium">{{ $tag }}</span>
+                            @endforeach
                         </div>
                     </div>
-
-                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4 text-2xl">⚙️</div>
-                        <h3 class="font-extrabold text-slate-900 mb-2 group-hover:text-blue-900 transition-colors">Genset / PLTD</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed mb-3">Inspeksi generator set diesel dan pembangkit tenaga diesel untuk suplai daya cadangan atau mandiri.</p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="text-xs bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full font-medium">Backup Power</span>
-                            <span class="text-xs bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full font-medium">Mandiri</span>
-                        </div>
-                    </div>
-
-                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4 text-2xl">💨</div>
-                        <h3 class="font-extrabold text-slate-900 mb-2 group-hover:text-blue-900 transition-colors">Energi Terbarukan Lainnya</h3>
-                        <p class="text-xs text-slate-500 leading-relaxed mb-3">Inspeksi pembangkit energi terbarukan seperti PLTB (Bayu/Angin), PLTMH (Mikro Hidro), dan pembangkit biomassa.</p>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="text-xs bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full font-medium">PLTB</span>
-                            <span class="text-xs bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full font-medium">PLTMH</span>
-                            <span class="text-xs bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full font-medium">Biomassa</span>
-                        </div>
-                    </div>
-
+                    @endforeach
                 </div>
             </div>
+            @endif
 
         </div>
     </section>

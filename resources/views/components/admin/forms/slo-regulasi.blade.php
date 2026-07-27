@@ -8,56 +8,67 @@
         <p class="text-xs text-slate-400 mt-1">Kelola dasar hukum, peraturan kementerian ESDM tentang kewajiban Sertifikat Laik Operasi (SLO), dan lampiran dokumen PDF UU.</p>
     </div>
 
-    <form action="{{ route('admin.slo.halaman.update') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
-        @csrf
-        <input type="hidden" name="halaman" value="slo_regulasi">
-        <input type="hidden" name="kunci" value="main">
-
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1 uppercase tracking-wider">Judul Header</label>
-                    <input type="text" name="judul" value="{{ old('judul', $data->judul ?? 'REGULASI & DASAR HUKUM SLO') }}" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-emerald-500">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1 uppercase tracking-wider">Deskripsi Sub-Header</label>
-                    <textarea name="subjudul" rows="2" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-emerald-500">{{ old('subjudul', $data->subjudul ?? 'Sertifikat Laik Operasi (SLO) merupakan amanat undang-undang untuk menjamin keselamatan ketenagalistrikan.') }}</textarea>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1 uppercase tracking-wider">Daftar Peraturan Menteri & Undang-Undang</label>
-                    <textarea name="konten" rows="5" placeholder="Contoh:&#10;• UU No. 30 Tahun 2009 tentang Ketenagalistrikan&#10;• Permen ESDM No. 12 Tahun 2021 tentang Penyelenggaraan Usaha Jasa Ketenagalistrikan&#10;• Standar PUIL 2011" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-emerald-500">{{ old('konten', $data->konten ?? '') }}</textarea>
-                </div>
+    <div class="bg-slate-950/50 border border-slate-800 rounded-xl p-6 text-center">
+        <div class="flex flex-col items-center gap-4">
+            <div class="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center">
+                <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
             </div>
+            <div>
+                <h3 class="text-lg font-semibold text-white">Kelola Regulasi SLO</h3>
+                <p class="text-sm text-slate-400 mt-1 max-w-md mx-auto">
+                    Kelola daftar regulasi ketenagalistrikan termasuk Undang-Undang, Peraturan Pemerintah, Permen ESDM, dan Standar Nasional Indonesia (SNI).
+                </p>
+            </div>
+            <a href="{{ route('admin.slo.regulasi.index') }}" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-xl font-semibold text-sm transition shadow-lg shadow-emerald-500/20">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                </svg>
+                Kelola Regulasi
+            </a>
+        </div>
+    </div>
 
-            <div class="space-y-6">
-                <!-- PDF Dokumen Regulasi -->
-                <div class="space-y-3 bg-slate-950/50 p-5 rounded-xl border border-slate-800">
-                    <label class="block text-xs font-bold text-emerald-400 uppercase tracking-wider">Upload Lampiran PDF Salinan Peraturan ESDM / UU</label>
-                    @if(isset($data) && $data->url_dokumen)
-                        <div class="flex items-center justify-between p-3 bg-slate-950 border border-slate-800 rounded-xl">
-                            <div class="flex items-center gap-2 overflow-hidden">
-                                <svg class="w-5 h-5 text-rose-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                                <span class="text-xs text-slate-300 truncate">Dokumen Regulasi PDF Ter-upload</span>
-                            </div>
-                            <a href="{{ $data->url_dokumen }}" target="_blank" class="text-xs font-bold text-emerald-400 hover:underline flex-shrink-0">Lihat PDF</a>
-                        </div>
-                    @endif
-
-                    <div class="border-2 border-dashed border-slate-800 rounded-xl p-4 text-center hover:border-emerald-500/50 transition">
-                        <input type="file" name="dokumen" accept=".pdf" class="w-full text-xs text-slate-400 bg-slate-950 border border-slate-800 rounded-xl p-2.5">
-                        <p class="text-[11px] text-slate-500 mt-1">Upload File PDF Peraturan ESDM (maks 10MB)</p>
-                    </div>
+    <div class="grid md:grid-cols-3 gap-4">
+        <div class="bg-slate-950/50 border border-slate-800 rounded-xl p-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-slate-400 text-xs">UU & PP</p>
+                    <p class="text-white font-bold text-lg">Undang-Undang & Peraturan Pemerintah</p>
                 </div>
             </div>
         </div>
-
-        <div class="flex justify-end pt-2 border-t border-slate-800">
-            <button type="submit" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white px-6 py-3 rounded-xl font-bold text-sm shadow-lg shadow-emerald-500/20 transition flex items-center gap-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                Simpan Regulasi SLO
-            </button>
+        <div class="bg-slate-950/50 border border-slate-800 rounded-xl p-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-orange-500/20 rounded-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-slate-400 text-xs">Permen ESDM</p>
+                    <p class="text-white font-bold text-lg">Peraturan Menteri ESDM</p>
+                </div>
+            </div>
         </div>
-    </form>
+        <div class="bg-slate-950/50 border border-slate-800 rounded-xl p-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-teal-500/20 rounded-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-slate-400 text-xs">SNI</p>
+                    <p class="text-white font-bold text-lg">Standar Nasional Indonesia</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
