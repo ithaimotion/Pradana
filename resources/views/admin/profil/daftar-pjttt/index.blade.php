@@ -54,7 +54,7 @@
                     <div class="md:col-span-2">
                         <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Dokumen</label>
                         @if($daftarPJTTT->dokumen)
-                            <a href="{{ asset('storage/' . $daftarPJTTT->dokumen) }}" target="_blank" class="text-amber-400 hover:text-amber-300 text-sm">Lihat Dokumen PDF</a>
+                            <a href="{{ asset('public/storage/'  $daftarPJTTT->dokumen) }}" target="_blank" class="text-amber-400 hover:text-amber-300 text-sm">Lihat Dokumen PDF</a>
                         @else
                             <div class="text-sm text-slate-500">Tidak ada dokumen</div>
                         @endif

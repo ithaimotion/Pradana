@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\ProfilController;
 use App\Http\Controllers\Admin\SloController;
 use App\Http\Controllers\Admin\InformasiPublikController;
 use App\Http\Controllers\Admin\InformasiPublik\MaklumatLayananController;
+use App\Http\Controllers\Admin\InformasiPublik\UjiPetikController;
+use App\Http\Controllers\Admin\InformasiPublik\KeluhanBandingController;
 use App\Http\Controllers\Admin\KarirController;
 use App\Http\Controllers\Admin\PesanController;
 use App\Http\Controllers\Admin\Profil\PerusahaanController;
@@ -119,6 +121,16 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     // Informasi Publik - Maklumat Layanan Routes
     Route::get('informasi-publik/maklumat-layanan', [MaklumatLayananController::class, 'index'])->name('informasi-publik.maklumat.index');
     Route::post('informasi-publik/maklumat-layanan', [MaklumatLayananController::class, 'update'])->name('informasi-publik.maklumat.update');
+
+    // Informasi Publik - Uji Petik Routes
+    Route::get('informasi-publik/uji-petik', [UjiPetikController::class, 'index'])->name('informasi-publik.uji-petik.index');
+    Route::post('informasi-publik/uji-petik', [UjiPetikController::class, 'update'])->name('informasi-publik.uji-petik.update');
+
+    // Informasi Publik - Keluhan & Banding Routes
+    Route::get('informasi-publik/keluhan-banding', [KeluhanBandingController::class, 'index'])->name('informasi-publik.keluhan-banding.index');
+    Route::post('informasi-publik/keluhan-banding/settings', [KeluhanBandingController::class, 'updateSettings'])->name('informasi-publik.keluhan-banding.update-settings');
+    Route::post('informasi-publik/keluhan-banding/status/{id}', [KeluhanBandingController::class, 'updateStatus'])->name('informasi-publik.keluhan-banding.update-status');
+    Route::delete('informasi-publik/keluhan-banding/{id}', [KeluhanBandingController::class, 'destroy'])->name('informasi-publik.keluhan-banding.destroy');
 });
 
 Route::post('/hubungi-kami', [PesanController::class, 'storePublik'])->name('hubungi-kami.store');
@@ -148,14 +160,9 @@ Route::get('/slo/bidang-layanan', [SloPageController::class, 'bidangLayanan'])->
 
 // Informasi Publik Routes
 Route::get('/informasi-publik/maklumat-layanan', [InformasiPublikPageController::class, 'maklumatLayanan'])->name('informasi-publik.maklumat-layanan');
-
-Route::get('/informasi-publik/uji-petik', function () {
-    return view('pages.informasi-publik.uji-petik');
-})->name('informasi-publik.uji-petik');
-
-Route::get('/informasi-publik/keluhan-banding', function () {
-    return view('pages.informasi-publik.keluhan-banding');
-})->name('informasi-publik.keluhan-banding');
+Route::get('/informasi-publik/uji-petik', [InformasiPublikPageController::class, 'ujiPetik'])->name('informasi-publik.uji-petik');
+Route::get('/informasi-publik/keluhan-banding', [InformasiPublikPageController::class, 'keluhanBanding'])->name('informasi-publik.keluhan-banding');
+Route::post('/informasi-publik/keluhan-banding/submit', [InformasiPublikPageController::class, 'keluhanBandingSubmit'])->name('informasi-publik.keluhan-banding.submit');
 
 Route::get('/informasi-publik/persyaratan-slo', function () {
     return view('pages.informasi-publik.persyaratan-slo');

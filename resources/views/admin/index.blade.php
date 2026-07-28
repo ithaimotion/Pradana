@@ -610,7 +610,7 @@
                 <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group shadow-lg">
                     <div class="h-48 bg-slate-950 relative overflow-hidden flex items-center justify-center p-4">
                         @if($item->url_gambar)
-                            <img src="{{ asset('storage/' . $item->url_gambar) }}" alt="{{ $item->nama }}" title="{{ $item->nama }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
+                            <img src="{{ asset('public/storage/'  $item->url_gambar) }}" alt="{{ $item->nama }}" title="{{ $item->nama }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
                         @elseif($item->logo_url)
                             <img src="{{ $item->logo_url }}" alt="{{ $item->nama }}" title="{{ $item->nama }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
                         @else
@@ -664,8 +664,6 @@
     <x-admin.subpage-form tabName="slo-bidang-layanan" halamanKey="slo_bidang_layanan" title="Bidang Layanan SLO" badgeColor="bg-emerald-400" description="Kelola lingkup inspeksi pembangkit, transmisi, dan distribusi ketenagalistrikan." :actionRoute="route('admin.slo.halaman.update')" :data="$kontenHalamans['slo_bidang_layanan'][0] ?? null" />
 
     <!-- SUB-MENU CMS PANELS: INFORMASI PUBLIK -->
-    <x-admin.subpage-form tabName="uji-petik" halamanKey="infopub_uji_petik" title="Uji Petik Inspeksi" badgeColor="bg-sky-400" description="Kelola prosedur dan ketentuan uji petik mutu hasil inspeksi." :actionRoute="route('admin.infopublik.halaman.update')" :data="$kontenHalamans['infopub_uji_petik'][0] ?? null" />
-    <x-admin.subpage-form tabName="keluhan-banding" halamanKey="infopub_keluhan" title="Keluhan & Banding" badgeColor="bg-sky-400" description="Kelola alur penanganan pengaduan dan banding hasil inspeksi." :actionRoute="route('admin.infopublik.halaman.update')" :data="$kontenHalamans['infopub_keluhan'][0] ?? null" />
     <x-admin.subpage-form tabName="persyaratan-slo" halamanKey="infopub_persyaratan" title="Persyaratan SLO" badgeColor="bg-sky-400" description="Kelola dokumen & daftar kelengkapan syarat permohonan SLO." :actionRoute="route('admin.infopublik.halaman.update')" :data="$kontenHalamans['infopub_persyaratan'][0] ?? null" />
     <x-admin.forms.daftar-harga :data="$kontenHalamans['infopub_daftar_harga'][0] ?? null" />
     <x-admin.subpage-form tabName="prosedur-slo" halamanKey="infopub_prosedur" title="Prosedur Pelayanan SLO" badgeColor="bg-sky-400" description="Kelola langkah-langkah tata cara penerbitan sertifikat SLO." :actionRoute="route('admin.infopublik.halaman.update')" :data="$kontenHalamans['infopub_prosedur'][0] ?? null" />

@@ -54,7 +54,7 @@
                     <div>
                         <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Gambar</label>
                         @if($profilPerusahaan->url_gambar)
-                            <img src="{{ asset('storage/' . $profilPerusahaan->url_gambar) }}" alt="Gambar" class="w-32 h-32 object-cover rounded-lg border border-slate-700">
+                            <img src="{{ asset('public/storage/'  $profilPerusahaan->url_gambar) }}" alt="Gambar" class="w-32 h-32 object-cover rounded-lg border border-slate-700">
                         @else
                             <div class="text-sm text-slate-500">Tidak ada gambar</div>
                         @endif

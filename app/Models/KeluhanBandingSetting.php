@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class KeluhanBandingSetting extends Model
+{
+    protected $table = 'keluhan_banding_settings';
+    protected $fillable = ['path_gambar'];
+
+    public function getUrlGambarAttribute()
+    {
+        if ($this->path_gambar) {
+            if (str_starts_with($this->path_gambar, 'http')) {
+                return $this->path_gambar;
+            }
+            return asset('public/storage/'  $this->path_gambar);
+        }
+        return null;
+    }
+}

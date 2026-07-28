@@ -30,6 +30,6 @@ class ProfilDaftarPJTTT extends Model
             return null;
         }
 
-        return asset('storage/' . $this->dokumen);
+        return asset('public/storage/'  $this->dokumen);
     }
 }
