@@ -31,6 +31,6 @@ class KontenBeranda extends Model
             return $this->path_gambar;
         }
 
-        return asset('public/storage/'  $this->path_gambar);
+        return asset('public/storage/' . $this->path_gambar);
     }
 }

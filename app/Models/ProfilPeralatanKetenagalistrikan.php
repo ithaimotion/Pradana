@@ -39,6 +39,6 @@ class ProfilPeralatanKetenagalistrikan extends Model
             return $this->gambar;
         }
 
-        return asset('public/storage/'  $this->gambar);
+        return asset('public/storage/' . $this->gambar);
     }
 }
