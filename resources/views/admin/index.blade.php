@@ -610,7 +610,7 @@
                 <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group shadow-lg">
                     <div class="h-48 bg-slate-950 relative overflow-hidden flex items-center justify-center p-4">
                         @if($item->url_gambar)
-                            <img src="{{ asset('public/storage/'  $item->url_gambar) }}" alt="{{ $item->nama }}" title="{{ $item->nama }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
+                            <img src="{{ asset('public/storage/' . $item->url_gambar) }}" alt="{{ $item->nama }}" title="{{ $item->nama }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
                         @elseif($item->logo_url)
                             <img src="{{ $item->logo_url }}" alt="{{ $item->nama }}" title="{{ $item->nama }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
                         @else

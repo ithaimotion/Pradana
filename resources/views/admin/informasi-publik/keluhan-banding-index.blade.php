@@ -20,7 +20,7 @@
     <!-- Upload Gambar Section -->
     <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
         <h2 class="text-lg font-semibold text-white mb-4">Alur Keluhan & Banding</h2>
-        <form action="{{ route('admin.informasi-publik.keluhan-banding.update-settings') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+        <form action="{{ route('admin.informasi-publik.keluhan-banding.settings.update') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
             @csrf
 
             <!-- Upload Gambar -->

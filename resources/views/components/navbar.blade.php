@@ -7,7 +7,7 @@
             @if(isset($logos) && $logos->count() > 0)
                 @foreach($logos->take(1) as $logo)
                     @if($logo->url_gambar)
-                        <img src="{{ asset('public/storage/'  $logo->url_gambar) }}" alt="{{ $logo->nama ?? 'Logo' }}" title="{{ $logo->nama ?? 'Logo' }}" class="h-10 w-auto object-contain">
+                        <img src="{{ asset('public/storage/' . $logo->url_gambar) }}" alt="{{ $logo->nama ?? 'Logo' }}" title="{{ $logo->nama ?? 'Logo' }}" class="h-10 w-auto object-contain">
                     @elseif($logo->logo_url)
                         <img src="{{ $logo->logo_url }}" alt="{{ $logo->nama ?? 'Logo' }}" title="{{ $logo->nama ?? 'Logo' }}" class="h-10 w-auto object-contain">
                     @else

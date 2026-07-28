@@ -3,9 +3,9 @@
 @php
     $headerJudul = $header->judul ?? 'ENGINEERING A LOWER-CARBON ALUMINIUM FUTURE';
     $defaultEnergiItems = collect([
-        (object)['title' => 'DECARBONIZATION', 'content' => 'Reduce carbon footprint through innovative smelting technologies and process optimization'],
-        (object)['title' => 'ENERGY EFFICIENCY', 'content' => 'Optimize energy consumption with smart control systems and real-time monitoring'],
-        (object)['title' => 'LONG-TERM GROWTH', 'content' => 'Sustainable solutions that ensure long-term profitability and environmental responsibility'],
+        (object)['judul' => 'DECARBONIZATION', 'konten' => 'Reduce carbon footprint through innovative smelting technologies and process optimization'],
+        (object)['judul' => 'ENERGY EFFICIENCY', 'konten' => 'Optimize energy consumption with smart control systems and real-time monitoring'],
+        (object)['judul' => 'LONG-TERM GROWTH', 'konten' => 'Sustainable solutions that ensure long-term profitability and environmental responsibility'],
     ]);
 
     $itemList = ($items && count($items) > 0) ? $items : $defaultEnergiItems;

@@ -17,6 +17,17 @@ class ProfilPageController extends Controller
     public function perusahaan()
     {
         $konten = ProfilPerusahaan::first();
+        if (!$konten) {
+            $konten = new \stdClass();
+            $konten->judul = null;
+            $konten->subjudul = null;
+            $konten->nilai = null;
+            $konten->konten = null;
+            $konten->url_gambar = null;
+            $konten->visi = null;
+            $konten->misi = null;
+            $konten->nilai_perusahaan = null;
+        }
         return view('pages.profil.perusahaan', compact('konten'));
     }
 
@@ -26,6 +37,14 @@ class ProfilPageController extends Controller
     public function pjtTt()
     {
         $konten = ProfilDaftarPJTTT::with('items')->first();
+        if (!$konten) {
+            $konten = new \stdClass();
+            $konten->judul = null;
+            $konten->subjudul = null;
+            $konten->konten = null;
+            $konten->url_gambar = null;
+            $konten->items = collect();
+        }
         return view('pages.profil.pjt-tt', compact('konten'));
     }
 
@@ -35,6 +54,14 @@ class ProfilPageController extends Controller
     public function struktur()
     {
         $konten = ProfilStrukturOrganisasi::with('items')->first();
+        if (!$konten) {
+            $konten = new \stdClass();
+            $konten->judul = null;
+            $konten->subjudul = null;
+            $konten->konten = null;
+            $konten->url_gambar = null;
+            $konten->items = collect();
+        }
         return view('pages.profil.struktur-organisasi', compact('konten'));
     }
 
@@ -44,6 +71,15 @@ class ProfilPageController extends Controller
     public function legalitas()
     {
         $konten = ProfilLegalitas::with(['items', 'tenagaTeknik'])->first();
+        if (!$konten) {
+            $konten = new \stdClass();
+            $konten->judul = null;
+            $konten->subjudul = null;
+            $konten->konten = null;
+            $konten->url_gambar = null;
+            $konten->items = collect();
+            $konten->tenagaTeknik = collect();
+        }
         return view('pages.profil.legalitas-perusahaan', compact('konten'));
     }
 
@@ -53,6 +89,13 @@ class ProfilPageController extends Controller
     public function peralatan()
     {
         $konten = KontenHalaman::where('halaman', 'profil_peralatan')->first();
+        if (!$konten) {
+            $konten = new \stdClass();
+            $konten->judul = null;
+            $konten->subjudul = null;
+            $konten->konten = null;
+            $konten->url_gambar = null;
+        }
         return view('pages.profil.peralatan', compact('konten'));
     }
 
@@ -62,6 +105,13 @@ class ProfilPageController extends Controller
     public function sop()
     {
         $konten = KontenHalaman::where('halaman', 'profil_sop')->first();
+        if (!$konten) {
+            $konten = new \stdClass();
+            $konten->judul = null;
+            $konten->subjudul = null;
+            $konten->konten = null;
+            $konten->url_gambar = null;
+        }
         return view('pages.profil.sop', compact('konten'));
     }
 }

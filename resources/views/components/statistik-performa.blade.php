@@ -3,19 +3,19 @@
 @php
     $defaultStats = collect([
         (object)[
-            'value' => '50-80%',
-            'title' => 'SMARTER SMELTER',
-            'content' => "Optimize your smelter's energy consumption with our advanced control systems"
+            'nilai' => '50-80%',
+            'judul' => 'SMARTER SMELTER',
+            'konten' => "Optimize your smelter's energy consumption with our advanced control systems"
         ],
         (object)[
-            'value' => 'ADVANCED',
-            'title' => 'ANALYTICS',
-            'content' => 'Minimize environmental impact through intelligent process optimization'
+            'nilai' => 'ADVANCED',
+            'judul' => 'ANALYTICS',
+            'konten' => 'Minimize environmental impact through intelligent process optimization'
         ],
         (object)[
-            'value' => 'DATA-DRIVEN',
-            'title' => 'INSIGHTS',
-            'content' => 'Maximize output and operational efficiency with data-driven insights'
+            'nilai' => 'DATA-DRIVEN',
+            'judul' => 'INSIGHTS',
+            'konten' => 'Maximize output and operational efficiency with data-driven insights'
         ]
     ]);
 

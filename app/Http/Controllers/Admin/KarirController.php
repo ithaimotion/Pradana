@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\KontenHalaman;
 use App\Models\LowonganKarir;
+use App\Models\KarirSettings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -116,5 +117,43 @@ class KarirController extends Controller
         $lowongan->delete();
 
         return back()->with('success', 'Lowongan pekerjaan berhasil dihapus!');
+    }
+
+    /**
+     * Show Karir Settings management page.
+     */
+    public function karirSettings()
+    {
+        $karirSettings = KarirSettings::first();
+        
+        return view('admin.karir-settings', compact('karirSettings'));
+    }
+
+    /**
+     * Update Karir Settings.
+     */
+    public function updateKarirSettings(Request $request)
+    {
+        $request->validate([
+            'description' => 'nullable|string',
+            'benefits' => 'nullable|array',
+            'years_experience' => 'required|string|max:50',
+            'projects_completed' => 'required|string|max:50',
+            'team_professionals' => 'required|string|max:50',
+            'cities_served' => 'required|string|max:50',
+        ]);
+
+        $karirSettings = KarirSettings::first() ?? new KarirSettings();
+        
+        $karirSettings->description = $request->description;
+        $karirSettings->benefits = $request->benefits ?? [];
+        $karirSettings->years_experience = $request->years_experience;
+        $karirSettings->projects_completed = $request->projects_completed;
+        $karirSettings->team_professionals = $request->team_professionals;
+        $karirSettings->cities_served = $request->cities_served;
+        
+        $karirSettings->save();
+
+        return back()->with('success', 'Pengaturan Karir berhasil diperbarui!');
     }
 }

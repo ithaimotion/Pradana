@@ -6,7 +6,7 @@
     <title>@yield('title', 'Pradana')</title>
 
     @if(isset($logos) && $logos->count() > 0 && $logos->first()->url_gambar)
-        <link rel="icon" type="image/png" href="{{ asset('public/storage/'  $logos->first()->url_gambar) }}">
+        <link rel="icon" type="image/png" href="{{ asset('public/storage/' . $logos->first()->url_gambar) }}">
     @elseif(isset($logos) && $logos->count() > 0 && $logos->first()->logo_url)
         <link rel="icon" type="image/png" href="{{ $logos->first()->logo_url }}">
     @else

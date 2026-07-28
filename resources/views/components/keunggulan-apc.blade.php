@@ -6,10 +6,10 @@
     $headerGambar = $header->url_gambar ?? 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80';
 
     $defaultFeatureItems = collect([
-        (object)['title' => 'SMARTER SMELTER', 'content' => 'AI-powered optimization'],
-        (object)['title' => 'DATA-DRIVEN INSIGHTS', 'content' => 'Real-time analytics'],
-        (object)['title' => 'ENERGY EFFICIENCY', 'content' => 'Reduced consumption'],
-        (object)['title' => 'PREDICTIVE MAINTENANCE', 'content' => 'Proactive solutions'],
+        (object)['judul' => 'SMARTER SMELTER', 'konten' => 'AI-powered optimization'],
+        (object)['judul' => 'DATA-DRIVEN INSIGHTS', 'konten' => 'Real-time analytics'],
+        (object)['judul' => 'ENERGY EFFICIENCY', 'konten' => 'Reduced consumption'],
+        (object)['judul' => 'PREDICTIVE MAINTENANCE', 'konten' => 'Proactive solutions'],
     ]);
 
     $featureList = ($items && count($items) > 0) ? $items : $defaultFeatureItems;

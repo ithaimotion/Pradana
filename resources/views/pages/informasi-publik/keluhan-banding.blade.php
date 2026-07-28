@@ -49,7 +49,7 @@
             </div>
 
             <div class="max-w-2xl mx-auto">
-                <form action="{{ route('informasi-publik.keluhan-banding.submit') }}" method="POST" class="space-y-6">
+                <form action="{{ route('informasi-publik.keluhan-banding.submit') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
                     @csrf
 
                     @if(session('success'))
@@ -58,34 +58,79 @@
                         </div>
                     @endif
 
-                    <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Data Perusahaan -->
+                    <div class="bg-slate-50 rounded-xl p-6 space-y-6">
+                        <h3 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3">Data Perusahaan</h3>
+                        
                         <div>
-                            <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Lengkap *</label>
-                            <input type="text" name="nama" required class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" placeholder="Masukkan nama lengkap">
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Perusahaan *</label>
+                            <input type="text" name="nama_perusahaan" required class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" placeholder="Masukkan Nama Perusahaan">
                         </div>
+
                         <div>
-                            <label class="block text-sm font-semibold text-slate-700 mb-2">Email *</label>
-                            <input type="email" name="email" required class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" placeholder="Masukkan email">
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Kota *</label>
+                            <input type="text" name="kota" required class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" placeholder="Masukkan Kota">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Alamat *</label>
+                            <textarea name="alamat" required rows="3" class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition resize-none" placeholder="Masukkan Alamat Perusahaan"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">No. Telepon Perusahaan *</label>
+                            <input type="tel" name="telepon_perusahaan" required class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" placeholder="Masukkan No. Telepon">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Email Perusahaan *</label>
+                            <input type="email" name="email_perusahaan" required class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" placeholder="Masukkan Email Perusahaan">
                         </div>
                     </div>
 
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-700 mb-2">Nomor Telepon</label>
-                        <input type="tel" name="telepon" class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" placeholder="Masukkan nomor telepon (opsional)">
+                    <!-- Data Perwakilan -->
+                    <div class="bg-slate-50 rounded-xl p-6 space-y-6">
+                        <h3 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3">Data Perwakilan</h3>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Perwakilan *</label>
+                            <input type="text" name="nama_perwakilan" required class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" placeholder="Masukkan Nama Perwakilan">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Jabatan *</label>
+                            <input type="text" name="jabatan" required class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" placeholder="Masukkan Jabatan">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">No. HP Perwakilan *</label>
+                            <input type="tel" name="telepon_perwakilan" required class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" placeholder="Masukkan No. Telepon/HP">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Email Perwakilan *</label>
+                            <input type="email" name="email_perwakilan" required class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" placeholder="Masukkan Email Perwakilan">
+                        </div>
                     </div>
 
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-700 mb-2">Jenis Pengajuan *</label>
-                        <select name="jenis" required class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition">
-                            <option value="">Pilih jenis pengajuan</option>
-                            <option value="keluhan">Keluhan</option>
-                            <option value="banding">Banding</option>
-                        </select>
+                    <!-- Rincian Keluhan / Banding -->
+                    <div class="bg-slate-50 rounded-xl p-6 space-y-6">
+                        <h3 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3">Rincian Keluhan / Banding</h3>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Rincian Keluhan / Banding *</label>
+                            <textarea name="rincian_keluhan" required rows="6" class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition resize-none" placeholder="Masukkan rincian keluhan atau banding Anda dengan detail..."></textarea>
+                        </div>
                     </div>
 
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-700 mb-2">Pesan / Keluhan / Banding *</label>
-                        <textarea name="pesan" required rows="6" class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition resize-none" placeholder="Jelaskan detail keluhan atau banding Anda secara lengkap..."></textarea>
+                    <!-- Upload Dokumen Pendukung -->
+                    <div class="bg-slate-50 rounded-xl p-6 space-y-6">
+                        <h3 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-3">Upload Dokumen Pendukung</h3>
+                        
+                        <div class="border-2 border-dashed border-slate-300 rounded-xl p-8 text-center hover:border-orange-500 transition cursor-pointer">
+                            <input type="file" name="dokumen_pendukung" accept=".pdf,.jpg,.jpeg,.png" class="w-full text-sm text-slate-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-orange-500 file:text-white hover:file:bg-orange-600">
+                            <p class="text-xs text-slate-500 mt-2">PDF, JPG, PNG (Max: 2MB)</p>
+                        </div>
                     </div>
 
                     <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-xl transition shadow-lg shadow-orange-500/20 flex items-center justify-center gap-2">

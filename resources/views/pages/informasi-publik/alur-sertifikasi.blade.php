@@ -21,118 +21,76 @@
         </div>
     </section>
 
-    <!-- Main Content -->
+    <!-- PDF Viewer Section -->
     <section class="py-20 bg-slate-50 overflow-hidden">
         <div class="max-w-5xl mx-auto px-6">
-
-            <!-- Flowchart Container -->
-            <div class="relative reveal-on-scroll">
-                <!-- Vertical Line (Desktop) -->
-                <div class="hidden md:block absolute left-1/2 top-10 bottom-10 w-1 bg-blue-200 -translate-x-1/2"></div>
-
-                <div class="space-y-12">
-                    
-                    <!-- Step 1 -->
-                    <div class="relative flex flex-col md:flex-row items-center justify-between group">
-                        <div class="md:w-5/12 mb-6 md:mb-0 text-center md:text-right px-4 order-2 md:order-1">
-                            <h3 class="text-xl font-extrabold text-slate-900 mb-2 group-hover:text-blue-900 transition-colors">1. Permohonan & Registrasi</h3>
-                            <p class="text-sm text-slate-500 leading-relaxed">
-                                Pemohon mengajukan permohonan inspeksi secara online atau offline dengan melengkapi formulir dan persyaratan administrasi serta teknis.
-                            </p>
+            @if($alurSertifikasi && $alurSertifikasi->is_active && $alurSertifikasi->path_pdf)
+                <div class="bg-white rounded-3xl border border-slate-200 shadow-lg overflow-hidden reveal-on-scroll">
+                    <!-- PDF Header -->
+                    <div class="bg-gradient-to-r from-blue-900 to-blue-800 px-6 py-4 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h2 class="text-white font-bold text-lg">{{ $alurSertifikasi->nama_dokumen }}</h2>
+                                <p class="text-blue-200 text-sm">Dokumen Alur Sertifikasi SLO</p>
+                            </div>
                         </div>
-                        <div class="md:w-2/12 flex justify-center order-1 md:order-2 mb-4 md:mb-0 relative z-10">
-                            <div class="w-16 h-16 bg-blue-900 text-white rounded-full flex items-center justify-center text-2xl shadow-xl border-4 border-slate-50 transition-transform group-hover:scale-110">📝</div>
-                        </div>
-                        <div class="md:w-5/12 px-4 order-3 hidden md:block"></div>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="relative flex flex-col md:flex-row items-center justify-between group">
-                        <div class="md:w-5/12 px-4 hidden md:block order-1"></div>
-                        <div class="md:w-2/12 flex justify-center order-2 mb-4 md:mb-0 relative z-10">
-                            <div class="w-16 h-16 bg-blue-900 text-white rounded-full flex items-center justify-center text-2xl shadow-xl border-4 border-slate-50 transition-transform group-hover:scale-110">💳</div>
-                        </div>
-                        <div class="md:w-5/12 mb-6 md:mb-0 text-center md:text-left px-4 order-3">
-                            <h3 class="text-xl font-extrabold text-slate-900 mb-2 group-hover:text-blue-900 transition-colors">2. Penawaran & Pembayaran</h3>
-                            <p class="text-sm text-slate-500 leading-relaxed">
-                                LIT menerbitkan Surat Penawaran Harga (Quotation) / Tagihan. Pemohon melakukan pembayaran biaya inspeksi sesuai tagihan ke rekening resmi perusahaan.
-                            </p>
+                        <div class="flex items-center gap-3">
+                            <button onclick="openFullscreen()" class="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                                </svg>
+                                <span class="hidden sm:inline">Full Screen</span>
+                            </button>
+                            <a href="{{ asset('storage/' . $alurSertifikasi->path_pdf) }}" download class="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                </svg>
+                                <span class="hidden sm:inline">Download</span>
+                            </a>
                         </div>
                     </div>
 
-                    <!-- Step 3 -->
-                    <div class="relative flex flex-col md:flex-row items-center justify-between group">
-                        <div class="md:w-5/12 mb-6 md:mb-0 text-center md:text-right px-4 order-2 md:order-1">
-                            <h3 class="text-xl font-extrabold text-slate-900 mb-2 group-hover:text-blue-900 transition-colors">3. Evaluasi Dokumen</h3>
-                            <p class="text-sm text-slate-500 leading-relaxed">
-                                Penanggung Jawab Teknik (PJT) memverifikasi kelengkapan dan kesesuaian dokumen teknis (gambar, spesifikasi material) dengan standar yang berlaku.
-                            </p>
-                        </div>
-                        <div class="md:w-2/12 flex justify-center order-1 md:order-2 mb-4 md:mb-0 relative z-10">
-                            <div class="w-16 h-16 bg-orange-500 text-white rounded-full flex items-center justify-center text-2xl shadow-xl border-4 border-slate-50 transition-transform group-hover:scale-110">🔎</div>
-                        </div>
-                        <div class="md:w-5/12 px-4 order-3 hidden md:block"></div>
+                    <!-- PDF Viewer -->
+                    <div class="relative" style="height: 700px;">
+                        <iframe 
+                            src="{{ asset('storage/' . $alurSertifikasi->path_pdf) }}" 
+                            class="w-full h-full"
+                            frameborder="0"
+                            allowfullscreen>
+                        </iframe>
                     </div>
-
-                    <!-- Step 4 -->
-                    <div class="relative flex flex-col md:flex-row items-center justify-between group">
-                        <div class="md:w-5/12 px-4 hidden md:block order-1"></div>
-                        <div class="md:w-2/12 flex justify-center order-2 mb-4 md:mb-0 relative z-10">
-                            <div class="w-16 h-16 bg-orange-500 text-white rounded-full flex items-center justify-center text-2xl shadow-xl border-4 border-slate-50 transition-transform group-hover:scale-110">👷</div>
-                        </div>
-                        <div class="md:w-5/12 mb-6 md:mb-0 text-center md:text-left px-4 order-3">
-                            <h3 class="text-xl font-extrabold text-slate-900 mb-2 group-hover:text-blue-900 transition-colors">4. Inspeksi Lapangan</h3>
-                            <p class="text-sm text-slate-500 leading-relaxed">
-                                Tim Tenaga Teknik (TT) ditugaskan menuju lokasi untuk melakukan pemeriksaan visual dan pengujian teknis instalasi secara langsung berdasarkan prosedur.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Step 5 -->
-                    <div class="relative flex flex-col md:flex-row items-center justify-between group">
-                        <div class="md:w-5/12 mb-6 md:mb-0 text-center md:text-right px-4 order-2 md:order-1">
-                            <h3 class="text-xl font-extrabold text-slate-900 mb-2 group-hover:text-blue-900 transition-colors">5. Evaluasi Hasil (LHPP)</h3>
-                            <p class="text-sm text-slate-500 leading-relaxed">
-                                TT menyerahkan Laporan Hasil Pemeriksaan dan Pengujian (LHPP). PJT mengevaluasi LHPP untuk merekomendasikan status kelaikan operasi (Laik / Tidak Laik).
-                            </p>
-                        </div>
-                        <div class="md:w-2/12 flex justify-center order-1 md:order-2 mb-4 md:mb-0 relative z-10">
-                            <div class="w-16 h-16 bg-blue-900 text-white rounded-full flex items-center justify-center text-2xl shadow-xl border-4 border-slate-50 transition-transform group-hover:scale-110">📊</div>
-                        </div>
-                        <div class="md:w-5/12 px-4 order-3 hidden md:block"></div>
-                    </div>
-
-                    <!-- Step 6 -->
-                    <div class="relative flex flex-col md:flex-row items-center justify-between group">
-                        <div class="md:w-5/12 px-4 hidden md:block order-1"></div>
-                        <div class="md:w-2/12 flex justify-center order-2 mb-4 md:mb-0 relative z-10">
-                            <div class="w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center text-2xl shadow-xl border-4 border-slate-50 transition-transform group-hover:scale-110">🏆</div>
-                        </div>
-                        <div class="md:w-5/12 mb-6 md:mb-0 text-center md:text-left px-4 order-3">
-                            <h3 class="text-xl font-extrabold text-slate-900 mb-2 group-hover:text-green-600 transition-colors">6. Penerbitan Sertifikat (SLO)</h3>
-                            <p class="text-sm text-slate-500 leading-relaxed">
-                                Jika dinyatakan Laik Operasi, Sertifikat Laik Operasi (SLO) diterbitkan dan disahkan. Dokumen SLO akan dikirimkan kepada pemohon dalam bentuk cetak/digital.
-                            </p>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
-
-            <!-- Download Infographic -->
-            <div class="mt-20 bg-blue-50 border border-blue-200 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 reveal-on-scroll delay-200 text-center md:text-left">
-                <div>
-                    <h4 class="font-extrabold text-blue-900 text-lg mb-2">Unduh Infografis Alur Sertifikasi</h4>
-                    <p class="text-sm text-blue-700">Dapatkan versi visual (PDF/Gambar) untuk mempermudah pemahaman proses pengurusan SLO.</p>
+            @else
+                <div class="bg-slate-50 rounded-3xl border border-slate-200 shadow-sm p-16 text-center reveal-on-scroll">
+                    <div class="w-20 h-20 bg-slate-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Dokumen belum tersedia</h3>
+                    <p class="text-slate-600">Dokumen alur sertifikasi akan ditampilkan di sini setelah diunggah oleh admin.</p>
                 </div>
-                <a href="#" class="bg-blue-900 hover:bg-blue-800 text-white font-bold px-6 py-3 rounded-xl transition shadow-md whitespace-nowrap flex-shrink-0 flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                    Unduh Brosur
-                </a>
-            </div>
-
+            @endif
         </div>
     </section>
 
     <x-footer />
+
+    <script>
+        function openFullscreen() {
+            const iframe = document.querySelector('iframe');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) {
+                iframe.msRequestFullscreen();
+            }
+        }
+    </script>
 @endsection

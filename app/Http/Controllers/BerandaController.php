@@ -7,6 +7,7 @@ use App\Models\KontenBeranda;
 use App\Models\Galeri;
 use App\Models\Logo;
 use App\Models\LowonganKerja;
+use App\Models\KarirSettings;
 
 class BerandaController extends Controller
 {
@@ -45,6 +46,7 @@ class BerandaController extends Controller
     public function karir()
     {
         $lowongans = LowonganKerja::aktif()->get();
-        return view('pages.karir', compact('lowongans'));
+        $karirSettings = KarirSettings::first();
+        return view('pages.karir', compact('lowongans', 'karirSettings'));
     }
 }

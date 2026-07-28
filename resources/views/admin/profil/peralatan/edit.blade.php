@@ -102,7 +102,7 @@
                         <label class="block text-xs font-bold text-amber-400 uppercase tracking-wider">Upload Gambar Peralatan</label>
                         @if($peralatan->gambar)
                             <div class="rounded-xl overflow-hidden border border-slate-800 h-40 bg-slate-950 relative mb-3">
-                                <img src="{{ asset('public/storage/'  $peralatan->gambar) }}" alt="{{ $peralatan->nama }}" class="w-full h-full object-contain">
+                                <img src="{{ asset('public/storage/' . $peralatan->gambar) }}" alt="{{ $peralatan->nama }}" class="w-full h-full object-contain">
                                 <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur text-[10px] text-slate-200 px-2 py-0.5 rounded border border-slate-800">Gambar Saat Ini</div>
                             </div>
                         @endif

@@ -3,10 +3,10 @@
 @php
     $headerJudul = $header->judul ?? 'INTEGRATED TECHNOLOGIES FOR SMARTER SMELTING';
     $defaultTechItems = collect([
-        (object)['title' => 'WEB-BASED HMI', 'content' => 'Accessible from anywhere, real-time monitoring and control', 'icon' => 'hmi'],
-        (object)['title' => 'HIGH PERFORMANCE', 'content' => 'Optimized algorithms for maximum efficiency and output', 'icon' => 'performance'],
-        (object)['title' => 'SMART DATA', 'content' => 'Advanced analytics and machine learning capabilities', 'icon' => 'data'],
-        (object)['title' => 'REAL-TIME', 'content' => 'Instant data processing and decision making', 'icon' => 'realtime'],
+        (object)['judul' => 'WEB-BASED HMI', 'konten' => 'Accessible from anywhere, real-time monitoring and control', 'ikon' => 'hmi'],
+        (object)['judul' => 'HIGH PERFORMANCE', 'konten' => 'Optimized algorithms for maximum efficiency and output', 'ikon' => 'performance'],
+        (object)['judul' => 'SMART DATA', 'konten' => 'Advanced analytics and machine learning capabilities', 'ikon' => 'data'],
+        (object)['judul' => 'REAL-TIME', 'konten' => 'Instant data processing and decision making', 'ikon' => 'realtime'],
     ]);
 
     $itemList = ($items && count($items) > 0) ? $items : $defaultTechItems;

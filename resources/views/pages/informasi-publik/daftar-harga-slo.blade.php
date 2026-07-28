@@ -25,85 +25,59 @@
     <section class="py-16 bg-slate-50 overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
 
-            <!-- Pricing Table -->
-            <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden reveal-on-scroll">
-                
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-blue-900 text-white">
-                                <th class="py-4 px-6 font-bold text-sm">Kelompok Daya (VA)</th>
-                                <th class="py-4 px-6 font-bold text-sm">Tegangan Rendah (TR)</th>
-                                <th class="py-4 px-6 font-bold text-sm">Tegangan Menengah (TM)</th>
-                                <th class="py-4 px-6 font-bold text-sm">Pembangkit (Genset/PLTS)</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-100 text-slate-700">
-                            <!-- Placeholder Rows - Adjust values based on actual regulation -->
-                            <tr class="hover:bg-slate-50 transition">
-                                <td class="py-4 px-6 font-semibold">450 - 900</td>
-                                <td class="py-4 px-6">Rp 40.000 - Rp 60.000</td>
-                                <td class="py-4 px-6 text-slate-400">-</td>
-                                <td class="py-4 px-6 text-slate-400">-</td>
-                            </tr>
-                            <tr class="hover:bg-slate-50 transition">
-                                <td class="py-4 px-6 font-semibold">1.300 - 2.200</td>
-                                <td class="py-4 px-6">Rp 85.000 - Rp 110.000</td>
-                                <td class="py-4 px-6 text-slate-400">-</td>
-                                <td class="py-4 px-6 text-slate-400">-</td>
-                            </tr>
-                            <tr class="hover:bg-slate-50 transition">
-                                <td class="py-4 px-6 font-semibold">3.500 - 5.500</td>
-                                <td class="py-4 px-6">Rp 150.000 - Rp 220.000</td>
-                                <td class="py-4 px-6 text-slate-400">-</td>
-                                <td class="py-4 px-6">Rp 250.000</td>
-                            </tr>
-                            <tr class="hover:bg-slate-50 transition">
-                                <td class="py-4 px-6 font-semibold">6.600 - 11.000</td>
-                                <td class="py-4 px-6">Rp 250.000 - Rp 350.000</td>
-                                <td class="py-4 px-6 text-slate-400">-</td>
-                                <td class="py-4 px-6">Rp 400.000</td>
-                            </tr>
-                            <tr class="hover:bg-slate-50 transition">
-                                <td class="py-4 px-6 font-semibold">13.200 - 33.000</td>
-                                <td class="py-4 px-6">Rp 450.000 - Rp 850.000</td>
-                                <td class="py-4 px-6 text-slate-400">-</td>
-                                <td class="py-4 px-6">Rp 1.000.000</td>
-                            </tr>
-                            <tr class="hover:bg-slate-50 transition">
-                                <td class="py-4 px-6 font-semibold">41.500 - 197.000</td>
-                                <td class="py-4 px-6">Rp 1.200.000 - Rp 4.500.000</td>
-                                <td class="py-4 px-6">Mulai Rp 5.500.000</td>
-                                <td class="py-4 px-6">Mulai Rp 6.000.000</td>
-                            </tr>
-                            <tr class="hover:bg-slate-50 transition">
-                                <td class="py-4 px-6 font-semibold">> 197.000 (Hubungi Kami)</td>
-                                <td class="py-4 px-6 font-semibold text-blue-700 text-sm">Berdasarkan Quotation</td>
-                                <td class="py-4 px-6 font-semibold text-blue-700 text-sm">Berdasarkan Quotation</td>
-                                <td class="py-4 px-6 font-semibold text-blue-700 text-sm">Berdasarkan Quotation</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            @if($daftarHarga && $daftarHarga->path_pdf)
+                <!-- PDF Viewer -->
+                <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden reveal-on-scroll">
+                    <div class="p-6 border-b border-slate-200">
+                        <h2 class="text-xl font-bold text-slate-900">{{ $daftarHarga->nama_dokumen }}</h2>
+                    </div>
+                    
+                    <div class="relative" style="height: 600px;">
+                        <iframe 
+                            src="{{ asset('storage/' . $daftarHarga->path_pdf) }}" 
+                            class="w-full h-full"
+                            frameborder="0"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
 
-            <!-- Note -->
-            <div class="mt-8 bg-blue-50 border border-blue-200 rounded-2xl p-6 flex gap-4 items-start reveal-on-scroll delay-100">
-                <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <svg class="w-5 h-5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
+                    <div class="p-4 border-t border-slate-200 flex justify-between items-center bg-slate-50">
+                        <a href="{{ asset('storage/' . $daftarHarga->path_pdf) }}" download class="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-semibold transition">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            Download PDF
+                        </a>
+                        <button onclick="openFullscreen()" class="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-800 text-white rounded-lg text-sm font-semibold transition">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+                            Full Screen
+                        </button>
+                    </div>
                 </div>
-                <div>
-                    <h4 class="font-bold text-blue-900 mb-1">Penting:</h4>
-                    <p class="text-sm text-blue-700 leading-relaxed">
-                        Harga di atas hanyalah ilustrasi dasar. Tarif aktual akan menyesuaikan dengan ketetapan <strong>Peraturan Menteri ESDM yang berlaku saat ini</strong>. Biaya transportasi akomodasi (transportasi, penginapan) untuk wilayah luar kota/pulau mungkin dikenakan biaya tambahan dan akan dicantumkan dalam Surat Penawaran (Quotation) resmi.
-                    </p>
+            @else
+                <!-- Placeholder when no PDF -->
+                <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-12 text-center reveal-on-scroll">
+                    <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Dokumen belum tersedia</h3>
+                    <p class="text-slate-600">Daftar harga SLO akan ditampilkan di sini setelah diunggah oleh admin.</p>
                 </div>
-            </div>
+            @endif
 
         </div>
     </section>
+
+    <script>
+        function openFullscreen() {
+            const iframe = document.querySelector('iframe');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) {
+                iframe.msRequestFullscreen();
+            }
+        }
+    </script>
 
     <x-footer />
 @endsection

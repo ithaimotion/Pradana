@@ -3,13 +3,13 @@
 @php
     $headerJudul = $header->judul ?? 'WHY CHOOSE PRADANA NUSA ENERGI';
     $img1 = $header->url_gambar ?? 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
-    $img2 = (!empty($header->nilai) && (str_starts_with($header->nilai, 'http://') || str_starts_with($header->nilai, 'https://'))) ? $header->nilai : (($header->nilai ?? null) ? asset('public/storage/'  $header->nilai) : 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    $img2 = (!empty($header->nilai) && (str_starts_with($header->nilai, 'http://') || str_starts_with($header->nilai, 'https://'))) ? $header->nilai : (($header->nilai ?? null) ? asset('public/storage/' . $header->nilai) : 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
 
     $defaultItems = collect([
-        (object)['title' => 'MAGNETIC LEADERSHIP', 'content' => 'Industry-leading expertise in aluminium smelting technology'],
-        (object)['title' => 'INNOVATIVE SOLUTIONS', 'content' => 'Cutting-edge technology backed by decades of research'],
-        (object)['title' => 'PROVEN RESULTS', 'content' => 'Measurable improvements in efficiency and productivity'],
-        (object)['title' => 'GLOBAL SUPPORT', 'content' => 'World-class support team available 24/7'],
+        (object)['judul' => 'MAGNETIC LEADERSHIP', 'konten' => 'Industry-leading expertise in aluminium smelting technology'],
+        (object)['judul' => 'INNOVATIVE SOLUTIONS', 'konten' => 'Cutting-edge technology backed by decades of research'],
+        (object)['judul' => 'PROVEN RESULTS', 'konten' => 'Measurable improvements in efficiency and productivity'],
+        (object)['judul' => 'GLOBAL SUPPORT', 'konten' => 'World-class support team available 24/7'],
     ]);
 
     $itemList = ($items && count($items) > 0) ? $items : $defaultItems;

@@ -58,6 +58,8 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
 
     // Modular Sub-Menu Routes: Karir
     Route::post('/karir/header', [KarirController::class, 'updateHeader'])->name('karir.header.update');
+    Route::get('/karir-settings', [KarirController::class, 'karirSettings'])->name('karir-settings.index');
+    Route::post('/karir-settings', [KarirController::class, 'updateKarirSettings'])->name('karir-settings.update');
     Route::post('/lowongan', [KarirController::class, 'storeLowongan'])->name('lowongan.store');
     Route::put('/lowongan/{id}', [KarirController::class, 'updateLowongan'])->name('lowongan.update');
     Route::delete('/lowongan/{id}', [KarirController::class, 'destroyLowongan'])->name('lowongan.destroy');
@@ -128,9 +130,25 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
 
     // Informasi Publik - Keluhan & Banding Routes
     Route::get('informasi-publik/keluhan-banding', [KeluhanBandingController::class, 'index'])->name('informasi-publik.keluhan-banding.index');
-    Route::post('informasi-publik/keluhan-banding/settings', [KeluhanBandingController::class, 'updateSettings'])->name('informasi-publik.keluhan-banding.update-settings');
-    Route::post('informasi-publik/keluhan-banding/status/{id}', [KeluhanBandingController::class, 'updateStatus'])->name('informasi-publik.keluhan-banding.update-status');
+    Route::post('informasi-publik/keluhan-banding/settings', [KeluhanBandingController::class, 'updateSettings'])->name('informasi-publik.keluhan-banding.settings.update');
+    Route::post('informasi-publik/keluhan-banding/status/{id}', [KeluhanBandingController::class, 'updateStatus'])->name('informasi-publik.keluhan-banding.status.update');
     Route::delete('informasi-publik/keluhan-banding/{id}', [KeluhanBandingController::class, 'destroy'])->name('informasi-publik.keluhan-banding.destroy');
+
+    // Informasi Publik - Persyaratan SLO Routes
+    Route::get('informasi-publik/persyaratan-slo', [InformasiPublikController::class, 'persyaratanSlo'])->name('informasi-publik.persyaratan-slo.index');
+    Route::post('informasi-publik/persyaratan-slo', [InformasiPublikController::class, 'updatePersyaratanSlo'])->name('informasi-publik.persyaratan-slo.update');
+
+    // Informasi Publik - Daftar Harga SLO Routes
+    Route::get('informasi-publik/daftar-harga-slo', [InformasiPublikController::class, 'daftarHargaSlo'])->name('informasi-publik.daftar-harga-slo.index');
+    Route::post('informasi-publik/daftar-harga-slo', [InformasiPublikController::class, 'updateDaftarHargaSlo'])->name('informasi-publik.daftar-harga-slo.update');
+
+    // Informasi Publik - Prosedur SLO Routes
+    Route::get('informasi-publik/prosedur-slo', [InformasiPublikController::class, 'prosedurSlo'])->name('informasi-publik.prosedur-slo.index');
+    Route::post('informasi-publik/prosedur-slo', [InformasiPublikController::class, 'updateProsedurSlo'])->name('informasi-publik.prosedur-slo.update');
+
+    // Informasi Publik - Alur Sertifikasi Routes
+    Route::get('informasi-publik/alur-sertifikasi', [InformasiPublikController::class, 'alurSertifikasi'])->name('informasi-publik.alur-sertifikasi.index');
+    Route::post('informasi-publik/alur-sertifikasi', [InformasiPublikController::class, 'updateAlurSertifikasi'])->name('informasi-publik.alur-sertifikasi.update');
 });
 
 Route::post('/hubungi-kami', [PesanController::class, 'storePublik'])->name('hubungi-kami.store');
@@ -164,21 +182,13 @@ Route::get('/informasi-publik/uji-petik', [InformasiPublikPageController::class,
 Route::get('/informasi-publik/keluhan-banding', [InformasiPublikPageController::class, 'keluhanBanding'])->name('informasi-publik.keluhan-banding');
 Route::post('/informasi-publik/keluhan-banding/submit', [InformasiPublikPageController::class, 'keluhanBandingSubmit'])->name('informasi-publik.keluhan-banding.submit');
 
-Route::get('/informasi-publik/persyaratan-slo', function () {
-    return view('pages.informasi-publik.persyaratan-slo');
-})->name('informasi-publik.persyaratan-slo');
+Route::get('/informasi-publik/persyaratan-slo', [InformasiPublikPageController::class, 'persyaratanSlo'])->name('informasi-publik.persyaratan-slo');
 
-Route::get('/informasi-publik/daftar-harga-slo', function () {
-    return view('pages.informasi-publik.daftar-harga-slo');
-})->name('informasi-publik.daftar-harga-slo');
+Route::get('/informasi-publik/daftar-harga-slo', [InformasiPublikPageController::class, 'daftarHargaSlo'])->name('informasi-publik.daftar-harga-slo');
 
-Route::get('/informasi-publik/prosedur-slo', function () {
-    return view('pages.informasi-publik.prosedur-slo');
-})->name('informasi-publik.prosedur-slo');
+Route::get('/informasi-publik/prosedur-slo', [InformasiPublikPageController::class, 'prosedurSlo'])->name('informasi-publik.prosedur-slo');
 
-Route::get('/informasi-publik/alur-sertifikasi', function () {
-    return view('pages.informasi-publik.alur-sertifikasi');
-})->name('informasi-publik.alur-sertifikasi');
+Route::get('/informasi-publik/alur-sertifikasi', [InformasiPublikPageController::class, 'alurSertifikasi'])->name('informasi-publik.alur-sertifikasi');
 
 // Main Menu Routes
 Route::get('/galeri', [BerandaController::class, 'galeri'])->name('galeri');
