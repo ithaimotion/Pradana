@@ -11,7 +11,6 @@ class GaleriController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kategori' => 'required|string',
             'judul' => 'nullable|string|max:255',
             'lokasi_tahun' => 'nullable|string|max:255',
             'urutan' => 'nullable|integer',
@@ -19,7 +18,7 @@ class GaleriController extends Controller
         ]);
 
         $item = new Galeri();
-        $item->kategori = $request->kategori;
+        $item->kategori = $request->input('kategori', 'umum');
         $item->judul = $request->judul;
         $item->lokasi_tahun = $request->lokasi_tahun;
         $item->urutan = $request->urutan ?? (Galeri::max('urutan') + 1);
@@ -39,14 +38,13 @@ class GaleriController extends Controller
         $item = Galeri::findOrFail($id);
 
         $request->validate([
-            'kategori' => 'required|string',
             'judul' => 'nullable|string|max:255',
             'lokasi_tahun' => 'nullable|string|max:255',
             'urutan' => 'nullable|integer',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:5120',
         ]);
 
-        $item->kategori = $request->kategori;
+        $item->kategori = $request->input('kategori', $item->kategori ?? 'umum');
         $item->judul = $request->judul;
         $item->lokasi_tahun = $request->lokasi_tahun;
         if ($request->has('urutan')) {

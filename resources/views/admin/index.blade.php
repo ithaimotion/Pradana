@@ -748,20 +748,12 @@
         <form id="galeriForm" action="{{ route('admin.galeri.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
             @csrf
             <input type="hidden" name="_method" id="galeriMethod" value="POST">
+            <input type="hidden" name="kategori" id="galeriCategory" value="umum">
 
             <div>
                 <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Pilih File Foto</label>
                 <input type="file" name="gambar" id="galeriImage" accept="image/*" class="w-full text-xs text-slate-400 bg-slate-950 border border-slate-800 rounded-xl p-2.5">
                 <p id="galeriImageHelp" class="text-xs text-orange-400 mt-1 hidden">Kosongkan jika tidak ingin mengubah gambar.</p>
-            </div>
-            <div>
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Kategori</label>
-                <select name="category" id="galeriCategory" class="w-full text-sm bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-orange-500">
-                    <option value="inspeksi-tr">Tegangan Rendah (TR)</option>
-                    <option value="inspeksi-tm">Tegangan Menengah (TM)</option>
-                    <option value="pembangkit">PLTS & Genset</option>
-                    <option value="kegiatan">Acara / Internal</option>
-                </select>
             </div>
             <div>
                 <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Judul / Keterangan Foto</label>
@@ -903,7 +895,7 @@
         document.getElementById('galeriImage').required = true;
         document.getElementById('galeriImageHelp').classList.add('hidden');
 
-        document.getElementById('galeriCategory').value = 'inspeksi-tr';
+        document.getElementById('galeriCategory').value = 'umum';
         document.getElementById('galeriTitle').value = '';
         document.getElementById('galeriOrder').value = '1';
 
@@ -918,7 +910,7 @@
         document.getElementById('galeriImageHelp').classList.remove('hidden');
 
         document.getElementById('galeriTitle').value = title;
-        document.getElementById('galeriCategory').value = category || 'inspeksi-tr';
+        document.getElementById('galeriCategory').value = category || 'umum';
         document.getElementById('galeriOrder').value = order;
 
         document.getElementById('galeriModal').classList.remove('hidden');
