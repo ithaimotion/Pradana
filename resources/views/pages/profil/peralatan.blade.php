@@ -74,7 +74,11 @@
                             <img src="/images/peralatan/earth-tester.png" alt="Earth Resistance Tester" class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500">
                             <span class="absolute top-3 left-3 bg-blue-900 text-white text-xs font-bold px-2.5 py-1 rounded-full">Alat Uji</span>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+<<<<<<< HEAD
                                 <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">?? Klik untuk detail</span>
+=======
+                                <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M20 20l-4.2-4.2"></path></svg> Klik untuk detail</span>
+>>>>>>> 93ae680 (pradana29)
                             </div>
                         </div>
                         <div class="p-5">
@@ -82,7 +86,11 @@
                             <p class="text-xs text-slate-500 mb-3 leading-relaxed">Mengukur resistansi pembumian / grounding instalasi listrik untuk keamanan sistem.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-medium text-slate-400">Model: Megger DET14C</span>
+<<<<<<< HEAD
                                 <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full">? Terkalibrasi</span>
+=======
+                                <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Terkalibrasi</span>
+>>>>>>> 93ae680 (pradana29)
                             </div>
                         </div>
                     </div>
@@ -96,7 +104,11 @@
                             <img src="/images/peralatan/insulation-tester.png" alt="Insulation Resistance Tester" class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500">
                             <span class="absolute top-3 left-3 bg-blue-900 text-white text-xs font-bold px-2.5 py-1 rounded-full">Alat Uji</span>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+<<<<<<< HEAD
                                 <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">?? Klik untuk detail</span>
+=======
+                                <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M20 20l-4.2-4.2"></path></svg> Klik untuk detail</span>
+>>>>>>> 93ae680 (pradana29)
                             </div>
                         </div>
                         <div class="p-5">
@@ -104,7 +116,11 @@
                             <p class="text-xs text-slate-500 mb-3 leading-relaxed">Mengukur tahanan isolasi kabel & peralatan listrik untuk mencegah kebocoran arus.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-medium text-slate-400">Model: IRT-500</span>
+<<<<<<< HEAD
                                 <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full">? Terkalibrasi</span>
+=======
+                                <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Terkalibrasi</span>
+>>>>>>> 93ae680 (pradana29)
                             </div>
                         </div>
                     </div>
@@ -118,7 +134,11 @@
                             <img src="/images/peralatan/clamp-meter.png" alt="Clamp Meter" class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500">
                             <span class="absolute top-3 left-3 bg-amber-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">Alat Ukur</span>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+<<<<<<< HEAD
                                 <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">?? Klik untuk detail</span>
+=======
+                                <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M20 20l-4.2-4.2"></path></svg> Klik untuk detail</span>
+>>>>>>> 93ae680 (pradana29)
                             </div>
                         </div>
                         <div class="p-5">
@@ -126,7 +146,11 @@
                             <p class="text-xs text-slate-500 mb-3 leading-relaxed">Mengukur arus AC/DC tanpa memutus rangkaian pada panel & beban listrik.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-medium text-slate-400">Model: VT-760 Pro</span>
+<<<<<<< HEAD
                                 <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full">? Terkalibrasi</span>
+=======
+                                <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Terkalibrasi</span>
+>>>>>>> 93ae680 (pradana29)
                             </div>
                         </div>
                     </div>
@@ -140,7 +164,11 @@
                             <img src="/images/peralatan/power-quality-analyzer.png" alt="Power Quality Analyzer" class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500">
                             <span class="absolute top-3 left-3 bg-amber-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">Alat Ukur</span>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+<<<<<<< HEAD
                                 <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">?? Klik untuk detail</span>
+=======
+                                <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M20 20l-4.2-4.2"></path></svg> Klik untuk detail</span>
+>>>>>>> 93ae680 (pradana29)
                             </div>
                         </div>
                         <div class="p-5">
@@ -148,7 +176,11 @@
                             <p class="text-xs text-slate-500 mb-3 leading-relaxed">Menganalisis kualitas daya listrik: harmonisa, tegangan, faktor daya & transien.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-medium text-slate-400">Model: Fluke 1777-B</span>
+<<<<<<< HEAD
                                 <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full">? Terkalibrasi</span>
+=======
+                                <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Terkalibrasi</span>
+>>>>>>> 93ae680 (pradana29)
                             </div>
                         </div>
                     </div>
@@ -162,7 +194,11 @@
                             <img src="/images/peralatan/thermal-camera.png" alt="Thermal Camera" class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500">
                             <span class="absolute top-3 left-3 bg-blue-900 text-white text-xs font-bold px-2.5 py-1 rounded-full">Alat Uji</span>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+<<<<<<< HEAD
                                 <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">?? Klik untuk detail</span>
+=======
+                                <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M20 20l-4.2-4.2"></path></svg> Klik untuk detail</span>
+>>>>>>> 93ae680 (pradana29)
                             </div>
                         </div>
                         <div class="p-5">
@@ -170,7 +206,11 @@
                             <p class="text-xs text-slate-500 mb-3 leading-relaxed">Mendeteksi titik panas (hot spot) pada panel listrik & instalasi tanpa kontak langsung.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-medium text-slate-400">Model: FLIR E75</span>
+<<<<<<< HEAD
                                 <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full">? Terkalibrasi</span>
+=======
+                                <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Terkalibrasi</span>
+>>>>>>> 93ae680 (pradana29)
                             </div>
                         </div>
                     </div>
@@ -184,7 +224,11 @@
                             <img src="/images/peralatan/multimeter.png" alt="Digital Multimeter" class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500">
                             <span class="absolute top-3 left-3 bg-amber-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">Alat Ukur</span>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+<<<<<<< HEAD
                                 <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">?? Klik untuk detail</span>
+=======
+                                <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M20 20l-4.2-4.2"></path></svg> Klik untuk detail</span>
+>>>>>>> 93ae680 (pradana29)
                             </div>
                         </div>
                         <div class="p-5">
@@ -192,7 +236,11 @@
                             <p class="text-xs text-slate-500 mb-3 leading-relaxed">Mengukur tegangan, arus, dan hambatan pada seluruh tahapan inspeksi instalasi listrik.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-medium text-slate-400">Model: Fluke 87V</span>
+<<<<<<< HEAD
                                 <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full">? Terkalibrasi</span>
+=======
+                                <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Terkalibrasi</span>
+>>>>>>> 93ae680 (pradana29)
                             </div>
                         </div>
                     </div>

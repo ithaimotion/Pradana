@@ -51,8 +51,8 @@
                     <div class="space-y-6">
                         <!-- Address -->
                         <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-white hover:shadow-md transition duration-300 group cursor-default">
-                            <div class="w-12 h-12 bg-blue-100 text-blue-900 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform text-xl">
-                                📍
+                            <div class="w-12 h-12 bg-blue-100 text-blue-900 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 21s-6-5.4-6-10a6 6 0 1112 0c0 4.6-6 10-6 10z"></path><circle cx="12" cy="11" r="2.5"></circle></svg>
                             </div>
                             <div>
                                 <h4 class="font-bold text-slate-900 text-base mb-1">Alamat Kantor</h4>
@@ -64,8 +64,8 @@
 
                         <!-- Phone -->
                         <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-white hover:shadow-md transition duration-300 group cursor-default">
-                            <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform text-xl">
-                                📞
+                            <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 5a2 2 0 012-2h2.2a1 1 0 01.95.78l.65 2.6a1 1 0 01-.28.95L6.8 9.8a15 15 0 006.4 6.4l1.67-1.72a1 1 0 01.95-.28l2.6.65A1 1 0 0121 17.8V20a2 2 0 01-2 2h-1C8.82 22 2 15.18 2 7V3.5"></path></svg>
                             </div>
                             <div>
                                 <h4 class="font-bold text-slate-900 text-base mb-1">Telepon & WhatsApp</h4>
@@ -77,8 +77,8 @@
 
                         <!-- Email -->
                         <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-white hover:shadow-md transition duration-300 group cursor-default">
-                            <div class="w-12 h-12 bg-blue-100 text-blue-900 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform text-xl">
-                                ✉️
+                            <div class="w-12 h-12 bg-blue-100 text-blue-900 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                             </div>
                             <div>
                                 <h4 class="font-bold text-slate-900 text-base mb-1">Email Resmi</h4>
@@ -90,8 +90,8 @@
 
                         <!-- Hours -->
                         <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-white hover:shadow-md transition duration-300 group cursor-default">
-                            <div class="w-12 h-12 bg-slate-200 text-slate-700 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform text-xl">
-                                🕒
+                            <div class="w-12 h-12 bg-slate-200 text-slate-700 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 2"></path></svg>
                             </div>
                             <div>
                                 <h4 class="font-bold text-slate-900 text-base mb-1">Jam Operasional</h4>

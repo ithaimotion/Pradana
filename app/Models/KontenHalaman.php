@@ -31,7 +31,7 @@ class KontenHalaman extends Model
         if (str_starts_with($this->path_gambar, 'http://') || str_starts_with($this->path_gambar, 'https://')) {
             return $this->path_gambar;
         }
-        return asset('/storage_public/' . $this->path_gambar);
+        return asset('storage/' . ltrim($this->path_gambar, '/'));
     }
 
     public function getUrlDokumenAttribute()
@@ -42,6 +42,6 @@ class KontenHalaman extends Model
         if (str_starts_with($this->path_dokumen, 'http://') || str_starts_with($this->path_dokumen, 'https://')) {
             return $this->path_dokumen;
         }
-        return asset('/storage_public/' . $this->path_dokumen);
+        return asset('storage/' . ltrim($this->path_dokumen, '/'));
     }
 }

@@ -62,7 +62,11 @@
                         <label class="block text-xs font-semibold text-slate-300 mb-1">Foto Kantor / Gedung Perusahaan</label>
                         @if(optional($profilPerusahaan)->url_gambar)
                             <div class="rounded-xl overflow-hidden border border-slate-800 h-36 bg-slate-950 relative mb-3">
+<<<<<<< HEAD
                                 <img src="{{ asset('/storage_public/' . optional($profilPerusahaan)->url_gambar) }}" alt="Foto Perusahaan" class="w-full h-full object-cover">
+=======
+                                <img src="{{ asset('storage/' . ltrim($profilPerusahaan->url_gambar, '/')) }}" alt="Foto Perusahaan" class="w-full h-full object-cover">
+>>>>>>> 93ae680 (pradana29)
                                 <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur text-[10px] text-slate-200 px-2 py-0.5 rounded border border-slate-800">Foto Saat Ini</div>
                             </div>
                         @endif
@@ -120,7 +124,7 @@
                             <div class="grid md:grid-cols-3 gap-3">
                                 <div>
                                     <label class="block text-xs font-semibold text-slate-300 mb-1">Ikon (Emoji)</label>
-                                    <input type="text" name="nilai_perusahaan[{{ $index }}][ikon]" value="{{ $nilai['ikon'] ?? '' }}" placeholder="🛡️" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
+                                    <input type="text" name="nilai_perusahaan[{{ $index }}][ikon]" value="{{ $nilai['ikon'] ?? '' }}" placeholder="shield" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
                                 </div>
                                 <div class="md:col-span-2">
                                     <label class="block text-xs font-semibold text-slate-300 mb-1">Judul</label>
@@ -160,7 +164,7 @@
                             <div class="grid md:grid-cols-3 gap-3">
                                 <div>
                                     <label class="block text-xs font-semibold text-slate-300 mb-1">Ikon (Emoji)</label>
-                                    <input type="text" name="nilai_perusahaan[${newIndex}][ikon]" placeholder="🛡️" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
+                                    <input type="text" name="nilai_perusahaan[${newIndex}][ikon]" placeholder="shield" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
                                 </div>
                                 <div class="md:col-span-2">
                                     <label class="block text-xs font-semibold text-slate-300 mb-1">Judul</label>

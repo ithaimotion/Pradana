@@ -51,8 +51,13 @@
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Gambar</label>
+<<<<<<< HEAD
                         @if(optional($profilPerusahaan)->url_gambar)
                             <img src="{{ asset('/storage_public/' . optional($profilPerusahaan)->url_gambar) }}" alt="Gambar" class="w-32 h-32 object-cover rounded-lg border border-slate-700">
+=======
+                        @if($profilPerusahaan->url_gambar)
+                            <img src="{{ asset('storage/' . ltrim($profilPerusahaan->url_gambar, '/')) }}" alt="Gambar" class="w-32 h-32 object-cover rounded-lg border border-slate-700">
+>>>>>>> 93ae680 (pradana29)
                         @else
                             <div class="text-sm text-slate-500">Tidak ada gambar</div>
                         @endif

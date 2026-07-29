@@ -61,7 +61,7 @@
                             <label class="block text-xs font-bold text-amber-400 uppercase tracking-wider">Upload Gambar Bagan Struktur Organisasi</label>
                             @if($strukturOrg->gambar)
                                 <div class="rounded-xl overflow-hidden border border-slate-800 h-52 bg-slate-950 relative mb-3">
-                                    <img src="{{ asset('/storage_public/' . $strukturOrg->gambar) }}" alt="Bagan Struktur Organisasi" class="w-full h-full object-contain p-2">
+                                    <img src="{{ asset('storage/' . ltrim($strukturOrg->gambar, '/')) }}" alt="Bagan Struktur Organisasi" class="w-full h-full object-contain p-2">
                                     <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur text-[10px] text-slate-200 px-2 py-0.5 rounded border border-slate-800">Bagan Saat Ini</div>
                                 </div>
                             @endif

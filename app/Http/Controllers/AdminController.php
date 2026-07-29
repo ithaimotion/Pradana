@@ -31,9 +31,15 @@ class AdminController extends Controller
     /**
      * Ambil daftar item konten berdasarkan bagian.
      */
-    private function getContentCollection(string $bagian)
+    private function getContentCollection(string $bagian, bool $onlyActive = false)
     {
-        return KontenBeranda::where('bagian', $bagian)->orderBy('urutan')->get();
+        $query = KontenBeranda::where('bagian', $bagian);
+
+        if ($onlyActive) {
+            $query->where('status_aktif', true);
+        }
+
+        return $query->orderBy('urutan')->get();
     }
 
     /**
@@ -61,6 +67,20 @@ class AdminController extends Controller
         $section->save();
 
         return $section;
+    }
+
+    /**
+     * Validasi file gambar untuk form upload.
+     */
+    private function validateImageUploads(Request $request, array $fields): void
+    {
+        $rules = ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:5120'];
+
+        foreach ($fields as $field) {
+            if ($request->hasFile($field)) {
+                $request->validate([$field => $rules]);
+            }
+        }
     }
 
     /**
@@ -112,8 +132,7 @@ class AdminController extends Controller
     public function index()
     {
         $hero = $this->getContentSection('hero', 'hero_main');
-        $profilPradana = $this->getContentSection('profil_pradana', 'profil_main');
-        $statistik = $this->getContentCollection('statistik');
+        $statistik = $this->getContentCollection('statistik', true);
         $tentangPradana = $this->getContentSection('tentang_pradana', 'tentang_main');
 
         $teknologiHeader = $this->getContentSection('teknologi_header', 'header');
@@ -132,6 +151,7 @@ class AdminController extends Controller
         $hubungiKamiSettings = KontenBeranda::where('bagian', 'hubungi_kami')->get()->keyBy('kunci');
 
         $galeri = Galeri::orderBy('urutan')->get();
+        $clientPhotos = Galeri::where('kategori', 'client')->orderBy('urutan')->get();
         $logos = Logo::orderBy('urutan')->get();
         $kontenHalamans = KontenHalaman::all()->groupBy('halaman');
         $lowongans = LowonganKarir::orderBy('created_at', 'desc')->get();
@@ -139,7 +159,6 @@ class AdminController extends Controller
 
         return view('admin.index', compact(
             'hero',
-            'profilPradana',
             'statistik',
             'tentangPradana',
             'teknologiHeader',
@@ -153,6 +172,7 @@ class AdminController extends Controller
             'kontakKami',
             'hubungiKamiSettings',
             'galeri',
+            'clientPhotos',
             'logos',
             'kontenHalamans',
             'lowongans',
@@ -171,13 +191,7 @@ class AdminController extends Controller
             'konten' => 'nullable|string',
         ]);
 
-        $uploadRules = ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:5120'];
-
-        foreach (['gambar', 'gambar_2', 'gambar_3'] as $field) {
-            if ($request->hasFile($field)) {
-                $request->validate([$field => $uploadRules]);
-            }
-        }
+        $this->validateImageUploads($request, ['gambar', 'gambar_2', 'gambar_3']);
 
         $hero = KontenBeranda::firstOrNew(['bagian' => 'hero', 'kunci' => 'hero_main']);
         $hero->judul = $request->judul;
@@ -213,43 +227,6 @@ class AdminController extends Controller
         $hero->save();
 
         return back()->with('success', 'Hero Banner berhasil diperbarui!');
-    }
-
-    /**
-     * 2. Update Profil Pradana Section.
-     */
-    public function updateProfilPradana(Request $request)
-    {
-        $request->validate([
-            'judul' => 'required|string|max:255',
-            'subjudul' => 'nullable|string',
-            'konten' => 'nullable|string',
-            'gambar1' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:5120',
-            'gambar2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:5120',
-        ]);
-
-        $profil = KontenBeranda::firstOrNew(['bagian' => 'profil_pradana', 'kunci' => 'profil_main']);
-        $profil->judul = $request->judul;
-        $profil->subjudul = $request->subjudul;
-        $profil->konten = $request->konten;
-
-        if ($request->hasFile('gambar1')) {
-            if ($profil->path_gambar && !str_starts_with($profil->path_gambar, 'http')) {
-                Storage::disk('public')->delete($profil->path_gambar);
-            }
-            $profil->path_gambar = $request->file('gambar1')->store('uploads/profil', 'public');
-        }
-
-        if ($request->hasFile('gambar2')) {
-            if ($profil->nilai && !str_starts_with($profil->nilai, 'http')) {
-                Storage::disk('public')->delete($profil->nilai);
-            }
-            $profil->nilai = $request->file('gambar2')->store('uploads/profil', 'public');
-        }
-
-        $profil->save();
-
-        return back()->with('success', 'Profil Pradana Nusa Energi berhasil diperbarui!');
     }
 
     /**

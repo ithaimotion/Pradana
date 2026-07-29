@@ -34,25 +34,25 @@
             <!-- Installation Type Cards -->
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 reveal-on-scroll">
                 <button onclick="showRequirements('tegangan-rendah')" class="bg-white rounded-2xl p-8 border-2 border-slate-200 hover:border-orange-500 hover:shadow-xl transition-all duration-300 group cursor-pointer text-center">
-                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">⚡</div>
+                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform"><svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
                     <h3 class="font-bold text-slate-900 mb-2">Tegangan Rendah</h3>
                     <p class="text-sm text-slate-500">Klik untuk melihat persyaratan</p>
                 </button>
 
                 <button onclick="showRequirements('tegangan-menengah')" class="bg-white rounded-2xl p-8 border-2 border-slate-200 hover:border-orange-500 hover:shadow-xl transition-all duration-300 group cursor-pointer text-center">
-                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">🏭</div>
+                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform"><svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 20h16M6 20V8m6 12V4m6 16v-8"></path></svg></div>
                     <h3 class="font-bold text-slate-900 mb-2">Tegangan Menengah</h3>
                     <p class="text-sm text-slate-500">Klik untuk melihat persyaratan</p>
                 </button>
 
                 <button onclick="showRequirements('plts')" class="bg-white rounded-2xl p-8 border-2 border-slate-200 hover:border-orange-500 hover:shadow-xl transition-all duration-300 group cursor-pointer text-center">
-                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">☀️</div>
+                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform"><svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3v2m0 14v2m9-9h-2M5 12H3m9-6l-1.4-1.4M16.4 7.6L15 6.2m0 11.8l1.4 1.4M7.6 16.4L6.2 15m8.8-8.8l1.4-1.4M7.6 7.6L6.2 6.2"></path></svg></div>
                     <h3 class="font-bold text-slate-900 mb-2">PLTS</h3>
                     <p class="text-sm text-slate-500">Klik untuk melihat persyaratan</p>
                 </button>
 
                 <button onclick="showRequirements('genset')" class="bg-white rounded-2xl p-8 border-2 border-slate-200 hover:border-orange-500 hover:shadow-xl transition-all duration-300 group cursor-pointer text-center">
-                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">⚙️</div>
+                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform"><svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 01-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.2a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 01-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.2a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 012.8-2.8l.1.1a1.7 1.7 0 001.8.3h.1a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.2a1.7 1.7 0 001 1.5h.1a1.7 1.7 0 001.8-.3l.1-.1a2 2 0 012.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8v.1a1.7 1.7 0 001.5 1H21a2 2 0 010 4h-.2a1.7 1.7 0 00-1.5 1z"></path></svg></div>
                     <h3 class="font-bold text-slate-900 mb-2">Genset</h3>
                     <p class="text-sm text-slate-500">Klik untuk melihat persyaratan</p>
                 </button>
@@ -64,13 +64,13 @@
                 <div id="tegangan-rendah" class="requirements-section hidden">
                     <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm mb-8">
                         <div class="flex items-center gap-4 mb-6 pb-6 border-b border-slate-100">
-                            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-900 text-2xl font-bold">⚡</div>
+                            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-900"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
                             <h2 class="text-2xl font-extrabold text-slate-900">Persyaratan Tegangan Rendah</h2>
                         </div>
                         <div class="grid md:grid-cols-2 gap-8">
                             <div>
                                 <h3 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
-                                    <span class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-sm">📄</span>
+                                    <span class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-sm"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-4.414-4.414A1 1 0 0014 4H7a2 2 0 00-2 2v13a2 2 0 002 2z"></path></svg></span>
                                     Persyaratan Administrasi
                                 </h3>
                                 <ul class="space-y-3">
@@ -99,7 +99,7 @@
                             </div>
                             <div>
                                 <h3 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
-                                    <span class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 text-sm">⚙️</span>
+                                    <span class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 text-sm"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 01-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.2a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 01-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.2a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 012.8-2.8l.1.1a1.7 1.7 0 001.8.3h.1a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.2a1.7 1.7 0 001 1.5h.1a1.7 1.7 0 001.8-.3l.1-.1a2 2 0 012.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8v.1a1.7 1.7 0 001.5 1H21a2 2 0 010 4h-.2a1.7 1.7 0 00-1.5 1z"></path></svg></span>
                                     Persyaratan Teknis
                                 </h3>
                                 <ul class="space-y-3">
@@ -134,13 +134,13 @@
                 <div id="tegangan-menengah" class="requirements-section hidden">
                     <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm mb-8">
                         <div class="flex items-center gap-4 mb-6 pb-6 border-b border-slate-100">
-                            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-900 text-2xl font-bold">🏭</div>
+                            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-900"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 20h16M6 20V8m6 12V4m6 16v-8"></path></svg></div>
                             <h2 class="text-2xl font-extrabold text-slate-900">Persyaratan Tegangan Menengah</h2>
                         </div>
                         <div class="grid md:grid-cols-2 gap-8">
                             <div>
                                 <h3 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
-                                    <span class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-sm">📄</span>
+                                    <span class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-sm"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-4.414-4.414A1 1 0 0014 4H7a2 2 0 00-2 2v13a2 2 0 002 2z"></path></svg></span>
                                     Persyaratan Administrasi
                                 </h3>
                                 <ul class="space-y-3">
@@ -173,7 +173,7 @@
                             </div>
                             <div>
                                 <h3 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
-                                    <span class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 text-sm">⚙️</span>
+                                    <span class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 text-sm"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 01-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.2a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 01-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.2a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 012.8-2.8l.1.1a1.7 1.7 0 001.8.3h.1a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.2a1.7 1.7 0 001 1.5h.1a1.7 1.7 0 001.8-.3l.1-.1a2 2 0 012.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8v.1a1.7 1.7 0 001.5 1H21a2 2 0 010 4h-.2a1.7 1.7 0 00-1.5 1z"></path></svg></span>
                                     Persyaratan Teknis
                                 </h3>
                                 <ul class="space-y-3">
@@ -212,13 +212,13 @@
                 <div id="plts" class="requirements-section hidden">
                     <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm mb-8">
                         <div class="flex items-center gap-4 mb-6 pb-6 border-b border-slate-100">
-                            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-900 text-2xl font-bold">☀️</div>
+                            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-900"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3v2m0 14v2m9-9h-2M5 12H3m9-6l-1.4-1.4M16.4 7.6L15 6.2m0 11.8l1.4 1.4M7.6 16.4L6.2 15m8.8-8.8l1.4-1.4M7.6 7.6L6.2 6.2"></path></svg></div>
                             <h2 class="text-2xl font-extrabold text-slate-900">Persyaratan PLTS</h2>
                         </div>
                         <div class="grid md:grid-cols-2 gap-8">
                             <div>
                                 <h3 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
-                                    <span class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-sm">📄</span>
+                                    <span class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-sm"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-4.414-4.414A1 1 0 0014 4H7a2 2 0 00-2 2v13a2 2 0 002 2z"></path></svg></span>
                                     Persyaratan Administrasi
                                 </h3>
                                 <ul class="space-y-3">
@@ -251,7 +251,7 @@
                             </div>
                             <div>
                                 <h3 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
-                                    <span class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 text-sm">⚙️</span>
+                                    <span class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 text-sm"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 01-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.2a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 01-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.2a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 012.8-2.8l.1.1a1.7 1.7 0 001.8.3h.1a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.2a1.7 1.7 0 001 1.5h.1a1.7 1.7 0 001.8-.3l.1-.1a2 2 0 012.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8v.1a1.7 1.7 0 001.5 1H21a2 2 0 010 4h-.2a1.7 1.7 0 00-1.5 1z"></path></svg></span>
                                     Persyaratan Teknis
                                 </h3>
                                 <ul class="space-y-3">
@@ -290,13 +290,13 @@
                 <div id="genset" class="requirements-section hidden">
                     <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm mb-8">
                         <div class="flex items-center gap-4 mb-6 pb-6 border-b border-slate-100">
-                            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-900 text-2xl font-bold">⚙️</div>
+                            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-900"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 01-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.2a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 01-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.2a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 012.8-2.8l.1.1a1.7 1.7 0 001.8.3h.1a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.2a1.7 1.7 0 001 1.5h.1a1.7 1.7 0 001.8-.3l.1-.1a2 2 0 012.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8v.1a1.7 1.7 0 001.5 1H21a2 2 0 010 4h-.2a1.7 1.7 0 00-1.5 1z"></path></svg></div>
                             <h2 class="text-2xl font-extrabold text-slate-900">Persyaratan Genset</h2>
                         </div>
                         <div class="grid md:grid-cols-2 gap-8">
                             <div>
                                 <h3 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
-                                    <span class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-sm">📄</span>
+                                    <span class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-sm"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-4.414-4.414A1 1 0 0014 4H7a2 2 0 00-2 2v13a2 2 0 002 2z"></path></svg></span>
                                     Persyaratan Administrasi
                                 </h3>
                                 <ul class="space-y-3">
@@ -325,7 +325,7 @@
                             </div>
                             <div>
                                 <h3 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
-                                    <span class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 text-sm">⚙️</span>
+                                    <span class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 text-sm"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 01-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.2a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 01-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.2a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 012.8-2.8l.1.1a1.7 1.7 0 001.8.3h.1a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.2a1.7 1.7 0 001 1.5h.1a1.7 1.7 0 001.8-.3l.1-.1a2 2 0 012.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8v.1a1.7 1.7 0 001.5 1H21a2 2 0 010 4h-.2a1.7 1.7 0 00-1.5 1z"></path></svg></span>
                                     Persyaratan Teknis
                                 </h3>
                                 <ul class="space-y-3">

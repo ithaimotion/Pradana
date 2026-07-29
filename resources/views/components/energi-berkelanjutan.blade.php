@@ -1,34 +1,73 @@
-@props(['header' => null, 'items' => null])
+@props(['header' => null, 'items' => null, 'clients' => null])
 
 @php
-    $headerJudul = $header->judul ?? 'ENGINEERING A LOWER-CARBON ALUMINIUM FUTURE';
-    $defaultEnergiItems = collect([
-        (object)['judul' => 'DECARBONIZATION', 'konten' => 'Reduce carbon footprint through innovative smelting technologies and process optimization'],
-        (object)['judul' => 'ENERGY EFFICIENCY', 'konten' => 'Optimize energy consumption with smart control systems and real-time monitoring'],
-        (object)['judul' => 'LONG-TERM GROWTH', 'konten' => 'Sustainable solutions that ensure long-term profitability and environmental responsibility'],
-    ]);
-
-    $itemList = ($items && count($items) > 0) ? $items : $defaultEnergiItems;
+    $headerJudul = $header->judul ?? 'DAFTAR KLIEN';
+    $clientList = $clients instanceof \Illuminate\Support\Collection ? $clients : collect($clients);
+    $visibleClients = $clientList->take(10);
+    $carouselId = uniqid('client-carousel-');
 @endphp
 
 <section id="sustainability" class="py-20 bg-white overflow-hidden">
     <div class="max-w-7xl mx-auto px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-16 reveal-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-10 reveal-on-scroll">
             {{ $headerJudul }}
         </h2>
-        
-        <div class="grid md:grid-cols-3 gap-8">
-            @foreach($itemList as $index => $item)
-                <div class="bg-gray-50 p-8 rounded-lg text-center hover:shadow-lg transition reveal-on-scroll delay-{{ ($index + 1) * 100 }}">
-                    <div class="w-16 h-16 {{ $index % 2 === 0 ? 'bg-orange-500' : 'bg-blue-900' }} rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
+
+        @if($visibleClients->count() > 0)
+            <div class="mx-auto max-w-7xl">
+                <div id="{{ $carouselId }}" class="relative overflow-hidden rounded-[2rem] border border-gray-200 bg-gray-50/70 p-4 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+                    <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-5" data-client-track>
+                        @foreach($visibleClients as $index => $client)
+                            <div class="rounded-[1.25rem] border border-gray-200 bg-white p-3 shadow-sm transition-all duration-700 ease-in-out" data-client-card>
+                                <div class="flex h-full flex-col justify-center rounded-[1rem] bg-gray-50 p-3">
+                                    <img src="{{ $client->url_gambar ?? $client->path_gambar }}" alt="{{ $client->judul ?? 'Client' }}" class="h-[170px] w-full object-contain sm:h-[190px] xl:h-[200px]">
+                                    @if(!empty($client->judul))
+                                        <p class="mt-3 text-center text-xs font-semibold uppercase tracking-[0.2em] text-gray-600">{{ $client->judul }}</p>
+                                    @endif
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4 uppercase">{{ $item->judul }}</h3>
-                    <p class="text-gray-600">{{ $item->konten }}</p>
                 </div>
-            @endforeach
-        </div>
+            </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const root = document.getElementById('{{ $carouselId }}');
+                    if (!root) return;
+
+                    const cards = Array.from(root.querySelectorAll('[data-client-card]'));
+                    if (cards.length <= 1) return;
+
+                    const total = cards.length;
+                    let offset = 0;
+
+                    const render = () => {
+                        cards.forEach((card, index) => {
+                            const position = (index - offset + total) % total;
+                            card.style.transition = 'all 700ms ease-in-out';
+
+                            if (position < 5) {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateX(0)';
+                            } else {
+                                card.style.opacity = '0.2';
+                                card.style.transform = 'translateX(20px)';
+                            }
+                        });
+                    };
+
+                    render();
+                    setInterval(() => {
+                        offset = (offset + 1) % total;
+                        render();
+                    }, 2200);
+                });
+            </script>
+        @else
+            <div class="rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-gray-500">
+                Belum ada foto client yang diupload.
+            </div>
+        @endif
     </div>
 </section>

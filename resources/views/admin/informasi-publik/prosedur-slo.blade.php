@@ -22,22 +22,22 @@
         <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden">
             <div class="flex border-b border-slate-700">
                 <button type="button" onclick="showTab('pdf')" id="tab-pdf" class="tab-btn px-6 py-4 text-sm font-semibold text-orange-400 border-b-2 border-orange-400 bg-slate-800/50">
-                    📄 Dokumen PDF
+                    <span class="inline-flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-4.414-4.414A1 1 0 0014 4H7a2 2 0 00-2 2v13a2 2 0 002 2z"></path></svg> Dokumen PDF</span>
                 </button>
                 <button type="button" onclick="showTab('timeline')" id="tab-timeline" class="tab-btn px-6 py-4 text-sm font-semibold text-slate-400 border-b-2 border-transparent hover:text-white">
-                    📊 Timeline
+                    <span class="inline-flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19V5m7 14V9m7 10V3"></path></svg> Timeline</span>
                 </button>
                 <button type="button" onclick="showTab('accordion')" id="tab-accordion" class="tab-btn px-6 py-4 text-sm font-semibold text-slate-400 border-b-2 border-transparent hover:text-white">
-                    📋 Detail Tahapan
+                    <span class="inline-flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m-6 4h6m-6 4h4m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v10a2 2 0 01-2 2z"></path></svg> Detail Tahapan</span>
                 </button>
                 <button type="button" onclick="showTab('documents')" id="tab-documents" class="tab-btn px-6 py-4 text-sm font-semibold text-slate-400 border-b-2 border-transparent hover:text-white">
-                    📁 Dokumen
+                    <span class="inline-flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h6l2 2h8v10H4z"></path></svg> Dokumen</span>
                 </button>
                 <button type="button" onclick="showTab('faq')" id="tab-faq" class="tab-btn px-6 py-4 text-sm font-semibold text-slate-400 border-b-2 border-transparent hover:text-white">
-                    ❓ FAQ
+                    <span class="inline-flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01"></path></svg> FAQ</span>
                 </button>
                 <button type="button" onclick="showTab('settings')" id="tab-settings" class="tab-btn px-6 py-4 text-sm font-semibold text-slate-400 border-b-2 border-transparent hover:text-white">
-                    ⚙️ Pengaturan
+                    <span class="inline-flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 01-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.2a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 01-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.2a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 012.8-2.8l.1.1a1.7 1.7 0 001.8.3h.1a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.2a1.7 1.7 0 001 1.5h.1a1.7 1.7 0 001.8-.3l.1-.1a2 2 0 012.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8v.1a1.7 1.7 0 001.5 1H21a2 2 0 010 4h-.2a1.7 1.7 0 00-1.5 1z"></path></svg> Pengaturan</span>
                 </button>
             </div>
 
@@ -71,7 +71,7 @@
                             <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-4">
                                 <div class="flex justify-between items-start mb-3">
                                     <input type="text" name="timeline_steps[{{ $index }}][title]" value="{{ $step['title'] ?? '' }}" class="flex-1 bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500" placeholder="Judul tahap">
-                                    <button type="button" onclick="removeTimelineItem({{ $index }})" class="ml-2 text-red-400 hover:text-red-300">✕</button>
+                                    <button type="button" onclick="removeTimelineItem({{ $index }})" class="ml-2 text-red-400 hover:text-red-300"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18"></path></svg></button>
                                 </div>
                                 <input type="text" name="timeline_steps[{{ $index }}][description]" value="{{ $step['description'] ?? '' }}" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500 mb-2" placeholder="Deskripsi">
                                 <input type="text" name="timeline_steps[{{ $index }}][time]" value="{{ $step['time'] ?? '' }}" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500" placeholder="Estimasi waktu (contoh: 1-2 Hari)">
@@ -95,7 +95,7 @@
                             <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-4">
                                 <div class="flex justify-between items-start mb-3">
                                     <input type="text" name="accordion_content[{{ $index }}][title]" value="{{ $item['title'] ?? '' }}" class="flex-1 bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500" placeholder="Judul">
-                                    <button type="button" onclick="removeAccordionItem({{ $index }})" class="ml-2 text-red-400 hover:text-red-300">✕</button>
+                                    <button type="button" onclick="removeAccordionItem({{ $index }})" class="ml-2 text-red-400 hover:text-red-300"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18"></path></svg></button>
                                 </div>
                                 <textarea name="accordion_content[{{ $index }}][content]" rows="3" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500 mb-2" placeholder="Deskripsi detail">{{ $item['content'] ?? '' }}</textarea>
                                 <textarea name="accordion_content[{{ $index }}][documents]" rows="2" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500 mb-2" placeholder="Dokumen yang diperlukan (pisahkan dengan koma)">{{ $item['documents'] ?? '' }}</textarea>
@@ -120,7 +120,7 @@
                             <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-4">
                                 <div class="flex justify-between items-start">
                                     <input type="text" name="required_documents[{{ $index }}][name]" value="{{ $doc['name'] ?? '' }}" class="flex-1 bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500" placeholder="Nama dokumen">
-                                    <button type="button" onclick="removeDocumentItem({{ $index }})" class="ml-2 text-red-400 hover:text-red-300">✕</button>
+                                    <button type="button" onclick="removeDocumentItem({{ $index }})" class="ml-2 text-red-400 hover:text-red-300"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18"></path></svg></button>
                                 </div>
                                 <input type="text" name="required_documents[{{ $index }}][description]" value="{{ $doc['description'] ?? '' }}" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500 mt-2" placeholder="Deskripsi singkat">
                             </div>
@@ -143,7 +143,7 @@
                             <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-4">
                                 <div class="flex justify-between items-start mb-3">
                                     <input type="text" name="faq_content[{{ $index }}][question]" value="{{ $faq['question'] ?? '' }}" class="flex-1 bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500" placeholder="Pertanyaan">
-                                    <button type="button" onclick="removeFaqItem({{ $index }})" class="ml-2 text-red-400 hover:text-red-300">✕</button>
+                                    <button type="button" onclick="removeFaqItem({{ $index }})" class="ml-2 text-red-400 hover:text-red-300"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18"></path></svg></button>
                                 </div>
                                 <textarea name="faq_content[{{ $index }}][answer]" rows="3" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500" placeholder="Jawaban">{{ $faq['answer'] ?? '' }}</textarea>
                             </div>
@@ -217,7 +217,7 @@
         div.innerHTML = `
             <div class="flex justify-between items-start mb-3">
                 <input type="text" name="timeline_steps[${timelineIndex}][title]" class="flex-1 bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500" placeholder="Judul tahap">
-                <button type="button" onclick="removeTimelineItem(${timelineIndex}, this)" class="ml-2 text-red-400 hover:text-red-300">✕</button>
+                <button type="button" onclick="removeTimelineItem(${timelineIndex}, this)" class="ml-2 text-red-400 hover:text-red-300"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18"></path></svg></button>
             </div>
             <input type="text" name="timeline_steps[${timelineIndex}][description]" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500 mb-2" placeholder="Deskripsi">
             <input type="text" name="timeline_steps[${timelineIndex}][time]" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500" placeholder="Estimasi waktu (contoh: 1-2 Hari)">
@@ -239,7 +239,7 @@
         div.innerHTML = `
             <div class="flex justify-between items-start mb-3">
                 <input type="text" name="accordion_content[${accordionIndex}][title]" class="flex-1 bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500" placeholder="Judul">
-                <button type="button" onclick="removeAccordionItem(${accordionIndex}, this)" class="ml-2 text-red-400 hover:text-red-300">✕</button>
+                <button type="button" onclick="removeAccordionItem(${accordionIndex}, this)" class="ml-2 text-red-400 hover:text-red-300"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18"></path></svg></button>
             </div>
             <textarea name="accordion_content[${accordionIndex}][content]" rows="3" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500 mb-2" placeholder="Deskripsi detail"></textarea>
             <textarea name="accordion_content[${accordionIndex}][documents]" rows="2" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500 mb-2" placeholder="Dokumen yang diperlukan (pisahkan dengan koma)"></textarea>
@@ -262,7 +262,7 @@
         div.innerHTML = `
             <div class="flex justify-between items-start">
                 <input type="text" name="required_documents[${documentIndex}][name]" class="flex-1 bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500" placeholder="Nama dokumen">
-                <button type="button" onclick="removeDocumentItem(${documentIndex}, this)" class="ml-2 text-red-400 hover:text-red-300">✕</button>
+                <button type="button" onclick="removeDocumentItem(${documentIndex}, this)" class="ml-2 text-red-400 hover:text-red-300"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18"></path></svg></button>
             </div>
             <input type="text" name="required_documents[${documentIndex}][description]" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500 mt-2" placeholder="Deskripsi singkat">
         `;
@@ -283,7 +283,7 @@
         div.innerHTML = `
             <div class="flex justify-between items-start mb-3">
                 <input type="text" name="faq_content[${faqIndex}][question]" class="flex-1 bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500" placeholder="Pertanyaan">
-                <button type="button" onclick="removeFaqItem(${faqIndex}, this)" class="ml-2 text-red-400 hover:text-red-300">✕</button>
+                <button type="button" onclick="removeFaqItem(${faqIndex}, this)" class="ml-2 text-red-400 hover:text-red-300"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18"></path></svg></button>
             </div>
             <textarea name="faq_content[${faqIndex}][answer]" rows="3" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500" placeholder="Jawaban"></textarea>
         `;

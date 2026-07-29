@@ -26,8 +26,13 @@
             <button @click="activeTab = 'keunggulan'" :class="activeTab === 'keunggulan' ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/20' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/80'" class="w-full text-sm font-semibold px-4 py-3 rounded-2xl transition-all border border-slate-800">
                 Keunggulan APC+
             </button>
+<<<<<<< HEAD
             <button @click="activeTab = 'energi'" :class="activeTab === 'energi' ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/20' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/80'" class="w-full text-sm font-semibold px-4 py-3 rounded-2xl transition-all border border-slate-800">
                 Energi Berkelanjutan
+=======
+            <button @click="activeTab = 'energi'" :class="activeTab === 'energi' ? 'bg-orange-500 text-white' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/70'" class="text-xs font-semibold px-3 py-2 rounded-xl transition">
+                Daftar Klien
+>>>>>>> 93ae680 (pradana29)
             </button>
             <button @click="activeTab = 'mengapa'" :class="activeTab === 'mengapa' ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/20' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/80'" class="w-full text-sm font-semibold px-4 py-3 rounded-2xl transition-all border border-slate-800">
                 Mengapa Pilih Pradana
@@ -74,7 +79,11 @@
                     <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Background Image Hero (3 Slide)</label>
                     @if(optional($hero)->url_gambar)
                         <div class="grid sm:grid-cols-3 gap-3">
+<<<<<<< HEAD
                             @foreach([['label' => 'Slide 1', 'image' => optional($hero)->url_gambar], ['label' => 'Slide 2', 'image' => $hero->path_gambar_2 ? asset('/storage_public/' . $hero->path_gambar_2) : null], ['label' => 'Slide 3', 'image' => $hero->path_gambar_3 ? asset('/storage_public/' . $hero->path_gambar_3) : null]] as $slide)
+=======
+                            @foreach([['label' => 'Slide 1', 'image' => $hero->url_gambar], ['label' => 'Slide 2', 'image' => $hero->path_gambar_2 ? asset('storage/' . ltrim($hero->path_gambar_2, '/')) : null], ['label' => 'Slide 3', 'image' => $hero->path_gambar_3 ? asset('storage/' . ltrim($hero->path_gambar_3, '/')) : null]] as $slide)
+>>>>>>> 93ae680 (pradana29)
                                 @if($slide['image'])
                                     <div class="relative rounded-xl overflow-hidden border border-slate-800 h-32 bg-slate-950">
                                         <img src="{{ $slide['image'] }}" alt="{{ $slide['label'] }}" class="w-full h-full object-cover">
@@ -112,6 +121,7 @@
         </form>
     </div>
 
+<<<<<<< HEAD
     <!-- PROFIL PRADANA PANEL -->
     <div x-show="activeTab === 'profil'" class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
         <div>
@@ -163,13 +173,16 @@
     </div>
 
     <!-- STATISTIK PERFORMA PANEL -->
+=======
+    <!-- 3. STATISTIK PERFORMA PANEL -->
+>>>>>>> 93ae680 (pradana29)
     <div x-show="activeTab === 'statistik'" class="space-y-6">
         <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xl">
             <div>
                 <h2 class="text-xl font-bold text-white flex items-center gap-2">
                     <span class="w-3 h-3 rounded-full bg-emerald-500"></span> Kelola Angka & Statistik Performa
                 </h2>
-                <p class="text-xs text-slate-400 mt-1">Tambah, ubah, atau hapus card statistik performa smelter.</p>
+                <p class="text-xs text-slate-400 mt-1">Tambah, ubah, atau hapus sertifikat penilaian kinerja yang tampil di landing page.</p>
             </div>
             <button onclick="openStatModal()" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2.5 rounded-xl text-sm font-bold flex items-center gap-2 shadow-lg shadow-orange-500/20">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
@@ -177,32 +190,44 @@
             </button>
         </div>
 
+        @php
+            $displayStats = collect($statistik ?? [])->values();
+        @endphp
+
         <div class="grid md:grid-cols-3 gap-6">
-            @forelse($statistik as $item)
+            @foreach($displayStats as $item)
+                @php
+                    $isPlaceholder = empty($item->id);
+                @endphp
                 <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-lg relative flex flex-col justify-between">
-                    <div class="space-y-2">
+                    <div class="space-y-3">
                         <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-                            <span class="text-3xl font-extrabold text-orange-500 tracking-tight">{{ $item->nilai }}</span>
                             <span class="text-[10px] font-mono font-semibold bg-slate-950 text-slate-400 px-2 py-1 rounded-md border border-slate-800">#{{ $item->urutan }}</span>
+                            <span class="text-xs text-orange-400 uppercase tracking-wide">Sertifikat</span>
                         </div>
+                        @if($item->url_gambar)
+                            <img src="{{ $item->url_gambar }}" alt="{{ $item->judul }}" class="w-full h-40 object-cover rounded-xl border border-slate-800">
+                        @else
+                            <div class="w-full h-40 rounded-xl border border-dashed border-slate-700 bg-slate-950/70 flex items-center justify-center text-slate-500 text-sm">{{ $isPlaceholder ? 'Slot kosong' : 'Belum ada foto' }}</div>
+                        @endif
                         <h3 class="font-bold text-white uppercase text-base">{{ $item->judul }}</h3>
                         <p class="text-xs text-slate-400 leading-relaxed">{{ $item->konten }}</p>
                     </div>
                     
                     <div class="flex items-center justify-end gap-2 pt-4 border-t border-slate-800/80">
-                        <button onclick="editStatModal({{ $item->id }}, '{{ addslashes($item->nilai) }}', '{{ addslashes($item->judul) }}', '{{ addslashes($item->konten) }}', {{ $item->urutan }})" class="text-xs bg-slate-800 hover:bg-blue-500/10 hover:text-blue-400 text-slate-300 border border-slate-700 px-3 py-1.5 rounded-lg font-medium transition">Edit</button>
-                        <form action="{{ route('admin.konten.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin menghapus card statistik ini?')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-xs bg-slate-800 hover:bg-rose-500/10 hover:text-rose-400 text-slate-300 border border-slate-700 px-3 py-1.5 rounded-lg font-medium transition">Hapus</button>
-                        </form>
+                        @if($isPlaceholder)
+                            <button onclick="openStatModal()" class="text-xs bg-slate-800 hover:bg-orange-500/10 hover:text-orange-400 text-slate-300 border border-slate-700 px-3 py-1.5 rounded-lg font-medium transition">Tambah</button>
+                        @else
+                            <button onclick="editStatModal({{ $item->id }}, '{{ addslashes($item->nilai ?? '') }}', '{{ addslashes($item->judul) }}', '{{ addslashes($item->konten) }}', {{ $item->urutan }})" class="text-xs bg-slate-800 hover:bg-blue-500/10 hover:text-blue-400 text-slate-300 border border-slate-700 px-3 py-1.5 rounded-lg font-medium transition">Edit</button>
+                            <form action="{{ route('admin.konten.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin menghapus sertifikat ini?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-xs bg-slate-800 hover:bg-rose-500/10 hover:text-rose-400 text-slate-300 border border-slate-700 px-3 py-1.5 rounded-lg font-medium transition">Hapus</button>
+                            </form>
+                        @endif
                     </div>
                 </div>
-            @empty
-                <div class="md:col-span-3 text-center py-12 bg-slate-900/60 rounded-2xl border border-dashed border-slate-800">
-                    <p class="text-slate-400 text-sm">Belum ada item statistik.</p>
-                </div>
-            @endforelse
+            @endforeach
         </div>
     </div>
 
@@ -399,52 +424,62 @@
         </div>
     </div>
 
+<<<<<<< HEAD
     <!-- ENERGI BERKELANJUTAN PANEL -->
+=======
+    <!-- 7. DAFTAR KLIEN PANEL -->
+>>>>>>> 93ae680 (pradana29)
     <div x-show="activeTab === 'energi'" class="space-y-6">
         <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
             <div>
                 <h2 class="text-xl font-bold text-white flex items-center gap-2">
+<<<<<<< HEAD
                     <span class="w-3 h-3 rounded-full bg-teal-400"></span> Header Energi Berkelanjutan
+=======
+                    <span class="w-3 h-3 rounded-full bg-teal-400"></span> 7. Daftar Klien
+>>>>>>> 93ae680 (pradana29)
                 </h2>
-                <p class="text-xs text-slate-400 mt-1">Ubah headline section energi berkelanjutan dan dekarbonisasi.</p>
+                <p class="text-xs text-slate-400 mt-1">Upload foto client untuk ditampilkan di section landing page, cukup foto saja.</p>
             </div>
 
-            <form action="{{ route('admin.energi.header') }}" method="POST" class="space-y-4">
+            <form action="{{ route('admin.galeri.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
                 @csrf
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Judul Section (Contoh: ENGINEERING A LOWER-CARBON ALUMINIUM FUTURE)</label>
-                    <input type="text" name="judul" value="{{ old('title', $energiHeader->judul ?? '') }}" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-orange-500">
+                <input type="hidden" name="kategori" value="client">
+                <input type="hidden" name="judul" value="">
+                <input type="hidden" name="lokasi_tahun" value="">
+
+                <div class="grid md:grid-cols-[1fr_auto] gap-4 items-end">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Upload Foto Client</label>
+                        <input type="file" name="gambar" required accept="image/*" class="w-full text-xs text-slate-400 bg-slate-950 border border-slate-800 rounded-xl p-3">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Urutan</label>
+                        <input type="number" name="urutan" value="1" min="1" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-orange-500">
+                    </div>
                 </div>
-                <div class="flex justify-end pt-3">
+
+                <div class="flex justify-end pt-2">
                     <button type="submit" class="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2.5 rounded-xl text-xs font-bold shadow-lg shadow-orange-500/20">
-                        Simpan Header Energi
+                        Simpan Foto Client
                     </button>
                 </div>
             </form>
         </div>
 
         <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-                <div>
-                    <h3 class="text-lg font-bold text-white">Cards Inovasi Energi</h3>
-                    <p class="text-xs text-slate-400">Cards Decarbonization, Energy Efficiency, & Long-Term Growth.</p>
-                </div>
-                <button onclick="openGenericModal('energi_item', 'Tambah Card Energi')" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2.5 rounded-xl text-xs font-bold shadow-lg shadow-orange-500/20">
-                    Tambah Card Energi
-                </button>
+            <div class="border-b border-slate-800 pb-4">
+                <h3 class="text-lg font-bold text-white">Foto Client Terupload</h3>
+                <p class="text-xs text-slate-400">Foto yang tampil di landing page section daftar client.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-4">
-                @forelse($energiItems as $item)
-                    <div class="p-4 bg-slate-950/60 rounded-xl border border-slate-800 flex flex-col justify-between space-y-3">
-                        <div>
+                @forelse($clientPhotos as $item)
+                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex flex-col justify-between space-y-3">
+                        <img src="{{ $item->url_gambar }}" alt="{{ $item->judul ?? 'Client' }}" class="h-32 w-full object-contain rounded-lg bg-white/5">
+                        <div class="flex items-center justify-between pt-2 border-t border-slate-900">
                             <span class="text-[10px] font-mono text-orange-400">#{{ $item->urutan }}</span>
-                            <h4 class="font-bold text-sm text-white uppercase">{{ $item->judul }}</h4>
-                            <p class="text-xs text-slate-400 mt-1">{{ $item->konten }}</p>
-                        </div>
-                        <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-900">
-                            <button onclick="editGenericModal({{ $item->id }}, '{{ addslashes($item->judul) }}', '{{ addslashes($item->konten) }}', {{ $item->urutan }})" class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-lg">Edit</button>
-                            <form action="{{ route('admin.konten.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Hapus card ini?')">
+                            <form action="{{ route('admin.galeri.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Hapus foto client ini?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="text-xs bg-slate-800 text-rose-400 px-3 py-1 rounded-lg">Hapus</button>
@@ -452,7 +487,7 @@
                         </div>
                     </div>
                 @empty
-                    <p class="text-center py-6 text-slate-500 text-xs md:col-span-3">Belum ada card energi.</p>
+                    <p class="text-center py-6 text-slate-500 text-xs md:col-span-3">Belum ada foto client.</p>
                 @endforelse
             </div>
         </div>
@@ -602,8 +637,13 @@
             @forelse($logos as $item)
                 <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group shadow-lg">
                     <div class="h-48 bg-slate-950 relative overflow-hidden flex items-center justify-center p-4">
+<<<<<<< HEAD
                         @if(optional($item)->url_gambar)
                             <img src="{{ asset('/storage_public/' . optional($item)->url_gambar) }}" alt="{{ $item->nama }}" title="{{ $item->nama }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
+=======
+                        @if($item->url_gambar)
+                            <img src="{{ asset('storage/' . ltrim($item->url_gambar, '/')) }}" alt="{{ $item->nama }}" title="{{ $item->nama }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
+>>>>>>> 93ae680 (pradana29)
                         @elseif($item->logo_url)
                             <img src="{{ $item->logo_url }}" alt="{{ $item->nama }}" title="{{ $item->nama }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
                         @else
@@ -711,22 +751,22 @@
 <div id="statModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl max-w-md w-full p-6 space-y-4">
         <h3 id="statModalTitle" class="text-lg font-bold text-white">Tambah Statistik</h3>
-        <form id="statForm" action="{{ route('admin.konten.store') }}" method="POST" class="space-y-4">
+        <form id="statForm" action="{{ route('admin.konten.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
             @csrf
             <input type="hidden" name="bagian" value="statistik">
             <input type="hidden" name="_method" id="statMethod" value="POST">
             
             <div>
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Nilai Angka / Highlight (Contoh: 50-80%, ADVANCED)</label>
-                <input type="text" name="nilai" id="statNilai" required class="w-full text-sm bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-orange-500">
-            </div>
-            <div>
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Judul / Sub-label (Contoh: SMARTER SMELTER)</label>
+                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Judul Sertifikat</label>
                 <input type="text" name="judul" id="statJudul" required class="w-full text-sm bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-orange-500">
             </div>
             <div>
-                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Deskripsi Singkat</label>
+                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Keterangan Singkat</label>
                 <textarea name="konten" id="statKonten" rows="3" class="w-full text-sm bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-orange-500"></textarea>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Upload Foto Sertifikat</label>
+                <input type="file" name="gambar" id="statImage" accept="image/*" class="w-full text-xs text-slate-400 bg-slate-950 border border-slate-800 rounded-xl p-2.5">
             </div>
             <div>
                 <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Urutan Tampil</label>
@@ -865,9 +905,9 @@
         document.getElementById('statModalTitle').innerText = 'Tambah Statistik';
         document.getElementById('statForm').action = "{{ route('admin.konten.store') }}";
         document.getElementById('statMethod').value = 'POST';
-        document.getElementById('statNilai').value = '';
         document.getElementById('statJudul').value = '';
         document.getElementById('statKonten').value = '';
+        document.getElementById('statImage').value = '';
         document.getElementById('statUrutan').value = '1';
         document.getElementById('statModal').classList.remove('hidden');
     }
@@ -876,9 +916,9 @@
         document.getElementById('statModalTitle').innerText = 'Edit Statistik';
         document.getElementById('statForm').action = "/admin/konten/" + id;
         document.getElementById('statMethod').value = 'PUT';
-        document.getElementById('statNilai').value = value;
         document.getElementById('statJudul').value = title;
         document.getElementById('statKonten').value = content;
+        document.getElementById('statImage').value = '';
         document.getElementById('statUrutan').value = order;
         document.getElementById('statModal').classList.remove('hidden');
     }

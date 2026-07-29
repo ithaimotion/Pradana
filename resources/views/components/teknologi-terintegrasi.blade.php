@@ -40,14 +40,5 @@
                 </div>
             @endforeach
         </div>
-        
-        <div class="flex justify-center gap-4 reveal-on-scroll delay-500">
-            <a href="#contact" class="bg-blue-900 text-white px-8 py-4 rounded font-semibold hover:bg-blue-800 transition shadow-md">
-                Learn More
-            </a>
-            <a href="#products" class="bg-orange-500 text-white px-8 py-4 rounded font-semibold hover:bg-orange-600 transition shadow-md">
-                View Products   
-            </a>
-        </div>
     </div>
 </section>

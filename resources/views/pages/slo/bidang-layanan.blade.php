@@ -43,7 +43,7 @@
                     @foreach($kategoriTR as $kategori)
                     <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
                         <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-4 text-2xl">
-                            {{ $kategori->ikon ?? '⚡' }}
+                            {{ $kategori->ikon ?? '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>' }}
                         </div>
                         <h3 class="font-extrabold text-slate-900 mb-2 group-hover:text-green-700 transition-colors">{{ $kategori->judul }}</h3>
                         <p class="text-xs text-slate-500 leading-relaxed mb-3">{{ $kategori->deskripsi }}</p>
@@ -76,7 +76,7 @@
                     @foreach($kategoriTM as $kategori)
                     <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
                         <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4 text-2xl">
-                            {{ $kategori->ikon ?? '⚡' }}
+                            {{ $kategori->ikon ?? '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>' }}
                         </div>
                         <h3 class="font-extrabold text-slate-900 mb-2 group-hover:text-orange-600 transition-colors">{{ $kategori->judul }}</h3>
                         <p class="text-xs text-slate-500 leading-relaxed mb-3">{{ $kategori->deskripsi }}</p>
@@ -109,7 +109,7 @@
                     @foreach($kategoriPembangkit as $kategori)
                     <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
                         <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4 text-2xl">
-                            {{ $kategori->ikon ?? '⚡' }}
+                            {{ $kategori->ikon ?? '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>' }}
                         </div>
                         <h3 class="font-extrabold text-slate-900 mb-2 group-hover:text-blue-900 transition-colors">{{ $kategori->judul }}</h3>
                         <p class="text-xs text-slate-500 leading-relaxed mb-3">{{ $kategori->deskripsi }}</p>
@@ -132,7 +132,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="bg-gradient-to-r from-blue-900 to-slate-900 rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 text-white">
                 <div class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg text-3xl">
-                    ⚡
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                 </div>
                 <div class="flex-1 text-center md:text-left">
                     <h3 class="text-xl font-extrabold mb-2">Ajukan Permohonan SLO Sekarang</h3>

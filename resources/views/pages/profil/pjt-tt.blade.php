@@ -63,7 +63,11 @@
                     <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xl overflow-hidden reveal-on-scroll">
                         <div class="bg-slate-900 text-white px-8 py-5 flex items-center gap-3">
                             <div class="w-8 h-8 bg-sky-500 rounded-lg flex items-center justify-center text-white font-bold text-base shadow-sm">
+<<<<<<< HEAD
                                 ??
+=======
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M7 12h10M7 17h6"></path></svg>
+>>>>>>> 93ae680 (pradana29)
                             </div>
                             <h2 class="text-xl font-bold tracking-wide">
                                 Penanggung Jawab Teknik (PJT)
@@ -102,7 +106,11 @@
                     <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xl overflow-hidden reveal-on-scroll delay-200">
                         <div class="bg-slate-900 text-white px-8 py-5 flex items-center gap-3">
                             <div class="w-8 h-8 bg-teal-500 rounded-lg flex items-center justify-center text-white font-bold text-base shadow-sm">
+<<<<<<< HEAD
                                 ??
+=======
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M7 12h10M7 17h6"></path></svg>
+>>>>>>> 93ae680 (pradana29)
                             </div>
                             <h2 class="text-xl font-bold tracking-wide">
                                 Tenaga Teknik (TT)

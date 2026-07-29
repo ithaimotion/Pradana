@@ -51,8 +51,8 @@
                     </div>
                     <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl z-20 border border-slate-100 max-w-xs hidden sm:block">
                         <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-orange-500/10 text-orange-500 rounded-lg flex items-center justify-center font-bold text-xl">
-                                ⚡
+                            <div class="w-12 h-12 bg-orange-500/10 text-orange-500 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                             </div>
                             <div>
                                 <h4 class="font-bold text-slate-900">SLO Terjamin</h4>
@@ -121,17 +121,17 @@
                     if(empty($nilaiPerusahaan)) {
                         $nilaiPerusahaan = [
                             [
-                                'ikon' => '🛡️',
+                                'ikon' => 'shield',
                                 'judul' => 'Independensi & Integritas',
                                 'deskripsi' => 'Pengujian dilakukan secara obyektif tanpa intervensi pihak luar guna menjamin keaslian dan akurasi hasil Sertifikat Laik Operasi.'
                             ],
                             [
-                                'ikon' => '⚙️',
+                                'ikon' => 'gear',
                                 'judul' => 'Professional & Kompeten',
                                 'deskripsi' => 'Seluruh inspeksi dijalankan oleh Penanggung Jawab Teknik (PJT) dan Tenaga Teknik (TT) terregister dan tersertifikasi resmi.'
                             ],
                             [
-                                'ikon' => '🚀',
+                                'ikon' => 'rocket',
                                 'judul' => 'Tepat Waktu & Solutif',
                                 'deskripsi' => 'Memberikan kemudahan proses pemeriksaan serta kepastian sertifikasi instalasi kelistrikan sesuai tenggat waktu yang dijanjikan.'
                             ]
@@ -140,8 +140,19 @@
                 @endphp
                 @foreach($nilaiPerusahaan as $index => $nilai)
                     <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-md hover:shadow-xl transition reveal-on-scroll delay-{{ ($index + 1) * 100 }}">
-                        <div class="w-12 h-12 {{ $index % 2 == 0 ? 'bg-orange-500' : 'bg-blue-900' }} text-white rounded-xl flex items-center justify-center font-bold text-xl mb-6">
-                            {{ $nilai['ikon'] ?? '⭐' }}
+                        <div class="w-12 h-12 {{ $index % 2 == 0 ? 'bg-orange-500' : 'bg-blue-900' }} text-white rounded-xl flex items-center justify-center mb-6">
+                            @php
+                                $icon = $nilai['ikon'] ?? null;
+                            @endphp
+                            @if($icon === 'shield')
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3l7 4v5c0 4.8-3.1 8.1-7 9-3.9-.9-7-4.2-7-9V7l7-4z"></path></svg>
+                            @elseif($icon === 'gear')
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 01-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.2a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 01-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.2a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 012.8-2.8l.1.1a1.7 1.7 0 001.8.3h.1a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.2a1.7 1.7 0 001 1.5h.1a1.7 1.7 0 001.8-.3l.1-.1a2 2 0 012.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8v.1a1.7 1.7 0 001.5 1H21a2 2 0 010 4h-.2a1.7 1.7 0 00-1.5 1z"></path></svg>
+                            @elseif($icon === 'rocket')
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 13l4 4L19 7"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 5h14v14H5z"></path></svg>
+                            @else
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3l7 4v5c0 4.8-3.1 8.1-7 9-3.9-.9-7-4.2-7-9V7l7-4z"></path></svg>
+                            @endif
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 mb-3">{{ $nilai['judul'] ?? 'Nilai Perusahaan' }}</h3>
                         <p class="text-slate-600 text-sm leading-relaxed">

@@ -65,6 +65,7 @@
                     </button>
                     <button onclick="filterSOP('mutu')" id="btn-mutu"
                         class="sop-filter-btn px-4 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:border-blue-700 hover:text-blue-700 transition-all">
+<<<<<<< HEAD
                         ?? Mutu & Manajemen
                     </button>
                     <button onclick="filterSOP('inspeksi')" id="btn-inspeksi"
@@ -78,6 +79,21 @@
                     <button onclick="filterSOP('sdm')" id="btn-sdm"
                         class="sop-filter-btn px-4 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:border-purple-600 hover:text-purple-600 transition-all">
                         ?? SDM & Sarana
+=======
+                        <span class="inline-flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m-6 4h6m-6 4h4m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v10a2 2 0 01-2 2z"></path></svg> Mutu & Manajemen</span>
+                    </button>
+                    <button onclick="filterSOP('inspeksi')" id="btn-inspeksi"
+                        class="sop-filter-btn px-4 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:border-orange-500 hover:text-orange-500 transition-all">
+                        <span class="inline-flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 2v6h3l-4 6v-4H9l4-8z"></path></svg> Inspeksi Teknik</span>
+                    </button>
+                    <button onclick="filterSOP('pelayanan')" id="btn-pelayanan"
+                        class="sop-filter-btn px-4 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:border-teal-600 hover:text-teal-600 transition-all">
+                        <span class="inline-flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h8m-8 4h8M8 8h8"></path></svg> Pelayanan</span>
+                    </button>
+                    <button onclick="filterSOP('sdm')" id="btn-sdm"
+                        class="sop-filter-btn px-4 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:border-purple-600 hover:text-purple-600 transition-all">
+                        <span class="inline-flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h2a1 1 0 001-1v-3a4 4 0 00-4-4h-2m-6 8h2a1 1 0 001-1v-3a4 4 0 00-4-4H5m7-7a3 3 0 100 6 3 3 0 000-6z"></path></svg> SDM & Sarana</span>
+>>>>>>> 93ae680 (pradana29)
                     </button>
                 </div>
                 <!-- Search -->
@@ -102,8 +118,13 @@
                             <div class="w-2 bg-blue-900 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
                                 <!-- Icon -->
+<<<<<<< HEAD
                                 <div class="w-12 h-12 bg-blue-50 text-blue-900 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
                                     ??
+=======
+                                <div class="w-12 h-12 bg-blue-50 text-blue-900 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 7h6m-6 4h6m-6 4h4m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v10a2 2 0 01-2 2z"></path></svg>
+>>>>>>> 93ae680 (pradana29)
                                 </div>
                                 <!-- Info -->
                                 <div class="flex-1">
@@ -135,8 +156,13 @@
                         <div class="flex items-stretch">
                             <div class="w-2 bg-orange-500 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
+<<<<<<< HEAD
                                 <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
                                     ??
+=======
+                                <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 2v6h3l-4 6v-4H9l4-8z"></path></svg>
+>>>>>>> 93ae680 (pradana29)
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -165,8 +191,13 @@
                         <div class="flex items-stretch">
                             <div class="w-2 bg-orange-500 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
+<<<<<<< HEAD
                                 <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
                                     ?
+=======
+                                <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+>>>>>>> 93ae680 (pradana29)
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -195,8 +226,13 @@
                         <div class="flex items-stretch">
                             <div class="w-2 bg-orange-500 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
+<<<<<<< HEAD
                                 <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
                                     ??
+=======
+                                <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10 2v8H7l5 10v-8h3l-5-10z"></path></svg>
+>>>>>>> 93ae680 (pradana29)
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -226,7 +262,11 @@
                             <div class="w-2 bg-orange-500 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
                                 <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
+<<<<<<< HEAD
                                     ???
+=======
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 20h16M7 20V8l5-3 5 3v12"></path></svg>
+>>>>>>> 93ae680 (pradana29)
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -256,7 +296,11 @@
                             <div class="w-2 bg-orange-500 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
                                 <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
+<<<<<<< HEAD
                                     ??
+=======
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 20h16M7 20V10h10v10"></path></svg>
+>>>>>>> 93ae680 (pradana29)
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -287,7 +331,11 @@
                             <div class="w-2 bg-teal-600 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
                                 <div class="w-12 h-12 bg-teal-50 text-teal-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
+<<<<<<< HEAD
                                     ??
+=======
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 7h6m-6 4h6m-6 4h4m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v10a2 2 0 01-2 2z"></path></svg>
+>>>>>>> 93ae680 (pradana29)
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -317,7 +365,11 @@
                             <div class="w-2 bg-teal-600 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
                                 <div class="w-12 h-12 bg-teal-50 text-teal-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
+<<<<<<< HEAD
                                     ??
+=======
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 12h8m-8 4h8M8 8h8"></path></svg>
+>>>>>>> 93ae680 (pradana29)
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -347,7 +399,11 @@
                             <div class="w-2 bg-teal-600 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
                                 <div class="w-12 h-12 bg-teal-50 text-teal-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
+<<<<<<< HEAD
                                     ???
+=======
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 21V9l8-5 8 5v12"></path></svg>
+>>>>>>> 93ae680 (pradana29)
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -377,7 +433,11 @@
                             <div class="w-2 bg-teal-600 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
                                 <div class="w-12 h-12 bg-teal-50 text-teal-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
+<<<<<<< HEAD
                                     ??
+=======
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+>>>>>>> 93ae680 (pradana29)
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -408,7 +468,11 @@
                             <div class="w-2 bg-purple-600 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
                                 <div class="w-12 h-12 bg-purple-50 text-purple-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
+<<<<<<< HEAD
                                     ??
+=======
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 01-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.2a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 01-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.2a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 012.8-2.8l.1.1a1.7 1.7 0 001.8.3h.1a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.2a1.7 1.7 0 001 1.5h.1a1.7 1.7 0 001.8-.3l.1-.1a2 2 0 012.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8v.1a1.7 1.7 0 001.5 1H21a2 2 0 010 4h-.2a1.7 1.7 0 00-1.5 1z"></path></svg>
+>>>>>>> 93ae680 (pradana29)
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -438,7 +502,11 @@
                             <div class="w-2 bg-purple-600 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
                                 <div class="w-12 h-12 bg-purple-50 text-purple-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
+<<<<<<< HEAD
                                     ??
+=======
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h2a1 1 0 001-1v-3a4 4 0 00-4-4h-2m-6 8h2a1 1 0 001-1v-3a4 4 0 00-4-4H5m7-7a3 3 0 100 6 3 3 0 000-6z"></path></svg>
+>>>>>>> 93ae680 (pradana29)
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -464,7 +532,11 @@
 
                 <!-- Empty state -->
                 <div id="sop-empty" class="hidden text-center py-20">
+<<<<<<< HEAD
                     <div class="text-5xl mb-4">??</div>
+=======
+                    <div class="text-5xl mb-4"><svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M20 20l-4.2-4.2"></path></svg></div>
+>>>>>>> 93ae680 (pradana29)
                     <h3 class="font-bold text-slate-700 mb-1">Dokumen tidak ditemukan</h3>
                     <p class="text-sm text-slate-400">Coba kata kunci lain atau pilih kategori yang berbeda.</p>
                 </div>
@@ -479,7 +551,11 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="bg-gradient-to-r from-blue-900 to-slate-900 rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 text-white">
                 <div class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg text-3xl">
+<<<<<<< HEAD
                     ??
+=======
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+>>>>>>> 93ae680 (pradana29)
                 </div>
                 <div class="flex-1 text-center md:text-left">
                     <h3 class="text-xl font-extrabold mb-2">Butuh Dokumen SOP Spesifik?</h3>

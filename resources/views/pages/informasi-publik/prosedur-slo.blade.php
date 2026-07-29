@@ -325,8 +325,8 @@
                                 <p class="text-slate-600 mb-4">Berdasarkan Laporan Hasil Pemeriksaan dan Pengujian (LHPP), Penanggung Jawab Teknik (PJT) akan melakukan evaluasi akhir.</p>
                                 <h4 class="font-semibold text-slate-900 mb-2">Kemungkinan Hasil:</h4>
                                 <ul class="space-y-2 text-sm text-slate-600">
-                                    <li class="flex items-start gap-2"><span class="text-green-500">✓</span> <strong>Laik Operasi:</strong> SLO akan diterbitkan</li>
-                                    <li class="flex items-start gap-2"><span class="text-red-500">✗</span> <strong>Tidak Laik Operasi:</strong> Perlu perbaikan dan inspeksi ulang</li>
+                                    <li class="flex items-start gap-2"><span class="text-green-500"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span> <strong>Laik Operasi:</strong> SLO akan diterbitkan</li>
+                                    <li class="flex items-start gap-2"><span class="text-red-500"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18"></path></svg></span> <strong>Tidak Laik Operasi:</strong> Perlu perbaikan dan inspeksi ulang</li>
                                 </ul>
                             </div>
                         </div>

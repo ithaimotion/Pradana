@@ -52,7 +52,11 @@
             @if(isset($konten->konten) && !empty($konten->konten))
                 <div class="bg-blue-900/5 border border-blue-900/15 rounded-2xl p-6 mb-12 text-slate-700 text-sm leading-relaxed shadow-sm">
                     <h3 class="font-bold text-base text-blue-950 mb-2 flex items-center gap-2">
+<<<<<<< HEAD
                         <span>???</span> Rincian Nomor Izin & Masa Berlaku Legalitas:
+=======
+                        <span><svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 21V9l8-5 8 5v12"></path></svg></span> Rincian Nomor Izin & Masa Berlaku Legalitas:
+>>>>>>> 93ae680 (pradana29)
                     </h3>
                     <p>{!! nl2br(e($konten->konten)) !!}</p>
                 </div>

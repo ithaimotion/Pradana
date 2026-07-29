@@ -15,7 +15,7 @@ class KeluhanBandingSetting extends Model
             if (str_starts_with($this->path_gambar, 'http')) {
                 return $this->path_gambar;
             }
-            return asset('/storage_public/' . $this->path_gambar);
+            return asset('storage/' . ltrim($this->path_gambar, '/'));
         }
         return null;
     }

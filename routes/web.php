@@ -39,7 +39,6 @@ Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.lo
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
     Route::post('/hero', [AdminController::class, 'updateHero'])->name('hero.update');
-    Route::post('/profil-pradana', [AdminController::class, 'updateProfilPradana'])->name('profil.update');
     Route::post('/tentang-pradana', [AdminController::class, 'updateTentangPradana'])->name('tentang.update');
     Route::post('/teknologi-header', [AdminController::class, 'updateTeknologiHeader'])->name('teknologi.header');
     Route::post('/keunggulan-header', [AdminController::class, 'updateKeunggulanHeader'])->name('keunggulan.header');

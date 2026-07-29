@@ -123,7 +123,7 @@
                             <div class="grid md:grid-cols-3 gap-3">
                                 <div>
                                     <label class="block text-xs font-semibold text-slate-300 mb-1">Ikon (Emoji)</label>
-                                    <input type="text" name="nilai_perusahaan[${newIndex}][ikon]" placeholder="🛡️" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
+                                    <input type="text" name="nilai_perusahaan[${newIndex}][ikon]" placeholder="shield" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
                                 </div>
                                 <div class="md:col-span-2">
                                     <label class="block text-xs font-semibold text-slate-300 mb-1">Judul</label>

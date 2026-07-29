@@ -9,12 +9,11 @@
 @section('content')
     <x-navbar :logos="$logos ?? null" />
     <x-hero :hero="$hero ?? null" />
-    <x-profil-pradana :profil="$profilPradana ?? null" />
-    <x-statistik-performa :statistik="$statistik ?? null" />
+    <x-sertifikat-penilaian-kinerja :sertifikat="$sertifikat ?? null" />
     <x-tentang-pradana :tentang="$tentangPradana ?? null" />
     <x-teknologi-terintegrasi :header="$teknologiHeader ?? null" :items="$teknologiItems ?? null" />
     <x-keunggulan-apc :header="$keunggulanHeader ?? null" :items="$keunggulanItems ?? null" />
-    <x-energi-berkelanjutan :header="$energiHeader ?? null" :items="$energiItems ?? null" />
+    <x-energi-berkelanjutan :header="$energiHeader ?? null" :items="$energiItems ?? null" :clients="$clientPhotos ?? null" />
     <x-mengapa-pilih-pradana :header="$mengapaHeader ?? null" :items="$mengapaItems ?? null" />
     <x-kontak-kami :kontak="$kontakKami ?? null" />
     <x-footer />

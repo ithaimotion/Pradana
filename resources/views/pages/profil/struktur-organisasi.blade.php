@@ -27,7 +27,11 @@
             @if(isset($konten->konten) && !empty($konten->konten))
                 <div class="bg-blue-900/5 border border-blue-900/15 rounded-2xl p-6 mb-12 text-slate-700 text-sm leading-relaxed shadow-sm">
                     <h3 class="font-bold text-base text-blue-950 mb-2 flex items-center gap-2">
+<<<<<<< HEAD
                         <span>???</span> Manajemen & Tata Kelola Perusahaan:
+=======
+                        <span><svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 21V9l8-5 8 5v12"></path></svg></span> Manajemen & Tata Kelola Perusahaan:
+>>>>>>> 93ae680 (pradana29)
                     </h3>
                     <p>{!! nl2br(e($konten->konten)) !!}</p>
                 </div>
@@ -126,7 +130,11 @@
                             @foreach($items as $index => $item)
                                 <div class="bg-white border border-slate-200 rounded-xl shadow-md px-5 py-5 text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                                     <div class="w-10 h-10 bg-sky-100 text-sky-700 rounded-lg flex items-center justify-center mx-auto mb-3 font-bold text-lg">
+<<<<<<< HEAD
                                         ??
+=======
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M20 20l-4.2-4.2"></path></svg>
+>>>>>>> 93ae680 (pradana29)
                                     </div>
                                     <div class="text-[11px] font-semibold uppercase tracking-widest text-sky-700 mb-1">{{ $item->jabatan }}</div>
                                     <div class="text-sm font-bold text-slate-900 mb-0.5">{{ $item->nama }}</div>

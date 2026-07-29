@@ -4,8 +4,17 @@
     $title = $profil->judul ?? 'PT PRADANA NUSA ENERGI';
     $subtitle = $profil->subjudul ?? 'Nusa Energi';
     $content = $profil->konten ?? 'Pradana Nusa Energi bangga menjadi Lembaga Inspeksi Teknik (LIT) terpercaya yang melayani inspeksi dan penerbitan Sertifikat Laik Operasi (SLO) di seluruh wilayah Indonesia.';
+<<<<<<< HEAD
     $img1 = optional($profil)->url_gambar ?? 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
     $img2 = (!empty($profil->nilai) && (str_starts_with($profil->nilai, 'http://') || str_starts_with($profil->nilai, 'https://'))) ? $profil->nilai : (($profil->nilai ?? null) ? asset('/storage_public/' . $profil->nilai) : 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+=======
+    $img1 = $profil->url_gambar ?? 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+    $img2 = $profil->nilai
+        ? (str_starts_with($profil->nilai, 'http://') || str_starts_with($profil->nilai, 'https://')
+            ? $profil->nilai
+            : asset('storage/' . ltrim($profil->nilai, '/')))
+        : 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+>>>>>>> 93ae680 (pradana29)
 @endphp
 
 <section class="py-20 bg-white overflow-hidden">
