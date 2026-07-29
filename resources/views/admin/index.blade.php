@@ -74,7 +74,7 @@
                     <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Background Image Hero (3 Slide)</label>
                     @if(isset($hero) && $hero->url_gambar)
                         <div class="grid sm:grid-cols-3 gap-3">
-                            @foreach([['label' => 'Slide 1', 'image' => $hero->url_gambar], ['label' => 'Slide 2', 'image' => $hero->path_gambar_2 ? asset('public/storage/' . $hero->path_gambar_2) : null], ['label' => 'Slide 3', 'image' => $hero->path_gambar_3 ? asset('public/storage/' . $hero->path_gambar_3) : null]] as $slide)
+                            @foreach([['label' => 'Slide 1', 'image' => $hero->url_gambar], ['label' => 'Slide 2', 'image' => $hero->path_gambar_2 ? asset('/storage_public/' . $hero->path_gambar_2) : null], ['label' => 'Slide 3', 'image' => $hero->path_gambar_3 ? asset('/storage_public/' . $hero->path_gambar_3) : null]] as $slide)
                                 @if($slide['image'])
                                     <div class="relative rounded-xl overflow-hidden border border-slate-800 h-32 bg-slate-950">
                                         <img src="{{ $slide['image'] }}" alt="{{ $slide['label'] }}" class="w-full h-full object-cover">
@@ -603,7 +603,7 @@
                 <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group shadow-lg">
                     <div class="h-48 bg-slate-950 relative overflow-hidden flex items-center justify-center p-4">
                         @if($item->url_gambar)
-                            <img src="{{ asset('public/storage/' . $item->url_gambar) }}" alt="{{ $item->nama }}" title="{{ $item->nama }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
+                            <img src="{{ asset('/storage_public/' . $item->url_gambar) }}" alt="{{ $item->nama }}" title="{{ $item->nama }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
                         @elseif($item->logo_url)
                             <img src="{{ $item->logo_url }}" alt="{{ $item->nama }}" title="{{ $item->nama }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
                         @else

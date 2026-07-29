@@ -47,7 +47,7 @@
                             <tr class="border-b border-slate-800 hover:bg-slate-800/50 transition">
                                 <td class="py-3 px-4">
                                     @if($item->gambar)
-                                        <img src="{{ asset('public/storage/' . $item->gambar) }}" alt="{{ $item->nama }}" class="w-12 h-12 object-cover rounded-lg">
+                                        <img src="{{ asset('/storage_public/' . $item->gambar) }}" alt="{{ $item->nama }}" class="w-12 h-12 object-cover rounded-lg">
                                     @else
                                         <div class="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center">
                                             <svg class="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
