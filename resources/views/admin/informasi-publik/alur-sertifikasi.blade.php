@@ -10,9 +10,7 @@
     </div>
 
     @if(session('success'))
-        <div class="mb-4 bg-green-500/20 border border-green-500/30 text-green-400 px-4 py-3 rounded-lg">
-            {{ session('success') }}
-        </div>
+        <x-admin.alert type="success" title="Berhasil" message="{{ session('success') }}" class="mb-6" />
     @endif
 
     <div class="bg-slate-800 rounded-xl border border-slate-700 p-6">

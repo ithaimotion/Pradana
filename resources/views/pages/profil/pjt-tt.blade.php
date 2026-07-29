@@ -18,9 +18,9 @@
             <p class="text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
                 {{ $konten->subjudul ?? 'Daftar Penanggung Jawab Teknik (PJT) dan Tenaga Teknik (TT) terdaftar dan bersertifikasi kompetensi resmi PT Pradana Nusa Energi.' }}
             </p>
-            @if(isset($konten) && $konten->url_dokumen)
+            @if(optional($konten)->url_dokumen)
                 <div class="mt-6">
-                    <a href="{{ $konten->url_dokumen }}" target="_blank" class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
+                    <a href="{{ optional($konten)->url_dokumen }}" target="_blank" class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                         <span>Unduh Dokumen SK PJT & TT Resmi (PDF)</span>
                     </a>
@@ -35,7 +35,7 @@
             @if(isset($konten->konten) && !empty($konten->konten))
                 <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 text-amber-900 text-sm leading-relaxed shadow-sm">
                     <div class="font-bold mb-1 flex items-center gap-2 text-amber-800">
-                        <span>ℹ️</span> Catatan Kualifikasi & Akreditasi:
+                        <span>??</span> Catatan Kualifikasi & Akreditasi:
                     </div>
                     {!! nl2br(e($konten->konten)) !!}
                 </div>
@@ -63,7 +63,7 @@
                     <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xl overflow-hidden reveal-on-scroll">
                         <div class="bg-slate-900 text-white px-8 py-5 flex items-center gap-3">
                             <div class="w-8 h-8 bg-sky-500 rounded-lg flex items-center justify-center text-white font-bold text-base shadow-sm">
-                                🔖
+                                ??
                             </div>
                             <h2 class="text-xl font-bold tracking-wide">
                                 Penanggung Jawab Teknik (PJT)
@@ -102,7 +102,7 @@
                     <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xl overflow-hidden reveal-on-scroll delay-200">
                         <div class="bg-slate-900 text-white px-8 py-5 flex items-center gap-3">
                             <div class="w-8 h-8 bg-teal-500 rounded-lg flex items-center justify-center text-white font-bold text-base shadow-sm">
-                                🔖
+                                ??
                             </div>
                             <h2 class="text-xl font-bold tracking-wide">
                                 Tenaga Teknik (TT)
@@ -146,3 +146,5 @@
 
     <x-footer />
 @endsection
+
+

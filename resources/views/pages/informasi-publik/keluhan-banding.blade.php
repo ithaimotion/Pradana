@@ -28,9 +28,9 @@
                 <h2 class="text-2xl font-extrabold text-slate-900 mb-4">Alur Keluhan & Banding</h2>
             </div>
             
-            @if(isset($setting) && $setting->url_gambar)
+            @if(optional($setting)->url_gambar)
                 <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-4 overflow-hidden max-w-4xl mx-auto">
-                    <img src="{{ $setting->url_gambar }}" alt="Alur Keluhan & Banding" class="w-full h-auto rounded-2xl">
+                    <img src="{{ optional($setting)->url_gambar }}" alt="Alur Keluhan & Banding" class="w-full h-auto rounded-2xl">
                 </div>
             @else
                 <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-12 flex items-center justify-center min-h-[400px] max-w-4xl mx-auto">
@@ -146,3 +146,5 @@
 
     <x-footer />
 @endsection
+
+

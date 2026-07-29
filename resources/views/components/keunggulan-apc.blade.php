@@ -3,7 +3,7 @@
 @php
     $headerJudul = $header->judul ?? 'APC+ — INTELLIGENCE THAT POWERS PERFORMANCE';
     $headerKonten = $header->konten ?? 'Our Advanced Process Control+ system combines cutting-edge AI technology with decades of industry expertise to deliver unmatched smelting performance.';
-    $headerGambar = $header->url_gambar ?? 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80';
+    $headerGambar = optional($header)->url_gambar ?? 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80';
 
     $defaultFeatureItems = collect([
         (object)['judul' => 'SMARTER SMELTER', 'konten' => 'AI-powered optimization'],
@@ -53,3 +53,4 @@
         </div>
     </div>
 </section>
+

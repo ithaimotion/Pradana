@@ -68,8 +68,8 @@
                                                 <span class="text-xs font-bold bg-teal-100 text-teal-700 border border-teal-200 px-2 py-0.5 rounded-full">SNI</span>
                                                 <h3 class="font-bold text-slate-900 text-sm mt-1 group-hover:text-teal-700 transition-colors">{{ $item->nomor }}</h3>
                                                 <p class="text-xs text-slate-500 mt-1 leading-relaxed">{{ $item->keterangan }}</p>
-                                                @if($item->url_dokumen)
-                                                    <a href="{{ $item->url_dokumen }}" target="_blank" class="inline-flex items-center gap-1.5 mt-3 text-xs font-bold text-teal-600 hover:text-teal-700 transition">
+                                                @if(optional($item)->url_dokumen)
+                                                    <a href="{{ optional($item)->url_dokumen }}" target="_blank" class="inline-flex items-center gap-1.5 mt-3 text-xs font-bold text-teal-600 hover:text-teal-700 transition">
                                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                                                         </svg>
@@ -98,8 +98,8 @@
                                                     <h3 class="font-extrabold text-slate-900 text-base mt-1 group-hover:text-{{ $tipeColors[$tipe]['bg'] }}-{{ $tipe === 'uu_pp' ? '900' : '600' }} transition-colors">{{ $item->nomor }}</h3>
                                                     <p class="text-xs text-slate-500 mt-0.5">{{ $item->keterangan }}</p>
                                                 </div>
-                                                @if($item->url_dokumen)
-                                                    <a href="{{ $item->url_dokumen }}" target="_blank" class="flex items-center gap-1.5 bg-{{ $tipeColors[$tipe]['bg'] }}-{{ $tipe === 'uu_pp' ? '900' : '500' }} hover:bg-{{ $tipeColors[$tipe]['bg'] }}-{{ $tipe === 'uu_pp' ? '800' : '600' }} text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm flex-shrink-0">
+                                                @if(optional($item)->url_dokumen)
+                                                    <a href="{{ optional($item)->url_dokumen }}" target="_blank" class="flex items-center gap-1.5 bg-{{ $tipeColors[$tipe]['bg'] }}-{{ $tipe === 'uu_pp' ? '900' : '500' }} hover:bg-{{ $tipeColors[$tipe]['bg'] }}-{{ $tipe === 'uu_pp' ? '800' : '600' }} text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm flex-shrink-0">
                                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                                                         </svg>
@@ -136,3 +136,4 @@
 
     <x-footer />
 @endsection
+

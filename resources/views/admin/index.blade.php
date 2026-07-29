@@ -5,46 +5,46 @@
 @section('content')
 <div class="space-y-8">
 
-    <!-- 0. DASHBOARD SUMMARY PANEL -->
+    <!-- DASHBOARD SUMMARY PANEL -->
     <x-admin.dashboard-panel :lowongans="$lowongans" :pesanMasuks="$pesanMasuks" :galeri="$galeri" />
 
     <!-- BERANDA TAB NAVIGATION -->
     <div x-show="['hero','statistik','tentang','teknologi','keunggulan','energi','mengapa','kontak'].includes(activeTab)" class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 space-y-4 shadow-xl">
-        <div class="flex flex-wrap gap-2">
-            <button @click="activeTab = 'hero'" :class="activeTab === 'hero' ? 'bg-orange-500 text-white' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/70'" class="text-xs font-semibold px-3 py-2 rounded-xl transition">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <button @click="activeTab = 'hero'" :class="activeTab === 'hero' ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/20' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/80'" class="w-full text-sm font-semibold px-4 py-3 rounded-2xl transition-all border border-slate-800">
                 Hero Banner
             </button>
-            <button @click="activeTab = 'statistik'" :class="activeTab === 'statistik' ? 'bg-orange-500 text-white' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/70'" class="text-xs font-semibold px-3 py-2 rounded-xl transition">
+            <button @click="activeTab = 'statistik'" :class="activeTab === 'statistik' ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/20' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/80'" class="w-full text-sm font-semibold px-4 py-3 rounded-2xl transition-all border border-slate-800">
                 Statistik Performa
             </button>
-            <button @click="activeTab = 'tentang'" :class="activeTab === 'tentang' ? 'bg-orange-500 text-white' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/70'" class="text-xs font-semibold px-3 py-2 rounded-xl transition">
+            <button @click="activeTab = 'tentang'" :class="activeTab === 'tentang' ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/20' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/80'" class="w-full text-sm font-semibold px-4 py-3 rounded-2xl transition-all border border-slate-800">
                 Tentang Pradana
             </button>
-            <button @click="activeTab = 'teknologi'" :class="activeTab === 'teknologi' ? 'bg-orange-500 text-white' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/70'" class="text-xs font-semibold px-3 py-2 rounded-xl transition">
+            <button @click="activeTab = 'teknologi'" :class="activeTab === 'teknologi' ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/20' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/80'" class="w-full text-sm font-semibold px-4 py-3 rounded-2xl transition-all border border-slate-800">
                 Teknologi Terintegrasi
             </button>
-            <button @click="activeTab = 'keunggulan'" :class="activeTab === 'keunggulan' ? 'bg-orange-500 text-white' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/70'" class="text-xs font-semibold px-3 py-2 rounded-xl transition">
+            <button @click="activeTab = 'keunggulan'" :class="activeTab === 'keunggulan' ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/20' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/80'" class="w-full text-sm font-semibold px-4 py-3 rounded-2xl transition-all border border-slate-800">
                 Keunggulan APC+
             </button>
-            <button @click="activeTab = 'energi'" :class="activeTab === 'energi' ? 'bg-orange-500 text-white' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/70'" class="text-xs font-semibold px-3 py-2 rounded-xl transition">
+            <button @click="activeTab = 'energi'" :class="activeTab === 'energi' ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/20' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/80'" class="w-full text-sm font-semibold px-4 py-3 rounded-2xl transition-all border border-slate-800">
                 Energi Berkelanjutan
             </button>
-            <button @click="activeTab = 'mengapa'" :class="activeTab === 'mengapa' ? 'bg-orange-500 text-white' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/70'" class="text-xs font-semibold px-3 py-2 rounded-xl transition">
+            <button @click="activeTab = 'mengapa'" :class="activeTab === 'mengapa' ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/20' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/80'" class="w-full text-sm font-semibold px-4 py-3 rounded-2xl transition-all border border-slate-800">
                 Mengapa Pilih Pradana
             </button>
-            <button @click="activeTab = 'kontak'" :class="activeTab === 'kontak' ? 'bg-orange-500 text-white' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/70'" class="text-xs font-semibold px-3 py-2 rounded-xl transition">
+            <button @click="activeTab = 'kontak'" :class="activeTab === 'kontak' ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/20' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/80'" class="w-full text-sm font-semibold px-4 py-3 rounded-2xl transition-all border border-slate-800">
                 Kontak & Banner CTA
             </button>
         </div>
         <p class="text-xs text-slate-400">Semua kontrol halaman Beranda kini tersedia di satu menu dengan tab; pilih tab untuk mengedit bagian tersebut.</p>
     </div>
 
-    <!-- 1. HERO BANNER PANEL -->
+    <!-- HERO BANNER PANEL -->
 
     <div x-show="activeTab === 'hero'" class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
         <div>
             <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-orange-500"></span> 1. Kelola Hero Banner Utama
+                <span class="w-3 h-3 rounded-full bg-orange-500"></span> Kelola Hero Banner Utama
             </h2>
             <p class="text-xs text-slate-400 mt-1">Ubah headline utama, deskripsi sub-hero, teks tombol CTA, dan upload file background banner.</p>
         </div>
@@ -72,9 +72,9 @@
 
                 <div class="space-y-4">
                     <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Background Image Hero (3 Slide)</label>
-                    @if(isset($hero) && $hero->url_gambar)
+                    @if(optional($hero)->url_gambar)
                         <div class="grid sm:grid-cols-3 gap-3">
-                            @foreach([['label' => 'Slide 1', 'image' => $hero->url_gambar], ['label' => 'Slide 2', 'image' => $hero->path_gambar_2 ? asset('/storage_public/' . $hero->path_gambar_2) : null], ['label' => 'Slide 3', 'image' => $hero->path_gambar_3 ? asset('/storage_public/' . $hero->path_gambar_3) : null]] as $slide)
+                            @foreach([['label' => 'Slide 1', 'image' => optional($hero)->url_gambar], ['label' => 'Slide 2', 'image' => $hero->path_gambar_2 ? asset('/storage_public/' . $hero->path_gambar_2) : null], ['label' => 'Slide 3', 'image' => $hero->path_gambar_3 ? asset('/storage_public/' . $hero->path_gambar_3) : null]] as $slide)
                                 @if($slide['image'])
                                     <div class="relative rounded-xl overflow-hidden border border-slate-800 h-32 bg-slate-950">
                                         <img src="{{ $slide['image'] }}" alt="{{ $slide['label'] }}" class="w-full h-full object-cover">
@@ -112,11 +112,11 @@
         </form>
     </div>
 
-    <!-- 2. PROFIL PRADANA PANEL -->
+    <!-- PROFIL PRADANA PANEL -->
     <div x-show="activeTab === 'profil'" class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
         <div>
             <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-amber-500"></span> 2. Kelola Profil Pradana Nusa Energi
+                <span class="w-3 h-3 rounded-full bg-amber-500"></span> Kelola Profil Pradana Nusa Energi
             </h2>
             <p class="text-xs text-slate-400 mt-1">Ubah judul profil, teks sub-highlight, deskripsi umum, dan upload 2 foto profil perusahaan.</p>
         </div>
@@ -162,12 +162,12 @@
         </form>
     </div>
 
-    <!-- 3. STATISTIK PERFORMA PANEL -->
+    <!-- STATISTIK PERFORMA PANEL -->
     <div x-show="activeTab === 'statistik'" class="space-y-6">
         <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xl">
             <div>
                 <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                    <span class="w-3 h-3 rounded-full bg-emerald-500"></span> 3. Kelola Angka & Statistik Performa
+                    <span class="w-3 h-3 rounded-full bg-emerald-500"></span> Kelola Angka & Statistik Performa
                 </h2>
                 <p class="text-xs text-slate-400 mt-1">Tambah, ubah, atau hapus card statistik performa smelter.</p>
             </div>
@@ -206,11 +206,11 @@
         </div>
     </div>
 
-    <!-- 4. TENTANG PRADANA PANEL -->
+    <!-- TENTANG PRADANA PANEL -->
     <div x-show="activeTab === 'tentang'" class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
         <div>
             <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-blue-400"></span> 4. Kelola Konten Tentang Pradana
+<span class="w-3 h-3 rounded-full bg-blue-400"></span> Kelola Konten Tentang Pradana
             </h2>
             <p class="text-xs text-slate-400 mt-1">Ubah judul, paragraf utama, paragraf tambahan, dan gambar pendukung bagian ini.</p>
         </div>
@@ -242,9 +242,9 @@
 
                 <div class="space-y-4">
                     <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Gambar Pendukung</label>
-                    @if(isset($tentangPradana) && $tentangPradana->url_gambar)
+                    @if(optional($tentangPradana)->url_gambar)
                         <div class="rounded-xl overflow-hidden border border-slate-800 h-48 bg-slate-950">
-                            <img src="{{ $tentangPradana->url_gambar }}" alt="Tentang Pradana" class="w-full h-full object-cover">
+                            <img src="{{ optional($tentangPradana)->url_gambar }}" alt="Tentang Pradana" class="w-full h-full object-cover">
                         </div>
                     @endif
                     <input type="file" name="gambar" class="w-full text-xs text-slate-400 bg-slate-950 border border-slate-800 rounded-xl p-3">
@@ -259,12 +259,12 @@
         </form>
     </div>
 
-    <!-- 5. TEKNOLOGI TERINTEGRASI PANEL -->
+    <!-- TEKNOLOGI TERINTEGRASI PANEL -->
     <div x-show="activeTab === 'teknologi'" class="space-y-6">
         <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
             <div>
                 <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                    <span class="w-3 h-3 rounded-full bg-purple-400"></span> 5. Header Teknologi Terintegrasi
+                    <span class="w-3 h-3 rounded-full bg-purple-400"></span> Header Teknologi Terintegrasi
                 </h2>
                 <p class="text-xs text-slate-400 mt-1">Edit judul utama section teknologi terintegrasi.</p>
             </div>
@@ -318,12 +318,12 @@
         </div>
     </div>
 
-    <!-- 6. KEUNGGULAN APC+ PANEL -->
+    <!-- KEUNGGULAN APC+ PANEL -->
     <div x-show="activeTab === 'keunggulan'" class="space-y-6">
         <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
             <div>
                 <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                    <span class="w-3 h-3 rounded-full bg-amber-400"></span> 6. Header Section Keunggulan APC+
+                    <span class="w-3 h-3 rounded-full bg-amber-400"></span> Header Section Keunggulan APC+
                 </h2>
                 <p class="text-xs text-slate-400 mt-1">Edit headline utama section keunggulan dan upload foto industri pendukung.</p>
             </div>
@@ -343,9 +343,9 @@
                     </div>
                     <div class="space-y-4">
                         <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Foto Samping Keunggulan</label>
-                        @if(isset($keunggulanHeader) && $keunggulanHeader->url_gambar)
+                        @if(optional($keunggulanHeader)->url_gambar)
                             <div class="rounded-xl overflow-hidden border border-slate-800 h-36 bg-slate-950">
-                                <img src="{{ $keunggulanHeader->url_gambar }}" alt="Keunggulan Banner" class="w-full h-full object-cover">
+                                <img src="{{ optional($keunggulanHeader)->url_gambar }}" alt="Keunggulan Banner" class="w-full h-full object-cover">
                             </div>
                         @endif
                         <input type="file" name="gambar" class="w-full text-xs text-slate-400 bg-slate-950 border border-slate-800 rounded-xl p-2.5">
@@ -399,12 +399,12 @@
         </div>
     </div>
 
-    <!-- 7. ENERGI BERKELANJUTAN PANEL -->
+    <!-- ENERGI BERKELANJUTAN PANEL -->
     <div x-show="activeTab === 'energi'" class="space-y-6">
         <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
             <div>
                 <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                    <span class="w-3 h-3 rounded-full bg-teal-400"></span> 7. Header Energi Berkelanjutan
+                    <span class="w-3 h-3 rounded-full bg-teal-400"></span> Header Energi Berkelanjutan
                 </h2>
                 <p class="text-xs text-slate-400 mt-1">Ubah headline section energi berkelanjutan dan dekarbonisasi.</p>
             </div>
@@ -458,12 +458,12 @@
         </div>
     </div>
 
-    <!-- 8. MENGAPA PILIH PRADANA PANEL -->
+    <!-- MENGAPA PILIH PRADANA PANEL -->
     <div x-show="activeTab === 'mengapa'" class="space-y-6">
         <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
             <div>
                 <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                    <span class="w-3 h-3 rounded-full bg-indigo-400"></span> 8. Header Section Mengapa Pilih Pradana
+                    <span class="w-3 h-3 rounded-full bg-indigo-400"></span> Header Section Mengapa Pilih Pradana
                 </h2>
                 <p class="text-xs text-slate-400 mt-1">Ubah headline section dan upload 2 foto pendukung.</p>
             </div>
@@ -535,12 +535,12 @@
         </div>
     </div>
 
-    <!-- 10. GALERI MEDIA PANEL -->
+    <!-- GALERI MEDIA PANEL -->
     <div x-show="activeTab === 'galeri'" class="space-y-6">
         <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xl">
             <div>
                 <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                    <span class="w-3 h-3 rounded-full bg-sky-400"></span> 10. Upload & Kelola Galeri Media
+                    <span class="w-3 h-3 rounded-full bg-sky-400"></span> Upload & Kelola Galeri Media
                 </h2>
                 <p class="text-xs text-slate-400 mt-1">Upload foto fasilitas/operasional baru, atur keterangan, dan hapus foto.</p>
             </div>
@@ -554,7 +554,7 @@
             @forelse($galeri as $item)
                 <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group shadow-lg">
                     <div class="h-48 bg-slate-950 relative overflow-hidden">
-                        <img src="{{ $item->url_gambar }}" alt="{{ $item->judul }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                        <img src="{{ optional($item)->url_gambar }}" alt="{{ $item->judul }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                     </div>
                     <div class="p-4 flex items-center justify-between border-t border-slate-800">
                         <div>
@@ -583,12 +583,12 @@
         </div>
     </div>
 
-    <!-- 11. LOGO MANAGEMENT PANEL -->
+    <!-- LOGO MANAGEMENT PANEL -->
     <div x-show="activeTab === 'logo'" class="space-y-6">
         <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xl">
             <div>
                 <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                    <span class="w-3 h-3 rounded-full bg-violet-400"></span> 11. Manajemen Logo
+                    <span class="w-3 h-3 rounded-full bg-violet-400"></span> Manajemen Logo
                 </h2>
                 <p class="text-xs text-slate-400 mt-1">Upload logo perusahaan, atur URL logo, dan kelola tampilan logo.</p>
             </div>
@@ -602,8 +602,8 @@
             @forelse($logos as $item)
                 <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden group shadow-lg">
                     <div class="h-48 bg-slate-950 relative overflow-hidden flex items-center justify-center p-4">
-                        @if($item->url_gambar)
-                            <img src="{{ asset('/storage_public/' . $item->url_gambar) }}" alt="{{ $item->nama }}" title="{{ $item->nama }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
+                        @if(optional($item)->url_gambar)
+                            <img src="{{ asset('/storage_public/' . optional($item)->url_gambar) }}" alt="{{ $item->nama }}" title="{{ $item->nama }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
                         @elseif($item->logo_url)
                             <img src="{{ $item->logo_url }}" alt="{{ $item->nama }}" title="{{ $item->nama }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
                         @else
@@ -956,3 +956,5 @@
     }
 </script>
 @endsection
+
+

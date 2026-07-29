@@ -31,9 +31,7 @@
         </div>
 
         @if(session('success'))
-            <div class="bg-green-500/10 border border-green-500/30 text-green-400 px-4 py-3 rounded-lg mb-6 text-sm">
-                {{ session('success') }}
-            </div>
+            <x-admin.alert type="success" title="Berhasil" message="{{ session('success') }}" class="mb-6" />
         @endif
 
         @if($profilPerusahaan)
@@ -53,8 +51,8 @@
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Gambar</label>
-                        @if($profilPerusahaan->url_gambar)
-                            <img src="{{ asset('/storage_public/' . $profilPerusahaan->url_gambar) }}" alt="Gambar" class="w-32 h-32 object-cover rounded-lg border border-slate-700">
+                        @if(optional($profilPerusahaan)->url_gambar)
+                            <img src="{{ asset('/storage_public/' . optional($profilPerusahaan)->url_gambar) }}" alt="Gambar" class="w-32 h-32 object-cover rounded-lg border border-slate-700">
                         @else
                             <div class="text-sm text-slate-500">Tidak ada gambar</div>
                         @endif
@@ -94,3 +92,4 @@
     </div>
 </div>
 @endsection
+

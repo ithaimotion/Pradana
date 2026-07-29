@@ -31,9 +31,7 @@
         </div>
 
         @if(session('success'))
-            <div class="bg-green-500/10 border border-green-500/30 text-green-400 px-4 py-3 rounded-lg mb-6 text-sm">
-                {{ session('success') }}
-            </div>
+            <x-admin.alert type="success" title="Berhasil" message="{{ session('success') }}" class="mb-6" />
         @endif
 
         @if($legalitas)

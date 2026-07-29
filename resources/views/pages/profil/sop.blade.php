@@ -18,9 +18,9 @@
             <p class="text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
                 {{ $konten->subjudul ?? 'Seluruh SOP PT Pradana Nusa Energi disusun mengacu pada SNI ISO/IEC 17020:2012 dan peraturan ketenagalistrikan yang berlaku.' }}
             </p>
-            @if(isset($konten) && $konten->url_dokumen)
+            @if(optional($konten)->url_dokumen)
                 <div class="mt-6">
-                    <a href="{{ $konten->url_dokumen }}" target="_blank" class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
+                    <a href="{{ optional($konten)->url_dokumen }}" target="_blank" class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                         <span>Unduh Dokumen Manual SOP Resmi (PDF)</span>
                     </a>
@@ -65,19 +65,19 @@
                     </button>
                     <button onclick="filterSOP('mutu')" id="btn-mutu"
                         class="sop-filter-btn px-4 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:border-blue-700 hover:text-blue-700 transition-all">
-                        📋 Mutu & Manajemen
+                        ?? Mutu & Manajemen
                     </button>
                     <button onclick="filterSOP('inspeksi')" id="btn-inspeksi"
                         class="sop-filter-btn px-4 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:border-orange-500 hover:text-orange-500 transition-all">
-                        🔌 Inspeksi Teknik
+                        ?? Inspeksi Teknik
                     </button>
                     <button onclick="filterSOP('pelayanan')" id="btn-pelayanan"
                         class="sop-filter-btn px-4 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:border-teal-600 hover:text-teal-600 transition-all">
-                        🤝 Pelayanan
+                        ?? Pelayanan
                     </button>
                     <button onclick="filterSOP('sdm')" id="btn-sdm"
                         class="sop-filter-btn px-4 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:border-purple-600 hover:text-purple-600 transition-all">
-                        👥 SDM & Sarana
+                        ?? SDM & Sarana
                     </button>
                 </div>
                 <!-- Search -->
@@ -103,7 +103,7 @@
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
                                 <!-- Icon -->
                                 <div class="w-12 h-12 bg-blue-50 text-blue-900 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    📋
+                                    ??
                                 </div>
                                 <!-- Info -->
                                 <div class="flex-1">
@@ -116,7 +116,7 @@
                                 </div>
                                 <!-- Meta & Action -->
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Jan 2026 · Rev.05</span>
+                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Jan 2026 � Rev.05</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-blue-900 hover:bg-blue-800 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -136,7 +136,7 @@
                             <div class="w-2 bg-orange-500 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
                                 <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    🔌
+                                    ??
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -147,7 +147,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Prosedur inspeksi dan pengujian instalasi Pembangkit Listrik Tenaga Surya untuk penerbitan SLO.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Feb 2026 · Rev.03</span>
+                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Feb 2026 � Rev.03</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -166,7 +166,7 @@
                             <div class="w-2 bg-orange-500 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
                                 <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    ⚡
+                                    ?
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -177,7 +177,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Prosedur pemeriksaan Saluran Udara Tegangan Menengah (SUTM) sesuai standar PLN & PUIL.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Jan 2026 · Rev.04</span>
+                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Jan 2026 � Rev.04</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -196,7 +196,7 @@
                             <div class="w-2 bg-orange-500 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
                                 <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    🔋
+                                    ??
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -207,7 +207,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Prosedur pemeriksaan Saluran Kabel Tegangan Menengah (SKTM) bawah tanah dan kabel laut.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Mar 2026 · Rev.02</span>
+                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Mar 2026 � Rev.02</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -226,7 +226,7 @@
                             <div class="w-2 bg-orange-500 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
                                 <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    🏗️
+                                    ???
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -237,7 +237,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Prosedur inspeksi gardu distribusi tipe pasangan luar (outdoor) sesuai standar PLN P.85.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Feb 2026 · Rev.03</span>
+                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Feb 2026 � Rev.03</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -256,7 +256,7 @@
                             <div class="w-2 bg-orange-500 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
                                 <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    🏢
+                                    ??
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -267,7 +267,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Prosedur inspeksi gardu distribusi tipe pasangan dalam (indoor) untuk kawasan industri & gedung.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Feb 2026 · Rev.03</span>
+                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Feb 2026 � Rev.03</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -287,7 +287,7 @@
                             <div class="w-2 bg-teal-600 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
                                 <div class="w-12 h-12 bg-teal-50 text-teal-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    📜
+                                    ??
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -298,7 +298,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Alur proses pengajuan, pemeriksaan, hingga penerbitan Sertifikat Laik Operasi tegangan menengah.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Apr 2026 · Rev.06</span>
+                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Apr 2026 � Rev.06</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -317,7 +317,7 @@
                             <div class="w-2 bg-teal-600 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
                                 <div class="w-12 h-12 bg-teal-50 text-teal-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    🤝
+                                    ??
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -328,7 +328,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Standar layanan kepada pemohon SLO mencakup waktu respons, etika komunikasi, dan penanganan permintaan.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Jan 2026 · Rev.04</span>
+                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Jan 2026 � Rev.04</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -347,7 +347,7 @@
                             <div class="w-2 bg-teal-600 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
                                 <div class="w-12 h-12 bg-teal-50 text-teal-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    🏛️
+                                    ???
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -358,7 +358,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Prosedur pengelolaan dan pemeliharaan fasilitas, ruang kerja, dan sarana pendukung operasional.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Mar 2026 · Rev.02</span>
+                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Mar 2026 � Rev.02</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -377,7 +377,7 @@
                             <div class="w-2 bg-teal-600 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
                                 <div class="w-12 h-12 bg-teal-50 text-teal-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    📨
+                                    ??
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -388,7 +388,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Mekanisme penerimaan, penanganan, dan tindak lanjut atas keluhan dan banding dari pemohon atau pelanggan.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Jan 2026 · Rev.03</span>
+                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Jan 2026 � Rev.03</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -408,7 +408,7 @@
                             <div class="w-2 bg-purple-600 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
                                 <div class="w-12 h-12 bg-purple-50 text-purple-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    🔧
+                                    ??
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -419,7 +419,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Prosedur kalibrasi berkala seluruh instrumen ukur dan uji untuk menjamin akurasi dan ketertelusuran hasil.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Apr 2026 · Rev.04</span>
+                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Apr 2026 � Rev.04</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -438,7 +438,7 @@
                             <div class="w-2 bg-purple-600 flex-shrink-0 rounded-l-2xl"></div>
                             <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
                                 <div class="w-12 h-12 bg-purple-50 text-purple-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    👥
+                                    ??
                                 </div>
                                 <div class="flex-1">
                                     <div class="flex flex-wrap items-center gap-2 mb-1">
@@ -449,7 +449,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Prosedur rekrutmen, pelatihan, evaluasi kompetensi, dan pengembangan tenaga teknik perusahaan.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Feb 2026 · Rev.03</span>
+                                    <span class="text-xs text-slate-400 whitespace-nowrap">Revisi: Feb 2026 � Rev.03</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -464,7 +464,7 @@
 
                 <!-- Empty state -->
                 <div id="sop-empty" class="hidden text-center py-20">
-                    <div class="text-5xl mb-4">🔍</div>
+                    <div class="text-5xl mb-4">??</div>
                     <h3 class="font-bold text-slate-700 mb-1">Dokumen tidak ditemukan</h3>
                     <p class="text-sm text-slate-400">Coba kata kunci lain atau pilih kategori yang berbeda.</p>
                 </div>
@@ -479,7 +479,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="bg-gradient-to-r from-blue-900 to-slate-900 rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 text-white">
                 <div class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg text-3xl">
-                    📩
+                    ??
                 </div>
                 <div class="flex-1 text-center md:text-left">
                     <h3 class="text-xl font-extrabold mb-2">Butuh Dokumen SOP Spesifik?</h3>
@@ -546,3 +546,5 @@
         }
     </script>
 @endsection
+
+

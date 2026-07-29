@@ -83,8 +83,8 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="text-white text-sm font-semibold">{{ $regulasi->nomor }}</div>
-                                @if($regulasi->url_dokumen)
-                                    <a href="{{ $regulasi->url_dokumen }}" target="_blank" class="text-blue-400 text-xs hover:underline mt-1 inline-block">
+                                @if(optional($regulasi)->url_dokumen)
+                                    <a href="{{ optional($regulasi)->url_dokumen }}" target="_blank" class="text-blue-400 text-xs hover:underline mt-1 inline-block">
                                         <svg class="w-3 h-3 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                                         </svg>
@@ -158,3 +158,4 @@
     </div>
 </div>
 @endsection
+

@@ -26,9 +26,9 @@
             <div class="space-y-4">
                 <label class="block text-sm font-semibold text-slate-300 mb-2">Gambar Uji Petik</label>
                 
-                @if(isset($ujiPetik) && $ujiPetik->url_gambar)
+                @if(optional($ujiPetik)->url_gambar)
                     <div class="relative rounded-xl overflow-hidden border border-slate-700 bg-slate-900">
-                        <img src="{{ $ujiPetik->url_gambar }}" alt="Uji Petik" class="w-full max-h-96 object-contain mx-auto">
+                        <img src="{{ optional($ujiPetik)->url_gambar }}" alt="Uji Petik" class="w-full max-h-96 object-contain mx-auto">
                         <div class="absolute bottom-2 left-2 bg-slate-900/80 backdrop-blur border border-slate-700 text-slate-200 text-xs px-2.5 py-1 rounded-lg">Gambar Saat Ini</div>
                     </div>
                 @endif
@@ -55,3 +55,4 @@
     </div>
 </div>
 @endsection
+

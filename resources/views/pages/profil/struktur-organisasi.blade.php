@@ -27,16 +27,16 @@
             @if(isset($konten->konten) && !empty($konten->konten))
                 <div class="bg-blue-900/5 border border-blue-900/15 rounded-2xl p-6 mb-12 text-slate-700 text-sm leading-relaxed shadow-sm">
                     <h3 class="font-bold text-base text-blue-950 mb-2 flex items-center gap-2">
-                        <span>🏛️</span> Manajemen & Tata Kelola Perusahaan:
+                        <span>???</span> Manajemen & Tata Kelola Perusahaan:
                     </h3>
                     <p>{!! nl2br(e($konten->konten)) !!}</p>
                 </div>
             @endif
 
-            @if(isset($konten) && $konten->url_gambar)
+            @if(optional($konten)->url_gambar)
                 <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xl mb-16 text-center">
                     <h3 class="text-lg font-bold text-slate-900 mb-4">Diagram Bagan Struktur Organisasi Resmi</h3>
-                    <img src="{{ $konten->url_gambar }}" alt="Bagan Struktur Organisasi PT Pradana Nusa Energi" class="max-w-full h-auto mx-auto rounded-xl shadow-md border border-slate-100">
+                    <img src="{{ optional($konten)->url_gambar }}" alt="Bagan Struktur Organisasi PT Pradana Nusa Energi" class="max-w-full h-auto mx-auto rounded-xl shadow-md border border-slate-100">
                 </div>
             @endif
 
@@ -126,7 +126,7 @@
                             @foreach($items as $index => $item)
                                 <div class="bg-white border border-slate-200 rounded-xl shadow-md px-5 py-5 text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                                     <div class="w-10 h-10 bg-sky-100 text-sky-700 rounded-lg flex items-center justify-center mx-auto mb-3 font-bold text-lg">
-                                        🔎
+                                        ??
                                     </div>
                                     <div class="text-[11px] font-semibold uppercase tracking-widest text-sky-700 mb-1">{{ $item->jabatan }}</div>
                                     <div class="text-sm font-bold text-slate-900 mb-0.5">{{ $item->nama }}</div>
@@ -170,3 +170,5 @@
 
     <x-footer />
 @endsection
+
+

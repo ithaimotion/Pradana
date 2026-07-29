@@ -4,7 +4,7 @@
     $title = $kontak->judul ?? 'HUBUNGI KAMI';
     $subtitle = $kontak->subjudul ?? 'Bermitra dengan Pradana Nusa Energi untuk memastikan keselamatan dan keandalan instalasi ketenagalistrikan Anda.';
     $cta = $kontak->konten ?? 'Hubungi Kami';
-    $image = $kontak->url_gambar ?? 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80';
+    $image = optional($kontak)->url_gambar ?? 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80';
 @endphp
 
 <div x-show="activeTab === 'kontak'" class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl" x-cloak>
@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            @if(isset($kontak) && $kontak->url_gambar)
+            @if(optional($kontak)->url_gambar)
                 <div class="rounded-2xl border border-slate-800 bg-slate-950/70 p-4 text-xs text-slate-400">
                     <p class="font-semibold text-slate-300 mb-1">Gambar saat ini</p>
                     <p>Preview akan menampilkan background yang sama seperti landing page publik.</p>
@@ -72,3 +72,4 @@
         </div>
     </div>
 </div>
+

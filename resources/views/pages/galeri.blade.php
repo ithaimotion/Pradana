@@ -59,7 +59,7 @@
                     @endphp
                     <!-- Item -->
                     <div class="gallery-item group relative overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer reveal-on-scroll {{ $delay > 0 ? 'delay-'.$delay : '' }}" data-category="{{ $category }}" onclick="openLightbox(this)">
-                        <img src="{{ $item->url_gambar ?? 'https://placehold.co/600x400/e2e8f0/475569?text=Gallery' }}" alt="{{ $item->judul }}" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <img src="{{ optional($item)->url_gambar ?? 'https://placehold.co/600x400/e2e8f0/475569?text=Gallery' }}" alt="{{ $item->judul }}" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                             <span class="{{ $badgeColor }} text-white text-xs font-bold px-2.5 py-1 rounded w-max mb-2">{{ $label }}</span>
                             <h3 class="text-white font-bold text-lg leading-tight">{{ $item->judul }}</h3>
@@ -205,3 +205,4 @@
         });
     </script>
 @endsection
+

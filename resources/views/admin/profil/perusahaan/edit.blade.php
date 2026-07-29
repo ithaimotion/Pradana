@@ -60,9 +60,9 @@
                     </div>
                     <div class="space-y-3">
                         <label class="block text-xs font-semibold text-slate-300 mb-1">Foto Kantor / Gedung Perusahaan</label>
-                        @if($profilPerusahaan->url_gambar)
+                        @if(optional($profilPerusahaan)->url_gambar)
                             <div class="rounded-xl overflow-hidden border border-slate-800 h-36 bg-slate-950 relative mb-3">
-                                <img src="{{ asset('/storage_public/' . $profilPerusahaan->url_gambar) }}" alt="Foto Perusahaan" class="w-full h-full object-cover">
+                                <img src="{{ asset('/storage_public/' . optional($profilPerusahaan)->url_gambar) }}" alt="Foto Perusahaan" class="w-full h-full object-cover">
                                 <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur text-[10px] text-slate-200 px-2 py-0.5 rounded border border-slate-800">Foto Saat Ini</div>
                             </div>
                         @endif
@@ -200,3 +200,4 @@
     </div>
 </div>
 @endsection
+

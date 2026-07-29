@@ -73,9 +73,9 @@
 
                 <!-- Right Content - Image -->
                 <div class="relative">
-                    @if(isset($ujiPetik) && $ujiPetik->url_gambar)
+                    @if(optional($ujiPetik)->url_gambar)
                         <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-4 overflow-hidden">
-                            <img src="{{ $ujiPetik->url_gambar }}" alt="Uji Petik" class="w-full h-auto rounded-2xl">
+                            <img src="{{ optional($ujiPetik)->url_gambar }}" alt="Uji Petik" class="w-full h-auto rounded-2xl">
                         </div>
                     @else
                         <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-12 flex items-center justify-center min-h-[400px]">
@@ -89,3 +89,5 @@
 
     <x-footer />
 @endsection
+
+

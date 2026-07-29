@@ -18,9 +18,9 @@
             <p class="text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
                 {{ $konten->subjudul ?? 'Seluruh peralatan ukur dan uji yang digunakan PT Pradana Nusa Energi dalam proses inspeksi instalasi listrik dan penerbitan SLO telah terstandar dan terkalibrasi.' }}
             </p>
-            @if(isset($konten) && $konten->url_dokumen)
+            @if(optional($konten)->url_dokumen)
                 <div class="mt-6">
-                    <a href="{{ $konten->url_dokumen }}" target="_blank" class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
+                    <a href="{{ optional($konten)->url_dokumen }}" target="_blank" class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                         <span>Unduh Dokumen Kalibrasi Peralatan (PDF)</span>
                     </a>
@@ -68,13 +68,13 @@
 
                 <!-- Card 1: Earth Resistance Tester -->
                 <div class="alat-card" data-kategori="uji"
-                     onclick="bukaPopup('Earth Resistance Tester', '/images/peralatan/earth-tester.png', 'Mengukur nilai resistansi pembumian (grounding) instalasi listrik. Digunakan untuk memastikan sistem proteksi petir dan grounding bekerja optimal sesuai PUIL 2011.', 'Digital Earth Resistance Tester', 'Megger DET14C', ['Rentang: 0.01Ω – 20kΩ', 'Tegangan uji: 25V & 50V', 'IP54 – Tahan debu & cipratan air', 'Kalibrasi: Januari 2026'])">
+                     onclick="bukaPopup('Earth Resistance Tester', '/images/peralatan/earth-tester.png', 'Mengukur nilai resistansi pembumian (grounding) instalasi listrik. Digunakan untuk memastikan sistem proteksi petir dan grounding bekerja optimal sesuai PUIL 2011.', 'Digital Earth Resistance Tester', 'Megger DET14C', ['Rentang: 0.01O � 20kO', 'Tegangan uji: 25V & 50V', 'IP54 � Tahan debu & cipratan air', 'Kalibrasi: Januari 2026'])">
                     <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
                         <div class="relative h-52 bg-gradient-to-br from-slate-50 to-slate-100 overflow-hidden flex items-center justify-center p-6">
                             <img src="/images/peralatan/earth-tester.png" alt="Earth Resistance Tester" class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500">
                             <span class="absolute top-3 left-3 bg-blue-900 text-white text-xs font-bold px-2.5 py-1 rounded-full">Alat Uji</span>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
-                                <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">🔍 Klik untuk detail</span>
+                                <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">?? Klik untuk detail</span>
                             </div>
                         </div>
                         <div class="p-5">
@@ -82,7 +82,7 @@
                             <p class="text-xs text-slate-500 mb-3 leading-relaxed">Mengukur resistansi pembumian / grounding instalasi listrik untuk keamanan sistem.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-medium text-slate-400">Model: Megger DET14C</span>
-                                <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full">✓ Terkalibrasi</span>
+                                <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full">? Terkalibrasi</span>
                             </div>
                         </div>
                     </div>
@@ -90,13 +90,13 @@
 
                 <!-- Card 2: Insulation Resistance Tester -->
                 <div class="alat-card" data-kategori="uji"
-                     onclick="bukaPopup('Insulation Resistance Tester', '/images/peralatan/insulation-tester.png', 'Mengukur nilai tahanan isolasi kabel, peralatan listrik, dan motor. Memastikan isolasi tidak bocor dan aman dari risiko hubung singkat atau kebakaran.', 'Megohmmeter / Insulation Tester', 'Model IRT-500', ['Tegangan uji: 250V / 500V / 1000V / 2500V', 'Rentang: 0.1MΩ – 2000MΩ', 'Fungsi DAR & PI test', 'Kalibrasi: Februari 2026'])">
+                     onclick="bukaPopup('Insulation Resistance Tester', '/images/peralatan/insulation-tester.png', 'Mengukur nilai tahanan isolasi kabel, peralatan listrik, dan motor. Memastikan isolasi tidak bocor dan aman dari risiko hubung singkat atau kebakaran.', 'Megohmmeter / Insulation Tester', 'Model IRT-500', ['Tegangan uji: 250V / 500V / 1000V / 2500V', 'Rentang: 0.1MO � 2000MO', 'Fungsi DAR & PI test', 'Kalibrasi: Februari 2026'])">
                     <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
                         <div class="relative h-52 bg-gradient-to-br from-red-50 to-slate-100 overflow-hidden flex items-center justify-center p-6">
                             <img src="/images/peralatan/insulation-tester.png" alt="Insulation Resistance Tester" class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500">
                             <span class="absolute top-3 left-3 bg-blue-900 text-white text-xs font-bold px-2.5 py-1 rounded-full">Alat Uji</span>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
-                                <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">🔍 Klik untuk detail</span>
+                                <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">?? Klik untuk detail</span>
                             </div>
                         </div>
                         <div class="p-5">
@@ -104,7 +104,7 @@
                             <p class="text-xs text-slate-500 mb-3 leading-relaxed">Mengukur tahanan isolasi kabel & peralatan listrik untuk mencegah kebocoran arus.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-medium text-slate-400">Model: IRT-500</span>
-                                <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full">✓ Terkalibrasi</span>
+                                <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full">? Terkalibrasi</span>
                             </div>
                         </div>
                     </div>
@@ -112,13 +112,13 @@
 
                 <!-- Card 3: Clamp Meter -->
                 <div class="alat-card" data-kategori="ukur"
-                     onclick="bukaPopup('Clamp Meter / Tang Ampere', '/images/peralatan/clamp-meter.png', 'Mengukur arus listrik AC/DC tanpa memutus rangkaian. Sangat berguna untuk pengukuran beban listrik pada panel distribusi, kabel, dan peralatan yang sedang beroperasi.', 'Digital Clamp Meter True RMS', 'Voltech VT-760 Pro', ['Rentang arus: 0 – 1000A AC/DC', 'Rentang tegangan: 0 – 1000V AC/DC', 'Fitur NCV & data hold', 'Kalibrasi: Maret 2026'])">
+                     onclick="bukaPopup('Clamp Meter / Tang Ampere', '/images/peralatan/clamp-meter.png', 'Mengukur arus listrik AC/DC tanpa memutus rangkaian. Sangat berguna untuk pengukuran beban listrik pada panel distribusi, kabel, dan peralatan yang sedang beroperasi.', 'Digital Clamp Meter True RMS', 'Voltech VT-760 Pro', ['Rentang arus: 0 � 1000A AC/DC', 'Rentang tegangan: 0 � 1000V AC/DC', 'Fitur NCV & data hold', 'Kalibrasi: Maret 2026'])">
                     <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
                         <div class="relative h-52 bg-gradient-to-br from-amber-50 to-slate-100 overflow-hidden flex items-center justify-center p-6">
                             <img src="/images/peralatan/clamp-meter.png" alt="Clamp Meter" class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500">
                             <span class="absolute top-3 left-3 bg-amber-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">Alat Ukur</span>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
-                                <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">🔍 Klik untuk detail</span>
+                                <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">?? Klik untuk detail</span>
                             </div>
                         </div>
                         <div class="p-5">
@@ -126,7 +126,7 @@
                             <p class="text-xs text-slate-500 mb-3 leading-relaxed">Mengukur arus AC/DC tanpa memutus rangkaian pada panel & beban listrik.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-medium text-slate-400">Model: VT-760 Pro</span>
-                                <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full">✓ Terkalibrasi</span>
+                                <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full">? Terkalibrasi</span>
                             </div>
                         </div>
                     </div>
@@ -140,7 +140,7 @@
                             <img src="/images/peralatan/power-quality-analyzer.png" alt="Power Quality Analyzer" class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500">
                             <span class="absolute top-3 left-3 bg-amber-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">Alat Ukur</span>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
-                                <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">🔍 Klik untuk detail</span>
+                                <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">?? Klik untuk detail</span>
                             </div>
                         </div>
                         <div class="p-5">
@@ -148,7 +148,7 @@
                             <p class="text-xs text-slate-500 mb-3 leading-relaxed">Menganalisis kualitas daya listrik: harmonisa, tegangan, faktor daya & transien.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-medium text-slate-400">Model: Fluke 1777-B</span>
-                                <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full">✓ Terkalibrasi</span>
+                                <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full">? Terkalibrasi</span>
                             </div>
                         </div>
                     </div>
@@ -156,13 +156,13 @@
 
                 <!-- Card 5: Thermal Camera -->
                 <div class="alat-card" data-kategori="uji"
-                     onclick="bukaPopup('Thermal Imaging Camera', '/images/peralatan/thermal-camera.png', 'Kamera termal infrared untuk mendeteksi titik panas (hot spot) pada panel listrik, kabel, dan sambungan tanpa kontak langsung. Sangat efektif untuk inspeksi preventif dan deteksi dini potensi kebakaran.', 'Infrared Thermal Camera', 'FLIR E75', ['Resolusi IR: 320×240 piksel', 'Rentang suhu: -20°C s/d 650°C', 'Akurasi: ±2°C atau ±2%', 'Kalibrasi: April 2026'])">
+                     onclick="bukaPopup('Thermal Imaging Camera', '/images/peralatan/thermal-camera.png', 'Kamera termal infrared untuk mendeteksi titik panas (hot spot) pada panel listrik, kabel, dan sambungan tanpa kontak langsung. Sangat efektif untuk inspeksi preventif dan deteksi dini potensi kebakaran.', 'Infrared Thermal Camera', 'FLIR E75', ['Resolusi IR: 320�240 piksel', 'Rentang suhu: -20�C s/d 650�C', 'Akurasi: �2�C atau �2%', 'Kalibrasi: April 2026'])">
                     <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
                         <div class="relative h-52 bg-gradient-to-br from-orange-50 to-slate-100 overflow-hidden flex items-center justify-center p-6">
                             <img src="/images/peralatan/thermal-camera.png" alt="Thermal Camera" class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500">
                             <span class="absolute top-3 left-3 bg-blue-900 text-white text-xs font-bold px-2.5 py-1 rounded-full">Alat Uji</span>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
-                                <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">🔍 Klik untuk detail</span>
+                                <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">?? Klik untuk detail</span>
                             </div>
                         </div>
                         <div class="p-5">
@@ -170,7 +170,7 @@
                             <p class="text-xs text-slate-500 mb-3 leading-relaxed">Mendeteksi titik panas (hot spot) pada panel listrik & instalasi tanpa kontak langsung.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-medium text-slate-400">Model: FLIR E75</span>
-                                <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full">✓ Terkalibrasi</span>
+                                <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full">? Terkalibrasi</span>
                             </div>
                         </div>
                     </div>
@@ -178,13 +178,13 @@
 
                 <!-- Card 6: Digital Multimeter -->
                 <div class="alat-card" data-kategori="ukur"
-                     onclick="bukaPopup('Digital Multimeter', '/images/peralatan/multimeter.png', 'Alat ukur serbaguna untuk mengukur tegangan, arus, dan hambatan listrik. Digunakan pada seluruh tahapan inspeksi instalasi pemanfaatan tenaga listrik tegangan rendah.', 'Digital Multimeter True RMS', 'Fluke 87V', ['Tegangan AC/DC: 0 – 1000V', 'Arus: 0 – 10A', 'Hambatan: 0 – 50MΩ', 'Kalibrasi: Maret 2026'])">
+                     onclick="bukaPopup('Digital Multimeter', '/images/peralatan/multimeter.png', 'Alat ukur serbaguna untuk mengukur tegangan, arus, dan hambatan listrik. Digunakan pada seluruh tahapan inspeksi instalasi pemanfaatan tenaga listrik tegangan rendah.', 'Digital Multimeter True RMS', 'Fluke 87V', ['Tegangan AC/DC: 0 � 1000V', 'Arus: 0 � 10A', 'Hambatan: 0 � 50MO', 'Kalibrasi: Maret 2026'])">
                     <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
                         <div class="relative h-52 bg-gradient-to-br from-red-50 to-slate-100 overflow-hidden flex items-center justify-center p-6">
                             <img src="/images/peralatan/multimeter.png" alt="Digital Multimeter" class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500">
                             <span class="absolute top-3 left-3 bg-amber-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">Alat Ukur</span>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
-                                <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">🔍 Klik untuk detail</span>
+                                <span class="text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">?? Klik untuk detail</span>
                             </div>
                         </div>
                         <div class="p-5">
@@ -192,7 +192,7 @@
                             <p class="text-xs text-slate-500 mb-3 leading-relaxed">Mengukur tegangan, arus, dan hambatan pada seluruh tahapan inspeksi instalasi listrik.</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-medium text-slate-400">Model: Fluke 87V</span>
-                                <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full">✓ Terkalibrasi</span>
+                                <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full">? Terkalibrasi</span>
                             </div>
                         </div>
                     </div>
@@ -347,3 +347,5 @@
         });
     </script>
 @endsection
+
+

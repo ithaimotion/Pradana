@@ -21,6 +21,9 @@ use App\Http\Controllers\Admin\Profil\SopController;
 use App\Http\Controllers\Admin\Slo\RegulasiController as AdminSloRegulasiController;
 use App\Http\Controllers\Admin\Slo\KategoriLayananController;
 use App\Http\Controllers\Admin\LowonganKerjaController;
+use App\Http\Controllers\Admin\FooterLinkController;
+use App\Http\Controllers\Admin\FooterLegalController;
+use App\Http\Controllers\FooterLegalPageController;
 use App\Http\Controllers\LogoController;
 use App\Http\Controllers\SloPageController;
 use App\Http\Controllers\InformasiPublikPageController;
@@ -121,6 +124,13 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     // Lowongan Kerja CRUD Routes
     Route::resource('lowongan-kerja', LowonganKerjaController::class)->names('lowongan-kerja');
 
+    // Footer Links Admin CRUD Routes
+    Route::resource('footer-links', FooterLinkController::class)->names('footer-links');
+
+    // Footer Legal Admin Routes
+    Route::get('footer-legal', [FooterLegalController::class, 'index'])->name('footer-legal.index');
+    Route::post('footer-legal', [FooterLegalController::class, 'update'])->name('footer-legal.update');
+
     // Informasi Publik - Maklumat Layanan Routes
     Route::get('informasi-publik/maklumat-layanan', [MaklumatLayananController::class, 'index'])->name('informasi-publik.maklumat.index');
     Route::post('informasi-publik/maklumat-layanan', [MaklumatLayananController::class, 'update'])->name('informasi-publik.maklumat.update');
@@ -199,3 +209,7 @@ Route::get('/karir', [BerandaController::class, 'karir'])->name('karir');
 Route::get('/hubungi-kami', function () {
     return view('pages.hubungi-kami');
 })->name('hubungi-kami');
+
+Route::get('/kebijakan-privasi', [FooterLegalPageController::class, 'show'])->name('legal.privacy');
+Route::get('/syarat-dan-ketentuan', [FooterLegalPageController::class, 'show'])->name('legal.terms');
+Route::get('/kebijakan-cookie', [FooterLegalPageController::class, 'show'])->name('legal.cookie');

@@ -5,7 +5,7 @@
     $p1 = $tentang->subjudul ?? 'Pradana Nusa Energi adalah penyedia layanan inspeksi dan pemeriksaan keselamatan ketenagalistrikan terkemuka. Dengan pengalaman dan tim tenaga teknik profesional, kami menghadirkan layanan pemeriksaan teknis independen yang membantu instalasi listrik beroperasi secara aman, andal, dan memenuhi standar Sertifikat Laik Operasi (SLO).';
     $p2 = $tentang->konten ?? 'Solusi kami dibangun di atas integritas tinggi dan kepatuhan penuh terhadap regulasi ketenagalistrikan yang berlaku di Indonesia.';
     $cta = $tentang->nilai ?? 'Learn More';
-    $image = $tentang->url_gambar ?? 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80';
+    $image = optional($tentang)->url_gambar ?? 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80';
 @endphp
 
 <section id="about" class="py-20 bg-white overflow-hidden">
@@ -30,3 +30,4 @@
         </div>
     </div>
 </section>
+

@@ -63,7 +63,7 @@
             <!-- URL Dokumen -->
             <div>
                 <label class="block text-sm font-semibold text-slate-300 mb-2">URL Dokumen (Opsional)</label>
-                <input type="url" name="url_dokumen" value="{{ old('url_dokumen', $regulasi->url_dokumen) }}"
+                <input type="url" name="url_dokumen" value="{{ old('url_dokumen', optional($regulasi)->url_dokumen) }}"
                     class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition"
                     placeholder="https://...">
                 @error('url_dokumen')
@@ -112,3 +112,4 @@
     </div>
 </div>
 @endsection
+

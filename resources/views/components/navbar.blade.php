@@ -12,10 +12,10 @@
                 @foreach($resolvedLogos->take(1) as $logo)
                     @php
                         $logoSrc = null;
-                        if (!empty($logo->url_gambar)) {
-                            $logoSrc = str_starts_with($logo->url_gambar, 'http://') || str_starts_with($logo->url_gambar, 'https://')
-                                ? $logo->url_gambar
-                                : asset('storage/' . ltrim($logo->url_gambar, '/'));
+                        if (!empty(optional($logo)->url_gambar)) {
+                            $logoSrc = str_starts_with(optional($logo)->url_gambar, 'http://') || str_starts_with(optional($logo)->url_gambar, 'https://')
+                                ? optional($logo)->url_gambar
+                                : asset('storage/' . ltrim(optional($logo)->url_gambar, '/'));
                         } elseif (!empty($logo->logo_url)) {
                             $logoSrc = $logo->logo_url;
                         }

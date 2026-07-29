@@ -12,9 +12,7 @@
     </div>
 
     @if(session('success'))
-        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-4 mb-6">
-            <p class="text-emerald-400 text-sm">{{ session('success') }}</p>
-        </div>
+        <x-admin.alert type="success" title="Berhasil" message="{{ session('success') }}" class="mb-6" />
     @endif
 
     <form action="{{ route('admin.informasi-publik.daftar-harga-slo.update') }}" method="POST" enctype="multipart/form-data" class="space-y-6">

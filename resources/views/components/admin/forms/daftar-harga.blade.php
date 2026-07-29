@@ -35,13 +35,13 @@
                 <!-- PDF File Dokumen Daftar Harga Resmi -->
                 <div class="space-y-3 bg-slate-950/50 p-5 rounded-xl border border-slate-800">
                     <label class="block text-xs font-bold text-sky-400 uppercase tracking-wider">Upload Berkas PDF Tabel Daftar Harga / Tarif Resmi</label>
-                    @if(isset($data) && $data->url_dokumen)
+                    @if(optional($data)->url_dokumen)
                         <div class="flex items-center justify-between p-3 bg-slate-950 border border-slate-800 rounded-xl">
                             <div class="flex items-center gap-2 overflow-hidden">
                                 <svg class="w-5 h-5 text-rose-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
                                 <span class="text-xs text-slate-300 truncate">Dokumen PDF Tarif Ter-upload</span>
                             </div>
-                            <a href="{{ $data->url_dokumen }}" target="_blank" class="text-xs font-bold text-sky-400 hover:underline flex-shrink-0">Lihat PDF</a>
+                            <a href="{{ optional($data)->url_dokumen }}" target="_blank" class="text-xs font-bold text-sky-400 hover:underline flex-shrink-0">Lihat PDF</a>
                         </div>
                     @endif
 
@@ -61,3 +61,4 @@
         </div>
     </form>
 </div>
+

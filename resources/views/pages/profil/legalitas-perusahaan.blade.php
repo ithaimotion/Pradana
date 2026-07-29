@@ -18,9 +18,9 @@
             <p class="text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
                 {{ $konten->subjudul ?? 'Seluruh dokumen legalitas, perizinan, dan akreditasi resmi PT Pradana Nusa Energi sebagai Lembaga Inspeksi Teknik terakreditasi.' }}
             </p>
-            @if(isset($konten) && $konten->url_dokumen)
+            @if(optional($konten)->url_dokumen)
                 <div class="mt-6">
-                    <a href="{{ $konten->url_dokumen }}" target="_blank" class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
+                    <a href="{{ optional($konten)->url_dokumen }}" target="_blank" class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                         <span>Unduh File PDF Dokumen Legalitas Resmi</span>
                     </a>
@@ -52,7 +52,7 @@
             @if(isset($konten->konten) && !empty($konten->konten))
                 <div class="bg-blue-900/5 border border-blue-900/15 rounded-2xl p-6 mb-12 text-slate-700 text-sm leading-relaxed shadow-sm">
                     <h3 class="font-bold text-base text-blue-950 mb-2 flex items-center gap-2">
-                        <span>🏛️</span> Rincian Nomor Izin & Masa Berlaku Legalitas:
+                        <span>???</span> Rincian Nomor Izin & Masa Berlaku Legalitas:
                     </h3>
                     <p>{!! nl2br(e($konten->konten)) !!}</p>
                 </div>
@@ -172,3 +172,5 @@
 
     <x-footer />
 @endsection
+
+

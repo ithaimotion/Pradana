@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Admin Console - Pradana Nusa Energi')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @stack('styles')
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -178,18 +179,13 @@
                 <div class="h-px bg-slate-800 my-2"></div>
 
                 {{-- ── GALERI ── --}}
-                <div>
-                    <button @click="openGroups.galeri = !openGroups.galeri"
-                        class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800/40 transition-all">
-                        <div class="flex items-center gap-2.5">
-                            <svg class="w-4 h-4 text-purple-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                            Galeri
-                        </div>
-                        <svg class="w-3 h-3 text-slate-600 transition-transform duration-200" :class="openGroups.galeri ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                <div class="mb-2">
+                    <button @click="switchTab('galeri', 'galeri')"
+                        :class="isActiveTab('galeri', 'galeri') && isAdminRoot() ? 'bg-purple-500/15 text-purple-300 border-purple-500/30 font-bold' : 'text-slate-400 hover:text-white hover:bg-slate-800/60 border-transparent'"
+                        class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border text-xs transition-all font-medium">
+                        <svg class="w-4 h-4 text-purple-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        Galeri
                     </button>
-                    <div x-show="openGroups.galeri" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="mt-0.5 ml-5 pl-3 border-l border-slate-800 space-y-0.5">
-                        <button @click="switchTab('galeri', 'galeri')" :class="isActiveTab('galeri', 'galeri') && isAdminRoot() ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Kelola Galeri & Media</button>
-                    </div>
                 </div>
 
                 {{-- ── LOGO ── --}}
@@ -233,6 +229,13 @@
                         <button @click="switchTab('hubungi-kami', 'kontak')" :class="isActiveTab('hubungi-kami', 'kontak') && isAdminRoot() ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Informasi Hubungi Kami</button>
                         <button @click="switchTab('pesan-masuk', 'kontak')" :class="isActiveTab('pesan-masuk', 'kontak') && isAdminRoot() ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Pesan Masuk</button>
                     </div>
+                </div>
+
+                <div class="mt-2">
+                    <a href="{{ route('admin.footer-legal.index') }}" class="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800/40 transition-all block {{ request()->is('admin/footer-legal*') ? 'text-orange-400 bg-orange-500/10' : '' }}">
+                        <svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7M9 7h10M9 11h6"></path></svg>
+                        Kelola Footer Legal
+                    </a>
                 </div>
 
             </nav>
@@ -319,7 +322,7 @@
 
     </div>
 
-    @yield('scripts')
+    @stack('scripts')
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </body>
 </html>

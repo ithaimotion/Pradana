@@ -4,7 +4,7 @@
     $title = $kontak->judul ?? 'UPGRADE SMELTER PERFORMANCE WITH CONFIDENCE';
     $subtitle = $kontak->subjudul ?? 'Bermitra dengan Pradana Nusa Energi untuk memastikan keselamatan dan keandalan instalasi ketenagalistrikan Anda dengan layanan Sertifikat Laik Operasi (SLO) yang terpercaya.';
     $cta = $kontak->konten ?? 'Get Started Today';
-    $image = $kontak->url_gambar ?? 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80';
+    $image = optional($kontak)->url_gambar ?? 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80';
 @endphp
 
 <section class="relative py-20 bg-blue-900 overflow-hidden">
@@ -24,3 +24,4 @@
         </a>
     </div>
 </section>
+

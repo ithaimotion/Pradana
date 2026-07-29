@@ -35,9 +35,9 @@
                 <!-- Foto Peralatan / Sertifikat Kalibrasi -->
                 <div class="space-y-3 bg-slate-950/50 p-5 rounded-xl border border-slate-800">
                     <label class="block text-xs font-bold text-amber-400 uppercase tracking-wider">Foto Galeri Peralatan & Sertifikat Kalibrasi</label>
-                    @if(isset($data) && $data->url_gambar)
+                    @if(optional($data)->url_gambar)
                         <div class="rounded-xl overflow-hidden border border-slate-800 h-40 bg-slate-950 relative">
-                            <img src="{{ $data->url_gambar }}" alt="Peralatan Uji" class="w-full h-full object-cover">
+                            <img src="{{ optional($data)->url_gambar }}" alt="Peralatan Uji" class="w-full h-full object-cover">
                             <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur text-[10px] text-slate-200 px-2 py-0.5 rounded border border-slate-800">Foto Alat Saat Ini</div>
                         </div>
                     @endif
@@ -51,10 +51,10 @@
                 <!-- PDF Sertifikat Kalibrasi -->
                 <div class="space-y-3 bg-slate-950/50 p-5 rounded-xl border border-slate-800">
                     <label class="block text-xs font-bold text-amber-400 uppercase tracking-wider">Upload File PDF Sertifikat Kalibrasi Alat</label>
-                    @if(isset($data) && $data->url_dokumen)
+                    @if(optional($data)->url_dokumen)
                         <div class="flex items-center justify-between p-3 bg-slate-950 border border-slate-800 rounded-xl">
                             <span class="text-xs text-slate-300 truncate">Dokumen Kalibrasi PDF Ter-upload</span>
-                            <a href="{{ $data->url_dokumen }}" target="_blank" class="text-xs font-bold text-amber-400 hover:underline flex-shrink-0">Lihat PDF</a>
+                            <a href="{{ optional($data)->url_dokumen }}" target="_blank" class="text-xs font-bold text-amber-400 hover:underline flex-shrink-0">Lihat PDF</a>
                         </div>
                     @endif
 
@@ -74,3 +74,4 @@
         </div>
     </form>
 </div>
+

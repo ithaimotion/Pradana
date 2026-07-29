@@ -23,9 +23,19 @@
             <div>
                 <h3 class="text-lg font-semibold mb-4">LEGAL</h3>
                 <ul class="space-y-2">
-                    <li><a href="#" class="text-white/70 hover:text-orange-500 transition">Kebijakan Privasi</a></li>
-                    <li><a href="#" class="text-white/70 hover:text-orange-500 transition">Syarat & Ketentuan</a></li>
-                    <li><a href="#" class="text-white/70 hover:text-orange-500 transition">Kebijakan Cookie</a></li>
+                    @php
+                        $legalLinks = $footerLinksByType['legal'] ?? collect();
+                    @endphp
+
+                    @forelse($legalLinks as $link)
+                        <li>
+                            <a href="{{ $link->url }}" target="{{ str_starts_with($link->url, 'http://') || str_starts_with($link->url, 'https://') ? '_blank' : '_self' }}" class="text-white/70 hover:text-orange-500 transition">{{ $link->label }}</a>
+                        </li>
+                    @empty
+                        <li><a href="{{ route('legal.privacy') }}" class="text-white/70 hover:text-orange-500 transition">Kebijakan Privasi</a></li>
+                        <li><a href="{{ route('legal.terms') }}" class="text-white/70 hover:text-orange-500 transition">Syarat &amp; Ketentuan</a></li>
+                        <li><a href="{{ route('legal.cookie') }}" class="text-white/70 hover:text-orange-500 transition">Kebijakan Cookie</a></li>
+                    @endforelse
                 </ul>
             </div>
             
@@ -64,9 +74,16 @@
             <p class="text-white/70 text-sm">
                 © {{ date('Y') }} PT Pradana Nusa Energi. Hak Cipta Dilindungi.
             </p>
-            <div class="flex gap-6 text-sm">
-                <a href="#" class="text-white/70 hover:text-orange-500 transition">Kebijakan Privasi</a>
-                <a href="#" class="text-white/70 hover:text-orange-500 transition">Syarat & Ketentuan</a>
+            <div class="flex flex-wrap gap-4 text-sm">
+                @if($legalLinks->count())
+                    @foreach($legalLinks as $link)
+                        <a href="{{ $link->url }}" target="{{ str_starts_with($link->url, 'http://') || str_starts_with($link->url, 'https://') ? '_blank' : '_self' }}" class="text-white/70 hover:text-orange-500 transition">{{ $link->label }}</a>
+                    @endforeach
+                @else
+                    <a href="{{ route('legal.privacy') }}" class="text-white/70 hover:text-orange-500 transition">Kebijakan Privasi</a>
+                    <a href="{{ route('legal.terms') }}" class="text-white/70 hover:text-orange-500 transition">Syarat &amp; Ketentuan</a>
+                    <a href="{{ route('legal.cookie') }}" class="text-white/70 hover:text-orange-500 transition">Kebijakan Cookie</a>
+                @endif
             </div>
         </div>
     </div>

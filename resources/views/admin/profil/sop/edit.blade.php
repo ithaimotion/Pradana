@@ -36,7 +36,7 @@
 
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-1 uppercase tracking-wider">URL Dokumen (PDF)</label>
-                    <input type="url" name="url_dokumen" value="{{ old('url_dokumen', $sop->url_dokumen) }}" placeholder="https://example.com/dokumen-sop.pdf" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
+                    <input type="url" name="url_dokumen" value="{{ old('url_dokumen', optional($sop)->url_dokumen) }}" placeholder="https://example.com/dokumen-sop.pdf" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
                     <p class="text-[11px] text-slate-500 mt-1">Masukkan URL lengkap ke file PDF dokumen SOP</p>
                     @error('url_dokumen')
                         <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
@@ -185,3 +185,4 @@
     </div>
 </div>
 @endsection
+

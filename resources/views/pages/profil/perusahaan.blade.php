@@ -47,7 +47,7 @@
 
                 <div class="relative reveal-right delay-200">
                     <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-white/50">
-                        <img src="{{ $konten->url_gambar ?? 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80' }}" alt="Gedung PT Pradana Nusa Energi" class="w-full h-[420px] object-cover">
+                        <img src="{{ optional($konten)->url_gambar ?? 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80' }}" alt="Gedung PT Pradana Nusa Energi" class="w-full h-[420px] object-cover">
                     </div>
                     <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl z-20 border border-slate-100 max-w-xs hidden sm:block">
                         <div class="flex items-center gap-4">
@@ -155,3 +155,4 @@
 
     <x-footer />
 @endsection
+

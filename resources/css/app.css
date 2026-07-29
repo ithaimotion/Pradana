@@ -63,3 +63,73 @@
 .delay-300 { transition-delay: 300ms; }
 .delay-400 { transition-delay: 400ms; }
 .delay-500 { transition-delay: 500ms; }
+
+/* Legal page content styling */
+.legal-content {
+    color: #0f172a;
+}
+
+.legal-content h1,
+.legal-content h2,
+.legal-content h3,
+.legal-content h4,
+.legal-content h5,
+.legal-content h6 {
+    color: #0f172a;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.legal-content p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+.legal-content ul,
+.legal-content ol {
+    margin: 1rem 0 1rem 1.25rem;
+    padding-left: 1rem;
+}
+
+.legal-content li {
+    margin-bottom: 0.75rem;
+}
+
+.legal-content a {
+    color: #0c4a6e;
+    text-decoration: underline;
+}
+
+.legal-content blockquote {
+    border-left: 4px solid #e2e8f0;
+    padding-left: 1rem;
+    color: #334155;
+    margin: 1rem 0;
+}
+
+.legal-content strong,
+.legal-content b {
+    font-weight: 700;
+}
+
+.legal-content em,
+.legal-content i {
+    font-style: italic;
+}
+
+.legal-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.legal-content th,
+.legal-content td {
+    border: 1px solid #cbd5e1;
+    padding: 0.75rem 1rem;
+}
+
+.legal-content th {
+    background: #f8fafc;
+}
+

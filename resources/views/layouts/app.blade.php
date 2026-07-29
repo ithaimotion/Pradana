@@ -10,10 +10,10 @@
         $siteTitle = $siteLogo?->nama ?: 'Pradana Nusa Energi';
         $faviconUrl = null;
 
-        if (!empty($siteLogo->url_gambar)) {
-            $faviconUrl = str_starts_with($siteLogo->url_gambar, 'http://') || str_starts_with($siteLogo->url_gambar, 'https://')
-                ? $siteLogo->url_gambar
-                : asset('storage/' . ltrim($siteLogo->url_gambar, '/'));
+        if (!empty(optional($siteLogo)->url_gambar)) {
+            $faviconUrl = str_starts_with(optional($siteLogo)->url_gambar, 'http://') || str_starts_with(optional($siteLogo)->url_gambar, 'https://')
+                ? optional($siteLogo)->url_gambar
+                : asset('storage/' . ltrim(optional($siteLogo)->url_gambar, '/'));
         } elseif (!empty($siteLogo->logo_url)) {
             $faviconUrl = $siteLogo->logo_url;
         }

@@ -24,9 +24,9 @@
     <!-- Main Content - Image Only -->
     <section class="py-20 bg-slate-50 overflow-hidden">
         <div class="max-w-4xl mx-auto px-6">
-            @if(isset($maklumat) && $maklumat->url_gambar)
+            @if(optional($maklumat)->url_gambar)
                 <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-8 md:p-12 reveal-on-scroll">
-                    <img src="{{ $maklumat->url_gambar }}" alt="Maklumat Layanan" class="w-full h-auto rounded-xl">
+                    <img src="{{ optional($maklumat)->url_gambar }}" alt="Maklumat Layanan" class="w-full h-auto rounded-xl">
                 </div>
             @else
                 <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-8 md:p-12 reveal-on-scroll text-center">
@@ -38,3 +38,5 @@
 
     <x-footer />
 @endsection
+
+
