@@ -68,7 +68,9 @@
                 @empty
                     <!-- Empty State -->
                     <div id="gallery-empty-db" class="col-span-full text-center py-20">
-                        <div class="text-5xl mb-4 text-slate-300">📷</div>
+                        <div class="w-16 h-16 mx-auto mb-4 text-slate-300">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        </div>
                         <h3 class="font-bold text-slate-700 text-lg">Belum ada foto</h3>
                         <p class="text-sm text-slate-500">Koleksi galeri saat ini masih kosong.</p>
                     </div>
@@ -76,7 +78,9 @@
                 
                 <!-- JS Filter Empty State -->
                 <div id="gallery-empty" class="col-span-full hidden text-center py-20">
-                    <div class="text-5xl mb-4 text-slate-300">🔍</div>
+                    <div class="w-16 h-16 mx-auto mb-4 text-slate-300">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </div>
                     <h3 class="font-bold text-slate-700 text-lg">Tidak ada kecocokan</h3>
                     <p class="text-sm text-slate-500">Tidak ada dokumentasi untuk kategori ini saat ini.</p>
                 </div>
