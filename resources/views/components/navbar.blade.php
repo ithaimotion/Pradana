@@ -1,15 +1,28 @@
 @props(['logos' => null])
 
+@php
+    $resolvedLogos = $logos ?? View::shared('logos') ?? collect();
+@endphp
+
 <nav class="sticky top-0 z-50 bg-white/40 backdrop-blur-xl border-b border-white/30 shadow-sm transition-all duration-300">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
 
         <a href="{{ route('home') }}" class="flex items-center gap-3">
-            @if(isset($logos) && $logos->count() > 0)
-                @foreach($logos->take(1) as $logo)
-                    @if($logo->url_gambar)
-                        <img src="{{ asset('public/storage/' . $logo->url_gambar) }}" alt="{{ $logo->nama ?? 'Logo' }}" title="{{ $logo->nama ?? 'Logo' }}" class="h-10 w-auto object-contain">
-                    @elseif($logo->logo_url)
-                        <img src="{{ $logo->logo_url }}" alt="{{ $logo->nama ?? 'Logo' }}" title="{{ $logo->nama ?? 'Logo' }}" class="h-10 w-auto object-contain">
+            @if($resolvedLogos->count() > 0)
+                @foreach($resolvedLogos->take(1) as $logo)
+                    @php
+                        $logoSrc = null;
+                        if (!empty($logo->url_gambar)) {
+                            $logoSrc = str_starts_with($logo->url_gambar, 'http://') || str_starts_with($logo->url_gambar, 'https://')
+                                ? $logo->url_gambar
+                                : asset('storage/' . ltrim($logo->url_gambar, '/'));
+                        } elseif (!empty($logo->logo_url)) {
+                            $logoSrc = $logo->logo_url;
+                        }
+                    @endphp
+
+                    @if($logoSrc)
+                        <img src="{{ $logoSrc }}" alt="{{ $logo->nama ?? 'Logo' }}" title="{{ $logo->nama ?? 'Logo' }}" class="h-10 w-auto object-contain">
                     @else
                         <span class="text-2xl font-bold text-slate-900">Pradana</span>
                     @endif
@@ -91,7 +104,7 @@
                 </a>
             </li>
             <li>
-                <a href="https://slo-nusaenergi.com/" target="_blank" class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition shadow-sm font-medium">
+                <a href="https://dashboard.slo-pradana.id/login.php" target="_blank" class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition shadow-sm font-medium">
                     Karyawan
                 </a>
             </li>

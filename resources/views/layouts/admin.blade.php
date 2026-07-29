@@ -16,9 +16,10 @@
 <body class="bg-slate-950 text-slate-100 h-screen flex flex-col md:flex-row antialiased selection:bg-orange-500 selection:text-white overflow-hidden"
     x-data="{ 
         sidebarOpen: false, 
-        activeTab: '{{ request()->get('tab', 'dashboard') }}', 
+        activeTab: '{{ request()->get('tab', 'dashboard') ?: 'dashboard' }}',
+        activeGroup: '{{ request()->get('group', '') }}',
         openGroups: {
-            beranda: {{ request()->is('admin/profil*') ? 'true' : 'true' }},
+            beranda: true,
             profil: true,
             slo: true,
             infopub: false,
@@ -27,9 +28,19 @@
             kontak: false
         },
         openSub: '{{ request()->get('sub', '') }}',
+        isAdminRoot() {
+            return window.location.pathname === '/admin' || window.location.pathname === '/admin/';
+        },
+        isActiveTab(tab, group = '') {
+            return this.activeTab === tab && this.activeGroup === group;
+        },
+        isActiveGroup(group) {
+            return this.activeGroup === group;
+        },
         switchTab(tab, group = '') {
-            if (window.location.pathname === '/admin' || window.location.pathname === '/admin/') {
+            if (this.isAdminRoot()) {
                 this.activeTab = tab;
+                this.activeGroup = group;
                 if (group && this.openGroups.hasOwnProperty(group)) {
                     this.openGroups[group] = true;
                 }
@@ -56,10 +67,10 @@
                         P
                     </div>
                     <div>
-                        <div class="font-extrabold text-sm tracking-tight text-white flex items-center gap-1.5">
-                            PRADANA <span class="text-orange-500 text-[9px] px-1 py-0.5 rounded bg-orange-500/10 border border-orange-500/20 font-mono">CMS PRO</span>
+                        <div class="font-extrabold text-sm tracking-tight text-white">
+                            PRADANA
                         </div>
-                        <span class="text-[10px] text-slate-500 font-medium">Admin Studio</span>
+                        <span class="text-[10px] text-slate-500 font-medium">Panel Admin</span>
                     </div>
                 </div>
                 <button @click="sidebarOpen = false" class="md:hidden text-slate-400 hover:text-white">
@@ -73,35 +84,23 @@
                 {{-- ── DASHBOARD ── --}}
                 <div class="mb-2">
                     <button @click="switchTab('dashboard')"
-                        :class="activeTab === 'dashboard' && window.location.pathname === '/admin' ? 'bg-orange-500/15 text-orange-400 border-orange-500/30 font-bold' : 'text-slate-400 hover:text-white hover:bg-slate-800/60 border-transparent'"
+                        :class="activeTab === 'dashboard' && activeGroup === '' && isAdminRoot() ? 'bg-orange-500/15 text-orange-400 border-orange-500/30 font-bold' : 'text-slate-400 hover:text-white hover:bg-slate-800/60 border-transparent'"
                         class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border text-xs transition-all font-medium">
-                        <svg class="w-4 h-4 shrink-0" :class="activeTab === 'dashboard' && window.location.pathname === '/admin' ? 'text-orange-400' : 'text-slate-500'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        <svg class="w-4 h-4 shrink-0" :class="activeMenu === 'dashboard' && isAdminRoot() ? 'text-orange-400' : 'text-slate-500'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                         Dashboard
                     </button>
                 </div>
 
                 <div class="h-px bg-slate-800 my-2"></div>
 
-                {{-- ── BERANDA (Hero Banner, Statistik) ── --}}
-                <div>
-                    <button @click="openGroups.beranda = !openGroups.beranda"
-                        class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800/40 transition-all">
-                        <div class="flex items-center gap-2.5">
-                            <svg class="w-4 h-4 text-orange-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                            Beranda
-                        </div>
-                        <svg class="w-3 h-3 text-slate-600 transition-transform duration-200" :class="openGroups.beranda ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                {{-- ── BERANDA (Semua kontrol Beranda dalam 1 halaman dengan tab) ── --}}
+                <div class="mb-2">
+                    <button @click="switchTab('hero', 'beranda')"
+                        :class="isActiveGroup('beranda') && isAdminRoot() ? 'bg-orange-500/15 text-orange-400 border-orange-500/30 font-bold' : 'text-slate-400 hover:text-white hover:bg-slate-800/60 border-transparent'"
+                        class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border text-xs transition-all font-medium">
+                        <svg class="w-4 h-4 text-orange-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        Beranda
                     </button>
-                    <div x-show="openGroups.beranda" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="mt-0.5 ml-5 pl-3 border-l border-slate-800 space-y-0.5">
-                        <button @click="switchTab('hero', 'beranda')" :class="activeTab === 'hero' && window.location.pathname === '/admin' ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Hero Banner</button>
-                        <button @click="switchTab('statistik', 'beranda')" :class="activeTab === 'statistik' && window.location.pathname === '/admin' ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Statistik Performa</button>
-                        <button @click="switchTab('tentang', 'beranda')" :class="activeTab === 'tentang' && window.location.pathname === '/admin' ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Tentang Pradana</button>
-                        <button @click="switchTab('teknologi', 'beranda')" :class="activeTab === 'teknologi' && window.location.pathname === '/admin' ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Teknologi Terintegrasi</button>
-                        <button @click="switchTab('keunggulan', 'beranda')" :class="activeTab === 'keunggulan' && window.location.pathname === '/admin' ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Keunggulan APC+</button>
-                        <button @click="switchTab('energi', 'beranda')" :class="activeTab === 'energi' && window.location.pathname === '/admin' ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Energi Berkelanjutan</button>
-                        <button @click="switchTab('mengapa', 'beranda')" :class="activeTab === 'mengapa' && window.location.pathname === '/admin' ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Mengapa Pilih Pradana</button>
-                        <button @click="switchTab('kontak', 'beranda')" :class="activeTab === 'kontak' && window.location.pathname === '/admin' ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Kontak & Banner CTA</button>
-                    </div>
                 </div>
 
                 {{-- ── PROFIL (Sub-menu overview & 6 CRUD pages) ── --}}
@@ -115,7 +114,7 @@
                         <svg class="w-3 h-3 text-slate-600 transition-transform duration-200" :class="openGroups.profil ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div x-show="openGroups.profil" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="mt-0.5 ml-5 pl-3 border-l border-slate-800 space-y-0.5">
-                        <button @click="switchTab('profil', 'profil')" :class="activeTab === 'profil' && window.location.pathname === '/admin' ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Header & Ringkasan Profil</button>
+                        <button @click="switchTab('profil', 'profil')" :class="isActiveTab('profil', 'profil') && isAdminRoot() ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Header & Ringkasan Profil</button>
                         <a href="{{ route('admin.profil.perusahaan.index') }}" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all block {{ request()->is('admin/profil/perusahaan*') ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50' }}">Kelola Profil Perusahaan</a>
                         <a href="{{ route('admin.profil.daftar-pjttt.index') }}" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all block {{ request()->is('admin/profil/daftar-pjttt*') ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50' }}">Kelola Daftar PJT & TT</a>
                         <a href="{{ route('admin.profil.struktur-organisasi.index') }}" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all block {{ request()->is('admin/profil/struktur-organisasi*') ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50' }}">Kelola Struktur Organisasi</a>
@@ -136,7 +135,7 @@
                         <svg class="w-3 h-3 text-slate-600 transition-transform duration-200" :class="openGroups.slo ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div x-show="openGroups.slo" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="mt-0.5 ml-5 pl-3 border-l border-slate-800 space-y-0.5">
-                        <button @click="switchTab('slo-regulasi', 'slo')" :class="activeTab === 'slo-regulasi' && window.location.pathname === '/admin' ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Regulasi</button>
+                        <button @click="switchTab('slo-regulasi', 'slo')" :class="isActiveTab('slo-regulasi', 'slo') && isAdminRoot() ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Regulasi</button>
                         <a href="{{ route('admin.slo.kategori-layanan.index') }}" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all block {{ request()->is('admin/slo/kategori-layanan*') ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50' }}">Bidang Layanan</a>
                     </div>
                 </div>
@@ -189,14 +188,14 @@
                         <svg class="w-3 h-3 text-slate-600 transition-transform duration-200" :class="openGroups.galeri ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div x-show="openGroups.galeri" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="mt-0.5 ml-5 pl-3 border-l border-slate-800 space-y-0.5">
-                        <button @click="switchTab('galeri', 'galeri')" :class="activeTab === 'galeri' && window.location.pathname === '/admin' ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Kelola Galeri & Media</button>
+                        <button @click="switchTab('galeri', 'galeri')" :class="isActiveTab('galeri', 'galeri') && isAdminRoot() ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Kelola Galeri & Media</button>
                     </div>
                 </div>
 
                 {{-- ── LOGO ── --}}
                 <div>
                     <button @click="switchTab('logo')"
-                        :class="activeTab === 'logo' && window.location.pathname === '/admin' ? 'bg-violet-500/15 text-violet-400 border-violet-500/30 font-bold' : 'text-slate-400 hover:text-white hover:bg-slate-800/60 border-transparent'"
+                        :class="activeTab === 'logo' && activeGroup === '' && isAdminRoot() ? 'bg-violet-500/15 text-violet-400 border-violet-500/30 font-bold' : 'text-slate-400 hover:text-white hover:bg-slate-800/60 border-transparent'"
                         class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border text-xs transition-all font-medium">
                         <svg class="w-4 h-4 shrink-0" :class="activeTab === 'logo' && window.location.pathname === '/admin' ? 'text-violet-400' : 'text-slate-500'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                         Manajemen Logo
@@ -230,8 +229,9 @@
                         <svg class="w-3 h-3 text-slate-600 transition-transform duration-200" :class="openGroups.kontak ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div x-show="openGroups.kontak" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="mt-0.5 ml-5 pl-3 border-l border-slate-800 space-y-0.5">
-                        <button @click="switchTab('kontak', 'kontak')" :class="activeTab === 'kontak' && window.location.pathname === '/admin' ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Kontak & Banner CTA</button>
-                        <button @click="switchTab('pesan-masuk', 'kontak')" :class="activeTab === 'pesan-masuk' && window.location.pathname === '/admin' ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Pesan Masuk</button>
+                        <button @click="switchTab('kontak', 'kontak')" :class="isActiveTab('kontak', 'kontak') && isAdminRoot() ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Banner Kontak</button>
+                        <button @click="switchTab('hubungi-kami', 'kontak')" :class="isActiveTab('hubungi-kami', 'kontak') && isAdminRoot() ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Informasi Hubungi Kami</button>
+                        <button @click="switchTab('pesan-masuk', 'kontak')" :class="isActiveTab('pesan-masuk', 'kontak') && isAdminRoot() ? 'text-orange-400 font-bold bg-orange-500/10' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'" class="w-full text-left px-3 py-2 rounded-lg text-xs transition-all">Pesan Masuk</button>
                     </div>
                 </div>
 
@@ -272,18 +272,13 @@
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
                 <div class="text-xs font-semibold text-slate-400 flex items-center gap-2">
-                    <span>Admin Studio</span>
+                    <span>Panel Admin</span>
                     <span class="text-slate-600">/</span>
                     <span class="text-orange-400 font-bold uppercase tracking-wider" x-text="activeTab.replace('_', ' ')"></span>
                 </div>
             </div>
 
             <div class="flex items-center space-x-4">
-                <div class="hidden sm:flex items-center space-x-2 bg-slate-950 border border-slate-800 rounded-full px-3.5 py-1 text-xs text-slate-400 font-mono">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span>10/10 Sections Connected</span>
-                </div>
-
                 <a href="{{ route('home') }}" target="_blank" class="bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 border border-orange-500/30 text-xs font-bold px-3.5 py-1.5 rounded-xl transition flex items-center gap-1.5">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     <span>Pratinjau Web Utama</span>
@@ -319,11 +314,12 @@
 
         <!-- FOOTER -->
         <footer class="border-t border-slate-900 py-4 px-8 text-center text-xs text-slate-500 flex-shrink-0 bg-slate-950">
-            &copy; {{ date('Y') }} PT Pradana Nusa Energi — Complete Landing Page CMS Studio
+            &copy; {{ date('Y') }} PT Pradana Nusa Energi
         </footer>
 
     </div>
 
     @yield('scripts')
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </body>
 </html>

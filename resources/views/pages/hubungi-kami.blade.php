@@ -1,5 +1,17 @@
 @extends('layouts.app')
 
+@php
+    $setting = function ($key) {
+        return app('db')->table('konten_beranda')->where('bagian', 'hubungi_kami')->where('kunci', $key)->value('konten') ?? '';
+    };
+
+    $alamatKantor = $setting('alamat_kantor');
+    $teleponWhatsapp = $setting('telepon_whatsapp');
+    $emailResmi = $setting('email_resmi');
+    $jamOperasional = $setting('jam_operasional');
+    $mapsEmbed = $setting('maps_embed');
+@endphp
+
 @section('title', 'Hubungi Kami - PT Pradana Nusa Energi')
 
 @section('content')
@@ -44,10 +56,8 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-slate-900 text-base mb-1">Alamat Kantor</h4>
-                                <p class="text-sm text-slate-500 leading-relaxed">
-                                    Jl. MT Haryono No.Kav 10, RT.11/RW.5<br>
-                                    Tebet Barat, Kec. Tebet, Kota Jakarta Selatan<br>
-                                    Daerah Khusus Ibukota Jakarta 12810
+                                <p class="text-sm text-slate-500 leading-relaxed whitespace-pre-line">
+                                    {{ $alamatKantor ?: 'Jl. MT Haryono No.Kav 10, RT.11/RW.5 Tebet Barat, Jakarta Selatan 12810' }}
                                 </p>
                             </div>
                         </div>
@@ -59,12 +69,8 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-slate-900 text-base mb-1">Telepon & WhatsApp</h4>
-                                <p class="text-sm text-slate-500">
-                                    <a href="tel:+6281234567890" class="hover:text-orange-500 transition font-semibold block mb-1">Office: (021) 1234-5678</a>
-                                    <a href="https://wa.me/6281234567890" target="_blank" class="hover:text-orange-500 transition font-semibold flex items-center gap-2">
-                                        WhatsApp: +62 812-3456-7890
-                                        <span class="bg-green-100 text-green-700 text-[10px] px-2 py-0.5 rounded-full">Fast Response</span>
-                                    </a>
+                                <p class="text-sm text-slate-500 whitespace-pre-line">
+                                    {!! nl2br(e($teleponWhatsapp ?: 'Office: (021) 1234-5678' . PHP_EOL . 'WhatsApp: +62 812-3456-7890')) !!}
                                 </p>
                             </div>
                         </div>
@@ -76,9 +82,8 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-slate-900 text-base mb-1">Email Resmi</h4>
-                                <p class="text-sm text-slate-500">
-                                    <a href="mailto:info@pradananusaenergi.co.id" class="hover:text-blue-900 transition font-semibold block mb-1">info@pradananusaenergi.co.id</a>
-                                    <a href="mailto:cs@pradananusaenergi.co.id" class="hover:text-blue-900 transition font-semibold block">cs@pradananusaenergi.co.id</a>
+                                <p class="text-sm text-slate-500 whitespace-pre-line">
+                                    {!! nl2br(e($emailResmi ?: 'info@pradananusaenergi.co.id')) !!}
                                 </p>
                             </div>
                         </div>
@@ -90,9 +95,8 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-slate-900 text-base mb-1">Jam Operasional</h4>
-                                <p class="text-sm text-slate-500">
-                                    <span class="font-semibold text-slate-700">Senin - Jumat:</span> 08:00 - 17:00 WIB<br>
-                                    <span class="font-semibold text-slate-700">Sabtu - Minggu:</span> Tutup
+                                <p class="text-sm text-slate-500 whitespace-pre-line">
+                                    {{ $jamOperasional ?: 'Senin - Jumat: 08:00 - 17:00 WIB' . PHP_EOL . 'Sabtu - Minggu: Tutup' }}
                                 </p>
                             </div>
                         </div>
@@ -167,16 +171,22 @@
     <section class="h-96 w-full relative reveal-on-scroll delay-200">
         <!-- Placeholder for map since actual iframe might need API key or exact URL, using a visual placeholder -->
         <div class="absolute inset-0 bg-slate-200 flex items-center justify-center">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2413532298647!2d106.8450162!3d-6.231878399999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3a61f251c5f%3A0xcb13e8e2be00a6c7!2sKec.%20Tebet%2C%20Kota%20Jakarta%20Selatan%2C%20Daerah%20Khusus%20Ibukota%20Jakarta!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
-                width="100%" 
-                height="100%" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade"
-                class="absolute inset-0 grayscale hover:grayscale-0 transition duration-700">
-            </iframe>
+            @if($mapsEmbed)
+                <iframe 
+                    src="{{ $mapsEmbed }}"
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="absolute inset-0 grayscale hover:grayscale-0 transition duration-700">
+                </iframe>
+            @else
+                <div class="absolute inset-0 bg-gradient-to-br from-slate-300 to-slate-400 flex items-center justify-center text-slate-700 font-semibold">
+                    Belum ada embed maps.
+                </div>
+            @endif
         </div>
         
         <!-- Floating badge on map -->

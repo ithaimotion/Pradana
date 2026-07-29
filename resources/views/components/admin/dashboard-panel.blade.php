@@ -1,6 +1,6 @@
 @props(['lowongans', 'pesanMasuks', 'galeri'])
 
-<div x-show="activeTab === 'dashboard'" class="space-y-8" x-cloak>
+<div x-show="activeTab === 'dashboard' || activeTab === '' || activeTab === null" class="space-y-8" x-cloak>
     <!-- Summary Overview Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- Card 1: Connected Sections -->
@@ -10,7 +10,7 @@
             </div>
             <div>
                 <div class="text-2xl font-black text-white">21</div>
-                <div class="text-xs text-slate-400 font-medium">Total Modul CMS Connected</div>
+                <div class="text-xs text-slate-400 font-medium">Jumlah Modul Aktif</div>
             </div>
         </div>
 

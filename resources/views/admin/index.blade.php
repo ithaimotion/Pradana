@@ -8,6 +8,36 @@
     <!-- 0. DASHBOARD SUMMARY PANEL -->
     <x-admin.dashboard-panel :lowongans="$lowongans" :pesanMasuks="$pesanMasuks" :galeri="$galeri" />
 
+    <!-- BERANDA TAB NAVIGATION -->
+    <div x-show="['hero','statistik','tentang','teknologi','keunggulan','energi','mengapa','kontak'].includes(activeTab)" class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 space-y-4 shadow-xl">
+        <div class="flex flex-wrap gap-2">
+            <button @click="activeTab = 'hero'" :class="activeTab === 'hero' ? 'bg-orange-500 text-white' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/70'" class="text-xs font-semibold px-3 py-2 rounded-xl transition">
+                Hero Banner
+            </button>
+            <button @click="activeTab = 'statistik'" :class="activeTab === 'statistik' ? 'bg-orange-500 text-white' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/70'" class="text-xs font-semibold px-3 py-2 rounded-xl transition">
+                Statistik Performa
+            </button>
+            <button @click="activeTab = 'tentang'" :class="activeTab === 'tentang' ? 'bg-orange-500 text-white' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/70'" class="text-xs font-semibold px-3 py-2 rounded-xl transition">
+                Tentang Pradana
+            </button>
+            <button @click="activeTab = 'teknologi'" :class="activeTab === 'teknologi' ? 'bg-orange-500 text-white' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/70'" class="text-xs font-semibold px-3 py-2 rounded-xl transition">
+                Teknologi Terintegrasi
+            </button>
+            <button @click="activeTab = 'keunggulan'" :class="activeTab === 'keunggulan' ? 'bg-orange-500 text-white' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/70'" class="text-xs font-semibold px-3 py-2 rounded-xl transition">
+                Keunggulan APC+
+            </button>
+            <button @click="activeTab = 'energi'" :class="activeTab === 'energi' ? 'bg-orange-500 text-white' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/70'" class="text-xs font-semibold px-3 py-2 rounded-xl transition">
+                Energi Berkelanjutan
+            </button>
+            <button @click="activeTab = 'mengapa'" :class="activeTab === 'mengapa' ? 'bg-orange-500 text-white' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/70'" class="text-xs font-semibold px-3 py-2 rounded-xl transition">
+                Mengapa Pilih Pradana
+            </button>
+            <button @click="activeTab = 'kontak'" :class="activeTab === 'kontak' ? 'bg-orange-500 text-white' : 'bg-slate-950 text-slate-300 hover:bg-slate-800/70'" class="text-xs font-semibold px-3 py-2 rounded-xl transition">
+                Kontak & Banner CTA
+            </button>
+        </div>
+        <p class="text-xs text-slate-400">Semua kontrol halaman Beranda kini tersedia di satu menu dengan tab; pilih tab untuk mengedit bagian tersebut.</p>
+    </div>
 
     <!-- 1. HERO BANNER PANEL -->
 
@@ -41,23 +71,35 @@
                 </div>
 
                 <div class="space-y-4">
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Background Image Hero</label>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Background Image Hero (3 Slide)</label>
                     @if(isset($hero) && $hero->url_gambar)
-                        <div class="relative rounded-xl overflow-hidden border border-slate-800 h-48 bg-slate-950">
-                            <img src="{{ $hero->url_gambar }}" alt="Hero Background" class="w-full h-full object-cover">
-                            <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur border border-slate-800 text-slate-200 text-xs px-2.5 py-1 rounded-lg">Gambar Banner Saat Ini</div>
+                        <div class="grid sm:grid-cols-3 gap-3">
+                            @foreach([['label' => 'Slide 1', 'image' => $hero->url_gambar], ['label' => 'Slide 2', 'image' => $hero->path_gambar_2 ? asset('public/storage/' . $hero->path_gambar_2) : null], ['label' => 'Slide 3', 'image' => $hero->path_gambar_3 ? asset('public/storage/' . $hero->path_gambar_3) : null]] as $slide)
+                                @if($slide['image'])
+                                    <div class="relative rounded-xl overflow-hidden border border-slate-800 h-32 bg-slate-950">
+                                        <img src="{{ $slide['image'] }}" alt="{{ $slide['label'] }}" class="w-full h-full object-cover">
+                                        <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur border border-slate-800 text-slate-200 text-[10px] px-2 py-1 rounded">{{ $slide['label'] }}</div>
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
                     @endif
 
-                    <div class="border-2 border-dashed border-slate-800 rounded-xl p-6 text-center hover:bg-slate-950/40 hover:border-orange-500/50 transition duration-200">
-                        <input type="file" name="gambar" id="hero_image" class="hidden" accept="image/*" onchange="previewImage(this, 'hero_preview')">
-                        <label for="hero_image" class="cursor-pointer flex flex-col items-center">
-                            <svg class="w-10 h-10 text-slate-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                            <span class="text-sm font-semibold text-orange-400">Klik untuk Upload Gambar Banner Baru</span>
-                            <span class="text-xs text-slate-500 mt-1">Format PNG, JPG, WEBP maks 5MB</span>
-                        </label>
+                    <div class="space-y-3 border-2 border-dashed border-slate-800 rounded-xl p-4 hover:bg-slate-950/40 hover:border-orange-500/50 transition duration-200">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-2">Slide 1</label>
+                            <input type="file" name="gambar" class="w-full text-xs text-slate-400 bg-slate-950 border border-slate-800 rounded-xl p-3">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-2">Slide 2</label>
+                            <input type="file" name="gambar_2" class="w-full text-xs text-slate-400 bg-slate-950 border border-slate-800 rounded-xl p-3">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-2">Slide 3</label>
+                            <input type="file" name="gambar_3" class="w-full text-xs text-slate-400 bg-slate-950 border border-slate-800 rounded-xl p-3">
+                        </div>
+                        <p class="text-[11px] text-slate-500">Upload 1 sampai 3 gambar. Jika kosong, hero akan memakai fallback default.</p>
                     </div>
-                    <img id="hero_preview" class="hidden w-full h-40 object-cover rounded-xl border border-slate-800 mt-2">
                 </div>
             </div>
 
@@ -168,9 +210,9 @@
     <div x-show="activeTab === 'tentang'" class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
         <div>
             <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-blue-400"></span> 4. Kelola Section Tentang Pradana
+                <span class="w-3 h-3 rounded-full bg-blue-400"></span> 4. Kelola Konten Tentang Pradana
             </h2>
-            <p class="text-xs text-slate-400 mt-1">Ubah judul, paragraf visi/misi, teks tombol CTA, dan gambar pendukung.</p>
+            <p class="text-xs text-slate-400 mt-1">Ubah judul, paragraf utama, paragraf tambahan, dan gambar pendukung bagian ini.</p>
         </div>
 
         <form action="{{ route('admin.tentang.update') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
@@ -178,28 +220,28 @@
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Judul Section (Contoh: TENTANG PRADANA)</label>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Judul Bagian</label>
                         <input type="text" name="judul" value="{{ old('title', $tentangPradana->judul ?? '') }}" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-orange-500">
                     </div>
 
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Paragraf Utama (Visi & Layanan)</label>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Paragraf Utama</label>
                         <textarea name="subjudul" rows="3" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-orange-500">{{ old('subtitle', $tentangPradana->subjudul ?? '') }}</textarea>
                     </div>
 
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Paragraf Kedua (Integritas & Regulasi)</label>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Paragraf Tambahan</label>
                         <textarea name="konten" rows="3" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-orange-500">{{ old('content', $tentangPradana->konten ?? '') }}</textarea>
                     </div>
 
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Teks Tombol CTA</label>
-                        <input type="text" name="nilai" value="{{ old('value', $tentangPradana->nilai ?? '') }}" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-orange-500" placeholder="Learn More">
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Teks Tombol</label>
+                        <input type="text" name="nilai" value="{{ old('value', $tentangPradana->nilai ?? '') }}" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-orange-500" placeholder="Contoh: Lihat Selengkapnya">
                     </div>
                 </div>
 
                 <div class="space-y-4">
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Gambar Section Tentang Pradana</label>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Gambar Pendukung</label>
                     @if(isset($tentangPradana) && $tentangPradana->url_gambar)
                         <div class="rounded-xl overflow-hidden border border-slate-800 h-48 bg-slate-950">
                             <img src="{{ $tentangPradana->url_gambar }}" alt="Tentang Pradana" class="w-full h-full object-cover">
@@ -211,7 +253,7 @@
 
             <div class="flex justify-end pt-4 border-t border-slate-800">
                 <button type="submit" class="bg-gradient-to-r from-orange-500 to-amber-600 text-white px-6 py-3 rounded-xl font-bold text-sm shadow-lg shadow-orange-500/20">
-                    Simpan Section Tentang Pradana
+                    Simpan Konten Tentang Pradana
                 </button>
             </div>
         </form>
@@ -493,55 +535,6 @@
         </div>
     </div>
 
-    <!-- 9. KONTAK & BANNER CTA PANEL -->
-    <div x-show="activeTab === 'kontak'" class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
-        <div>
-            <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-pink-400"></span> 9. Kelola Banner Kontak & CTA Bawah
-            </h2>
-            <p class="text-xs text-slate-400 mt-1">Ubah headline banner ajakan aksi bawah, deskripsi singkat, teks tombol CTA, dan upload background image.</p>
-        </div>
-
-        <form action="{{ route('admin.kontak.header') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
-            @csrf
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Headline Banner (Contoh: UPGRADE SMELTER PERFORMANCE WITH CONFIDENCE)</label>
-                        <textarea name="judul" rows="2" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-orange-500">{{ old('title', $kontakKami->judul ?? '') }}</textarea>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Deskripsi Ajakan Bermitra</label>
-                        <textarea name="subjudul" rows="3" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-orange-500">{{ old('subtitle', $kontakKami->subjudul ?? '') }}</textarea>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Teks Tombol CTA</label>
-                        <input type="text" name="konten" value="{{ old('content', $kontakKami->konten ?? '') }}" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-orange-500" placeholder="Get Started Today">
-                    </div>
-                </div>
-
-                <div class="space-y-4">
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Background Image Banner CTA</label>
-                    @if(isset($kontakKami) && $kontakKami->url_gambar)
-                        <div class="relative rounded-xl overflow-hidden border border-slate-800 h-48 bg-slate-950">
-                            <img src="{{ $kontakKami->url_gambar }}" alt="Banner Kontak" class="w-full h-full object-cover">
-                        </div>
-                    @endif
-                    <input type="file" name="gambar" class="w-full text-xs text-slate-400 bg-slate-950 border border-slate-800 rounded-xl p-3">
-                </div>
-            </div>
-
-            <div class="flex justify-end pt-4 border-t border-slate-800">
-                <button type="submit" class="bg-gradient-to-r from-orange-500 to-amber-600 text-white px-6 py-3 rounded-xl font-bold text-sm shadow-lg shadow-orange-500/20">
-                    Simpan Banner Kontak & CTA
-                </button>
-            </div>
-        </form>
-    </div>
-
     <!-- 10. GALERI MEDIA PANEL -->
     <div x-show="activeTab === 'galeri'" class="space-y-6">
         <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xl">
@@ -675,6 +668,7 @@
 
     <!-- SUB-MENU CMS PANELS: HUBUNGI KAMI -->
     <x-admin.forms.kontak-alamat :kontak="$kontakKami" />
+    <x-admin.forms.hubungi-kami :settings="$hubungiKamiSettings" />
     <x-admin.pesan-panel :pesanMasuks="$pesanMasuks" />
 
 </div>

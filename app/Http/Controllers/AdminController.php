@@ -15,6 +15,55 @@ use Illuminate\Support\Facades\Storage;
 class AdminController extends Controller
 {
     /**
+     * Ambil satu item konten berdasarkan bagian dan kunci opsional.
+     */
+    private function getContentSection(string $bagian, ?string $kunci = null): ?KontenBeranda
+    {
+        $query = KontenBeranda::where('bagian', $bagian);
+
+        if ($kunci) {
+            $query->where('kunci', $kunci);
+        }
+
+        return $query->first();
+    }
+
+    /**
+     * Ambil daftar item konten berdasarkan bagian.
+     */
+    private function getContentCollection(string $bagian)
+    {
+        return KontenBeranda::where('bagian', $bagian)->orderBy('urutan')->get();
+    }
+
+    /**
+     * Simpan data section konten beserta upload gambar jika ada.
+     */
+    private function saveContentSection(string $bagian, string $kunci, array $data, ?string $imageField = null, string $uploadFolder = 'uploads'): KontenBeranda
+    {
+        $section = KontenBeranda::firstOrNew([
+            'bagian' => $bagian,
+            'kunci' => $kunci,
+        ]);
+
+        foreach ($data as $field => $value) {
+            $section->{$field} = $value;
+        }
+
+        if ($imageField && request()->hasFile($imageField)) {
+            if ($section->path_gambar && !str_starts_with($section->path_gambar, 'http')) {
+                Storage::disk('public')->delete($section->path_gambar);
+            }
+
+            $section->path_gambar = request()->file($imageField)->store("{$uploadFolder}/{$bagian}", 'public');
+        }
+
+        $section->save();
+
+        return $section;
+    }
+
+    /**
      * Tampilkan Form Login Admin.
      */
     public function showLogin()
@@ -62,50 +111,30 @@ class AdminController extends Controller
      */
     public function index()
     {
-        // 1. Hero
-        $hero = KontenBeranda::where('bagian', 'hero')->first();
+        $hero = $this->getContentSection('hero', 'hero_main');
+        $profilPradana = $this->getContentSection('profil_pradana', 'profil_main');
+        $statistik = $this->getContentCollection('statistik');
+        $tentangPradana = $this->getContentSection('tentang_pradana', 'tentang_main');
 
-        // 2. Profil Pradana
-        $profilPradana = KontenBeranda::where('bagian', 'profil_pradana')->first();
+        $teknologiHeader = $this->getContentSection('teknologi_header', 'header');
+        $teknologiItems = $this->getContentCollection('teknologi_item');
 
-        // 3. Statistik
-        $statistik = KontenBeranda::where('bagian', 'statistik')->orderBy('urutan')->get();
+        $keunggulanHeader = $this->getContentSection('keunggulan_header', 'header');
+        $keunggulanItems = $this->getContentCollection('keunggulan_item');
 
-        // 4. Tentang Pradana
-        $tentangPradana = KontenBeranda::where('bagian', 'tentang_pradana')->first();
+        $energiHeader = $this->getContentSection('energi_header', 'header');
+        $energiItems = $this->getContentCollection('energi_item');
 
-        // 5. Teknologi Terintegrasi
-        $teknologiHeader = KontenBeranda::where('bagian', 'teknologi_header')->first();
-        $teknologiItems = KontenBeranda::where('bagian', 'teknologi_item')->orderBy('urutan')->get();
+        $mengapaHeader = $this->getContentSection('mengapa_header', 'header');
+        $mengapaItems = $this->getContentCollection('mengapa_item');
 
-        // 6. Keunggulan APC+
-        $keunggulanHeader = KontenBeranda::where('bagian', 'keunggulan_header')->first();
-        $keunggulanItems = KontenBeranda::where('bagian', 'keunggulan_item')->orderBy('urutan')->get();
+        $kontakKami = $this->getContentSection('kontak_kami', 'kontak_main');
+        $hubungiKamiSettings = KontenBeranda::where('bagian', 'hubungi_kami')->get()->keyBy('kunci');
 
-        // 7. Energi Berkelanjutan
-        $energiHeader = KontenBeranda::where('bagian', 'energi_header')->first();
-        $energiItems = KontenBeranda::where('bagian', 'energi_item')->orderBy('urutan')->get();
-
-        // 8. Mengapa Pilih Pradana
-        $mengapaHeader = KontenBeranda::where('bagian', 'mengapa_header')->first();
-        $mengapaItems = KontenBeranda::where('bagian', 'mengapa_item')->orderBy('urutan')->get();
-
-        // 9. Kontak & Banner CTA
-        $kontakKami = KontenBeranda::where('bagian', 'kontak_kami')->first();
-
-        // 10. Galeri Media
         $galeri = Galeri::orderBy('urutan')->get();
-
-        // 11. Logo Management
         $logos = Logo::orderBy('urutan')->get();
-
-        // 12. Halaman Sub-Menu (Profil, SLO, Informasi Publik)
         $kontenHalamans = KontenHalaman::all()->groupBy('halaman');
-
-        // 12. Lowongan Karir
         $lowongans = LowonganKarir::orderBy('created_at', 'desc')->get();
-
-        // 13. Pesan Masuk
         $pesanMasuks = PesanMasuk::orderBy('created_at', 'desc')->get();
 
         return view('admin.index', compact(
@@ -122,6 +151,7 @@ class AdminController extends Controller
             'mengapaHeader',
             'mengapaItems',
             'kontakKami',
+            'hubungiKamiSettings',
             'galeri',
             'logos',
             'kontenHalamans',
@@ -139,20 +169,45 @@ class AdminController extends Controller
             'judul' => 'required|string|max:255',
             'subjudul' => 'nullable|string',
             'konten' => 'nullable|string',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:5120',
         ]);
+
+        $uploadRules = ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:5120'];
+
+        foreach (['gambar', 'gambar_2', 'gambar_3'] as $field) {
+            if ($request->hasFile($field)) {
+                $request->validate([$field => $uploadRules]);
+            }
+        }
 
         $hero = KontenBeranda::firstOrNew(['bagian' => 'hero', 'kunci' => 'hero_main']);
         $hero->judul = $request->judul;
         $hero->subjudul = $request->subjudul;
         $hero->konten = $request->konten;
 
+        $slideImages = [];
+
         if ($request->hasFile('gambar')) {
             if ($hero->path_gambar && !str_starts_with($hero->path_gambar, 'http')) {
                 Storage::disk('public')->delete($hero->path_gambar);
             }
-            $path = $request->file('gambar')->store('uploads/hero', 'public');
-            $hero->path_gambar = $path;
+            $slideImages[] = $request->file('gambar')->store('uploads/hero', 'public');
+        } elseif ($hero->path_gambar) {
+            $slideImages[] = $hero->path_gambar;
+        }
+
+        foreach (['gambar_2' => 'path_gambar_2', 'gambar_3' => 'path_gambar_3'] as $inputName => $attribute) {
+            if ($request->hasFile($inputName)) {
+                $path = $request->file($inputName)->store('uploads/hero', 'public');
+                $slideImages[] = $path;
+            } elseif ($hero->{$attribute}) {
+                $slideImages[] = $hero->{$attribute};
+            }
+        }
+
+        if (!empty($slideImages)) {
+            $hero->path_gambar = $slideImages[0] ?? null;
+            $hero->path_gambar_2 = $slideImages[1] ?? null;
+            $hero->path_gambar_3 = $slideImages[2] ?? null;
         }
 
         $hero->save();
@@ -336,21 +391,50 @@ class AdminController extends Controller
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:5120',
         ]);
 
-        $kontak = KontenBeranda::firstOrNew(['bagian' => 'kontak_kami', 'kunci' => 'kontak_main']);
-        $kontak->judul = $request->judul;
-        $kontak->subjudul = $request->subjudul;
-        $kontak->konten = $request->konten;
-
-        if ($request->hasFile('gambar')) {
-            if ($kontak->path_gambar && !str_starts_with($kontak->path_gambar, 'http')) {
-                Storage::disk('public')->delete($kontak->path_gambar);
-            }
-            $kontak->path_gambar = $request->file('gambar')->store('uploads/kontak', 'public');
-        }
-
-        $kontak->save();
+        $this->saveContentSection(
+            'kontak_kami',
+            'kontak_main',
+            [
+                'judul' => $request->judul,
+                'subjudul' => $request->subjudul,
+                'konten' => $request->konten,
+            ],
+            'gambar',
+            'uploads/kontak'
+        );
 
         return back()->with('success', 'Banner Kontak & CTA berhasil diperbarui!');
+    }
+
+    /**
+     * Simpan pengaturan detail Hubungi Kami untuk halaman publik.
+     */
+    public function updateHubungiKamiSettings(Request $request)
+    {
+        $request->validate([
+            'alamat_kantor' => 'nullable|string',
+            'telepon_whatsapp' => 'nullable|string',
+            'email_resmi' => 'nullable|email',
+            'jam_operasional' => 'nullable|string',
+            'maps_embed' => 'nullable|url',
+        ]);
+
+        $sections = [
+            ['bagian' => 'hubungi_kami', 'kunci' => 'alamat_kantor', 'konten' => $request->alamat_kantor],
+            ['bagian' => 'hubungi_kami', 'kunci' => 'telepon_whatsapp', 'konten' => $request->telepon_whatsapp],
+            ['bagian' => 'hubungi_kami', 'kunci' => 'email_resmi', 'konten' => $request->email_resmi],
+            ['bagian' => 'hubungi_kami', 'kunci' => 'jam_operasional', 'konten' => $request->jam_operasional],
+            ['bagian' => 'hubungi_kami', 'kunci' => 'maps_embed', 'konten' => $request->maps_embed],
+        ];
+
+        foreach ($sections as $section) {
+            KontenBeranda::updateOrCreate(
+                ['bagian' => $section['bagian'], 'kunci' => $section['kunci']],
+                ['konten' => $section['konten'], 'judul' => $section['kunci']]
+            );
+        }
+
+        return back()->with('success', 'Pengaturan Hubungi Kami berhasil diperbarui!');
     }
 
     /**

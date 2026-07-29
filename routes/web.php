@@ -67,6 +67,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     // Modular Sub-Menu Routes: Pesan Masuk (Inbox)
     Route::post('/pesan/{id}/read', [PesanController::class, 'toggleRead'])->name('pesan.read');
     Route::delete('/pesan/{id}', [PesanController::class, 'destroy'])->name('pesan.destroy');
+    Route::post('/hubungi-kami/settings', [AdminController::class, 'updateHubungiKamiSettings'])->name('hubungi-kami.update');
 
     // Gallery Routes
     Route::post('/galeri', [GaleriController::class, 'store'])->name('galeri.store');
