@@ -53,7 +53,7 @@
                                     <svg class="w-5 h-5 text-rose-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
                                     <span class="text-xs text-slate-700 dark:text-slate-300 truncate">Dokumen PDF SK PJT/TT Ter-upload</span>
                                 </div>
-                                <a href="{{ asset('storage/' . ltrim($daftarPJTTT->dokumen, '/')) }}" target="_blank" class="text-xs font-bold text-blue-400 hover:underline flex-shrink-0">Lihat PDF</a>
+                                <a href="{{ asset('storage_public/' . ltrim($daftarPJTTT->dokumen, '/')) }}" target="_blank" class="text-xs font-bold text-blue-400 hover:underline flex-shrink-0">Lihat PDF</a>
                             </div>
                         @endif
                         <div class="border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-xl p-4 text-center hover:border-blue-500/50 transition">

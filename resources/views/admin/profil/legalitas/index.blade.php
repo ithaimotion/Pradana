@@ -52,7 +52,7 @@
                     <div class="md:col-span-2">
                         <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider mb-2">Dokumen</label>
                         @if($legalitas->dokumen)
-                            <a href="{{ asset('storage/' . ltrim($legalitas->dokumen, '/')) }}" target="_blank" class="text-blue-400 hover:text-blue-300 text-sm">Lihat Dokumen</a>
+                            <a href="{{ asset('storage_public/' . ltrim($legalitas->dokumen, '/')) }}" target="_blank" class="text-blue-400 hover:text-blue-300 text-sm">Lihat Dokumen</a>
                         @else
                             <div class="text-sm text-slate-500">Tidak ada dokumen</div>
                         @endif

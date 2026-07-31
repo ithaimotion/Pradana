@@ -61,7 +61,7 @@
                             </svg>
                             <span class="text-slate-700 dark:text-slate-300 text-sm truncate max-w-xs">{{ $alurSertifikasi->nama_dokumen }}</span>
                         </div>
-                        <a href="{{ asset('storage/' . $alurSertifikasi->path_pdf) }}" target="_blank" class="text-blue-400 text-sm hover:text-blue-300">Lihat PDF</a>
+                        <a href="{{ asset('storage_public/' . $alurSertifikasi->path_pdf) }}" target="_blank" class="text-blue-400 text-sm hover:text-blue-300">Lihat PDF</a>
                     </div>
                 @endif
             </div>

@@ -15,7 +15,7 @@
                         if (!empty(optional($logo)->url_gambar)) {
                             $logoSrc = str_starts_with(optional($logo)->url_gambar, 'http://') || str_starts_with(optional($logo)->url_gambar, 'https://')
                                 ? optional($logo)->url_gambar
-                                : asset('storage/' . ltrim(optional($logo)->url_gambar, '/'));
+                                : asset('storage_public/' . ltrim(optional($logo)->url_gambar, '/'));
                         } elseif (!empty($logo->logo_url)) {
                             $logoSrc = $logo->logo_url;
                         }

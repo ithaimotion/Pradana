@@ -64,7 +64,7 @@
                             <label class="block text-xs font-bold text-blue-400 uppercase tracking-wider">Upload Dokumen Legalitas Resmi</label>
                             @if($legalitas->dokumen)
                                 <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 h-52 bg-slate-50 dark:bg-slate-950 relative mb-3">
-                                    <iframe src="{{ asset('storage/' . ltrim($legalitas->dokumen, '/')) }}" class="w-full h-full"></iframe>
+                                    <iframe src="{{ asset('storage_public/' . ltrim($legalitas->dokumen, '/')) }}" class="w-full h-full"></iframe>
                                     <div class="absolute bottom-2 left-2 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur text-[10px] text-slate-800 dark:text-slate-200 px-2 py-0.5 rounded border border-slate-200 dark:border-slate-800">Dokumen Saat Ini</div>
                                 </div>
                             @endif
