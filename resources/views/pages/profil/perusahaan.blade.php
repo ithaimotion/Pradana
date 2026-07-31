@@ -9,13 +9,13 @@
     <section class="relative py-24 bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white overflow-hidden">
         <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]"></div>
         <div class="relative max-w-7xl mx-auto px-6 text-center reveal-scale">
-            <span class="inline-block bg-orange-500/20 text-orange-400 border border-orange-500/30 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-4 backdrop-blur-md">
+            <span class="inline-block bg-blue-600/20 text-blue-500 border border-blue-500/30 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-4 backdrop-blur-md">
                 Profil Perusahaan
             </span>
             <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight leading-tight">
                 {{ $konten->judul ?? 'PT PRADANA NUSA ENERGI' }}
             </h1>
-            <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p class="text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
                 {{ $konten->subjudul ?? 'Lembaga Inspeksi Teknik (LIT) terkemuka dan terpercaya yang bergerak di bidang pengujian dan pemeriksaan kelistrikan untuk mewujudkan tenaga listrik yang aman, andal, dan ramah lingkungan.' }}
             </p>
         </div>
@@ -35,7 +35,7 @@
 
                     <div class="grid grid-cols-2 gap-6 border-t border-slate-200 pt-6">
                         <div>
-                            <div class="text-3xl font-extrabold text-orange-500 mb-1">100%</div>
+                            <div class="text-3xl font-extrabold text-blue-600 mb-1">100%</div>
                             <div class="text-sm font-medium text-slate-600">Terakreditasi & Resmi</div>
                         </div>
                         <div>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl z-20 border border-slate-100 max-w-xs hidden sm:block">
                         <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-orange-500/10 text-orange-500 rounded-lg flex items-center justify-center">
+                            <div class="w-12 h-12 bg-blue-600/10 text-blue-600 rounded-lg flex items-center justify-center">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                             </div>
                             <div>
@@ -76,14 +76,14 @@
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Visi -->
                 <div class="bg-gradient-to-br from-blue-900 to-slate-900 text-white p-8 md:p-10 rounded-2xl shadow-xl reveal-left">
-                    <div class="w-14 h-14 bg-orange-500 rounded-xl flex items-center justify-center mb-6 shadow-lg">
-                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-6 shadow-lg">
+                        <svg class="w-7 h-7 text-slate-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                         </svg>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">VISI</h3>
-                    <p class="text-slate-200 leading-relaxed text-lg">
+                    <p class="text-slate-800 dark:text-slate-200 leading-relaxed text-lg">
                         {{ $konten->visi ?? 'Menjadi Lembaga Inspeksi Teknik yang ikut serta mewujudkan instalasi ketenagalistrikan yang memenuhi kaidah K2 (Keselamatan Ketenagalistrikan) yang aman, andal, dan ramah lingkungan di Indonesia.' }}
                     </p>
                 </div>
@@ -91,7 +91,7 @@
                 <!-- Misi -->
                 <div class="bg-slate-50 border border-slate-200 p-8 md:p-10 rounded-2xl shadow-lg reveal-right delay-200">
                     <div class="w-14 h-14 bg-blue-900 rounded-xl flex items-center justify-center mb-6 shadow-lg">
-                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-7 h-7 text-slate-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </div>
@@ -140,7 +140,7 @@
                 @endphp
                 @foreach($nilaiPerusahaan as $index => $nilai)
                     <div class="bg-white p-8 rounded-2xl border border-slate-200/80 shadow-md hover:shadow-xl transition reveal-on-scroll delay-{{ ($index + 1) * 100 }}">
-                        <div class="w-12 h-12 {{ $index % 2 == 0 ? 'bg-orange-500' : 'bg-blue-900' }} text-white rounded-xl flex items-center justify-center mb-6">
+                        <div class="w-12 h-12 {{ $index % 2 == 0 ? 'bg-blue-600' : 'bg-blue-900' }} text-white rounded-xl flex items-center justify-center mb-6">
                             @php
                                 $icon = $nilai['ikon'] ?? null;
                             @endphp

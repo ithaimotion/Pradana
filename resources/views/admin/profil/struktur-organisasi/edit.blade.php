@@ -4,21 +4,21 @@
 
 @section('content')
 <div class="space-y-6">
-    <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl">
+    <div class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl">
         <div class="mb-6">
-            <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-blue-400"></span>
                 Edit Struktur Organisasi
             </h2>
-            <p class="text-xs text-slate-400 mt-1">Edit struktur organisasi dan jajaran manajemen</p>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Edit struktur organisasi dan jajaran manajemen</p>
         </div>
 
         <!-- Tab Navigation -->
-        <div class="flex gap-2 mb-6 border-b border-slate-800">
-            <button onclick="switchTab('info')" id="tab-info" class="px-4 py-2 text-sm font-medium rounded-t-lg transition-colors bg-orange-500/20 text-orange-400 border-b-2 border-orange-500">
+        <div class="flex gap-2 mb-6 border-b border-slate-200 dark:border-slate-800">
+            <button onclick="switchTab('info')" id="tab-info" class="px-4 py-2 text-sm font-medium rounded-t-lg transition-colors bg-blue-600/20 text-blue-500 border-b-2 border-blue-600">
                 Informasi Halaman
             </button>
-            <button onclick="switchTab('data')" id="tab-data" class="px-4 py-2 text-sm font-medium rounded-t-lg transition-colors text-slate-400 hover:text-white border-b-2 border-transparent">
+            <button onclick="switchTab('data')" id="tab-data" class="px-4 py-2 text-sm font-medium rounded-t-lg transition-colors text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white border-b-2 border-transparent">
                 Data Struktur Organisasi
             </button>
         </div>
@@ -32,24 +32,24 @@
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="space-y-4">
                         <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1 uppercase tracking-wider">Judul Header</label>
-                            <input type="text" name="judul" value="{{ old('judul', $strukturOrg->judul) }}" placeholder="STRUKTUR ORGANISASI" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
+                            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider">Judul Header</label>
+                            <input type="text" name="judul" value="{{ old('judul', $strukturOrg->judul) }}" placeholder="STRUKTUR ORGANISASI" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-3 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500">
                             @error('judul')
                                 <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>
 
                         <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1 uppercase tracking-wider">Sub-Judul / Tagline</label>
-                            <textarea name="subjudul" rows="2" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-amber-500" placeholder="Bagan Struktur Organisasi dan Manajemen PT Pradana Nusa Energi.">{{ old('subjudul', $strukturOrg->subjudul) }}</textarea>
+                            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider">Sub-Judul / Tagline</label>
+                            <textarea name="subjudul" rows="2" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-3 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500" placeholder="Bagan Struktur Organisasi dan Manajemen PT Pradana Nusa Energi.">{{ old('subjudul', $strukturOrg->subjudul) }}</textarea>
                             @error('subjudul')
                                 <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>
 
                         <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1 uppercase tracking-wider">Penjelasan Jajaran Manajemen & Operasional</label>
-                            <textarea name="konten" rows="5" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-amber-500" placeholder="Deskripsi struktur organisasi...">{{ old('konten', $strukturOrg->konten) }}</textarea>
+                            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider">Penjelasan Jajaran Manajemen & Operasional</label>
+                            <textarea name="konten" rows="5" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-3 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500" placeholder="Deskripsi struktur organisasi...">{{ old('konten', $strukturOrg->konten) }}</textarea>
                             @error('konten')
                                 <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -57,16 +57,16 @@
                     </div>
 
                     <div class="space-y-6">
-                        <div class="space-y-3 bg-slate-950/50 p-5 rounded-xl border border-slate-800">
-                            <label class="block text-xs font-bold text-amber-400 uppercase tracking-wider">Upload Gambar Bagan Struktur Organisasi</label>
+                        <div class="space-y-3 bg-slate-50/80 dark:bg-slate-950/50 p-5 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <label class="block text-xs font-bold text-blue-400 uppercase tracking-wider">Upload Gambar Bagan Struktur Organisasi</label>
                             @if($strukturOrg->gambar)
-                                <div class="rounded-xl overflow-hidden border border-slate-800 h-52 bg-slate-950 relative mb-3">
+                                <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 h-52 bg-slate-50 dark:bg-slate-950 relative mb-3">
                                     <img src="{{ asset('storage/' . ltrim($strukturOrg->gambar, '/')) }}" alt="Bagan Struktur Organisasi" class="w-full h-full object-contain p-2">
-                                    <div class="absolute bottom-2 left-2 bg-slate-950/80 backdrop-blur text-[10px] text-slate-200 px-2 py-0.5 rounded border border-slate-800">Bagan Saat Ini</div>
+                                    <div class="absolute bottom-2 left-2 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur text-[10px] text-slate-800 dark:text-slate-200 px-2 py-0.5 rounded border border-slate-200 dark:border-slate-800">Bagan Saat Ini</div>
                                 </div>
                             @endif
-                            <div class="border-2 border-dashed border-slate-800 rounded-xl p-4 text-center hover:border-amber-500/50 transition">
-                                <input type="file" name="gambar" accept="image/*" class="w-full text-xs text-slate-400 bg-slate-950 border border-slate-800 rounded-xl p-2.5">
+                            <div class="border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-xl p-4 text-center hover:border-blue-500/50 transition">
+                                <input type="file" name="gambar" accept="image/*" class="w-full text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5">
                                 <p class="text-[11px] text-slate-500 mt-1">Upload Gambar Diagram Struktur (PNG, JPG, WEBP maks 5MB)</p>
                             </div>
                             @error('gambar')
@@ -76,11 +76,11 @@
                     </div>
                 </div>
 
-                <div class="flex items-center gap-4 pt-4 border-t border-slate-800">
-                    <a href="{{ route('admin.profil.struktur-organisasi.index') }}" class="px-6 py-2.5 rounded-xl border border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white text-sm font-medium transition">
+                <div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+                    <a href="{{ route('admin.profil.struktur-organisasi.index') }}" class="px-6 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white text-sm font-medium transition">
                         Batal
                     </a>
-                    <button type="submit" class="px-6 py-2.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-white text-sm font-medium transition flex items-center gap-2">
+                    <button type="submit" class="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition flex items-center gap-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
@@ -93,51 +93,51 @@
         <!-- Tab 2: Data Struktur Organisasi -->
         <div id="content-data" class="space-y-6 hidden">
             <!-- Add New Item Form -->
-            <div class="bg-slate-950/40 border border-slate-800 rounded-xl p-6">
-                <h3 class="text-sm font-bold text-amber-400 uppercase tracking-wider mb-4">Tambah Item Baru</h3>
+            <div class="bg-slate-50/60 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 rounded-xl p-6">
+                <h3 class="text-sm font-bold text-blue-400 uppercase tracking-wider mb-4">Tambah Item Baru</h3>
                 <form action="{{ route('admin.profil.struktur-organisasi.items.store') }}" method="POST" class="space-y-4">
                     @csrf
                     <input type="hidden" name="profil_struktur_organisasi_id" value="{{ $strukturOrg->id }}">
                     
                     <div class="grid md:grid-cols-5 gap-4">
                         <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1">Nama</label>
-                            <input type="text" name="nama" placeholder="Nama Lengkap" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
+                            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Nama</label>
+                            <input type="text" name="nama" placeholder="Nama Lengkap" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500">
                             @error('nama')
                                 <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1">Jabatan</label>
-                            <input type="text" name="jabatan" placeholder="Direktur Utama" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
+                            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Jabatan</label>
+                            <input type="text" name="jabatan" placeholder="Direktur Utama" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500">
                             @error('jabatan')
                                 <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1">Divisi</label>
-                            <input type="text" name="divisi" placeholder="Divisi Operasional" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
+                            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Divisi</label>
+                            <input type="text" name="divisi" placeholder="Divisi Operasional" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500">
                             @error('divisi')
                                 <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1">Level</label>
-                            <input type="number" name="level" value="1" min="1" max="10" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
+                            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Level</label>
+                            <input type="number" name="level" value="1" min="1" max="10" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500">
                             @error('level')
                                 <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-300 mb-1">Urutan</label>
-                            <input type="number" name="urutan" value="0" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
+                            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Urutan</label>
+                            <input type="number" name="urutan" value="0" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500">
                             @error('urutan')
                                 <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
                     
-                    <button type="submit" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-2">
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                         </svg>
@@ -148,7 +148,7 @@
 
             <!-- Existing Items Table -->
             <div class="space-y-4">
-                <h3 class="text-sm font-bold text-amber-400 uppercase tracking-wider">Daftar Item ({{ $strukturOrg->items->count() }})</h3>
+                <h3 class="text-sm font-bold text-blue-400 uppercase tracking-wider">Daftar Item ({{ $strukturOrg->items->count() }})</h3>
                 @if($strukturOrg->items->count() > 0)
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse">
@@ -174,7 +174,7 @@
                                         <td class="py-4 px-4 text-center">{{ $item->urutan }}</td>
                                         <td class="py-4 px-4 text-center">
                                             <div class="flex items-center justify-center gap-2">
-                                                <button onclick="openEditModal({{ $item->id }})" class="text-amber-400 hover:text-amber-300 text-xs flex items-center gap-1">
+                                                <button onclick="openEditModal({{ $item->id }})" class="text-blue-400 hover:text-blue-300 text-xs flex items-center gap-1">
                                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
                                                 </button>
                                                 <form action="{{ route('admin.profil.struktur-organisasi.items.destroy', $item->id) }}" method="POST" class="inline">
@@ -201,10 +201,10 @@
 
 <!-- Edit Item Modal -->
 <div id="editModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50">
-    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 w-full max-w-lg mx-4 shadow-2xl">
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 w-full max-w-lg mx-4 shadow-2xl">
         <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-bold text-white">Edit Item Struktur Organisasi</h3>
-            <button onclick="closeEditModal()" class="text-slate-400 hover:text-white">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Edit Item Struktur Organisasi</h3>
+            <button onclick="closeEditModal()" class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
         </div>
@@ -214,31 +214,31 @@
             <input type="hidden" name="id" id="editItemId">
             
             <div>
-                <label class="block text-xs font-semibold text-slate-300 mb-1">Nama</label>
-                <input type="text" name="nama" id="editNama" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
+                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Nama</label>
+                <input type="text" name="nama" id="editNama" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500">
             </div>
             <div>
-                <label class="block text-xs font-semibold text-slate-300 mb-1">Jabatan</label>
-                <input type="text" name="jabatan" id="editJabatan" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
+                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Jabatan</label>
+                <input type="text" name="jabatan" id="editJabatan" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500">
             </div>
             <div>
-                <label class="block text-xs font-semibold text-slate-300 mb-1">Divisi</label>
-                <input type="text" name="divisi" id="editDivisi" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
+                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Divisi</label>
+                <input type="text" name="divisi" id="editDivisi" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500">
             </div>
             <div>
-                <label class="block text-xs font-semibold text-slate-300 mb-1">Level</label>
-                <input type="number" name="level" id="editLevel" min="1" max="10" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
+                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Level</label>
+                <input type="number" name="level" id="editLevel" min="1" max="10" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500">
             </div>
             <div>
-                <label class="block text-xs font-semibold text-slate-300 mb-1">Urutan</label>
-                <input type="number" name="urutan" id="editUrutan" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
+                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Urutan</label>
+                <input type="number" name="urutan" id="editUrutan" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500">
             </div>
             
             <div class="flex gap-3 pt-2">
-                <button type="button" onclick="closeEditModal()" class="flex-1 px-4 py-2 rounded-xl border border-slate-700 text-slate-300 hover:bg-slate-800 text-sm font-medium transition">
+                <button type="button" onclick="closeEditModal()" class="flex-1 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-800 text-sm font-medium transition">
                     Batal
                 </button>
-                <button type="submit" class="flex-1 px-4 py-2 rounded-xl bg-orange-500 hover:bg-orange-600 text-white text-sm font-medium transition">
+                <button type="submit" class="flex-1 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition">
                     Update Item
                 </button>
             </div>
@@ -257,18 +257,18 @@
         const contentData = document.getElementById('content-data');
 
         if (tab === 'info') {
-            tabInfo.classList.add('bg-orange-500/20', 'text-orange-400', 'border-orange-500');
-            tabInfo.classList.remove('text-slate-400', 'border-transparent');
-            tabData.classList.remove('bg-orange-500/20', 'text-orange-400', 'border-orange-500');
-            tabData.classList.add('text-slate-400', 'border-transparent');
+            tabInfo.classList.add('bg-blue-600/20', 'text-blue-500', 'border-blue-600');
+            tabInfo.classList.remove('text-slate-600 dark:text-slate-400', 'border-transparent');
+            tabData.classList.remove('bg-blue-600/20', 'text-blue-500', 'border-blue-600');
+            tabData.classList.add('text-slate-600 dark:text-slate-400', 'border-transparent');
             
             contentInfo.classList.remove('hidden');
             contentData.classList.add('hidden');
         } else {
-            tabData.classList.add('bg-orange-500/20', 'text-orange-400', 'border-orange-500');
-            tabData.classList.remove('text-slate-400', 'border-transparent');
-            tabInfo.classList.remove('bg-orange-500/20', 'text-orange-400', 'border-orange-500');
-            tabInfo.classList.add('text-slate-400', 'border-transparent');
+            tabData.classList.add('bg-blue-600/20', 'text-blue-500', 'border-blue-600');
+            tabData.classList.remove('text-slate-600 dark:text-slate-400', 'border-transparent');
+            tabInfo.classList.remove('bg-blue-600/20', 'text-blue-500', 'border-blue-600');
+            tabInfo.classList.add('text-slate-600 dark:text-slate-400', 'border-transparent');
             
             contentData.classList.remove('hidden');
             contentInfo.classList.add('hidden');

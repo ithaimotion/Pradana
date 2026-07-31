@@ -9,18 +9,18 @@
     <section class="relative py-20 bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white overflow-hidden">
         <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]"></div>
         <div class="relative max-w-7xl mx-auto px-6 text-center reveal-scale">
-            <span class="inline-block bg-orange-500/20 text-orange-400 border border-orange-500/30 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-4 backdrop-blur-md">
+            <span class="inline-block bg-blue-600/20 text-blue-500 border border-blue-500/30 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-4 backdrop-blur-md">
                 Dokumen Legal & Perizinan
             </span>
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
                 {{ $konten->judul ?? 'LEGALITAS PERUSAHAAN' }}
             </h1>
-            <p class="text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
+            <p class="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
                 {{ $konten->subjudul ?? 'Seluruh dokumen legalitas, perizinan, dan akreditasi resmi PT Pradana Nusa Energi sebagai Lembaga Inspeksi Teknik terakreditasi.' }}
             </p>
             @if(optional($konten)->url_dokumen)
                 <div class="mt-6">
-                    <a href="{{ optional($konten)->url_dokumen }}" target="_blank" class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
+                    <a href="{{ optional($konten)->url_dokumen }}" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                         <span>Unduh File PDF Dokumen Legalitas Resmi</span>
                     </a>
@@ -52,11 +52,7 @@
             @if(isset($konten->konten) && !empty($konten->konten))
                 <div class="bg-blue-900/5 border border-blue-900/15 rounded-2xl p-6 mb-12 text-slate-700 text-sm leading-relaxed shadow-sm">
                     <h3 class="font-bold text-base text-blue-950 mb-2 flex items-center gap-2">
-<<<<<<< HEAD
                         <span>???</span> Rincian Nomor Izin & Masa Berlaku Legalitas:
-=======
-                        <span><svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 21V9l8-5 8 5v12"></path></svg></span> Rincian Nomor Izin & Masa Berlaku Legalitas:
->>>>>>> 93ae680 (pradana29)
                     </h3>
                     <p>{!! nl2br(e($konten->konten)) !!}</p>
                 </div>
@@ -79,7 +75,7 @@
                     <div class="mb-14 reveal-on-scroll">
                         <div class="flex items-center gap-3 mb-6">
                             <div class="w-10 h-10 bg-blue-900 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
-                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-5 h-5 text-slate-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21H5a2 2 0 01-2-2V7l5-5h11a2 2 0 012 2v15z"></path>
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 2v5H4"></path>
                                 </svg>
@@ -111,19 +107,19 @@
                                     @endif
                                     <div class="flex items-center justify-between pt-4 border-t border-slate-100">
                                         @if($item->tanggal_terbit)
-                                            <span class="text-xs text-slate-400">Terbit: {{ \Carbon\Carbon::parse($item->tanggal_terbit)->format('d F Y') }}</span>
+                                            <span class="text-xs text-slate-600 dark:text-slate-400">Terbit: {{ \Carbon\Carbon::parse($item->tanggal_terbit)->format('d F Y') }}</span>
                                         @else
-                                            <span class="text-xs text-slate-400">-</span>
+                                            <span class="text-xs text-slate-600 dark:text-slate-400">-</span>
                                         @endif
                                         @if($item->file)
-                                            <a href="{{ $item->url_file }}" target="_blank" class="text-xs font-semibold text-orange-500 hover:text-orange-600 flex items-center gap-1 transition">
+                                            <a href="{{ $item->url_file }}" target="_blank" class="text-xs font-semibold text-blue-600 hover:text-blue-600 flex items-center gap-1 transition">
                                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
                                                 </svg>
                                                 Unduh
                                             </a>
                                         @else
-                                            <span class="text-xs text-slate-400">Tidak ada file</span>
+                                            <span class="text-xs text-slate-600 dark:text-slate-400">Tidak ada file</span>
                                         @endif
                                     </div>
                                 </div>
@@ -137,8 +133,8 @@
             @if($konten && $konten->tenagaTeknik && $konten->tenagaTeknik->count() > 0)
                 <div class="mb-14 reveal-on-scroll">
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
-                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
+                            <svg class="w-5 h-5 text-slate-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                             </svg>
                         </div>
@@ -148,8 +144,8 @@
                         @foreach($konten->tenagaTeknik as $tenaga)
                             <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
                                 <div class="flex items-start justify-between mb-4">
-                                    <div class="w-11 h-11 bg-orange-50 rounded-xl flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                                         </svg>
                                     </div>

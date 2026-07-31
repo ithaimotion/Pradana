@@ -19,6 +19,14 @@
         }
     @endphp
 
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
     <title>@yield('title', $siteTitle)</title>
 
     @if($faviconUrl)

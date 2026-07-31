@@ -9,13 +9,13 @@
     <section class="relative py-20 bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white overflow-hidden">
         <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]"></div>
         <div class="relative max-w-7xl mx-auto px-6 text-center reveal-scale">
-            <span class="inline-block bg-orange-500/20 text-orange-400 border border-orange-500/30 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-4 backdrop-blur-md">
+            <span class="inline-block bg-blue-600/20 text-blue-500 border border-blue-500/30 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-4 backdrop-blur-md">
                 Layanan Inspeksi & Sertifikasi
             </span>
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
                 BIDANG LAYANAN
             </h1>
-            <p class="text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
+            <p class="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
                 PT Pradana Nusa Energi melayani inspeksi teknik dan penerbitan Sertifikat Laik Operasi (SLO) untuk berbagai jenis instalasi tenaga listrik.
             </p>
         </div>
@@ -30,7 +30,7 @@
             <div class="mb-14 reveal-on-scroll">
                 <div class="flex items-center gap-3 mb-6">
                     <div class="w-10 h-10 bg-green-600 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 text-slate-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
@@ -62,8 +62,8 @@
             @if($kategoriTM->count() > 0)
             <div class="mb-14 reveal-on-scroll delay-100">
                 <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
+                        <svg class="w-5 h-5 text-slate-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
@@ -75,14 +75,14 @@
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
                     @foreach($kategoriTM as $kategori)
                     <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4 text-2xl">
+                        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4 text-2xl">
                             {{ $kategori->ikon ?? '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>' }}
                         </div>
-                        <h3 class="font-extrabold text-slate-900 mb-2 group-hover:text-orange-600 transition-colors">{{ $kategori->judul }}</h3>
+                        <h3 class="font-extrabold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">{{ $kategori->judul }}</h3>
                         <p class="text-xs text-slate-500 leading-relaxed mb-3">{{ $kategori->deskripsi }}</p>
                         <div class="flex flex-wrap gap-1.5">
                             @foreach($kategori->tags ?? [] as $tag)
-                            <span class="text-xs bg-orange-50 text-orange-600 border border-orange-200 px-2 py-0.5 rounded-full font-medium">{{ $tag }}</span>
+                            <span class="text-xs bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full font-medium">{{ $tag }}</span>
                             @endforeach
                         </div>
                     </div>
@@ -96,7 +96,7 @@
             <div class="mb-14 reveal-on-scroll delay-200">
                 <div class="flex items-center gap-3 mb-6">
                     <div class="w-10 h-10 bg-blue-900 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 text-slate-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
                         </svg>
                     </div>
@@ -131,16 +131,16 @@
     <section class="py-14 bg-white reveal-on-scroll">
         <div class="max-w-7xl mx-auto px-6">
             <div class="bg-gradient-to-r from-blue-900 to-slate-900 rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 text-white">
-                <div class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg text-3xl">
+                <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg text-3xl">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                 </div>
                 <div class="flex-1 text-center md:text-left">
                     <h3 class="text-xl font-extrabold mb-2">Ajukan Permohonan SLO Sekarang</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
+                    <p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
                         Konsultasikan kebutuhan inspeksi & SLO Anda bersama tim kami. Kami siap melayani seluruh wilayah Indonesia.
                     </p>
                 </div>
-                <a href="{{ route('home') }}" class="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl transition shadow-lg flex-shrink-0 text-sm whitespace-nowrap">
+                <a href="{{ route('home') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-xl transition shadow-lg flex-shrink-0 text-sm whitespace-nowrap">
                     Hubungi Kami
                 </a>
             </div>

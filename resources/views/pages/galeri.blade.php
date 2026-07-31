@@ -9,13 +9,13 @@
     <section class="relative py-20 bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white overflow-hidden">
         <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]"></div>
         <div class="relative max-w-7xl mx-auto px-6 text-center reveal-scale">
-            <span class="inline-block bg-orange-500/20 text-orange-400 border border-orange-500/30 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-4 backdrop-blur-md">
+            <span class="inline-block bg-blue-600/20 text-blue-500 border border-blue-500/30 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-4 backdrop-blur-md">
                 Dokumentasi Kegiatan
             </span>
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
                 GALERI
             </h1>
-            <p class="text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
+            <p class="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
                 Kumpulan dokumentasi kegiatan inspeksi teknis, pengujian instalasi, dan acara resmi PT Pradana Nusa Energi di berbagai proyek.
             </p>
         </div>
@@ -47,7 +47,7 @@
                         $label = 'Tegangan Rendah';
                         
                         if ($category == 'inspeksi-tm') {
-                            $badgeColor = 'bg-orange-500';
+                            $badgeColor = 'bg-blue-600';
                             $label = 'Tegangan Menengah';
                         } elseif ($category == 'pembangkit') {
                             $badgeColor = 'bg-teal-500';
@@ -61,14 +61,14 @@
                     <div class="gallery-item group relative overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer reveal-on-scroll {{ $delay > 0 ? 'delay-'.$delay : '' }}" data-category="{{ $category }}" onclick="openLightbox(this)">
                         <img src="{{ optional($item)->url_gambar ?? 'https://placehold.co/600x400/e2e8f0/475569?text=Gallery' }}" alt="{{ $item->judul }}" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                            <span class="{{ $badgeColor }} text-white text-xs font-bold px-2.5 py-1 rounded w-max mb-2">{{ $label }}</span>
-                            <h3 class="text-white font-bold text-lg leading-tight">{{ $item->judul }}</h3>
+                            <span class="{{ $badgeColor }} text-slate-900 dark:text-white text-xs font-bold px-2.5 py-1 rounded w-max mb-2">{{ $label }}</span>
+                            <h3 class="text-slate-900 dark:text-white font-bold text-lg leading-tight">{{ $item->judul }}</h3>
                         </div>
                     </div>
                 @empty
                     <!-- Empty State -->
                     <div id="gallery-empty-db" class="col-span-full text-center py-20">
-                        <div class="w-16 h-16 mx-auto mb-4 text-slate-300">
+                        <div class="w-16 h-16 mx-auto mb-4 text-slate-700 dark:text-slate-300">
                             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                         </div>
                         <h3 class="font-bold text-slate-700 text-lg">Belum ada foto</h3>
@@ -78,7 +78,7 @@
                 
                 <!-- JS Filter Empty State -->
                 <div id="gallery-empty" class="col-span-full hidden text-center py-20">
-                    <div class="w-16 h-16 mx-auto mb-4 text-slate-300">
+                    <div class="w-16 h-16 mx-auto mb-4 text-slate-700 dark:text-slate-300">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     </div>
                     <h3 class="font-bold text-slate-700 text-lg">Tidak ada kecocokan</h3>
@@ -93,16 +93,16 @@
     <!-- Lightbox Modal -->
     <div id="lightbox" class="fixed inset-0 z-[100] bg-slate-900/95 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
         <!-- Close button -->
-        <button onclick="closeLightbox()" class="absolute top-6 right-6 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 w-12 h-12 bg-slate-100 dark:bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-slate-900 dark:text-white transition">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
         
         <div class="max-w-5xl w-full flex flex-col items-center">
             <img id="lightbox-img" src="" alt="Gallery Image" class="max-h-[75vh] w-auto rounded-xl shadow-2xl mb-6">
             <div class="text-center max-w-2xl">
-                <span id="lightbox-tag" class="bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-3 inline-block"></span>
-                <h3 id="lightbox-title" class="text-white font-extrabold text-2xl mb-2"></h3>
-                <p id="lightbox-desc" class="text-slate-400 text-sm"></p>
+                <span id="lightbox-tag" class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-3 inline-block"></span>
+                <h3 id="lightbox-title" class="text-slate-900 dark:text-white font-extrabold text-2xl mb-2"></h3>
+                <p id="lightbox-desc" class="text-slate-600 dark:text-slate-400 text-sm"></p>
             </div>
         </div>
     </div>

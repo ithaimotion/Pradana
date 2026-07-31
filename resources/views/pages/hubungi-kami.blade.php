@@ -21,13 +21,13 @@
     <section class="relative py-20 bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white overflow-hidden">
         <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]"></div>
         <div class="relative max-w-7xl mx-auto px-6 text-center reveal-scale">
-            <span class="inline-block bg-orange-500/20 text-orange-400 border border-orange-500/30 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-4 backdrop-blur-md">
+            <span class="inline-block bg-blue-600/20 text-blue-500 border border-blue-500/30 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-4 backdrop-blur-md">
                 Layanan Pelanggan
             </span>
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
                 HUBUNGI KAMI
             </h1>
-            <p class="text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
+            <p class="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
                 Punya pertanyaan mengenai layanan sertifikasi SLO? Tim kami siap membantu Anda dengan layanan yang cepat dan profesional.
             </p>
         </div>
@@ -64,7 +64,7 @@
 
                         <!-- Phone -->
                         <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-white hover:shadow-md transition duration-300 group cursor-default">
-                            <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                            <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 5a2 2 0 012-2h2.2a1 1 0 01.95.78l.65 2.6a1 1 0 01-.28.95L6.8 9.8a15 15 0 006.4 6.4l1.67-1.72a1 1 0 01.95-.28l2.6.65A1 1 0 0121 17.8V20a2 2 0 01-2 2h-1C8.82 22 2 15.18 2 7V3.5"></path></svg>
                             </div>
                             <div>
@@ -105,7 +105,7 @@
 
                 <!-- Contact Form -->
                 <div class="bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-slate-200 relative overflow-hidden reveal-on-scroll delay-100">
-                    <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-900 to-orange-500"></div>
+                    <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-900 to-blue-600"></div>
                     
                     <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Kirim Pesan</h3>
                     <p class="text-sm text-slate-500 mb-8">Isi formulir di bawah ini dan tim kami akan segera menghubungi Anda kembali.</p>
@@ -124,7 +124,7 @@
                                 <input type="text" name="nama" placeholder="John Doe" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-900/30 focus:border-blue-900 bg-slate-50 transition-all text-sm" required>
                             </div>
                             <div>
-                                <label class="block text-xs font-bold text-slate-700 mb-1.5">Perusahaan <span class="text-slate-400 font-normal">(Opsional)</span></label>
+                                <label class="block text-xs font-bold text-slate-700 mb-1.5">Perusahaan <span class="text-slate-600 dark:text-slate-400 font-normal">(Opsional)</span></label>
                                 <input type="text" name="perusahaan" placeholder="PT Maju Bersama" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-900/30 focus:border-blue-900 bg-slate-50 transition-all text-sm">
                             </div>
                         </div>

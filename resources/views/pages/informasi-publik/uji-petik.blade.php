@@ -9,13 +9,13 @@
     <section class="relative py-20 bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white overflow-hidden">
         <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]"></div>
         <div class="relative max-w-7xl mx-auto px-6 text-center reveal-scale">
-            <span class="inline-block bg-orange-500/20 text-orange-400 border border-orange-500/30 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-4 backdrop-blur-md">
+            <span class="inline-block bg-blue-600/20 text-blue-500 border border-blue-500/30 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-4 backdrop-blur-md">
                 Pengawasan & Evaluasi
             </span>
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
                 UJI PETIK (SAMPLING)
             </h1>
-            <p class="text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
+            <p class="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
                 Proses pengawasan dan evaluasi kinerja Tenaga Teknik untuk memastikan konsistensi penerapan prosedur inspeksi dan standar keselamatan.
             </p>
         </div>
@@ -37,8 +37,8 @@
                         SLO untuk seluruh instalasi tenaga listrik merupakan salah satu penerapan dari ketentuan keselamatan ketenagalistrikan. SLO wajib dimiliki instalasi pembangkit, distribusi, tegangan menengah dan tegangan rendah melalui pemeriksaan dan pengujian pada saat selesai dibangun, rekondisi, relokasi atau SLO yang habis masa berlakunya.
                     </p>
 
-                    <div class="bg-orange-50 border border-orange-200 rounded-xl p-6">
-                        <h3 class="font-bold text-orange-800 mb-3">Sesuai PERMEN ESDM Nomor 12 Tahun 2021</h3>
+                    <div class="bg-blue-50 border border-blue-200 rounded-xl p-6">
+                        <h3 class="font-bold text-blue-800 mb-3">Sesuai PERMEN ESDM Nomor 12 Tahun 2021</h3>
                         <p class="text-sm text-slate-700 italic">
                             Pasal 75 ayat (5) "Lembaga sertifikasi ketenagalistrikan sebagaimana dimaksud dalam Pasal 13 ayat (1) huruf a, huruf c, dan huruf d wajib melakukan uji petik terhadap pemegang sertifikat sesuai dengan ruang lingkup usahanya dengan sampel paling sedikit 5% (lima persen) dari jumlah sertifikat yang diterbitkan dalam 2 (dua) tahun sebelumnya."
                         </p>
@@ -79,7 +79,7 @@
                         </div>
                     @else
                         <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-12 flex items-center justify-center min-h-[400px]">
-                            <p class="text-slate-400 text-center">Belum ada gambar uji petik yang tersedia.</p>
+                            <p class="text-slate-600 dark:text-slate-400 text-center">Belum ada gambar uji petik yang tersedia.</p>
                         </div>
                     @endif
                 </div>

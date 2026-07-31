@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\Slo\KategoriLayananController;
 use App\Http\Controllers\Admin\LowonganKerjaController;
 use App\Http\Controllers\Admin\FooterLinkController;
 use App\Http\Controllers\Admin\FooterLegalController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\FooterLegalPageController;
 use App\Http\Controllers\LogoController;
 use App\Http\Controllers\SloPageController;
@@ -38,6 +39,7 @@ Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.lo
 // Protected Admin Panel Routes
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
+    Route::resource('users', UserController::class)->except(['show']);
     Route::post('/hero', [AdminController::class, 'updateHero'])->name('hero.update');
     Route::post('/tentang-pradana', [AdminController::class, 'updateTentangPradana'])->name('tentang.update');
     Route::post('/teknologi-header', [AdminController::class, 'updateTeknologiHeader'])->name('teknologi.header');
@@ -191,6 +193,9 @@ Route::get('/informasi-publik/maklumat-layanan', [InformasiPublikPageController:
 Route::get('/informasi-publik/uji-petik', [InformasiPublikPageController::class, 'ujiPetik'])->name('informasi-publik.uji-petik');
 Route::get('/informasi-publik/keluhan-banding', [InformasiPublikPageController::class, 'keluhanBanding'])->name('informasi-publik.keluhan-banding');
 Route::post('/informasi-publik/keluhan-banding/submit', [InformasiPublikPageController::class, 'keluhanBandingSubmit'])->name('informasi-publik.keluhan-banding.submit');
+Route::get('/informasi-publik/keluhan-banding/submit', function () {
+    return redirect()->route('informasi-publik.keluhan-banding');
+});
 
 Route::get('/informasi-publik/persyaratan-slo', [InformasiPublikPageController::class, 'persyaratanSlo'])->name('informasi-publik.persyaratan-slo');
 

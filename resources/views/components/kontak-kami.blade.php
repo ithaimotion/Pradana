@@ -13,13 +13,13 @@
     </div>
     
     <div class="relative z-10 max-w-7xl mx-auto px-6 text-center reveal-scale">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">
             {{ $title }}
         </h2>
         <p class="text-white/90 text-lg mb-10 max-w-3xl mx-auto">
             {{ $subtitle }}
         </p>
-        <a href="#contact" class="inline-block bg-orange-500 text-white px-8 py-4 rounded font-semibold text-lg hover:bg-orange-600 transition shadow-lg hover:scale-105">
+        <a href="#contact" class="inline-block bg-blue-600 text-white px-8 py-4 rounded font-semibold text-lg hover:bg-blue-700 transition shadow-lg hover:scale-105">
             {{ $cta }}
         </a>
     </div>

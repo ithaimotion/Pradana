@@ -9,18 +9,18 @@
     <section class="relative py-20 bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white overflow-hidden">
         <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]"></div>
         <div class="relative max-w-7xl mx-auto px-6 text-center reveal-scale">
-            <span class="inline-block bg-orange-500/20 text-orange-400 border border-orange-500/30 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-4 backdrop-blur-md">
+            <span class="inline-block bg-blue-600/20 text-blue-500 border border-blue-500/30 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-4 backdrop-blur-md">
                 Tenaga Ahli Bersertifikat
             </span>
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
                 {{ $konten->judul ?? 'DAFTAR PJT & TT' }}
             </h1>
-            <p class="text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
+            <p class="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
                 {{ $konten->subjudul ?? 'Daftar Penanggung Jawab Teknik (PJT) dan Tenaga Teknik (TT) terdaftar dan bersertifikasi kompetensi resmi PT Pradana Nusa Energi.' }}
             </p>
             @if(optional($konten)->url_dokumen)
                 <div class="mt-6">
-                    <a href="{{ optional($konten)->url_dokumen }}" target="_blank" class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
+                    <a href="{{ optional($konten)->url_dokumen }}" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                         <span>Unduh Dokumen SK PJT & TT Resmi (PDF)</span>
                     </a>
@@ -33,8 +33,8 @@
     <section class="py-16 bg-slate-50 overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 space-y-16">
             @if(isset($konten->konten) && !empty($konten->konten))
-                <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 text-amber-900 text-sm leading-relaxed shadow-sm">
-                    <div class="font-bold mb-1 flex items-center gap-2 text-amber-800">
+                <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6 text-blue-900 text-sm leading-relaxed shadow-sm">
+                    <div class="font-bold mb-1 flex items-center gap-2 text-blue-800">
                         <span>??</span> Catatan Kualifikasi & Akreditasi:
                     </div>
                     {!! nl2br(e($konten->konten)) !!}
@@ -61,13 +61,9 @@
                 <!-- Table PJT -->
                 @if(!empty($itemsByJabatan['PJT']))
                     <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xl overflow-hidden reveal-on-scroll">
-                        <div class="bg-slate-900 text-white px-8 py-5 flex items-center gap-3">
-                            <div class="w-8 h-8 bg-sky-500 rounded-lg flex items-center justify-center text-white font-bold text-base shadow-sm">
-<<<<<<< HEAD
+                        <div class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-8 py-5 flex items-center gap-3">
+                            <div class="w-8 h-8 bg-sky-500 rounded-lg flex items-center justify-center text-slate-900 dark:text-white font-bold text-base shadow-sm">
                                 ??
-=======
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M7 12h10M7 17h6"></path></svg>
->>>>>>> 93ae680 (pradana29)
                             </div>
                             <h2 class="text-xl font-bold tracking-wide">
                                 Penanggung Jawab Teknik (PJT)
@@ -104,13 +100,9 @@
                 <!-- Table TT -->
                 @if(!empty($itemsByJabatan['TT']))
                     <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xl overflow-hidden reveal-on-scroll delay-200">
-                        <div class="bg-slate-900 text-white px-8 py-5 flex items-center gap-3">
-                            <div class="w-8 h-8 bg-teal-500 rounded-lg flex items-center justify-center text-white font-bold text-base shadow-sm">
-<<<<<<< HEAD
+                        <div class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-8 py-5 flex items-center gap-3">
+                            <div class="w-8 h-8 bg-teal-500 rounded-lg flex items-center justify-center text-slate-900 dark:text-white font-bold text-base shadow-sm">
                                 ??
-=======
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M7 12h10M7 17h6"></path></svg>
->>>>>>> 93ae680 (pradana29)
                             </div>
                             <h2 class="text-xl font-bold tracking-wide">
                                 Tenaga Teknik (TT)

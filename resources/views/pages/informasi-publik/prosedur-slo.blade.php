@@ -11,22 +11,22 @@
         <div class="relative max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="reveal-scale">
-                    <span class="inline-block bg-orange-500/20 text-orange-400 border border-orange-500/30 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-4 backdrop-blur-md">
+                    <span class="inline-block bg-blue-600/20 text-blue-500 border border-blue-500/30 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-4 backdrop-blur-md">
                         Standar Pelayanan
                     </span>
                     <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
                         PROSEDUR SLO
                     </h1>
-                    <p class="text-slate-300 text-base md:text-lg mb-6">
+                    <p class="text-slate-700 dark:text-slate-300 text-base md:text-lg mb-6">
                         Tata cara dan ketentuan teknis pelaksanaan inspeksi instalasi tenaga listrik dari tahap awal hingga penerbitan sertifikat.
                     </p>
-                    <p class="text-slate-400 text-sm">
+                    <p class="text-slate-600 dark:text-slate-400 text-sm">
                         Panduan lengkap untuk memastikan instalasi listrik Anda memenuhi standar keamanan dan kelayakan operasi sesuai regulasi.
                     </p>
                 </div>
                 <div class="hidden md:flex justify-center reveal-scale delay-100">
                     <div class="relative">
-                        <div class="w-64 h-64 bg-gradient-to-br from-orange-500/20 to-blue-500/20 rounded-full blur-3xl absolute"></div>
+                        <div class="w-64 h-64 bg-gradient-to-br from-blue-600/20 to-blue-500/20 rounded-full blur-3xl absolute"></div>
                         <svg class="w-80 h-80 relative z-10" viewBox="0 0 400 400" fill="none">
                             <circle cx="200" cy="200" r="180" stroke="url(#gradient1)" stroke-width="2" opacity="0.3"/>
                             <circle cx="200" cy="200" r="140" stroke="url(#gradient1)" stroke-width="2" opacity="0.4"/>
@@ -58,12 +58,12 @@
 
             <div class="relative">
                 <!-- Timeline Line -->
-                <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-orange-500 via-blue-500 to-orange-500"></div>
+                <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-600 via-blue-500 to-blue-600"></div>
 
                 @if($prosedur && $prosedur->timeline_steps && count($prosedur->timeline_steps) > 0)
                     @foreach($prosedur->timeline_steps as $index => $step)
                         @php
-                            $colors = ['orange', 'blue', 'orange', 'blue', 'green'];
+                            $colors = ['blue', 'blue', 'blue', 'blue', 'green'];
                             $color = $colors[$index % count($colors)];
                         @endphp
                         <div class="relative flex flex-col md:flex-row items-center mb-12 reveal-on-scroll">
@@ -77,11 +77,11 @@
                                         <p class="text-sm text-slate-600">{{ $step['description'] ?? '' }}</p>
                                     </div>
                                 </div>
-                                <div class="hidden md:flex w-12 h-12 bg-{{ $color }}-500 rounded-full items-center justify-center text-white font-bold text-xl z-10 shadow-lg">{{ $index + 1 }}</div>
+                                <div class="hidden md:flex w-12 h-12 bg-{{ $color }}-500 rounded-full items-center justify-center text-slate-900 dark:text-white font-bold text-xl z-10 shadow-lg">{{ $index + 1 }}</div>
                                 <div class="md:w-1/2 md:pl-12"></div>
                             @else
                                 <div class="md:w-1/2 md:pr-12"></div>
-                                <div class="hidden md:flex w-12 h-12 bg-{{ $color }}-500 rounded-full items-center justify-center text-white font-bold text-xl z-10 shadow-lg">{{ $index + 1 }}</div>
+                                <div class="hidden md:flex w-12 h-12 bg-{{ $color }}-500 rounded-full items-center justify-center text-slate-900 dark:text-white font-bold text-xl z-10 shadow-lg">{{ $index + 1 }}</div>
                                 <div class="md:w-1/2 md:pl-12 mb-4 md:mb-0">
                                     <div class="bg-white rounded-2xl border border-slate-200 shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer group">
                                         <div class="flex items-center gap-3 mb-3">
@@ -101,13 +101,13 @@
                         <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
                             <div class="bg-white rounded-2xl border border-slate-200 shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer group">
                                 <div class="flex items-center gap-3 md:justify-end mb-3">
-                                    <span class="text-xs font-semibold text-orange-500 bg-orange-50 px-3 py-1 rounded-full">1-2 Hari</span>
+                                    <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">1-2 Hari</span>
                                 </div>
-                                <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-orange-600 transition-colors">Pengajuan Permohonan</h3>
+                                <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">Pengajuan Permohonan</h3>
                                 <p class="text-sm text-slate-600">Pemohon mengirimkan permohonan SLO beserta dokumen administratif dan teknis yang diperlukan.</p>
                             </div>
                         </div>
-                        <div class="hidden md:flex w-12 h-12 bg-orange-500 rounded-full items-center justify-center text-white font-bold text-xl z-10 shadow-lg">1</div>
+                        <div class="hidden md:flex w-12 h-12 bg-blue-600 rounded-full items-center justify-center text-white font-bold text-xl z-10 shadow-lg">1</div>
                         <div class="md:w-1/2 md:pl-12"></div>
                     </div>
 
@@ -131,13 +131,13 @@
                         <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
                             <div class="bg-white rounded-2xl border border-slate-200 shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer group">
                                 <div class="flex items-center gap-3 md:justify-end mb-3">
-                                    <span class="text-xs font-semibold text-orange-500 bg-orange-50 px-3 py-1 rounded-full">3-5 Hari</span>
+                                    <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">3-5 Hari</span>
                                 </div>
-                                <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-orange-600 transition-colors">Inspeksi Lapangan</h3>
+                                <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">Inspeksi Lapangan</h3>
                                 <p class="text-sm text-slate-600">Tenaga teknis melakukan kunjungan ke lokasi untuk pemeriksaan visual dan pengujian instalasi.</p>
                             </div>
                         </div>
-                        <div class="hidden md:flex w-12 h-12 bg-orange-500 rounded-full items-center justify-center text-white font-bold text-xl z-10 shadow-lg">3</div>
+                        <div class="hidden md:flex w-12 h-12 bg-blue-600 rounded-full items-center justify-center text-white font-bold text-xl z-10 shadow-lg">3</div>
                         <div class="md:w-1/2 md:pl-12"></div>
                     </div>
 
@@ -167,7 +167,7 @@
                                 <p class="text-sm text-slate-600">Sertifikat Laik Operasi diterbitkan jika instalasi memenuhi semua persyaratan teknis.</p>
                             </div>
                         </div>
-                        <div class="hidden md:flex w-12 h-12 bg-green-500 rounded-full items-center justify-center text-white font-bold text-xl z-10 shadow-lg">5</div>
+                        <div class="hidden md:flex w-12 h-12 bg-green-500 rounded-full items-center justify-center text-slate-900 dark:text-white font-bold text-xl z-10 shadow-lg">5</div>
                         <div class="md:w-1/2 md:pl-12"></div>
                     </div>
                 @endif
@@ -187,7 +187,7 @@
                 @if($prosedur && $prosedur->accordion_content && count($prosedur->accordion_content) > 0)
                     @foreach($prosedur->accordion_content as $index => $item)
                         @php
-                            $colors = ['orange', 'blue', 'orange', 'blue', 'green'];
+                            $colors = ['blue', 'blue', 'blue', 'blue', 'green'];
                             $color = $colors[$index % count($colors)];
                         @endphp
                         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
@@ -199,7 +199,7 @@
                                         <p class="text-sm text-slate-500">Langkah {{ $index + 1 }} proses SLO</p>
                                     </div>
                                 </div>
-                                <svg id="icon-{{ $index + 1 }}" class="w-5 h-5 text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                <svg id="icon-{{ $index + 1 }}" class="w-5 h-5 text-slate-600 dark:text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                             </button>
                             <div id="accordion-{{ $index + 1 }}" class="hidden px-6 pb-6">
                                 <div class="pt-4 border-t border-slate-100">
@@ -230,22 +230,22 @@
                     <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
                         <button onclick="toggleAccordion(1)" class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors">
                             <div class="flex items-center gap-4">
-                                <div class="w-10 h-10 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center font-bold">1</div>
+                                <div class="w-10 h-10 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold">1</div>
                                 <div>
                                     <h3 class="font-bold text-slate-900">Pengajuan Permohonan</h3>
                                     <p class="text-sm text-slate-500">Langkah awal proses SLO</p>
                                 </div>
                             </div>
-                            <svg id="icon-1" class="w-5 h-5 text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            <svg id="icon-1" class="w-5 h-5 text-slate-600 dark:text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div id="accordion-1" class="hidden px-6 pb-6">
                             <div class="pt-4 border-t border-slate-100">
                                 <p class="text-slate-600 mb-4">Pemohon mengajukan permohonan SLO melalui formulir yang tersedia dengan melampirkan dokumen administratif dan teknis yang diperlukan.</p>
                                 <h4 class="font-semibold text-slate-900 mb-2">Dokumen yang Diperlukan:</h4>
                                 <ul class="space-y-2 text-sm text-slate-600">
-                                    <li class="flex items-start gap-2"><span class="text-orange-500">•</span> Formulir permohonan yang telah diisi</li>
-                                    <li class="flex items-start gap-2"><span class="text-orange-500">•</span> KTP atau NIB/Akta Perusahaan</li>
-                                    <li class="flex items-start gap-2"><span class="text-orange-500">•</span> Bukti pembayaran biaya inspeksi</li>
+                                    <li class="flex items-start gap-2"><span class="text-blue-600">•</span> Formulir permohonan yang telah diisi</li>
+                                    <li class="flex items-start gap-2"><span class="text-blue-600">•</span> KTP atau NIB/Akta Perusahaan</li>
+                                    <li class="flex items-start gap-2"><span class="text-blue-600">•</span> Bukti pembayaran biaya inspeksi</li>
                                 </ul>
                                 <div class="mt-4 p-3 bg-blue-50 rounded-lg">
                                     <p class="text-sm text-blue-700"><strong>Catatan:</strong> Pastikan semua dokumen lengkap sebelum diajukan untuk mempercepat proses.</p>
@@ -264,7 +264,7 @@
                                     <p class="text-sm text-slate-500">Pengecekan kelengkapan dokumen</p>
                                 </div>
                             </div>
-                            <svg id="icon-2" class="w-5 h-5 text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            <svg id="icon-2" class="w-5 h-5 text-slate-600 dark:text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div id="accordion-2" class="hidden px-6 pb-6">
                             <div class="pt-4 border-t border-slate-100">
@@ -286,23 +286,23 @@
                     <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
                         <button onclick="toggleAccordion(3)" class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors">
                             <div class="flex items-center gap-4">
-                                <div class="w-10 h-10 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center font-bold">3</div>
+                                <div class="w-10 h-10 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold">3</div>
                                 <div>
                                     <h3 class="font-bold text-slate-900">Inspeksi Lapangan</h3>
                                     <p class="text-sm text-slate-500">Pemeriksaan fisik instalasi</p>
                                 </div>
                             </div>
-                            <svg id="icon-3" class="w-5 h-5 text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            <svg id="icon-3" class="w-5 h-5 text-slate-600 dark:text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div id="accordion-3" class="hidden px-6 pb-6">
                             <div class="pt-4 border-t border-slate-100">
                                 <p class="text-slate-600 mb-4">Tenaga Teknik (TT) melakukan kunjungan ke lokasi instalasi untuk pemeriksaan visual dan pengujian teknis.</p>
                                 <h4 class="font-semibold text-slate-900 mb-2">Yang Diperiksa:</h4>
                                 <ul class="space-y-2 text-sm text-slate-600">
-                                    <li class="flex items-start gap-2"><span class="text-orange-500">•</span> Kondisi fisik kabel dan panel</li>
-                                    <li class="flex items-start gap-2"><span class="text-orange-500">•</span> Sistem pentanahan (grounding)</li>
-                                    <li class="flex items-start gap-2"><span class="text-orange-500">•</span> Papan nama peralatan</li>
-                                    <li class="flex items-start gap-2"><span class="text-orange-500">•</span> Pengujian megger dan continuity</li>
+                                    <li class="flex items-start gap-2"><span class="text-blue-600">•</span> Kondisi fisik kabel dan panel</li>
+                                    <li class="flex items-start gap-2"><span class="text-blue-600">•</span> Sistem pentanahan (grounding)</li>
+                                    <li class="flex items-start gap-2"><span class="text-blue-600">•</span> Papan nama peralatan</li>
+                                    <li class="flex items-start gap-2"><span class="text-blue-600">•</span> Pengujian megger dan continuity</li>
                                 </ul>
                             </div>
                         </div>
@@ -318,7 +318,7 @@
                                     <p class="text-sm text-slate-500">Penilaian hasil inspeksi</p>
                                 </div>
                             </div>
-                            <svg id="icon-4" class="w-5 h-5 text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            <svg id="icon-4" class="w-5 h-5 text-slate-600 dark:text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div id="accordion-4" class="hidden px-6 pb-6">
                             <div class="pt-4 border-t border-slate-100">
@@ -342,7 +342,7 @@
                                     <p class="text-sm text-slate-500">Sertifikat diterbitkan</p>
                                 </div>
                             </div>
-                            <svg id="icon-5" class="w-5 h-5 text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            <svg id="icon-5" class="w-5 h-5 text-slate-600 dark:text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div id="accordion-5" class="hidden px-6 pb-6">
                             <div class="pt-4 border-t border-slate-100">
@@ -373,7 +373,7 @@
                 @if($prosedur && $prosedur->processing_time && count($prosedur->processing_time) > 0)
                     @foreach($prosedur->processing_time as $index => $time)
                         @php
-                            $colors = ['orange', 'blue', 'orange', 'blue', 'green'];
+                            $colors = ['blue', 'blue', 'blue', 'blue', 'green'];
                             $color = $colors[$index % count($colors)];
                             $icons = [
                                 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
@@ -386,7 +386,7 @@
                         @endphp
                         <div class="bg-gradient-to-br from-{{ $color }}-50 to-{{ $color }}-100 rounded-2xl p-6 text-center border border-{{ $color }}-200">
                             <div class="w-12 h-12 bg-{{ $color }}-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ $iconPath }}"></path></svg>
+                                <svg class="w-6 h-6 text-slate-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ $iconPath }}"></path></svg>
                             </div>
                             <h3 class="font-bold text-slate-900 mb-1">{{ $time['name'] ?? '' }}</h3>
                             <p class="text-2xl font-extrabold text-{{ $color }}-600">{{ $time['duration'] ?? '' }}</p>
@@ -394,37 +394,37 @@
                     @endforeach
                 @else
                     <!-- Fallback static processing time -->
-                    <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-6 text-center border border-orange-200">
-                        <div class="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 text-center border border-blue-200">
+                        <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-6 h-6 text-slate-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                         </div>
                         <h3 class="font-bold text-slate-900 mb-1">Pengajuan</h3>
-                        <p class="text-2xl font-extrabold text-orange-600">1-2 Hari</p>
+                        <p class="text-2xl font-extrabold text-blue-700">1-2 Hari</p>
                     </div>
                     <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 text-center border border-blue-200">
                         <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                            <svg class="w-6 h-6 text-slate-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
                         </div>
                         <h3 class="font-bold text-slate-900 mb-1">Verifikasi</h3>
                         <p class="text-2xl font-extrabold text-blue-600">2-3 Hari</p>
                     </div>
-                    <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-6 text-center border border-orange-200">
-                        <div class="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 text-center border border-blue-200">
+                        <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-6 h-6 text-slate-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                         </div>
                         <h3 class="font-bold text-slate-900 mb-1">Inspeksi</h3>
-                        <p class="text-2xl font-extrabold text-orange-600">3-5 Hari</p>
+                        <p class="text-2xl font-extrabold text-blue-700">3-5 Hari</p>
                     </div>
                     <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 text-center border border-blue-200">
                         <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                            <svg class="w-6 h-6 text-slate-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                         </div>
                         <h3 class="font-bold text-slate-900 mb-1">Evaluasi</h3>
                         <p class="text-2xl font-extrabold text-blue-600">2-3 Hari</p>
                     </div>
                     <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 text-center border border-green-200">
                         <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <svg class="w-6 h-6 text-slate-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
                         <h3 class="font-bold text-slate-900 mb-1">Penerbitan</h3>
                         <p class="text-2xl font-extrabold text-green-600">1-2 Hari</p>
@@ -450,11 +450,11 @@
                 @if($prosedur && $prosedur->required_documents && count($prosedur->required_documents) > 0)
                     @foreach($prosedur->required_documents as $index => $doc)
                         @php
-                            $iconColors = ['blue', 'orange', 'green', 'purple', 'red', 'yellow'];
+                            $iconColors = ['blue', 'blue', 'green', 'purple', 'red', 'yellow'];
                             $iconColor = $iconColors[$index % count($iconColors)];
                             $iconSvgs = [
                                 'blue' => 'M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5',
-                                'orange' => 'M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2',
+                                'blue' => 'M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2',
                                 'green' => 'M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z',
                                 'purple' => 'M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2',
                                 'red' => 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
@@ -485,8 +485,8 @@
                     </div>
 
                     <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 flex items-start gap-4 hover:shadow-md transition-shadow">
-                        <div class="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg>
+                        <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg>
                         </div>
                         <div>
                             <h3 class="font-bold text-slate-900 mb-1">KTP / NIB / Akta</h3>
@@ -558,7 +558,7 @@
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                                 Download
                             </a>
-                            <button onclick="openFullscreen()" class="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-800 text-white rounded-lg text-sm font-semibold transition">
+                            <button onclick="openFullscreen()" class="flex items-center gap-2 px-4 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-800 text-slate-900 dark:text-white rounded-lg text-sm font-semibold transition">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
                                 Fullscreen
                             </button>
@@ -577,7 +577,7 @@
             @else
                 <div class="bg-slate-50 rounded-3xl border border-slate-200 shadow-sm p-16 text-center reveal-on-scroll">
                     <div class="w-20 h-20 bg-slate-200 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-10 h-10 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        <svg class="w-10 h-10 text-slate-600 dark:text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-3">Dokumen belum tersedia</h3>
                     <p class="text-slate-600">Dokumen prosedur resmi akan ditampilkan di sini setelah diunggah oleh admin.</p>
@@ -600,7 +600,7 @@
                         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
                             <button onclick="toggleFaq({{ $index + 1 }})" class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors">
                                 <h3 class="font-semibold text-slate-900">{{ $faq['question'] ?? '' }}</h3>
-                                <svg id="faq-icon-{{ $index + 1 }}" class="w-5 h-5 text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                <svg id="faq-icon-{{ $index + 1 }}" class="w-5 h-5 text-slate-600 dark:text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                             </button>
                             <div id="faq-{{ $index + 1 }}" class="hidden px-6 pb-6">
                                 <p class="text-slate-600 pt-4 border-t border-slate-100">{{ $faq['answer'] ?? '' }}</p>
@@ -612,7 +612,7 @@
                     <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
                         <button onclick="toggleFaq(1)" class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors">
                             <h3 class="font-semibold text-slate-900">Berapa lama proses SLO berlangsung?</h3>
-                            <svg id="faq-icon-1" class="w-5 h-5 text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            <svg id="faq-icon-1" class="w-5 h-5 text-slate-600 dark:text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div id="faq-1" class="hidden px-6 pb-6">
                             <p class="text-slate-600 pt-4 border-t border-slate-100">Proses SLO secara keseluruhan membutuhkan waktu sekitar 9-15 hari kerja, tergantung pada kompleksitas instalasi dan kelengkapan dokumen yang diajukan.</p>
@@ -622,7 +622,7 @@
                     <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
                         <button onclick="toggleFaq(2)" class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors">
                             <h3 class="font-semibold text-slate-900">Dokumen apa saja yang diperlukan?</h3>
-                            <svg id="faq-icon-2" class="w-5 h-5 text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            <svg id="faq-icon-2" class="w-5 h-5 text-slate-600 dark:text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div id="faq-2" class="hidden px-6 pb-6">
                             <p class="text-slate-600 pt-4 border-t border-slate-100">Dokumen yang diperlukan meliputi: formulir permohonan, KTP/NIB/Akta perusahaan, bukti pembayaran, Single Line Diagram, spesifikasi peralatan, dan sertifikat SNI peralatan.</p>
@@ -632,7 +632,7 @@
                     <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
                         <button onclick="toggleFaq(3)" class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors">
                             <h3 class="font-semibold text-slate-900">Apakah inspeksi lapangan wajib dilakukan?</h3>
-                            <svg id="faq-icon-3" class="w-5 h-5 text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            <svg id="faq-icon-3" class="w-5 h-5 text-slate-600 dark:text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div id="faq-3" class="hidden px-6 pb-6">
                             <p class="text-slate-600 pt-4 border-t border-slate-100">Ya, inspeksi lapangan adalah tahap wajib dalam proses SLO untuk memastikan bahwa instalasi fisik sesuai dengan dokumen teknis dan memenuhi standar keamanan.</p>
@@ -642,7 +642,7 @@
                     <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
                         <button onclick="toggleFaq(4)" class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors">
                             <h3 class="font-semibold text-slate-900">Apa yang terjadi jika instalasi tidak memenuhi persyaratan?</h3>
-                            <svg id="faq-icon-4" class="w-5 h-5 text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            <svg id="faq-icon-4" class="w-5 h-5 text-slate-600 dark:text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div id="faq-4" class="hidden px-6 pb-6">
                             <p class="text-slate-600 pt-4 border-t border-slate-100">Jika instalasi dinyatakan "Tidak Laik Operasi", pemohon wajib melakukan perbaikan sesuai rekomendasi yang diberikan, kemudian mengajukan permohonan inspeksi ulang.</p>
@@ -652,7 +652,7 @@
                     <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
                         <button onclick="toggleFaq(5)" class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors">
                             <h3 class="font-semibold text-slate-900">Bagaimana cara menghubungi customer support?</h3>
-                            <svg id="faq-icon-5" class="w-5 h-5 text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            <svg id="faq-icon-5" class="w-5 h-5 text-slate-600 dark:text-slate-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div id="faq-5" class="hidden px-6 pb-6">
                             <p class="text-slate-600 pt-4 border-t border-slate-100">Anda dapat menghubungi customer support kami melalui halaman "Hubungi Kami" atau menghubungi nomor telepon yang tertera di website kami.</p>
@@ -664,16 +664,16 @@
     </section>
 
     <!-- Call to Action -->
-    <section class="py-20 bg-gradient-to-r from-orange-500 to-orange-600 text-white overflow-hidden">
+    <section class="py-20 bg-gradient-to-r from-blue-600 to-sky-500 text-white overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 text-center reveal-on-scroll">
             <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Konsultasi Sebelum Mengajukan Permohonan</h2>
-            <p class="text-orange-100 text-lg mb-8 max-w-2xl mx-auto">Tim kami siap membantu Anda memahami persyaratan dan proses SLO untuk memastikan permohonan Anda berjalan lancar.</p>
+            <p class="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">Tim kami siap membantu Anda memahami persyaratan dan proses SLO untuk memastikan permohonan Anda berjalan lancar.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="/hubungi-kami" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-orange-600 rounded-xl font-bold hover:bg-orange-50 transition shadow-lg">
+                <a href="/hubungi-kami" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-blue-700 rounded-xl font-bold hover:bg-blue-50 transition shadow-lg">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
                     Konsultasi Sekarang
                 </a>
-                <a href="/informasi-publik/persyaratan-slo" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-orange-700 text-white rounded-xl font-bold hover:bg-orange-800 transition border border-orange-400">
+                <a href="/informasi-publik/persyaratan-slo" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-700 text-slate-900 dark:text-white rounded-xl font-bold hover:bg-blue-800 transition border border-blue-500">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
                     Hubungi Kami
                 </a>

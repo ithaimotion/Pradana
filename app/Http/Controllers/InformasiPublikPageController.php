@@ -87,6 +87,9 @@ class InformasiPublikPageController extends Controller
         }
 
         KeluhanBandingSubmission::create([
+            'nama' => $request->nama_perwakilan,
+            'email' => $request->email_perwakilan,
+            'jenis' => 'keluhan',
             'nama_perusahaan' => $request->nama_perusahaan,
             'kota' => $request->kota,
             'alamat' => $request->alamat,
@@ -101,6 +104,6 @@ class InformasiPublikPageController extends Controller
             'status' => 'pending',
         ]);
 
-        return back()->with('success', 'Pengajuan keluhan/banding Anda berhasil dikirim. Kami akan menindaklanjuti secepat mungkin.');
+        return redirect()->route('informasi-publik.keluhan-banding')->with('success', 'Pengajuan keluhan/banding Anda berhasil dikirim. Kami akan menindaklanjuti secepat mungkin.');
     }
 }
