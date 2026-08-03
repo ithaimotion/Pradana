@@ -5,12 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Admin Console - Pradana Nusa Energi')</title>
     <script>
-        // Run immediately before any CSS loads to prevent flash
-        if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
+        document.documentElement.classList.remove('dark');
+        try { localStorage.setItem('theme', 'light'); } catch (e) { }
     </script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
@@ -309,10 +305,6 @@
             </div>
 
             <div class="flex items-center space-x-4">
-                <button onclick="(function(){ document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light'); })()" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
-                    <svg class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                    <svg class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                </button>
                 <a href="{{ route('home') }}" target="_blank" class="bg-blue-600/10 hover:bg-blue-600/20 text-blue-500 border border-blue-600/30 text-xs font-bold px-3.5 py-1.5 rounded-xl transition flex items-center gap-1.5">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     <span>Pratinjau Web Utama</span>
@@ -354,7 +346,7 @@
     </div>
 
     @stack('scripts')
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 
     <!-- Global Delete Confirmation Modal -->
     <div x-show="deleteModalOpen" x-cloak class="relative z-[100]" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -368,17 +360,18 @@
              x-transition:leave-end="opacity-0"
              class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm transition-opacity"></div>
 
-        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto pointer-events-none">
             <div class="flex min-h-full items-center justify-center p-4">
                 <!-- Modal Panel -->
                 <div x-show="deleteModalOpen"
+                     @click.outside="deleteModalOpen = false"
                      x-transition:enter="ease-out duration-300"
                      x-transition:enter-start="opacity-0 translate-y-4 scale-95"
                      x-transition:enter-end="opacity-100 translate-y-0 scale-100"
                      x-transition:leave="ease-in duration-200"
                      x-transition:leave-start="opacity-100 translate-y-0 scale-100"
                      x-transition:leave-end="opacity-0 translate-y-4 scale-95"
-                     class="relative w-full max-w-md transform overflow-hidden rounded-2xl bg-white dark:bg-slate-900 text-left shadow-2xl shadow-black/40 transition-all border border-slate-200 dark:border-slate-800">
+                     class="pointer-events-auto relative w-full max-w-md transform overflow-hidden rounded-2xl bg-white dark:bg-slate-900 text-left shadow-2xl shadow-black/40 transition-all border border-slate-200 dark:border-slate-800">
 
                     <!-- Modal Header / Icon -->
                     <div class="px-6 pt-6 pb-4">

@@ -187,6 +187,7 @@ class AdminController extends Controller
     {
         $request->validate([
             'judul' => 'required|string|max:255',
+            'judul_energi' => 'nullable|string|max:255',
             'subjudul' => 'nullable|string',
             'konten' => 'nullable|string',
         ]);
@@ -195,6 +196,7 @@ class AdminController extends Controller
 
         $hero = KontenBeranda::firstOrNew(['bagian' => 'hero', 'kunci' => 'hero_main']);
         $hero->judul = $request->judul;
+        $hero->judul_energi = $request->judul_energi;
         $hero->subjudul = $request->subjudul;
         $hero->konten = $request->konten;
 

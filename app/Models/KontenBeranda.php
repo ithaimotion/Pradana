@@ -13,6 +13,7 @@ class KontenBeranda extends Model
         'bagian',
         'kunci',
         'judul',
+        'judul_energi',
         'subjudul',
         'konten',
         'path_gambar',

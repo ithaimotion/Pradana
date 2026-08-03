@@ -20,11 +20,8 @@
     @endphp
 
     <script>
-        if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
+        document.documentElement.classList.remove('dark');
+        try { localStorage.setItem('theme', 'light'); } catch (e) { }
     </script>
 
     <title>@yield('title', $siteTitle)</title>

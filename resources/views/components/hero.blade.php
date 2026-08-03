@@ -1,7 +1,16 @@
 @props(['hero' => null])
 
 @php
-    $title = $hero->judul ?? 'POWERING THE FUTURE OF PRIMARY ALUMINIUM';
+    $baseTitle = $hero->judul ?? 'POWERING THE FUTURE OF PRIMARY ALUMINIUM';
+    $titleEnergi = trim($hero->judul_energi ?? '');
+    $titleMain = e($baseTitle);
+    $titleHtml = '';
+
+    if ($titleEnergi !== '') {
+        $titleHtml = '<span class="text-blue-500">' . nl2br($titleMain) . '</span> <span class="text-green-500">' . nl2br(e($titleEnergi)) . '</span>';
+    } else {
+        $titleHtml = preg_replace('/(PT\.\?\s*Pradana Nusa)(\s+Energi)/i', '<span class="text-blue-500">$1</span><span class="text-green-500">$2</span>', nl2br($titleMain));
+    }
     $subtitle = $hero->subjudul ?? 'Advanced process control and optimization solutions for the primary aluminium industry';
     $cta = $hero->konten ?? 'Contact Us';
     $slides = collect([
@@ -33,11 +42,11 @@
     </div>
 
     <div class="relative z-10 text-center px-6 max-w-6xl reveal-scale mt-16">
-        <span class="inline-block py-1 px-3 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-sm font-semibold tracking-widest uppercase mb-6 backdrop-blur-sm">
+        <!-- <span class="inline-block py-1 px-3 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-sm font-semibold tracking-widest uppercase mb-6 backdrop-blur-sm">
             Welcome to Pradana
-        </span>
-        <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-6 leading-[1.1] uppercase tracking-tight drop-shadow-2xl">
-            {!! nl2br(e($title)) !!}
+        </span> -->
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-[1.1] uppercase tracking-tight drop-shadow-2xl">
+            {!! $titleHtml !!}
         </h1>
         <p class="text-xl md:text-2xl text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed font-light drop-shadow">
             {{ $subtitle }}

@@ -2,6 +2,7 @@
 
 @php
     $title = $profil->judul ?? 'PT PRADANA NUSA ENERGI';
+    $styledTitle = preg_replace('/(PT\.?\s*Pradana Nusa)(\s+Energi)/i', '<span class="text-blue-500">$1</span><span class="text-green-500">$2</span>', e($title));
     $subtitle = $profil->subjudul ?? 'Nusa Energi';
     $content = $profil->konten ?? 'Pradana Nusa Energi bangga menjadi Lembaga Inspeksi Teknik (LIT) terpercaya yang melayani inspeksi dan penerbitan Sertifikat Laik Operasi (SLO) di seluruh wilayah Indonesia.';
     $img1 = optional($profil)->url_gambar ?? 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
@@ -21,7 +22,7 @@
             </div>
             
             <div class="reveal-right delay-200">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">{{ $title }}</h2>
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">{!! $styledTitle !!}</h2>
                 <p class="text-gray-600 mb-8 leading-relaxed">
                     {{ $content }}
                 </p>

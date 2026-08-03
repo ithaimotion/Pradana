@@ -12,8 +12,12 @@
             <span class="inline-block bg-blue-600/20 text-blue-500 border border-blue-500/30 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-4 backdrop-blur-md">
                 Profil Perusahaan
             </span>
+            @php
+                $pageTitle = $konten->judul ?? 'PT PRADANA NUSA ENERGI';
+                $styledPageTitle = preg_replace('/(PT\.?\s*Pradana Nusa)(\s+Energi)/i', '<span class="text-blue-500">$1</span><span class="text-green-500">$2</span>', e($pageTitle));
+            @endphp
             <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight leading-tight">
-                {{ $konten->judul ?? 'PT PRADANA NUSA ENERGI' }}
+                {!! $styledPageTitle !!}
             </h1>
             <p class="text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
                 {{ $konten->subjudul ?? 'Lembaga Inspeksi Teknik (LIT) terkemuka dan terpercaya yang bergerak di bidang pengujian dan pemeriksaan kelistrikan untuk mewujudkan tenaga listrik yang aman, andal, dan ramah lingkungan.' }}

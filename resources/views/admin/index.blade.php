@@ -61,12 +61,17 @@
 
                     <div>
                         <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">Sub-Judul (Subtitle)</label>
-                        <textarea name="subjudul" rows="3" class="w-full bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 rounded-xl p-3 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition">{{ old('subtitle', $hero->subjudul ?? '') }}</textarea>
+                        <textarea name="subjudul" rows="3" class="w-full bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 rounded-xl p-3 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition">{{ old('subjudul', $hero->subjudul ?? '') }}</textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">Judul Energi (Energi akan berwarna hijau)</label>
+                        <input type="text" name="judul_energi" value="{{ old('judul_energi', $hero->judul_energi ?? '') }}" class="w-full bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 rounded-xl p-3 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition" placeholder="Contoh: Energi">
                     </div>
 
                     <div>
                         <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">Teks Tombol CTA</label>
-                        <input type="text" name="konten" value="{{ old('content', $hero->konten ?? '') }}" class="w-full bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 rounded-xl p-3 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition" placeholder="Contoh: Contact Us">
+                        <input type="text" name="konten" value="{{ old('konten', $hero->konten ?? '') }}" class="w-full bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 rounded-xl p-3 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition" placeholder="Contoh: Contact Us">
                     </div>
                 </div>
 
