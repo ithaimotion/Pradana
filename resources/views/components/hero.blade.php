@@ -23,6 +23,35 @@
     ->values();
 @endphp
 
+<style>
+    @keyframes heroTitleIn {
+        0% { opacity: 0; transform: scale(0.96) translateY(10px); }
+        100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    @keyframes heroLineLeft {
+        0% { opacity: 0; transform: translateX(-30px); }
+        100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes heroLineRight {
+        0% { opacity: 0; transform: translateX(30px); }
+        100% { opacity: 1; transform: translateX(0); }
+    }
+
+    .hero-title-animate {
+        animation: heroTitleIn 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .hero-line-left {
+        animation: heroLineLeft 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .hero-line-right {
+        animation: heroLineRight 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+</style>
+
 <section class="relative h-screen flex items-center justify-center overflow-hidden bg-slate-900" x-data="{ activeSlide: 0, slides: {{ json_encode($slides->toArray()) }} }" x-init="setInterval(() => { activeSlide = (activeSlide + 1) % slides.length; }, 6000)">
     <div class="absolute inset-0">
         <template x-for="(slide, index) in slides" :key="index">
@@ -36,7 +65,7 @@
                  class="absolute inset-0 bg-cover bg-center" 
                  :style="'background-image: url(' + slide.image + ')'">
                  <!-- Modern gradient overlay -->
-                <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-slate-900/90"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-slate-900/40"></div>
             </div>
         </template>
     </div>
@@ -45,9 +74,14 @@
         <!-- <span class="inline-block py-1 px-3 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-sm font-semibold tracking-widest uppercase mb-6 backdrop-blur-sm">
             Welcome to Pradana
         </span> -->
-        <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-[1.1] uppercase tracking-tight drop-shadow-2xl">
+        <h1 class="hero-title-animate text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-4 leading-[1.1] uppercase tracking-tight drop-shadow-2xl">
             {!! $titleHtml !!}
         </h1>
+        <div class="flex flex-col items-center gap-2 mb-8">
+            <div class="hero-line-left h-1 w-72 md:w-96 rounded-full bg-red-500"></div>
+            <div class="hero-line-right h-1 w-44 md:w-56 rounded-full bg-blue-500"></div>
+            <div class="hero-line-left h-1 w-24 md:w-32 rounded-full bg-green-500"></div>
+        </div>
         <p class="text-xl md:text-2xl text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed font-light drop-shadow">
             {{ $subtitle }}
         </p>
