@@ -3,6 +3,7 @@
 @section('title', 'Kelola Footer Legal')
 
 @section('content')
+
 <div class="p-6 space-y-6">
     <div class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xl">
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
