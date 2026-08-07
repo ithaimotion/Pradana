@@ -3,79 +3,99 @@
 @php
     $headerJudul = $header->judul ?? 'DAFTAR KLIEN';
     $clientList = $clients instanceof \Illuminate\Support\Collection ? $clients : collect($clients);
-    $visibleClients = $clientList->take(10);
-    $carouselId = uniqid('client-carousel-');
+    $visibleClients = $clientList->filter(fn($c) => !empty($c->url_gambar ?? $c->path_gambar))->values();
+
+    // Split into 2 rows
+    $half = (int) ceil($visibleClients->count() / 2);
+    $row1 = $visibleClients->slice(0, $half)->values();
+    $row2 = $visibleClients->slice($half)->values();
+    // If row2 is empty (only 1 item), duplicate row1
+    if ($row2->isEmpty()) $row2 = $row1;
 @endphp
 
-<section id="sustainability" class="py-24 bg-slate-50 overflow-hidden">
+<section id="sustainability" class="py-24 bg-white overflow-hidden">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+        <div class="text-center max-w-3xl mx-auto mb-16">
             <span class="text-blue-600 font-bold tracking-wider uppercase text-sm mb-4 block">Mitra Kepercayaan</span>
             <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight">
                 {{ $headerJudul }}
             </h2>
             <div class="w-16 h-1 bg-blue-600 mx-auto mt-6 rounded-full"></div>
         </div>
+    </div>
 
-        @if($visibleClients->count() > 0)
-            <div class="mx-auto max-w-7xl">
-                <div id="{{ $carouselId }}" class="relative overflow-hidden rounded-[2.5rem] bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100">
-                    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5" data-client-track>
-                        @foreach($visibleClients as $index => $client)
-                            <div class="rounded-2xl border border-slate-100 bg-white p-4 shadow-sm hover:shadow-md transition-all duration-500 ease-in-out group hover:-translate-y-1" data-client-card>
-                                <div class="flex h-full flex-col justify-center rounded-xl bg-slate-50 p-4 transition-colors group-hover:bg-blue-50/50">
-                                    <img src="{{ $client->url_gambar ?? $client->path_gambar }}" alt="{{ $client->judul ?? 'Client' }}" class="h-[120px] w-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
-                                    @if(!empty($client->judul))
-                                        <p class="mt-4 text-center text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-blue-700 transition-colors">{{ $client->judul }}</p>
-                                    @endif
-                                </div>
+    @if($visibleClients->count() > 0)
+        <div class="relative w-full select-none space-y-4">
+            {{-- Fade edges --}}
+            <div class="pointer-events-none absolute left-0 top-0 z-10 h-full w-28 bg-gradient-to-r from-white to-transparent"></div>
+            <div class="pointer-events-none absolute right-0 top-0 z-10 h-full w-28 bg-gradient-to-l from-white to-transparent"></div>
+
+            {{-- ROW 1 — scroll left --}}
+            <div class="flex overflow-hidden">
+                @foreach([1, 2] as $_)
+                    <div class="ticker-row-1 flex shrink-0 items-center">
+                        @foreach($row1 as $client)
+                            <div class="logo-card">
+                                <img src="{{ $client->url_gambar ?? $client->path_gambar }}"
+                                     alt="{{ $client->judul ?? 'Client' }}"
+                                     class="h-10 w-auto max-w-full object-contain">
                             </div>
                         @endforeach
                     </div>
-                </div>
+                @endforeach
             </div>
 
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    const root = document.getElementById('{{ $carouselId }}');
-                    if (!root) return;
-
-                    const cards = Array.from(root.querySelectorAll('[data-client-card]'));
-                    if (cards.length <= 1) return;
-
-                    const total = cards.length;
-                    let offset = 0;
-
-                    const render = () => {
-                        cards.forEach((card, index) => {
-                            const position = (index - offset + total) % total;
-                            card.style.transition = 'all 700ms ease-in-out';
-
-                            if (position < 5) {
-                                card.style.opacity = '1';
-                                card.style.transform = 'translateY(0) scale(1)';
-                                card.style.display = 'block';
-                            } else {
-                                card.style.opacity = '0';
-                                card.style.transform = 'translateY(20px) scale(0.95)';
-                                setTimeout(() => {
-                                    if(card.style.opacity === '0') card.style.display = 'none';
-                                }, 700);
-                            }
-                        });
-                    };
-
-                    render();
-                    setInterval(() => {
-                        offset = (offset + 1) % total;
-                        render();
-                    }, 3000);
-                });
-            </script>
-        @else
-            <div class="rounded-3xl border-2 border-dashed border-slate-200 bg-white p-12 text-center text-slate-500 font-medium">
+            {{-- ROW 2 — scroll left, slightly different speed --}}
+            <div class="flex overflow-hidden">
+                @foreach([1, 2] as $_)
+                    <div class="ticker-row-2 flex shrink-0 items-center">
+                        @foreach($row2 as $client)
+                            <div class="logo-card">
+                                <img src="{{ $client->url_gambar ?? $client->path_gambar }}"
+                                     alt="{{ $client->judul ?? 'Client' }}"
+                                     class="h-10 w-auto max-w-full object-contain">
+                            </div>
+                        @endforeach
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    @else
+        <div class="mx-auto max-w-7xl px-6">
+            <div class="rounded-3xl border-2 border-dashed border-slate-200 bg-slate-50 p-12 text-center text-slate-400 text-sm font-medium">
                 Belum ada foto klien yang diupload.
             </div>
-        @endif
-    </div>
+        </div>
+    @endif
 </section>
+
+<style>
+    /* Each card has RIGHT margin — this makes the gap consistent
+       even at the seam where track 1 meets track 2 */
+    .logo-card {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 76px;
+        width: 160px;
+        margin-right: 20px;
+        border-radius: 14px;
+        border: 1.5px solid #e2e8f0;
+        background: #ffffff;
+        box-shadow: 0 1px 4px 0 rgba(15, 23, 42, 0.06);
+        padding: 0 20px;
+    }
+
+    .ticker-row-1 {
+        animation: ticker-left 14s linear infinite;
+    }
+    .ticker-row-2 {
+        animation: ticker-left 18s linear infinite;
+    }
+
+    @keyframes ticker-left {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+</style>

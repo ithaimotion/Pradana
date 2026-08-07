@@ -141,6 +141,9 @@ class AdminController extends Controller
         $keunggulanHeader = $this->getContentSection('keunggulan_header', 'header');
         $keunggulanItems = $this->getContentCollection('keunggulan_item');
 
+        $akreditasiItems = $this->getContentCollection('akreditasi_item');
+        $sertifikatKinerjaItems = $this->getContentCollection('sertifikat_item');
+
         $energiHeader = $this->getContentSection('energi_header', 'header');
         $energiItems = $this->getContentCollection('energi_item');
 
@@ -165,6 +168,8 @@ class AdminController extends Controller
             'teknologiItems',
             'keunggulanHeader',
             'keunggulanItems',
+            'akreditasiItems',
+            'sertifikatKinerjaItems',
             'energiHeader',
             'energiItems',
             'mengapaHeader',
@@ -422,7 +427,7 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'bagian' => 'required|string|in:statistik,teknologi_item,keunggulan_item,energi_item,mengapa_item,galeri',
+            'bagian' => 'required|string|in:statistik,teknologi_item,keunggulan_item,energi_item,mengapa_item,galeri,akreditasi_item,sertifikat_item',
             'judul' => 'nullable|string|max:255',
             'nilai' => 'nullable|string|max:100',
             'konten' => 'nullable|string',

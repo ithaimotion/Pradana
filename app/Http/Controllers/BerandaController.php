@@ -14,7 +14,8 @@ class BerandaController extends Controller
     public function index()
     {
         $hero = KontenBeranda::where('bagian', 'hero')->first();
-        $sertifikat = KontenBeranda::where('bagian', 'statistik')->where('status_aktif', true)->orderBy('urutan')->get();
+        $akreditasi = KontenBeranda::where('bagian', 'akreditasi_item')->orderBy('urutan')->get();
+        $sertifikatKinerja = KontenBeranda::where('bagian', 'sertifikat_item')->orderBy('urutan')->get();
         $tentangPradana = KontenBeranda::where('bagian', 'tentang_pradana')->first();
         $teknologiHeader = KontenBeranda::where('bagian', 'teknologi_header')->first();
         $teknologiItems = KontenBeranda::where('bagian', 'teknologi_item')->where('status_aktif', true)->orderBy('urutan')->get();
@@ -30,7 +31,7 @@ class BerandaController extends Controller
         $logos = Logo::where('aktif', true)->orderBy('urutan')->get();
 
         return view('pages.landing', compact(
-            'hero', 'sertifikat', 'tentangPradana',
+            'hero', 'akreditasi', 'sertifikatKinerja', 'tentangPradana',
             'teknologiHeader', 'teknologiItems', 'keunggulanHeader', 'keunggulanItems',
             'energiHeader', 'energiItems', 'clientPhotos', 'mengapaHeader', 'mengapaItems',
             'kontakKami', 'galeri', 'logos'

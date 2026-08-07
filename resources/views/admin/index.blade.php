@@ -9,7 +9,7 @@
     <x-admin.dashboard-panel :lowongans="$lowongans" :pesanMasuks="$pesanMasuks" :galeri="$galeri" />
 
     <!-- BERANDA TAB NAVIGATION -->
-    <div x-show="['hero','statistik','tentang','teknologi','keunggulan','energi','mengapa','kontak'].includes(activeTab)" class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-2xl p-4 space-y-4 shadow-xl">
+    <div x-show="['hero','statistik','akreditasi','sertifikat_kinerja','tentang','teknologi','keunggulan','energi','mengapa','kontak'].includes(activeTab)" class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-2xl p-4 space-y-4 shadow-xl">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
             <button @click="activeTab = 'hero'" :class="activeTab === 'hero' ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' : 'bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-300 hover:bg-slate-200/80 dark:hover:bg-slate-800/80'" class="w-full text-sm font-semibold px-4 py-3 rounded-2xl transition-all border border-slate-200 dark:border-slate-800">
                 Hero Banner
@@ -31,6 +31,12 @@
             </button>
             <button @click="activeTab = 'mengapa'" :class="activeTab === 'mengapa' ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' : 'bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-300 hover:bg-slate-200/80 dark:hover:bg-slate-800/80'" class="w-full text-sm font-semibold px-4 py-3 rounded-2xl transition-all border border-slate-200 dark:border-slate-800">
                 Mengapa Pilih Pradana
+            </button>
+            <button @click="activeTab = 'akreditasi'" :class="activeTab === 'akreditasi' ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' : 'bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-300 hover:bg-slate-200/80 dark:hover:bg-slate-800/80'" class="w-full text-sm font-semibold px-4 py-3 rounded-2xl transition-all border border-slate-200 dark:border-slate-800">
+                Akreditasi Resmi
+            </button>
+            <button @click="activeTab = 'sertifikat_kinerja'" :class="activeTab === 'sertifikat_kinerja' ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' : 'bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-300 hover:bg-slate-200/80 dark:hover:bg-slate-800/80'" class="w-full text-sm font-semibold px-4 py-3 rounded-2xl transition-all border border-slate-200 dark:border-slate-800">
+                Sertifikat Kinerja
             </button>
             <button @click="activeTab = 'kontak'" :class="activeTab === 'kontak' ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' : 'bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-300 hover:bg-slate-200/80 dark:hover:bg-slate-800/80'" class="w-full text-sm font-semibold px-4 py-3 rounded-2xl transition-all border border-slate-200 dark:border-slate-800">
                 Kontak & Banner CTA
@@ -79,7 +85,7 @@
                     <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">Background Image Hero (3 Slide)</label>
                     @if(optional($hero)->url_gambar)
                         <div class="grid sm:grid-cols-3 gap-3">
-                            @foreach([['label' => 'Slide 1', 'image' => optional($hero)->url_gambar], ['label' => 'Slide 2', 'image' => $hero->path_gambar_2 ? asset('/storage_public/' . $hero->path_gambar_2) : null], ['label' => 'Slide 3', 'image' => $hero->path_gambar_3 ? asset('/storage_public/' . $hero->path_gambar_3) : null]] as $slide)
+                            @foreach([['label' => 'Slide 1', 'image' => optional($hero)->url_gambar], ['label' => 'Slide 2', 'image' => optional($hero)->url_gambar_2], ['label' => 'Slide 3', 'image' => optional($hero)->url_gambar_3]] as $slide)
                                 @if($slide['image'])
                                     <div class="relative rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 h-32 bg-slate-50 dark:bg-slate-950">
                                         <img src="{{ $slide['image'] }}" alt="{{ $slide['label'] }}" class="w-full h-full object-cover">
@@ -176,7 +182,7 @@
                 </h2>
                 <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Tambah, ubah, atau hapus sertifikat penilaian kinerja yang tampil di landing page.</p>
             </div>
-            <button onclick="openStatModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl text-sm font-bold flex items-center gap-2 shadow-lg shadow-blue-600/20">
+            <button type="button" onclick="openStatModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl text-sm font-bold flex items-center gap-2 shadow-lg shadow-blue-600/20">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
                 Tambah Stat Card
             </button>
@@ -216,6 +222,82 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+    </div>
+
+    <!-- AKREDITASI RESMI PANEL -->
+    <div x-show="activeTab === 'akreditasi'" class="space-y-6">
+        <div class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xl">
+            <div>
+                <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-500"></span> Kelola Section Telah Resmi Terakreditasi
+                </h2>
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Tambah, ubah, atau hapus foto akreditasi resmi yang tampil di landing page.</p>
+            </div>
+            <button type="button" onclick="openAkreditasiAdminModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl text-sm font-bold flex items-center gap-2 shadow-lg shadow-blue-600/20">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                Tambah Akreditasi
+            </button>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            @forelse($akreditasiItems as $item)
+                <div class="bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 space-y-3 shadow-lg flex flex-col justify-between">
+                    @if($item->url_gambar)
+                        <img src="{{ $item->url_gambar }}" alt="{{ $item->judul }}" class="w-full h-40 object-cover rounded-xl border border-slate-200 dark:border-slate-800">
+                    @else
+                        <div class="w-full h-40 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 flex items-center justify-center text-slate-400 text-sm">Belum ada foto</div>
+                    @endif
+                    <div>
+                        <span class="text-[10px] font-mono text-blue-500">#{{ $item->urutan }}</span>
+                        <h3 class="font-bold text-slate-900 dark:text-white uppercase text-sm">{{ $item->judul }}</h3>
+                        <p class="text-xs text-slate-600 dark:text-slate-400">{{ $item->konten }}</p>
+                    </div>
+                    <div class="flex items-center justify-end gap-2 pt-3 border-t border-slate-200/80 dark:border-slate-800/80">
+                        <button onclick="editAkreditasiAdminModal({{ $item->id }}, '{{ addslashes($item->judul) }}', '{{ addslashes($item->konten ?? '') }}', {{ $item->urutan }})" class="text-xs bg-slate-100 dark:bg-slate-800 hover:bg-blue-500/10 hover:text-blue-400 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 px-3 py-1.5 rounded-lg font-medium transition">Edit</button>
+                        <button type="button" @click="confirmDelete('{{ route('admin.konten.destroy', $item->id) }}', 'Hapus Akreditasi', 'Yakin menghapus item ini?')" class="text-xs bg-slate-100 dark:bg-slate-800 hover:bg-rose-500/10 hover:text-rose-400 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 px-3 py-1.5 rounded-lg font-medium transition">Hapus</button>
+                    </div>
+                </div>
+            @empty
+                <div class="md:col-span-3 text-center py-10 text-slate-400 text-sm">Belum ada data akreditasi. Klik "Tambah Akreditasi" untuk memulai.</div>
+            @endforelse
+        </div>
+    </div>
+
+    <!-- SERTIFIKAT PENILAIAN KINERJA PANEL -->
+    <div x-show="activeTab === 'sertifikat_kinerja'" class="space-y-6">
+        <div class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xl">
+            <div>
+                <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-emerald-500"></span> Kelola Section Sertifikat Penilaian Kinerja
+                </h2>
+                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Tambah, ubah, atau hapus sertifikat penilaian kinerja yang tampil di landing page.</p>
+            </div>
+            <button type="button" onclick="openSertifikatKinerjaModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl text-sm font-bold flex items-center gap-2 shadow-lg shadow-blue-600/20">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                Tambah Sertifikat
+            </button>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            @forelse($sertifikatKinerjaItems as $item)
+                <div class="bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 space-y-3 shadow-lg flex flex-col justify-between">
+                    @if($item->url_gambar)
+                        <img src="{{ $item->url_gambar }}" alt="{{ $item->judul }}" class="w-full h-40 object-cover rounded-xl border border-slate-200 dark:border-slate-800">
+                    @else
+                        <div class="w-full h-40 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 flex items-center justify-center text-slate-400 text-sm">Belum ada foto</div>
+                    @endif
+                    <div>
+                        <span class="text-[10px] font-mono text-emerald-500">#{{ $item->urutan }}</span>
+                    </div>
+                    <div class="flex items-center justify-end gap-2 pt-3 border-t border-slate-200/80 dark:border-slate-800/80">
+                        <button onclick="editSertifikatKinerjaModal({{ $item->id }}, {{ $item->urutan }})" class="text-xs bg-slate-100 dark:bg-slate-800 hover:bg-blue-500/10 hover:text-blue-400 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 px-3 py-1.5 rounded-lg font-medium transition">Edit</button>
+                        <button type="button" @click="confirmDelete('{{ route('admin.konten.destroy', $item->id) }}', 'Hapus Sertifikat', 'Yakin menghapus sertifikat ini?')" class="text-xs bg-slate-100 dark:bg-slate-800 hover:bg-rose-500/10 hover:text-rose-400 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 px-3 py-1.5 rounded-lg font-medium transition">Hapus</button>
+                    </div>
+                </div>
+            @empty
+                <div class="md:col-span-3 text-center py-10 text-slate-400 text-sm">Belum ada data sertifikat. Klik "Tambah Sertifikat" untuk memulai.</div>
+            @endforelse
         </div>
     </div>
 
@@ -302,7 +384,7 @@
                     <h3 class="text-lg font-bold text-slate-900 dark:text-white">Cards Fitur Teknologi</h3>
                     <p class="text-xs text-slate-600 dark:text-slate-400">Daftar card fitur HMI, High Performance, Smart Data, dll.</p>
                 </div>
-                <button onclick="openGenericModal('teknologi_item', 'Tambah Card Teknologi')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl text-xs font-bold shadow-lg shadow-blue-600/20">
+                <button type="button" onclick="openGenericModal('teknologi_item', 'Tambah Card Teknologi')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl text-xs font-bold shadow-lg shadow-blue-600/20">
                     Tambah Fitur Teknologi
                 </button>
             </div>
@@ -374,7 +456,7 @@
                     <h3 class="text-lg font-bold text-slate-900 dark:text-white">Daftar Poin Checklist Keunggulan</h3>
                     <p class="text-xs text-slate-600 dark:text-slate-400">Poin fitur yang ditampilkan pada checklist keunggulan APC+.</p>
                 </div>
-                <button onclick="openGenericModal('keunggulan_item', 'Tambah Poin Keunggulan')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl text-sm font-bold flex items-center gap-2 shadow-lg shadow-blue-600/20">
+                <button type="button" onclick="openGenericModal('keunggulan_item', 'Tambah Poin Keunggulan')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl text-sm font-bold flex items-center gap-2 shadow-lg shadow-blue-600/20">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
                     Tambah Poin
                 </button>
@@ -449,9 +531,12 @@
                 @forelse($clientPhotos as $item)
                     <div class="p-3 bg-slate-50/80 dark:bg-slate-950/60 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-3">
                         <img src="{{ $item->url_gambar }}" alt="{{ $item->judul ?? 'Client' }}" class="h-32 w-full object-contain rounded-lg bg-slate-50 dark:bg-white/5">
-                        <div class="flex items-center justify-between pt-2 border-t border-slate-900">
+                        <div class="flex items-center justify-between pt-2 border-t border-slate-200 dark:border-slate-800">
                             <span class="text-[10px] font-mono text-blue-500">#{{ $item->urutan }}</span>
-                            <button type="button" @click="confirmDelete('{{ route('admin.galeri.destroy', $item->id) }}', 'Konfirmasi Hapus', 'Hapus foto client ini?')" class="text-xs bg-slate-100 dark:bg-slate-800 text-rose-400 px-3 py-1 rounded-lg">Hapus</button>
+                            <div class="flex items-center gap-2">
+                                <button type="button" onclick="clientEditModal({{ $item->id }}, {{ $item->urutan }})" class="text-xs bg-slate-100 dark:bg-slate-800 hover:bg-blue-500/10 hover:text-blue-400 text-slate-700 dark:text-slate-300 px-3 py-1 rounded-lg transition">Edit</button>
+                                <button type="button" @click="confirmDelete('{{ route('admin.galeri.destroy', $item->id) }}', 'Konfirmasi Hapus', 'Hapus foto client ini?')" class="text-xs bg-slate-100 dark:bg-slate-800 text-rose-400 hover:bg-rose-500/10 px-3 py-1 rounded-lg transition">Hapus</button>
+                            </div>
                         </div>
                     </div>
                 @empty
@@ -505,7 +590,7 @@
                     <h3 class="text-lg font-bold text-slate-900 dark:text-white">Poin Alasan & Keunggulan</h3>
                     <p class="text-xs text-slate-600 dark:text-slate-400">Poin Magnetic Leadership, Innovative Solutions, Proven Results, dll.</p>
                 </div>
-                <button onclick="openGenericModal('mengapa_item', 'Tambah Poin Alasan')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl text-xs font-bold shadow-lg shadow-blue-600/20">
+                <button type="button" onclick="openGenericModal('mengapa_item', 'Tambah Poin Alasan')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl text-xs font-bold shadow-lg shadow-blue-600/20">
                     Tambah Poin Alasan
                 </button>
             </div>
@@ -598,7 +683,7 @@
                 <div class="bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden group shadow-lg">
                     <div class="h-48 bg-slate-50 dark:bg-slate-950 relative overflow-hidden flex items-center justify-center p-4">
                         @if(optional($item)->url_gambar)
-                            <img src="{{ asset('/storage_public/' . optional($item)->url_gambar) }}" alt="{{ $item->nama }}" title="{{ $item->nama }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
+                            <img src="{{ optional($item)->url_gambar }}" alt="{{ $item->nama }}" title="{{ $item->nama }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
                         @elseif($item->logo_url)
                             <img src="{{ $item->logo_url }}" alt="{{ $item->nama }}" title="{{ $item->nama }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-300">
                         @else
@@ -698,6 +783,61 @@
     </div>
 </div>
 
+<!-- MODAL AKREDITASI RESMI -->
+<div id="akreditasiAdminModal" class="fixed inset-0 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl max-w-md w-full p-6 space-y-4">
+        <h3 id="akreditasiAdminModalTitle" class="text-lg font-bold text-slate-900 dark:text-white">Tambah Akreditasi</h3>
+        <form id="akreditasiAdminForm" action="{{ route('admin.konten.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
+            @csrf
+            <input type="hidden" name="bagian" value="akreditasi_item">
+            <input type="hidden" name="_method" id="akreditasiAdminMethod" value="POST">
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">Judul / Nama Sertifikat</label>
+                <input type="text" name="judul" id="akreditasiAdminJudul" required class="w-full text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">Upload Foto Akreditasi</label>
+                <input type="file" name="gambar" id="akreditasiAdminImage" accept="image/*" class="w-full text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5">
+                <p id="akreditasiAdminImageHelp" class="text-xs text-blue-500 mt-1 hidden">Kosongkan jika tidak ingin mengubah gambar.</p>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">Urutan Tampil</label>
+                <input type="number" name="urutan" id="akreditasiAdminUrutan" value="1" class="w-full text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-slate-900 dark:text-white">
+            </div>
+            <div class="flex justify-end gap-2 pt-3 border-t border-slate-200 dark:border-slate-800">
+                <button type="button" onclick="closeAkreditasiAdminModal()" class="px-4 py-2 text-xs text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-lg">Batal</button>
+                <button type="submit" class="px-4 py-2 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold shadow-lg shadow-blue-600/20">Simpan</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- MODAL SERTIFIKAT KINERJA -->
+<div id="sertifikatKinerjaModal" class="fixed inset-0 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl max-w-md w-full p-6 space-y-4">
+        <h3 id="sertifikatKinerjaModalTitle" class="text-lg font-bold text-slate-900 dark:text-white">Tambah Sertifikat Kinerja</h3>
+        <form id="sertifikatKinerjaForm" action="{{ route('admin.konten.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
+            @csrf
+            <input type="hidden" name="bagian" value="sertifikat_item">
+            <input type="hidden" name="_method" id="sertifikatKinerjaMethod" value="POST">
+
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">Upload Foto Sertifikat</label>
+                <input type="file" name="gambar" id="sertifikatKinerjaImage" accept="image/*" class="w-full text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5">
+                <p id="sertifikatKinerjaImageHelp" class="text-xs text-blue-500 mt-1 hidden">Kosongkan jika tidak ingin mengubah gambar.</p>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">Urutan Tampil</label>
+                <input type="number" name="urutan" id="sertifikatKinerjaUrutan" value="1" class="w-full text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-slate-900 dark:text-white">
+            </div>
+            <div class="flex justify-end gap-2 pt-3 border-t border-slate-200 dark:border-slate-800">
+                <button type="button" onclick="closeSertifikatKinerjaModal()" class="px-4 py-2 text-xs text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-lg">Batal</button>
+                <button type="submit" class="px-4 py-2 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold shadow-lg shadow-blue-600/20">Simpan</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <!-- MODAL STATISTIK SPECIFIC -->
 <div id="statModal" class="fixed inset-0 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl max-w-md w-full p-6 space-y-4">
@@ -758,6 +898,32 @@
             <div class="flex justify-end gap-2 pt-3 border-t border-slate-200 dark:border-slate-800">
                 <button type="button" onclick="closeGaleriModal()" class="px-4 py-2 text-xs text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-lg">Batal</button>
                 <button type="submit" class="px-4 py-2 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold shadow-lg shadow-blue-600/20">Simpan Foto</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- MODAL EDIT KLIEN (dedicated, tidak berbagi state dengan galeri) -->
+<div id="clientEditModal" class="fixed inset-0 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl max-w-md w-full p-6 space-y-4">
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Edit Foto Klien</h3>
+        <form id="clientEditForm" action="" method="POST" enctype="multipart/form-data" class="space-y-4">
+            @csrf
+            <input type="hidden" name="_method" value="PUT">
+            <input type="hidden" name="kategori" value="client">
+            <input type="hidden" name="judul" value="">
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">Ganti Gambar</label>
+                <input type="file" name="gambar" id="clientEditImage" accept="image/*" class="w-full text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5">
+                <p class="text-xs text-blue-500 mt-1">Kosongkan jika tidak ingin mengganti gambar.</p>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">Urutan Tampil</label>
+                <input type="number" name="urutan" id="clientEditUrutan" value="1" min="1" class="w-full text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-slate-900 dark:text-white">
+            </div>
+            <div class="flex justify-end gap-2 pt-3 border-t border-slate-200 dark:border-slate-800">
+                <button type="button" onclick="closeClientEditModal()" class="px-4 py-2 text-xs text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-lg">Batal</button>
+                <button type="submit" class="px-4 py-2 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold shadow-lg shadow-blue-600/20">Simpan Perubahan</button>
             </div>
         </form>
     </div>
@@ -878,6 +1044,54 @@
         document.getElementById('statModal').classList.add('hidden');
     }
 
+    // Modal Akreditasi Resmi
+    function openAkreditasiAdminModal() {
+        document.getElementById('akreditasiAdminModalTitle').innerText = 'Tambah Akreditasi';
+        document.getElementById('akreditasiAdminForm').action = "{{ route('admin.konten.store') }}";
+        document.getElementById('akreditasiAdminMethod').value = 'POST';
+        document.getElementById('akreditasiAdminJudul').value = '';
+        document.getElementById('akreditasiAdminImage').value = '';
+        document.getElementById('akreditasiAdminUrutan').value = '1';
+        document.getElementById('akreditasiAdminImageHelp').classList.add('hidden');
+        document.getElementById('akreditasiAdminModal').classList.remove('hidden');
+    }
+    function editAkreditasiAdminModal(id, judul, konten, urutan) {
+        document.getElementById('akreditasiAdminModalTitle').innerText = 'Edit Akreditasi';
+        document.getElementById('akreditasiAdminForm').action = "/admin/konten/" + id;
+        document.getElementById('akreditasiAdminMethod').value = 'PUT';
+        document.getElementById('akreditasiAdminJudul').value = judul;
+        document.getElementById('akreditasiAdminImage').value = '';
+        document.getElementById('akreditasiAdminUrutan').value = urutan;
+        document.getElementById('akreditasiAdminImageHelp').classList.remove('hidden');
+        document.getElementById('akreditasiAdminModal').classList.remove('hidden');
+    }
+    function closeAkreditasiAdminModal() {
+        document.getElementById('akreditasiAdminModal').classList.add('hidden');
+    }
+
+    // Modal Sertifikat Kinerja
+    function openSertifikatKinerjaModal() {
+        document.getElementById('sertifikatKinerjaModalTitle').innerText = 'Tambah Sertifikat Kinerja';
+        document.getElementById('sertifikatKinerjaForm').action = "{{ route('admin.konten.store') }}";
+        document.getElementById('sertifikatKinerjaMethod').value = 'POST';
+        document.getElementById('sertifikatKinerjaImage').value = '';
+        document.getElementById('sertifikatKinerjaUrutan').value = '1';
+        document.getElementById('sertifikatKinerjaImageHelp').classList.add('hidden');
+        document.getElementById('sertifikatKinerjaModal').classList.remove('hidden');
+    }
+    function editSertifikatKinerjaModal(id, urutan) {
+        document.getElementById('sertifikatKinerjaModalTitle').innerText = 'Edit Sertifikat Kinerja';
+        document.getElementById('sertifikatKinerjaForm').action = "/admin/konten/" + id;
+        document.getElementById('sertifikatKinerjaMethod').value = 'PUT';
+        document.getElementById('sertifikatKinerjaImage').value = '';
+        document.getElementById('sertifikatKinerjaUrutan').value = urutan;
+        document.getElementById('sertifikatKinerjaImageHelp').classList.remove('hidden');
+        document.getElementById('sertifikatKinerjaModal').classList.remove('hidden');
+    }
+    function closeSertifikatKinerjaModal() {
+        document.getElementById('sertifikatKinerjaModal').classList.add('hidden');
+    }
+
     // Modal Galeri
     function openGaleriModal() {
         document.getElementById('galeriModalTitle').innerText = 'Upload Foto Galeri';
@@ -911,6 +1125,16 @@
         document.getElementById('galeriModal').classList.add('hidden');
     }
 
+    // Modal Edit Klien (dedicated, isolated dari galeri modal)
+    function clientEditModal(id, urutan) {
+        document.getElementById('clientEditForm').action = '/admin/galeri/' + id;
+        document.getElementById('clientEditUrutan').value = urutan;
+        document.getElementById('clientEditImage').value = '';
+        document.getElementById('clientEditModal').classList.remove('hidden');
+    }
+    function closeClientEditModal() {
+        document.getElementById('clientEditModal').classList.add('hidden');
+    }
     // Modal Logo
     function openLogoModal() {
         document.getElementById('logoModalTitle').innerText = 'Tambah Logo';

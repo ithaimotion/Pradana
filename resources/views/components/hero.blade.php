@@ -65,7 +65,7 @@
                  class="absolute inset-0 bg-cover bg-center" 
                  :style="'background-image: url(' + slide.image + ')'">
                  <!-- Modern gradient overlay -->
-                <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-slate-900/40"></div>
+                <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.45), rgba(15,23,42,0.65));"></div>
             </div>
         </template>
     </div>

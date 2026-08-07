@@ -51,11 +51,6 @@
                         </li>
                     @endforeach
                 </ul>
-                
-                <a href="#contact" class="inline-flex items-center gap-2 bg-white text-blue-900 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all shadow-lg hover:shadow-white/20 w-fit relative z-10 hover:-translate-y-1">
-                    Learn More
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </a>
             </div>
         </div>
     </div>

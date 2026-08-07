@@ -15,7 +15,7 @@
     <div class="relative max-w-7xl mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-16 items-center">
             <div class="reveal-left">
-                <span class="text-blue-600 font-bold tracking-wider uppercase text-sm mb-4 block">Latar Belakang</span>
+                <span class="text-blue-600 font-bold tracking-wider uppercase text-sm mb-4 block">Tentang Kami</span>
                 <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-8 leading-tight">{{ $title }}</h2>
                 <div class="space-y-6 text-lg text-slate-600 leading-relaxed font-light">
                     <p>
@@ -26,7 +26,7 @@
                     </p>
                 </div>
                 <div class="mt-10">
-                    <a href="#contact" class="inline-flex items-center gap-2 bg-slate-900 hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1">
+                    <a href="{{ route('profil.perusahaan') }}" class="inline-flex items-center gap-2 bg-slate-900 hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1">
                         {{ $cta }}
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>

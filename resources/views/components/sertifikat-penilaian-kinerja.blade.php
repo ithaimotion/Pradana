@@ -1,7 +1,7 @@
-@props(['sertifikat' => null])
+@props(['sertifikatKinerja' => null])
 
 @php
-    $items = collect($sertifikat ?? [])->filter(fn ($item) => $item !== null)->values();
+    $items = collect($sertifikatKinerja ?? [])->filter(fn ($item) => $item !== null)->values();
 @endphp
 
 <section class="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 overflow-hidden">
@@ -24,12 +24,7 @@
                             <div class="flex h-full w-full items-center justify-center text-sm text-slate-500">Foto Sertifikat</div>
                         @endif
                     </div>
-                    <div class="px-2 pb-2 pt-4">
-                        <h3 class="text-lg font-semibold uppercase tracking-wide text-slate-900">{{ $item->judul }}</h3>
-                        @if(!empty($item->konten))
-                            <p class="mt-2 text-sm leading-6 text-slate-600">{{ $item->konten }}</p>
-                        @endif
-                    </div>
+
                 </button>
             @endforeach
         </div>
@@ -41,9 +36,7 @@
                 <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
             <img id="certificateModalImage" src="" alt="Preview sertifikat" class="max-h-[80vh] w-full rounded-[24px] object-contain bg-slate-100">
-            <div class="px-2 pb-2 pt-3 text-center">
-                <h3 id="certificateModalTitle" class="text-lg font-semibold text-slate-800"></h3>
-            </div>
+
         </div>
     </div>
 </section>

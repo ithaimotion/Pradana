@@ -24,11 +24,11 @@
                     @if($logoSrc)
                         <img src="{{ $logoSrc }}" alt="{{ $logo->nama ?? 'Logo' }}" title="{{ $logo->nama ?? 'Logo' }}" class="h-10 w-auto object-contain">
                     @else
-                        <span class="text-2xl font-bold text-slate-900">Pradana</span>
+                        <img src="{{ asset('images/logo-pnusa.png') }}" alt="p'Nusa Energi" class="h-12 w-auto object-contain">
                     @endif
                 @endforeach
             @else
-                <span class="text-2xl font-bold text-slate-900">Pradana</span>
+                <img src="{{ asset('images/logo-pnusa.png') }}" alt="p'Nusa Energi" class="h-12 w-auto object-contain">
             @endif
         </a>
 
