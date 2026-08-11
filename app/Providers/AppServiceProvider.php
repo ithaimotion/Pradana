@@ -13,7 +13,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // Jika aplikasi berjalan di mode production (di hosting Domainesia / cPanel)
+        // Kita ubah path public bawaan Laravel menjadi public_html
+        if ($this->app->environment('production')) {
+            $this->app->bind('path.public', function() {
+                return base_path('../public_html');
+            });
+        }
     }
 
     /**

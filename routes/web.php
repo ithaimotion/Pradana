@@ -217,3 +217,13 @@ Route::get('/hubungi-kami', function () {
 Route::get('/kebijakan-privasi', [FooterLegalPageController::class, 'show'])->name('legal.privacy');
 Route::get('/syarat-dan-ketentuan', [FooterLegalPageController::class, 'show'])->name('legal.terms');
 Route::get('/kebijakan-cookie', [FooterLegalPageController::class, 'show'])->name('legal.cookie');
+
+// HELPER ROUTE UNTUK CPANEL/DOMAINESIA
+// Buka namadomain.com/link-storage setelah deploy untuk memastikan gambar muncul
+Route::get('/link-storage', function () {
+    if (app()->environment('production')) {
+        \Illuminate\Support\Facades\Artisan::call('storage:link');
+        return 'Storage Link Berhasil Dibuat di Production!';
+    }
+    return 'Route ini hanya aktif di mode production.';
+});
