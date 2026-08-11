@@ -13,7 +13,7 @@
             <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Isi form di bawah untuk menambahkan konten SOP baru</p>
         </div>
 
-        <form action="{{ route('admin.profil.sop.store') }}" method="POST" class="space-y-6">
+        <form action="{{ route('admin.profil.sop.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
             @csrf
 
             <div class="space-y-4">
@@ -25,19 +25,12 @@
                     @enderror
                 </div>
 
+                <!-- Upload Dokumen PDF -->
                 <div>
-                    <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider">Subjudul</label>
-                    <textarea name="subjudul" rows="3" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-3 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500" placeholder="Seluruh SOP PT Pradana Nusa Energi disusun mengacu pada SNI ISO/IEC 17020:2012 dan peraturan ketenagalistrikan yang berlaku.">{{ old('subjudul') }}</textarea>
-                    @error('subjudul')
-                        <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider">URL Dokumen (PDF)</label>
-                    <input type="url" name="url_dokumen" value="{{ old('url_dokumen') }}" placeholder="https://example.com/dokumen-sop.pdf" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-3 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500">
-                    <p class="text-[11px] text-slate-500 mt-1">Masukkan URL lengkap ke file PDF dokumen SOP</p>
-                    @error('url_dokumen')
+                    <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider">Dokumen SOP (PDF)</label>
+                    <input type="file" name="dokumen_file" accept=".pdf" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-3 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500 file:mr-4 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                    <p class="text-[11px] text-slate-500 mt-1">Upload file dokumen manual SOP resmi (Maksimal 50MB)</p>
+                    @error('dokumen_file')
                         <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>

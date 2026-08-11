@@ -15,7 +15,7 @@
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
                 CEK PERMOHONAN SLO
             </h1>
-            <p class="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
+            <p class="text-white/90 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed mb-8">
                 Pantau status permohonan SLO Anda secara real-time. Masukkan nomor permohonan atau nomor registrasi yang diberikan saat pendaftaran.
             </p>
         </div>
@@ -29,7 +29,7 @@
             <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-8 md:p-10 reveal-on-scroll">
                 <div class="text-center mb-8">
                     <div class="w-16 h-16 bg-blue-900 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                        <svg class="w-8 h-8 text-slate-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-8 h-8 text-slate-900 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                         </svg>
                     </div>

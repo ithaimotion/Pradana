@@ -25,7 +25,9 @@ class ProfilPageController extends Controller
             $konten->konten = null;
             $konten->url_gambar = null;
             $konten->visi = null;
+            $konten->foto_visi = null;
             $konten->misi = null;
+            $konten->foto_misi = null;
             $konten->nilai_perusahaan = null;
         }
         return view('pages.profil.perusahaan', compact('konten'));

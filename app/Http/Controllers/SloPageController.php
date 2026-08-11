@@ -14,8 +14,8 @@ class SloPageController extends Controller
     public function regulasi(): View
     {
         $regulasiList = SloRegulasi::aktif()
-            ->get()
-            ->groupBy('tipe');
+            ->orderBy('urutan')
+            ->get();
 
         return view('pages.slo.regulasi', compact('regulasiList'));
     }

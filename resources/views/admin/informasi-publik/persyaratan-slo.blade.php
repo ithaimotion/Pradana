@@ -170,6 +170,50 @@
             </div>
         </div>
 
+        <!-- IPTL TM -->
+        <div class="bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-2xl p-6">
+            <h2 class="text-lg font-bold text-slate-900 dark:text-white mb-1 flex items-center gap-2">
+                <span class="text-blue-500"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></span>
+                IPTL TM
+            </h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Persyaratan Dokumen SLO IPTL TM PT Pradana Nusa Energi</p>
+            <div>
+                <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider mb-2">Daftar Persyaratan</label>
+                <div class="space-y-2" id="iptl-tm-container">
+                    @php
+                        $defaultIptlTm = [
+                            'KTP Pemilik atau Penanggung Jawab Perusahaan',
+                            'NIB Perusahaan/ Surat Izin Usaha/ Surat Izin Operasional',
+                            'NPWP Perusahaan',
+                            'No. Handphone Penanggung Jawab Perusahaan',
+                            'No. Telepon Perusahaan',
+                            'Email Penanggung Jawab Perusahaan',
+                            'Nomor Identitas Data Instalasi (NIDI)',
+                            'Siteplan atau Layout Tata Letak Instalasi Listrik di Power House/Gardu Listrik Konsumen',
+                            'Single Line Diagram',
+                            'Factory Test Report PHB TM',
+                            'Factory Test Report Transformator',
+                            'Factory Test Report PHB TR',
+                            'Factory Test Report Saluran TM jika lebih dari 100 meter',
+                            'SPJBTL/SIP/Rekening Listrik 3 bulan terakhir',
+                            'Hasil Setting Relay Proteksi Pada PHB TM (bila terdapat Relay Control)',
+                        ];
+                        $iptlTmList = ($persyaratan && $persyaratan->iptl_tm && count($persyaratan->iptl_tm) > 0)
+                            ? $persyaratan->iptl_tm
+                            : $defaultIptlTm;
+                    @endphp
+                    @foreach($iptlTmList as $index => $item)
+                        <div class="flex gap-2 items-center">
+                            <span class="flex-shrink-0 w-6 h-6 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-xs flex items-center justify-center font-bold">{{ $index + 1 }}</span>
+                            <input type="text" name="iptl_tm[{{ $index }}]" value="{{ $item }}" class="flex-1 bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-blue-500">
+                            <button type="button" onclick="removeItem(this)" class="bg-rose-500/20 text-rose-400 hover:bg-rose-500/30 px-3 rounded-lg text-sm"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18"></path></svg></button>
+                        </div>
+                    @endforeach
+                </div>
+                <button type="button" onclick="addItem('iptl-tm-container', 'iptl_tm')" class="mt-2 text-xs text-blue-500 hover:text-blue-400">+ Tambah Item</button>
+            </div>
+        </div>
+
         <div class="flex justify-end">
             <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition shadow-lg shadow-blue-600/20">
                 Simpan Perubahan

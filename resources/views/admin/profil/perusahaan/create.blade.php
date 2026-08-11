@@ -73,7 +73,9 @@
             <!-- 3. Visi & Misi -->
             <div class="space-y-4 bg-slate-50/60 dark:bg-slate-950/40 p-5 rounded-xl border border-slate-200/80 dark:border-slate-800/80">
                 <h3 class="text-sm font-bold text-blue-400 uppercase tracking-wider">3. Visi & Misi</h3>
-                <div class="grid md:grid-cols-2 gap-4">
+
+                <!-- Visi -->
+                <div class="grid md:grid-cols-2 gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
                     <div>
                         <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Visi</label>
                         <textarea name="visi" rows="4" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500" placeholder="Menjadi Lembaga Inspeksi Teknik yang...">{{ old('visi') }}</textarea>
@@ -81,6 +83,17 @@
                             <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
                         @enderror
                     </div>
+                    <div class="space-y-2">
+                        <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Foto Ilustrasi Visi</label>
+                        <div class="border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-xl p-3 text-center hover:border-blue-500/50 transition">
+                            <input type="file" name="foto_visi" accept="image/*" class="w-full text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2">
+                            <p class="text-[10px] text-slate-500 mt-1">Upload foto untuk bagian Visi (PNG, JPG, WEBP maks 5MB)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Misi -->
+                <div class="grid md:grid-cols-2 gap-4 pt-2">
                     <div>
                         <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Misi</label>
                         <textarea name="misi" rows="4" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500" placeholder="1. Melaksanakan pemeriksaan...">{{ old('misi') }}</textarea>
@@ -88,8 +101,16 @@
                             <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
                         @enderror
                     </div>
+                    <div class="space-y-2">
+                        <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Foto Ilustrasi Misi</label>
+                        <div class="border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-xl p-3 text-center hover:border-blue-500/50 transition">
+                            <input type="file" name="foto_misi" accept="image/*" class="w-full text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2">
+                            <p class="text-[10px] text-slate-500 mt-1">Upload foto untuk bagian Misi (PNG, JPG, WEBP maks 5MB)</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+
 
             <!-- 4. Nilai Utama Perusahaan -->
             <div class="space-y-4 bg-slate-50/60 dark:bg-slate-950/40 p-5 rounded-xl border border-slate-200/80 dark:border-slate-800/80">

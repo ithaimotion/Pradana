@@ -23,12 +23,20 @@ class SopController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'judul' => 'nullable|string|max:255',
-            'subjudul' => 'nullable|string|max:500',
-            'url_dokumen' => 'nullable|string|max:500',
+            'judul' => 'required|string|max:255',
+            'dokumen_file' => 'nullable|file|mimes:pdf|max:51200', // 50MB Max
         ]);
 
-        $sop = ProfilSop::create($validated);
+        $path = null;
+        if ($request->hasFile('dokumen_file')) {
+            $path = $request->file('dokumen_file')->store('uploads/sop', 'public');
+        }
+
+        ProfilSop::create([
+            'judul' => $validated['judul'],
+            'subjudul' => null,
+            'url_dokumen' => $path,
+        ]);
 
         return redirect()->route('admin.profil.sop.index')->with('success', 'Konten SOP berhasil ditambahkan.');
     }
@@ -42,13 +50,22 @@ class SopController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'judul' => 'nullable|string|max:255',
-            'subjudul' => 'nullable|string|max:500',
-            'url_dokumen' => 'nullable|string|max:500',
+            'judul' => 'required|string|max:255',
+            'dokumen_file' => 'nullable|file|mimes:pdf|max:51200',
         ]);
 
         $sop = ProfilSop::findOrFail($id);
-        $sop->update($validated);
+
+        $data = [
+            'judul' => $validated['judul'],
+            'subjudul' => null,
+        ];
+
+        if ($request->hasFile('dokumen_file')) {
+            $data['url_dokumen'] = $request->file('dokumen_file')->store('uploads/sop', 'public');
+        }
+
+        $sop->update($data);
 
         return redirect()->route('admin.profil.sop.index')->with('success', 'Konten SOP berhasil diperbarui.');
     }

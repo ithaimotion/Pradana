@@ -19,31 +19,16 @@
 
     <!-- Form -->
     <div class="bg-slate-100/50 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 rounded-xl p-6">
-        <form action="{{ route('admin.slo.regulasi.store') }}" method="POST" class="space-y-6">
+        <form action="{{ route('admin.slo.regulasi.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
             @csrf
 
-            <!-- Nomor -->
+            <!-- Judul -->
             <div>
-                <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Nomor Regulasi <span class="text-rose-400">*</span></label>
+                <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Judul Regulasi <span class="text-rose-400">*</span></label>
                 <input type="text" name="nomor" value="{{ old('nomor') }}" required
                     class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition"
                     placeholder="Contoh: UU No. 30 Tahun 2009">
                 @error('nomor')
-                    <p class="text-rose-400 text-xs mt-1">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <!-- Tipe -->
-            <div>
-                <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Tipe Regulasi <span class="text-rose-400">*</span></label>
-                <select name="tipe" required
-                    class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition">
-                    <option value="">Pilih tipe regulasi</option>
-                    @foreach($tipeOptions as $value => $label)
-                        <option value="{{ $value }}" {{ old('tipe') == $value ? 'selected' : '' }}>{{ $label }}</option>
-                    @endforeach
-                </select>
-                @error('tipe')
                     <p class="text-rose-400 text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>
@@ -59,40 +44,15 @@
                 @enderror
             </div>
 
-            <!-- URL Dokumen -->
+            <!-- Upload Dokumen PDF -->
             <div>
-                <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">URL Dokumen (Opsional)</label>
-                <input type="url" name="url_dokumen" value="{{ old('url_dokumen') }}"
-                    class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition"
-                    placeholder="https://...">
-                @error('url_dokumen')
+                <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Dokumen Regulasi (Opsional)</label>
+                <input type="file" name="dokumen" accept=".pdf"
+                    class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                @error('dokumen')
                     <p class="text-rose-400 text-xs mt-1">{{ $message }}</p>
                 @enderror
-                <p class="text-slate-500 text-xs mt-1">Link ke dokumen PDF atau sumber regulasi eksternal</p>
-            </div>
-
-            <!-- Urutan & Status -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Urutan Tampil</label>
-                    <input type="number" name="urutan" value="{{ old('urutan', 0) }}" min="0"
-                        class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition"
-                        placeholder="0">
-                    @error('urutan')
-                        <p class="text-rose-400 text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                    <p class="text-slate-500 text-xs mt-1">Angka lebih kecil akan tampil di atas</p>
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Status</label>
-                    <div class="flex items-center gap-3 mt-3">
-                        <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" name="is_active" value="1" {{ old('is_active', '1') ? 'checked' : '' }} class="sr-only peer">
-                            <div class="w-11 h-6 bg-slate-200 dark:bg-slate-700 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-emerald-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
-                            <span class="ml-3 text-sm text-slate-700 dark:text-slate-300">Aktif</span>
-                        </label>
-                    </div>
-                </div>
+                <p class="text-slate-500 text-xs mt-1">Upload file PDF (Maksimal 50MB)</p>
             </div>
 
             <!-- Buttons -->

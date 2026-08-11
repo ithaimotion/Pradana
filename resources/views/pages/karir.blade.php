@@ -17,19 +17,15 @@
             </span>
             <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
                 Bangun Karir di<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-400">Pradana Nusa Energi</span>
+                <span class="text-blue-400">Pradana Nusa</span> <span class="text-green-400">Energi</span>
             </h1>
-            <p class="text-slate-700 dark:text-slate-300 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed mb-8">
+            <p class="text-white/90 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed mb-8">
                 Jadilah bagian dari tim profesional kami dalam mewujudkan instalasi ketenagalistrikan yang aman, andal, dan ramah lingkungan di Indonesia.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="#lowongan" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition shadow-lg shadow-blue-600/30">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     Lihat Lowongan
-                </a>
-                <a href="#kultur" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-slate-100 dark:bg-white/10 hover:bg-white/20 text-slate-900 dark:text-white rounded-xl font-bold transition border border-white/20 backdrop-blur-md">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    Tentang Kami
                 </a>
             </div>
         </div>

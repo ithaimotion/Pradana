@@ -15,8 +15,8 @@
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
                 UJI PETIK (SAMPLING)
             </h1>
-            <p class="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
-                Proses pengawasan dan evaluasi kinerja Tenaga Teknik untuk memastikan konsistensi penerapan prosedur inspeksi dan standar keselamatan.
+             <p class="text-white/90 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed mb-8">
+                 Proses pengawasan dan evaluasi kinerja Tenaga Teknik untuk memastikan konsistensi penerapan prosedur inspeksi dan standar keselamatan.
             </p>
         </div>
     </section>

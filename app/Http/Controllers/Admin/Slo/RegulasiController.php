@@ -38,14 +38,18 @@ class RegulasiController extends Controller
         $validated = $request->validate([
             'nomor'       => 'required|string|max:255',
             'keterangan'  => 'required|string',
-            'tipe'        => 'required|in:uu_pp,permen_esdm,sni',
-            'url_dokumen' => 'nullable|url|max:500',
-            'urutan'      => 'nullable|integer|min:0',
-            'is_active'   => 'boolean',
+            'dokumen'     => 'nullable|file|mimes:pdf|max:51200', // 50MB Max
         ]);
 
-        $validated['is_active'] = $request->boolean('is_active', true);
-        $validated['urutan']    = $validated['urutan'] ?? 0;
+        $pathDokumen = null;
+        if ($request->hasFile('dokumen')) {
+            $pathDokumen = $request->file('dokumen')->store('uploads/regulasi', 'public');
+        }
+
+        $validated['tipe']        = 'uu_pp';
+        $validated['url_dokumen'] = $pathDokumen;
+        $validated['urutan']      = 0;
+        $validated['is_active']   = true;
 
         SloRegulasi::create($validated);
 
@@ -72,14 +76,12 @@ class RegulasiController extends Controller
         $validated = $request->validate([
             'nomor'       => 'required|string|max:255',
             'keterangan'  => 'required|string',
-            'tipe'        => 'required|in:uu_pp,permen_esdm,sni',
-            'url_dokumen' => 'nullable|url|max:500',
-            'urutan'      => 'nullable|integer|min:0',
-            'is_active'   => 'boolean',
+            'dokumen'     => 'nullable|file|mimes:pdf|max:51200',
         ]);
 
-        $validated['is_active'] = $request->boolean('is_active', true);
-        $validated['urutan']    = $validated['urutan'] ?? 0;
+        if ($request->hasFile('dokumen')) {
+            $validated['url_dokumen'] = $request->file('dokumen')->store('uploads/regulasi', 'public');
+        }
 
         $regulasi->update($validated);
 

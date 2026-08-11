@@ -15,12 +15,15 @@
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
                 {{ $konten->judul ?? 'STANDAR OPERASI PROSEDUR' }}
             </h1>
-            <p class="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
-                {{ $konten->subjudul ?? 'Seluruh SOP PT Pradana Nusa Energi disusun mengacu pada SNI ISO/IEC 17020:2012 dan peraturan ketenagalistrikan yang berlaku.' }}
+           <p class="text-white/90 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed mb-8">
+                Seluruh SOP PT Pradana Nusa Energi disusun mengacu pada SNI ISO/IEC 17020:2012 dan peraturan ketenagalistrikan yang berlaku.
             </p>
             @if(optional($konten)->url_dokumen)
+                @php
+                    $linkSop = str_starts_with($konten->url_dokumen, 'http') ? $konten->url_dokumen : asset('storage/' . $konten->url_dokumen);
+                @endphp
                 <div class="mt-6">
-                    <a href="{{ optional($konten)->url_dokumen }}" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
+                    <a href="{{ $linkSop }}" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                         <span>Unduh Dokumen Manual SOP Resmi (PDF)</span>
                     </a>
@@ -116,7 +119,7 @@
                                 </div>
                                 <!-- Meta & Action -->
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Jan 2026 · Rev.05</span>
+                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Jan 2026 ï¿½ Rev.05</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-blue-900 hover:bg-blue-800 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -147,7 +150,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Prosedur inspeksi dan pengujian instalasi Pembangkit Listrik Tenaga Surya untuk penerbitan SLO.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Feb 2026 · Rev.03</span>
+                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Feb 2026 ï¿½ Rev.03</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -177,7 +180,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Prosedur pemeriksaan Saluran Udara Tegangan Menengah (SUTM) sesuai standar PLN & PUIL.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Jan 2026 · Rev.04</span>
+                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Jan 2026 ï¿½ Rev.04</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -207,7 +210,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Prosedur pemeriksaan Saluran Kabel Tegangan Menengah (SKTM) bawah tanah dan kabel laut.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Mar 2026 · Rev.02</span>
+                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Mar 2026 ï¿½ Rev.02</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -237,7 +240,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Prosedur inspeksi gardu distribusi tipe pasangan luar (outdoor) sesuai standar PLN P.85.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Feb 2026 · Rev.03</span>
+                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Feb 2026 ï¿½ Rev.03</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -267,7 +270,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Prosedur inspeksi gardu distribusi tipe pasangan dalam (indoor) untuk kawasan industri & gedung.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Feb 2026 · Rev.03</span>
+                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Feb 2026 ï¿½ Rev.03</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -298,7 +301,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Alur proses pengajuan, pemeriksaan, hingga penerbitan Sertifikat Laik Operasi tegangan menengah.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Apr 2026 · Rev.06</span>
+                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Apr 2026 ï¿½ Rev.06</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-teal-600 hover:bg-teal-700 text-slate-900 dark:text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -328,7 +331,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Standar layanan kepada pemohon SLO mencakup waktu respons, etika komunikasi, dan penanganan permintaan.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Jan 2026 · Rev.04</span>
+                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Jan 2026 ï¿½ Rev.04</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-teal-600 hover:bg-teal-700 text-slate-900 dark:text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -358,7 +361,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Prosedur pengelolaan dan pemeliharaan fasilitas, ruang kerja, dan sarana pendukung operasional.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Mar 2026 · Rev.02</span>
+                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Mar 2026 ï¿½ Rev.02</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-teal-600 hover:bg-teal-700 text-slate-900 dark:text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -388,7 +391,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Mekanisme penerimaan, penanganan, dan tindak lanjut atas keluhan dan banding dari pemohon atau pelanggan.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Jan 2026 · Rev.03</span>
+                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Jan 2026 ï¿½ Rev.03</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-teal-600 hover:bg-teal-700 text-slate-900 dark:text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -419,7 +422,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Prosedur kalibrasi berkala seluruh instrumen ukur dan uji untuk menjamin akurasi dan ketertelusuran hasil.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Apr 2026 · Rev.04</span>
+                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Apr 2026 ï¿½ Rev.04</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-purple-600 hover:bg-purple-700 text-slate-900 dark:text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -449,7 +452,7 @@
                                     <p class="text-xs text-slate-500 mt-0.5">Prosedur rekrutmen, pelatihan, evaluasi kompetensi, dan pengembangan tenaga teknik perusahaan.</p>
                                 </div>
                                 <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Feb 2026 · Rev.03</span>
+                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Feb 2026 ï¿½ Rev.03</span>
                                     <a href="#" class="flex items-center gap-1.5 bg-purple-600 hover:bg-purple-700 text-slate-900 dark:text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
@@ -483,7 +486,7 @@
                 </div>
                 <div class="flex-1 text-center md:text-left">
                     <h3 class="text-xl font-extrabold mb-2">Butuh Dokumen SOP Spesifik?</h3>
-                    <p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                    <p class="text-white text-sm leading-relaxed">
                         Jika Anda memerlukan dokumen SOP tertentu yang tidak tercantum, silakan hubungi kami langsung. Tim kami siap membantu.
                     </p>
                 </div>

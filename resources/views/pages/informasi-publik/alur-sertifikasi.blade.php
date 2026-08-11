@@ -15,8 +15,8 @@
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
                 ALUR SERTIFIKASI
             </h1>
-            <p class="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
-                Proses menyeluruh pengurusan Sertifikat Laik Operasi (SLO) dari tahap permohonan hingga terbitnya sertifikat.
+           <p class="text-white/90 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed mb-8">
+                 Proses menyeluruh pengurusan Sertifikat Laik Operasi (SLO) dari tahap permohonan hingga terbitnya sertifikat.
             </p>
         </div>
     </section>
@@ -35,7 +35,7 @@
                                 </svg>
                             </div>
                             <div>
-                                <h2 class="text-slate-900 dark:text-white font-bold text-lg">{{ $alurSertifikasi->nama_dokumen }}</h2>
+                                <h2 class="text-slate-900 text-white font-bold text-lg">{{ $alurSertifikasi->nama_dokumen }}</h2>
                                 <p class="text-blue-200 text-sm">Dokumen Alur Sertifikasi SLO</p>
                             </div>
                         </div>

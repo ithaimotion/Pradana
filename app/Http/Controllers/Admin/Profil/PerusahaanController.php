@@ -46,6 +46,14 @@ class PerusahaanController extends Controller
             $validated['url_gambar'] = $imagePath;
         }
 
+        if ($request->hasFile('foto_visi')) {
+            $validated['foto_visi'] = $request->file('foto_visi')->store('profil-perusahaan', 'public');
+        }
+
+        if ($request->hasFile('foto_misi')) {
+            $validated['foto_misi'] = $request->file('foto_misi')->store('profil-perusahaan', 'public');
+        }
+
         ProfilPerusahaan::create($validated);
 
         return redirect()->route('admin.profil.perusahaan.index')->with('success', 'Profil Perusahaan created successfully.');
@@ -90,6 +98,14 @@ class PerusahaanController extends Controller
         if ($request->hasFile('gambar')) {
             $imagePath = $request->file('gambar')->store('profil-perusahaan', 'public');
             $validated['url_gambar'] = $imagePath;
+        }
+
+        if ($request->hasFile('foto_visi')) {
+            $validated['foto_visi'] = $request->file('foto_visi')->store('profil-perusahaan', 'public');
+        }
+
+        if ($request->hasFile('foto_misi')) {
+            $validated['foto_misi'] = $request->file('foto_misi')->store('profil-perusahaan', 'public');
         }
 
         $profilPerusahaan->update($validated);

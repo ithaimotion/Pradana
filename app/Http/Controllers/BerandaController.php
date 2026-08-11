@@ -40,7 +40,7 @@ class BerandaController extends Controller
 
     public function galeri()
     {
-        $galeri = Galeri::where('status_aktif', true)->orderBy('urutan')->get();
+        $galeri = Galeri::where('status_aktif', true)->where('kategori', '!=', 'client')->orderBy('urutan')->get();
         return view('pages.galeri', compact('galeri'));
     }
 

@@ -16,8 +16,8 @@
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-white">
                 REGULASI KETENAGALISTRIKAN
             </h1>
-            <p class="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
-                Dasar hukum dan peraturan yang melandasi pelaksanaan inspeksi teknik dan penerbitan Sertifikat Laik Operasi (SLO) di Indonesia.
+            <p class="text-white/90 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed mb-8">
+                 Dasar hukum dan peraturan yang melandasi pelaksanaan inspeksi teknik dan penerbitan Sertifikat Laik Operasi (SLO) di Indonesia.
             </p>
         </div>
     </section>
@@ -26,95 +26,93 @@
     <section class="py-16 bg-slate-50 overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
 
-            @php
-                $tipeLabels = [
-                    'uu_pp' => 'Undang-Undang & Peraturan Pemerintah',
-                    'permen_esdm' => 'Peraturan Menteri ESDM',
-                    'sni' => 'Standar Nasional Indonesia (SNI)'
-                ];
-                
-                $tipeColors = [
-                    'uu_pp' => ['bg' => 'blue'],
-                    'permen_esdm' => ['bg' => 'blue'],
-                    'sni' => ['bg' => 'teal']
-                ];
-                
-                $tipeIcons = [
-                    'uu_pp' => '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>',
-                    'permen_esdm' => '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>',
-                    'sni' => '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>'
-                ];
-            @endphp
+            <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm mb-12">
+                <p class="text-slate-600 leading-relaxed mb-6">
+                    Dasar hukum yang menjadi landasan dari pekerjaan Pemeriksaan Instalasi Listrik dibawah pengawasan Direktorat Jenderal Ketenagalistrikan / Dinas Bidang Energi setempat adalah sebagai berikut:
+                </p>
+                <ul class="space-y-4 text-slate-700">
+                    <li class="flex items-start gap-3">
+                        <span class="text-blue-500 mt-0.5">•</span>
+                        <span>UU No. 30 Tahun 2009 tentang ketenagalistrikan BAB XI Pasal 14.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-blue-500 mt-0.5">•</span>
+                        <span>Peraturan Pemerintah No. 14 tahun 2012 tentang Kegiatan Usaha Penyediaan Tenaga Listrik.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-blue-500 mt-0.5">•</span>
+                        <span>Peraturan Menteri Energi dan Sumber Daya Mineral No. 12 Tahun 2021. tentang Klasifikasi, Kualifikasi dan Sertifikasi Usaha Jasa Penunjang Tenaga Listrik.</span>
+                    </li>
+                </ul>
+            </div>
 
-            @foreach($regulasiList as $tipe => $items)
-                @if($items->count() > 0)
-                    <div class="mb-12 reveal-on-scroll {{ $loop->index === 0 ? '' : 'delay-' . ($loop->index * 100) }}">
-                        <div class="flex items-center gap-3 mb-6">
-                            <div class="w-10 h-10 bg-{{ $tipeColors[$tipe]['bg'] }}-{{ $tipe === 'uu_pp' ? '900' : ($tipe === 'permen_esdm' ? '500' : '600') }} text-white rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
-                                {!! $tipeIcons[$tipe] !!}
-                            </div>
-                            <h2 class="text-xl font-extrabold text-slate-900">{{ $tipeLabels[$tipe] }}</h2>
+            <!-- Green Info Box -->
+            <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl p-4 text-center text-sm md:text-base mb-8 reveal-on-scroll">
+                Berikut data file yang dapat Anda lihat dan unduh
+            </div>
+
+            <!-- Data Table Section -->
+            <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden reveal-on-scroll delay-100">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left">
+                        <thead>
+                            <tr class="bg-slate-50 border-b-2 border-slate-200">
+                                <th class="w-16 px-6 py-4 text-center text-slate-500 font-bold tracking-wider">No ↕</th>
+                                <th class="px-6 py-4 text-slate-700 font-bold tracking-wider">Judul ↕</th>
+                                <th class="px-6 py-4 text-slate-700 font-bold tracking-wider">Keterangan ↕</th>
+                                <th class="w-32 px-6 py-4 text-center text-slate-700 font-bold tracking-wider">Aksi ↕</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            @foreach($regulasiList as $index => $item)
+                                <tr class="group hover:bg-blue-50/50 transition-colors duration-150 {{ $index % 2 === 0 ? 'bg-white' : 'bg-slate-50/30' }}">
+                                    <td class="px-6 py-4 text-center text-slate-500 font-medium">
+                                        {{ $index + 1 }}
+                                    </td>
+                                    <td class="px-6 py-4 font-semibold text-slate-900 group-hover:text-blue-800 transition-colors">
+                                        {{ $item->nomor }}
+                                    </td>
+                                    <td class="px-6 py-4 text-slate-600 leading-relaxed">
+                                        {{ $item->keterangan }}
+                                    </td>
+                                    <td class="px-6 py-4 text-center">
+                                        @if(optional($item)->url_dokumen)
+                                            @php
+                                                // Jika url_dokumen adalah link eksternal (http), langsung gunakan. Jika tidak, ambil dari storage.
+                                                $linkDokumen = str_starts_with($item->url_dokumen, 'http') ? $item->url_dokumen : asset('storage/' . $item->url_dokumen);
+                                            @endphp
+                                            <a href="{{ $linkDokumen }}" target="_blank" class="inline-flex items-center justify-center w-10 h-10 bg-teal-500 hover:bg-teal-600 text-white rounded-lg transition-colors shadow-sm" title="Lihat Dokumen">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                                            </a>
+                                        @else
+                                            <span class="text-slate-300">-</span>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                            @if($regulasiList->isEmpty())
+                                <tr>
+                                    <td colspan="4" class="px-6 py-8 text-center text-slate-500">
+                                        Belum ada data regulasi.
+                                    </td>
+                                </tr>
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Pagination Footer -->
+                @if($regulasiList->isNotEmpty())
+                    <div class="bg-slate-50 border-t border-slate-200 px-6 py-4 flex items-center justify-between text-sm text-slate-600">
+                        <p>Showing 1 to {{ $regulasiList->count() }} of {{ $regulasiList->count() }} entries</p>
+                        <div class="flex gap-1">
+                            <button class="px-3 py-1.5 border border-slate-300 text-slate-400 bg-white rounded cursor-not-allowed text-xs">Previous</button>
+                            <button class="px-3 py-1.5 bg-blue-600 text-white font-medium rounded shadow-sm text-xs">1</button>
+                            <button class="px-3 py-1.5 border border-slate-300 text-slate-400 bg-white rounded cursor-not-allowed text-xs">Next</button>
                         </div>
-                        
-                        @if($tipe === 'sni')
-                            <div class="grid md:grid-cols-2 gap-4">
-                                @foreach($items as $item)
-                                    <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                                        <div class="flex items-start gap-3">
-                                            <div class="w-10 h-10 bg-teal-50 text-teal-700 rounded-xl flex items-center justify-center flex-shrink-0 text-lg font-bold">
-                                                {!! $tipeIcons[$tipe] !!}
-                                            </div>
-                                            <div class="flex-1">
-                                                <span class="text-xs font-bold bg-teal-100 text-teal-700 border border-teal-200 px-2 py-0.5 rounded-full">SNI</span>
-                                                <h3 class="font-bold text-slate-900 text-sm mt-1 group-hover:text-teal-700 transition-colors">{{ $item->nomor }}</h3>
-                                                <p class="text-xs text-slate-500 mt-1 leading-relaxed">{{ $item->keterangan }}</p>
-                                                @if(optional($item)->url_dokumen)
-                                                    <a href="{{ optional($item)->url_dokumen }}" target="_blank" class="inline-flex items-center gap-1.5 mt-3 text-xs font-bold text-teal-600 hover:text-teal-700 transition">
-                                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                                                        </svg>
-                                                        Lihat Dokumen
-                                                    </a>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        @else
-                            <div class="space-y-4">
-                                @foreach($items as $item)
-                                    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                                        <div class="flex items-stretch">
-                                            <div class="w-2 bg-{{ $tipeColors[$tipe]['bg'] }}-{{ $tipe === 'uu_pp' ? '900' : '500' }} flex-shrink-0 rounded-l-2xl"></div>
-                                            <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
-                                                <div class="w-12 h-12 bg-{{ $tipeColors[$tipe]['bg'] }}-50 text-{{ $tipeColors[$tipe]['bg'] }}-{{ $tipe === 'uu_pp' ? '900' : '600' }} rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm font-bold text-lg">
-                                                    {!! $tipeIcons[$tipe] !!}
-                                                </div>
-                                                <div class="flex-1">
-                                                    <span class="text-xs font-bold bg-{{ $tipeColors[$tipe]['bg'] }}-100 text-{{ $tipeColors[$tipe]['bg'] }}-{{ $tipe === 'uu_pp' ? '800' : '700' }} border border-{{ $tipeColors[$tipe]['bg'] }}-200 px-2 py-0.5 rounded-full">
-                                                        {{ $tipe === 'uu_pp' ? (str_contains(strtolower($item->nomor), 'uu') ? 'Undang-Undang' : 'Peraturan Pemerintah') : 'Permen ESDM' }}
-                                                    </span>
-                                                    <h3 class="font-extrabold text-slate-900 text-base mt-1 group-hover:text-{{ $tipeColors[$tipe]['bg'] }}-{{ $tipe === 'uu_pp' ? '900' : '600' }} transition-colors">{{ $item->nomor }}</h3>
-                                                    <p class="text-xs text-slate-500 mt-0.5">{{ $item->keterangan }}</p>
-                                                </div>
-                                                @if(optional($item)->url_dokumen)
-                                                    <a href="{{ optional($item)->url_dokumen }}" target="_blank" class="flex items-center gap-1.5 bg-{{ $tipeColors[$tipe]['bg'] }}-{{ $tipe === 'uu_pp' ? '900' : '500' }} hover:bg-{{ $tipeColors[$tipe]['bg'] }}-{{ $tipe === 'uu_pp' ? '800' : '600' }} text-slate-900 dark:text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm flex-shrink-0">
-                                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                                                        </svg>
-                                                        Lihat
-                                                    </a>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        @endif
                     </div>
                 @endif
-            @endforeach
+            </div>
 
             <!-- Info Note -->
             <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6 flex gap-4 items-start reveal-on-scroll delay-300">

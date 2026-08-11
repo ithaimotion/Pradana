@@ -9,7 +9,13 @@
     $teleponWhatsapp = $setting('telepon_whatsapp');
     $emailResmi = $setting('email_resmi');
     $jamOperasional = $setting('jam_operasional');
-    $mapsEmbed = $setting('maps_embed');
+    $mapsEmbedRaw = $setting('maps_embed');
+    
+    // Auto-extract URL if user pastes the full <iframe ...> snippet
+    $mapsEmbed = $mapsEmbedRaw;
+    if (str_contains($mapsEmbedRaw, '<iframe') && preg_match('/src="([^"]+)"/', $mapsEmbedRaw, $matches)) {
+        $mapsEmbed = $matches[1];
+    }
 @endphp
 
 @section('title', 'Hubungi Kami - PT Pradana Nusa Energi')

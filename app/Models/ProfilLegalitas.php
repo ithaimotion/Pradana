@@ -33,7 +33,7 @@ class ProfilLegalitas extends Model
     public function getUrlDokumenAttribute()
     {
         return $this->dokumen
-            ? asset('storage/'.$this->dokumen)
+            ? asset('storage_public/'.$this->dokumen)
             : null;
     }
 }

@@ -27,7 +27,7 @@ class ProfilStrukturOrganisasi extends Model
     public function getUrlGambarAttribute()
     {
         return $this->gambar
-            ? asset('storage/'.$this->gambar)
+            ? asset('storage_public/'.$this->gambar)
             : null;
     }
 }

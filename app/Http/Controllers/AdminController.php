@@ -153,7 +153,7 @@ class AdminController extends Controller
         $kontakKami = $this->getContentSection('kontak_kami', 'kontak_main');
         $hubungiKamiSettings = KontenBeranda::where('bagian', 'hubungi_kami')->get()->keyBy('kunci');
 
-        $galeri = Galeri::orderBy('urutan')->get();
+        $galeri = Galeri::where('kategori', '!=', 'client')->orderBy('urutan')->get();
         $clientPhotos = Galeri::where('kategori', 'client')->orderBy('urutan')->get();
         $logos = Logo::orderBy('urutan')->get();
         $kontenHalamans = KontenHalaman::all()->groupBy('halaman');
@@ -400,7 +400,7 @@ class AdminController extends Controller
             'telepon_whatsapp' => 'nullable|string',
             'email_resmi' => 'nullable|email',
             'jam_operasional' => 'nullable|string',
-            'maps_embed' => 'nullable|url',
+            'maps_embed' => 'nullable|string',
         ]);
 
         $sections = [

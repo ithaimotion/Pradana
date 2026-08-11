@@ -15,7 +15,7 @@ class UjiPetik extends Model
             if (str_starts_with($this->path_gambar, 'http')) {
                 return $this->path_gambar;
             }
-            return asset('storage/' . ltrim($this->path_gambar, '/'));
+            return asset('storage_public/' . ltrim($this->path_gambar, '/'));
         }
         return null;
     }

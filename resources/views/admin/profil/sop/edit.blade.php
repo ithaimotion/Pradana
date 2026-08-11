@@ -13,7 +13,7 @@
             <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">Edit konten halaman SOP perusahaan</p>
         </div>
 
-        <form action="{{ route('admin.profil.sop.update', $sop->id) }}" method="POST" class="space-y-6">
+        <form action="{{ route('admin.profil.sop.update', $sop->id) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
             @csrf
             @method('PUT')
 
@@ -26,19 +26,20 @@
                     @enderror
                 </div>
 
+                <!-- Upload Dokumen PDF -->
                 <div>
-                    <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider">Subjudul</label>
-                    <textarea name="subjudul" rows="3" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-3 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500" placeholder="Seluruh SOP PT Pradana Nusa Energi disusun mengacu pada SNI ISO/IEC 17020:2012 dan peraturan ketenagalistrikan yang berlaku.">{{ old('subjudul', $sop->subjudul) }}</textarea>
-                    @error('subjudul')
-                        <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider">URL Dokumen (PDF)</label>
-                    <input type="url" name="url_dokumen" value="{{ old('url_dokumen', optional($sop)->url_dokumen) }}" placeholder="https://example.com/dokumen-sop.pdf" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-3 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500">
-                    <p class="text-[11px] text-slate-500 mt-1">Masukkan URL lengkap ke file PDF dokumen SOP</p>
-                    @error('url_dokumen')
+                    <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1 uppercase tracking-wider">Dokumen SOP (PDF)</label>
+                    @if(optional($sop)->url_dokumen)
+                        <div class="mb-3">
+                            <a href="{{ asset('storage/' . $sop->url_dokumen) }}" target="_blank" class="inline-flex items-center gap-2 text-xs font-semibold text-blue-600 hover:text-blue-700 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100 dark:bg-blue-900/20 dark:border-blue-900/50">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                Lihat Dokumen Saat Ini
+                            </a>
+                        </div>
+                    @endif
+                    <input type="file" name="dokumen_file" accept=".pdf" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-3 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500 file:mr-4 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                    <p class="text-[11px] text-slate-500 mt-1">Upload file PDF baru untuk mengganti dokumen lama (Maksimal 50MB)</p>
+                    @error('dokumen_file')
                         <p class="text-red-400 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>

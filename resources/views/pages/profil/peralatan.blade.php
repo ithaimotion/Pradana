@@ -68,7 +68,7 @@
 
                 <!-- Card 1: Earth Resistance Tester -->
                 <div class="alat-card" data-kategori="uji"
-                     onclick="bukaPopup('Earth Resistance Tester', '/images/peralatan/earth-tester.png', 'Mengukur nilai resistansi pembumian (grounding) instalasi listrik. Digunakan untuk memastikan sistem proteksi petir dan grounding bekerja optimal sesuai PUIL 2011.', 'Digital Earth Resistance Tester', 'Megger DET14C', ['Rentang: 0.01O – 20kO', 'Tegangan uji: 25V & 50V', 'IP54 – Tahan debu & cipratan air', 'Kalibrasi: Januari 2026'])">
+                     onclick="bukaPopup('Earth Resistance Tester', '/images/peralatan/earth-tester.png', 'Mengukur nilai resistansi pembumian (grounding) instalasi listrik. Digunakan untuk memastikan sistem proteksi petir dan grounding bekerja optimal sesuai PUIL 2011.', 'Digital Earth Resistance Tester', 'Megger DET14C', ['Rentang: 0.01O ï¿½ 20kO', 'Tegangan uji: 25V & 50V', 'IP54 ï¿½ Tahan debu & cipratan air', 'Kalibrasi: Januari 2026'])">
                     <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
                         <div class="relative h-52 bg-gradient-to-br from-slate-50 to-slate-100 overflow-hidden flex items-center justify-center p-6">
                             <img src="/images/peralatan/earth-tester.png" alt="Earth Resistance Tester" class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500">
@@ -90,7 +90,7 @@
 
                 <!-- Card 2: Insulation Resistance Tester -->
                 <div class="alat-card" data-kategori="uji"
-                     onclick="bukaPopup('Insulation Resistance Tester', '/images/peralatan/insulation-tester.png', 'Mengukur nilai tahanan isolasi kabel, peralatan listrik, dan motor. Memastikan isolasi tidak bocor dan aman dari risiko hubung singkat atau kebakaran.', 'Megohmmeter / Insulation Tester', 'Model IRT-500', ['Tegangan uji: 250V / 500V / 1000V / 2500V', 'Rentang: 0.1MO – 2000MO', 'Fungsi DAR & PI test', 'Kalibrasi: Februari 2026'])">
+                     onclick="bukaPopup('Insulation Resistance Tester', '/images/peralatan/insulation-tester.png', 'Mengukur nilai tahanan isolasi kabel, peralatan listrik, dan motor. Memastikan isolasi tidak bocor dan aman dari risiko hubung singkat atau kebakaran.', 'Megohmmeter / Insulation Tester', 'Model IRT-500', ['Tegangan uji: 250V / 500V / 1000V / 2500V', 'Rentang: 0.1MO ï¿½ 2000MO', 'Fungsi DAR & PI test', 'Kalibrasi: Februari 2026'])">
                     <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
                         <div class="relative h-52 bg-gradient-to-br from-red-50 to-slate-100 overflow-hidden flex items-center justify-center p-6">
                             <img src="/images/peralatan/insulation-tester.png" alt="Insulation Resistance Tester" class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500">
@@ -112,7 +112,7 @@
 
                 <!-- Card 3: Clamp Meter -->
                 <div class="alat-card" data-kategori="ukur"
-                     onclick="bukaPopup('Clamp Meter / Tang Ampere', '/images/peralatan/clamp-meter.png', 'Mengukur arus listrik AC/DC tanpa memutus rangkaian. Sangat berguna untuk pengukuran beban listrik pada panel distribusi, kabel, dan peralatan yang sedang beroperasi.', 'Digital Clamp Meter True RMS', 'Voltech VT-760 Pro', ['Rentang arus: 0 – 1000A AC/DC', 'Rentang tegangan: 0 – 1000V AC/DC', 'Fitur NCV & data hold', 'Kalibrasi: Maret 2026'])">
+                     onclick="bukaPopup('Clamp Meter / Tang Ampere', '/images/peralatan/clamp-meter.png', 'Mengukur arus listrik AC/DC tanpa memutus rangkaian. Sangat berguna untuk pengukuran beban listrik pada panel distribusi, kabel, dan peralatan yang sedang beroperasi.', 'Digital Clamp Meter True RMS', 'Voltech VT-760 Pro', ['Rentang arus: 0 ï¿½ 1000A AC/DC', 'Rentang tegangan: 0 ï¿½ 1000V AC/DC', 'Fitur NCV & data hold', 'Kalibrasi: Maret 2026'])">
                     <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
                         <div class="relative h-52 bg-gradient-to-br from-blue-50 to-slate-100 overflow-hidden flex items-center justify-center p-6">
                             <img src="/images/peralatan/clamp-meter.png" alt="Clamp Meter" class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500">
@@ -156,7 +156,7 @@
 
                 <!-- Card 5: Thermal Camera -->
                 <div class="alat-card" data-kategori="uji"
-                     onclick="bukaPopup('Thermal Imaging Camera', '/images/peralatan/thermal-camera.png', 'Kamera termal infrared untuk mendeteksi titik panas (hot spot) pada panel listrik, kabel, dan sambungan tanpa kontak langsung. Sangat efektif untuk inspeksi preventif dan deteksi dini potensi kebakaran.', 'Infrared Thermal Camera', 'FLIR E75', ['Resolusi IR: 320×240 piksel', 'Rentang suhu: -20°C s/d 650°C', 'Akurasi: ±2°C atau ±2%', 'Kalibrasi: April 2026'])">
+                     onclick="bukaPopup('Thermal Imaging Camera', '/images/peralatan/thermal-camera.png', 'Kamera termal infrared untuk mendeteksi titik panas (hot spot) pada panel listrik, kabel, dan sambungan tanpa kontak langsung. Sangat efektif untuk inspeksi preventif dan deteksi dini potensi kebakaran.', 'Infrared Thermal Camera', 'FLIR E75', ['Resolusi IR: 320ï¿½240 piksel', 'Rentang suhu: -20ï¿½C s/d 650ï¿½C', 'Akurasi: ï¿½2ï¿½C atau ï¿½2%', 'Kalibrasi: April 2026'])">
                     <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
                         <div class="relative h-52 bg-gradient-to-br from-blue-50 to-slate-100 overflow-hidden flex items-center justify-center p-6">
                             <img src="/images/peralatan/thermal-camera.png" alt="Thermal Camera" class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500">
@@ -178,7 +178,7 @@
 
                 <!-- Card 6: Digital Multimeter -->
                 <div class="alat-card" data-kategori="ukur"
-                     onclick="bukaPopup('Digital Multimeter', '/images/peralatan/multimeter.png', 'Alat ukur serbaguna untuk mengukur tegangan, arus, dan hambatan listrik. Digunakan pada seluruh tahapan inspeksi instalasi pemanfaatan tenaga listrik tegangan rendah.', 'Digital Multimeter True RMS', 'Fluke 87V', ['Tegangan AC/DC: 0 – 1000V', 'Arus: 0 – 10A', 'Hambatan: 0 – 50MO', 'Kalibrasi: Maret 2026'])">
+                     onclick="bukaPopup('Digital Multimeter', '/images/peralatan/multimeter.png', 'Alat ukur serbaguna untuk mengukur tegangan, arus, dan hambatan listrik. Digunakan pada seluruh tahapan inspeksi instalasi pemanfaatan tenaga listrik tegangan rendah.', 'Digital Multimeter True RMS', 'Fluke 87V', ['Tegangan AC/DC: 0 ï¿½ 1000V', 'Arus: 0 ï¿½ 10A', 'Hambatan: 0 ï¿½ 50MO', 'Kalibrasi: Maret 2026'])">
                     <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
                         <div class="relative h-52 bg-gradient-to-br from-red-50 to-slate-100 overflow-hidden flex items-center justify-center p-6">
                             <img src="/images/peralatan/multimeter.png" alt="Digital Multimeter" class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500">

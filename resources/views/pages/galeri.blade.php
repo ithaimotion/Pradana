@@ -15,8 +15,8 @@
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
                 GALERI
             </h1>
-            <p class="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
-                Kumpulan dokumentasi kegiatan inspeksi teknis, pengujian instalasi, dan acara resmi PT Pradana Nusa Energi di berbagai proyek.
+            <p class="text-white/90 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed mb-8">
+               Kumpulan dokumentasi kegiatan inspeksi teknis, pengujian instalasi, dan acara resmi PT Pradana Nusa Energi di berbagai proyek.
             </p>
         </div>
     </section>
@@ -58,11 +58,17 @@
                         }
                     @endphp
                     <!-- Item -->
-                    <div class="gallery-item group relative overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer reveal-on-scroll {{ $delay > 0 ? 'delay-'.$delay : '' }}" data-category="{{ $category }}" onclick="openLightbox(this)">
-                        <img src="{{ optional($item)->url_gambar ?? 'https://placehold.co/600x400/e2e8f0/475569?text=Gallery' }}" alt="{{ $item->judul }}" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                            <span class="{{ $badgeColor }} text-slate-900 dark:text-white text-xs font-bold px-2.5 py-1 rounded w-max mb-2">{{ $label }}</span>
-                            <h3 class="text-slate-900 dark:text-white font-bold text-lg leading-tight">{{ $item->judul }}</h3>
+                    <div class="gallery-item group relative overflow-hidden rounded-2xl shadow-md hover:shadow-2xl hover:shadow-blue-900/30 transition-all duration-300 cursor-pointer reveal-on-scroll {{ $delay > 0 ? 'delay-'.$delay : '' }}" data-category="{{ $category }}" onclick="openLightbox(this)">
+                        <!-- Image -->
+                        <div class="relative overflow-hidden h-60">
+                            <img src="{{ optional($item)->url_gambar ?? 'https://placehold.co/600x400/e2e8f0/475569?text=Gallery' }}" alt="{{ $item->judul }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <!-- Hover blue overlay on image -->
+                            <div class="absolute inset-0 bg-[#1e3a5f]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        <!-- Title bar — default: white bg + dark blue text -->
+                        <div class="bg-white group-hover:bg-[#1e3a5f] transition-colors duration-300 px-4 py-3 flex items-center gap-3">
+                            <span class="{{ $badgeColor }} text-white text-[10px] font-bold px-2 py-0.5 rounded shrink-0">{{ $label }}</span>
+                            <h3 class="font-bold text-sm leading-snug transition-colors duration-300" style="color: #1e3a5f;" onmouseenter="this.style.color='white'" onmouseleave="this.style.color='#1e3a5f'">{{ $item->judul }}</h3>
                         </div>
                     </div>
                 @empty

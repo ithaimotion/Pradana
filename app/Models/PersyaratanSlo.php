@@ -17,6 +17,7 @@ class PersyaratanSlo extends Model
         'plts_teknis',
         'genset_admin',
         'genset_teknis',
+        'iptl_tm',
     ];
     
     protected $casts = [
@@ -28,5 +29,6 @@ class PersyaratanSlo extends Model
         'plts_teknis' => 'array',
         'genset_admin' => 'array',
         'genset_teknis' => 'array',
+        'iptl_tm' => 'array',
     ];
 }

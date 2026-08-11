@@ -72,6 +72,7 @@ class InformasiPublikController extends Controller
             'plts_teknis' => 'nullable|array',
             'genset_admin' => 'nullable|array',
             'genset_teknis' => 'nullable|array',
+            'iptl_tm' => 'nullable|array',
         ]);
 
         $persyaratan = PersyaratanSlo::first() ?? new PersyaratanSlo();
@@ -84,6 +85,7 @@ class InformasiPublikController extends Controller
         $persyaratan->plts_teknis = $request->plts_teknis ?? [];
         $persyaratan->genset_admin = $request->genset_admin ?? [];
         $persyaratan->genset_teknis = $request->genset_teknis ?? [];
+        $persyaratan->iptl_tm = $request->iptl_tm ?? [];
         
         $persyaratan->save();
 

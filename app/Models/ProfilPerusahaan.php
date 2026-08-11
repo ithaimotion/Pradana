@@ -15,7 +15,9 @@ class ProfilPerusahaan extends Model
         'konten',
         'url_gambar',
         'visi',
+        'foto_visi',
         'misi',
+        'foto_misi',
         'nilai_perusahaan',
     ];
 

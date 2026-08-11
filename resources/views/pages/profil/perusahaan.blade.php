@@ -69,42 +69,140 @@
         </div>
     </section>
 
-    <!-- Visi & Misi -->
-    <section class="py-20 bg-white overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">VISI & MISI</h2>
-                <p class="text-slate-600">Landasan utama PT Pradana Nusa Energi dalam melayani keselamatan ketenagalistrikan Indonesia.</p>
+    <!-- Visi -->
+    <section class="py-0 bg-white overflow-hidden">
+        <div class="flex flex-col md:flex-row min-h-[420px] reveal-on-scroll">
+            <!-- Gambar kiri -->
+            <div class="md:w-1/2 flex items-center justify-center bg-white p-6 md:p-10 min-h-[320px]">
+                <div class="relative w-full h-[300px] md:h-[380px] rounded-2xl overflow-hidden shadow-lg">
+                    @php $fotoVisi = $konten->foto_visi ?? null; @endphp
+                    @if($fotoVisi)
+                        <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($fotoVisi) }}"
+                             alt="Visi Perusahaan"
+                             class="absolute inset-0 w-full h-full object-cover object-center">
+                    @else
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=900&q=80"
+                             alt="Visi Perusahaan"
+                             class="absolute inset-0 w-full h-full object-cover object-center">
+                    @endif
+                    <div class="absolute inset-0 bg-blue-950/20"></div>
+                </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Visi -->
-                <div class="bg-gradient-to-br from-blue-900 to-slate-900 text-white p-8 md:p-10 rounded-2xl shadow-xl reveal-left">
-                    <div class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-6 shadow-lg">
-                        <svg class="w-7 h-7 text-slate-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                        </svg>
+            <!-- Konten kanan -->
+            <div class="md:w-1/2 flex items-center bg-white px-10 py-16 md:px-16">
+                <div class="max-w-lg">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center shadow">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                            </svg>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Visi</h2>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">VISI</h3>
-                    <p class="text-slate-800 dark:text-slate-200 leading-relaxed text-lg">
+                    <div class="w-12 h-1 bg-blue-600 rounded-full mb-6"></div>
+                    <p class="text-slate-600 leading-relaxed text-lg">
                         {{ $konten->visi ?? 'Menjadi Lembaga Inspeksi Teknik yang ikut serta mewujudkan instalasi ketenagalistrikan yang memenuhi kaidah K2 (Keselamatan Ketenagalistrikan) yang aman, andal, dan ramah lingkungan di Indonesia.' }}
                     </p>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Misi -->
-                <div class="bg-slate-50 border border-slate-200 p-8 md:p-10 rounded-2xl shadow-lg reveal-right delay-200">
-                    <div class="w-14 h-14 bg-blue-900 rounded-xl flex items-center justify-center mb-6 shadow-lg">
-                        <svg class="w-7 h-7 text-slate-900 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-900 mb-4">MISI</h3>
-                    <div class="text-slate-600 leading-relaxed">
-                        {{ $konten->misi ?? '1. Melaksanakan pemeriksaan dan pengujian sesuai dengan peraturan Perundang-Undangan yang berlaku di Indonesia.<br><br>2. Melaksanakan pemeriksaan dan pengujian secara profesional, tepat waktu, jujur dan bertanggung jawab dengan dukungan Tenaga Teknik yang kompeten dan terstandar.<br><br>3. Memberikan layanan secara tepat waktu, tepat mutu yang kompetitif, solutif, dan independen.' }}
-                    </div>
+    <!-- Misi -->
+    <section class="py-24 bg-slate-50 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Header -->
+            <div class="text-center mb-16 md:mb-24 reveal-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight uppercase">Misi Kami</h2>
+                <div class="w-16 h-1.5 bg-amber-400 rounded-full mx-auto mt-5"></div>
+            </div>
+
+            <!-- Parsing Misi Text -->
+            @php
+                $misiText = $konten->misi ?? null;
+                if ($misiText) {
+                    $misiList = array_filter(array_map('trim', explode("\n", $misiText)));
+                    $misiList = array_map(function($item) {
+                        return preg_replace('/^\d+[\.\)]\s*/', '', $item);
+                    }, $misiList);
+                    $misiList = array_values($misiList);
+                } else {
+                    $misiList = [
+                        'Melaksanakan pemeriksaan dan pengujian sesuai dengan peraturan Perundang-Undangan yang berlaku di Indonesia.',
+                        'Melaksanakan pemeriksaan dan pengujian secara profesional, tepat waktu, jujur dan bertanggung jawab dengan dukungan Tenaga Teknik yang kompeten dan terstandar.',
+                        'Memberikan layanan secara tepat waktu, tepat mutu yang kompetitif, solutif, dan independen.',
+                    ];
+                }
+            @endphp
+
+            <!-- Layout Melingkar -->
+            <div class="relative w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-0">
+                
+                <!-- Center Image (Absolute on Desktop, Circular) -->
+                <div class="md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-10 w-64 h-64 lg:w-[340px] lg:h-[340px] rounded-full border-[10px] border-white shadow-2xl overflow-hidden reveal-on-scroll shrink-0 group">
+                    @php $fotoMisi = $konten->foto_misi ?? null; @endphp
+                    @if($fotoMisi)
+                        <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($fotoMisi) }}"
+                             alt="Misi Perusahaan"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    @else
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80"
+                             alt="Misi Perusahaan"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    @endif
+                    <div class="absolute inset-0 bg-blue-900/10 transition-colors duration-500 group-hover:bg-transparent"></div>
+                </div>
+
+                <!-- Left Item (Mission 1) -->
+                <div class="w-full md:w-1/2 flex md:justify-end md:pr-44 lg:pr-56 z-20 reveal-left">
+                    @if(isset($misiList[0]))
+                        <div class="bg-white p-6 lg:p-8 rounded-2xl shadow-xl border border-slate-100 max-w-md w-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative">
+                            <div class="flex gap-4">
+                                <!-- Kotak Emas -->
+                                <div class="w-8 h-8 bg-[#d4af37] shrink-0 mt-1 shadow-md flex items-center justify-center text-white font-bold text-sm">1</div>
+                                <p class="text-slate-700 text-[15px] leading-relaxed">{{ $misiList[0] }}</p>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+
+                <!-- Right Items (Mission 2 & 3) -->
+                <div class="w-full md:w-1/2 flex flex-col gap-10 md:pl-44 lg:pl-56 z-20 reveal-right">
+                    @if(isset($misiList[1]))
+                        <div class="bg-white p-6 lg:p-8 rounded-2xl shadow-xl border border-slate-100 max-w-md w-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl md:-mt-28 relative">
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 bg-[#d4af37] shrink-0 mt-1 shadow-md flex items-center justify-center text-white font-bold text-sm">2</div>
+                                <p class="text-slate-700 text-[15px] leading-relaxed">{{ $misiList[1] }}</p>
+                            </div>
+                        </div>
+                    @endif
+
+                    @if(isset($misiList[2]))
+                        <div class="bg-white p-6 lg:p-8 rounded-2xl shadow-xl border border-slate-100 max-w-md w-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl md:mt-16 relative">
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 bg-[#d4af37] shrink-0 mt-1 shadow-md flex items-center justify-center text-white font-bold text-sm">3</div>
+                                <p class="text-slate-700 text-[15px] leading-relaxed">{{ $misiList[2] }}</p>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
+            
+            <!-- Tambahan jika Misi lebih dari 3 (dirender biasa di bawah) -->
+            @if(isset($misiList[3]))
+                <div class="w-full max-w-5xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 z-20 relative">
+                    @for($i=3; $i<count($misiList); $i++)
+                         <div class="bg-white p-6 lg:p-8 rounded-2xl shadow-xl border border-slate-100 w-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl reveal-up">
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 bg-[#d4af37] shrink-0 mt-1 shadow-md flex items-center justify-center text-white font-bold text-sm">{{ $i+1 }}</div>
+                                <p class="text-slate-700 text-[15px] leading-relaxed">{{ $misiList[$i] }}</p>
+                            </div>
+                        </div>
+                    @endfor
+                </div>
+            @endif
         </div>
     </section>
 

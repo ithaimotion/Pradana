@@ -27,6 +27,6 @@ class Galeri extends Model
             return $this->path_gambar;
         }
 
-        return asset('storage/' . ltrim($this->path_gambar, '/'));
+        return asset('storage_public/' . ltrim($this->path_gambar, '/'));
     }
 }

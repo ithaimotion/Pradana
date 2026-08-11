@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             KontenBerandaSeeder::class,
             KontenProfilSeeder::class,
+            SloKategoriLayananSeeder::class,
         ]);
     }
 }

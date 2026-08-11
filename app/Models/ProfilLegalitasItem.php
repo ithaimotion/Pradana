@@ -32,7 +32,7 @@ class ProfilLegalitasItem extends Model
     public function getUrlFileAttribute()
     {
         return $this->file
-            ? asset('storage/'.$this->file)
+            ? asset('storage_public/'.$this->file)
             : null;
     }
 }
