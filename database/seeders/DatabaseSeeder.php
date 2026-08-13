@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         // Seed default Admin User
         User::updateOrCreate(
-            ['email' => 'admin@pradana.co.id'],
+            ['email' => 'admin@slo-pradana.com'],
             [
                 'name' => 'Administrator Pradana',
                 'password' => Hash::make('adminpradana26'),
@@ -26,9 +26,16 @@ class DatabaseSeeder extends Seeder
         );
 
         $this->call([
-            KontenBerandaSeeder::class,
-            KontenProfilSeeder::class,
+            KontenHalamansSeeder::class,
+            ProfilPerusahaanSeeder::class,
+            SloRegulasiSeeder::class,
             SloKategoriLayananSeeder::class,
+            UjiPetikSeeder::class,
+            KeluhanBandingSettingsSeeder::class,
+            PersyaratanSloSeeder::class,
+            DaftarHargaSloSeeder::class,
+            ProsedurSloSeeder::class,
+            AlurSertifikasiSeeder::class
         ]);
     }
 }
