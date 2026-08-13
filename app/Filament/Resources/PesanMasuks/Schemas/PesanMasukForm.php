@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Filament\Resources\PesanMasuks\Schemas;
+
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Toggle;
+use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Section;
+
+class PesanMasukForm
+{
+    public static function configure(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                Section::make()->components([
+                TextInput::make('nama')
+                    ->required(),
+                TextInput::make('email')
+                    ->label('Email address')
+                    ->email()
+                    ->required(),
+                TextInput::make('no_hp'),
+                TextInput::make('subjek'),
+                Textarea::make('pesan')
+                    ->required()
+                    ->columnSpanFull(),
+                Toggle::make('dibaca')
+                    ->required(),
+            ]),
+            ]);
+    }
+}
