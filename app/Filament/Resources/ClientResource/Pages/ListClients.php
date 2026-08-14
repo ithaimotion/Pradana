@@ -21,6 +21,7 @@ class ListClients extends ListRecords
     {
         return [
             ClientResource\Widgets\ClientStats::class,
+            \App\Filament\Resources\ClientResource\Widgets\ClientBulanChart::class,
         ];
     }
 }

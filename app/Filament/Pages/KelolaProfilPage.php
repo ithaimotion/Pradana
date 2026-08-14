@@ -10,6 +10,9 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use App\Models\KontenHalaman;
+use App\Models\ProfilDaftarPJTTT;
+use App\Models\ProfilStrukturOrganisasi;
+use App\Models\ProfilLegalitas;
 
 class KelolaProfilPage extends Page implements HasForms
 {
@@ -39,10 +42,21 @@ class KelolaProfilPage extends Page implements HasForms
 
     private function loadData($halaman): array
     {
-        $data = KontenHalaman::where('halaman', $halaman)->where('kunci', 'dokumen_utama')->first();
-        if (!$data) return [];
+        $file = null;
+        if ($halaman === 'profil_pjt_tt') {
+            $file = ProfilDaftarPJTTT::first()?->dokumen;
+        } elseif ($halaman === 'profil_struktur') {
+            $file = ProfilStrukturOrganisasi::first()?->gambar;
+        } elseif ($halaman === 'profil_legalitas') {
+            $file = ProfilLegalitas::first()?->dokumen;
+        } elseif ($halaman === 'profil_sop') {
+            $data = KontenHalaman::where('halaman', $halaman)->where('kunci', 'dokumen_utama')->first();
+            $file = $data->path_dokumen ?? $data->path_gambar ?? null;
+        }
+
+        if (!$file) return [];
         return [
-            'dokumen' => $data->path_dokumen ?? $data->path_gambar,
+            'dokumen' => $file,
         ];
     }
 
@@ -91,12 +105,29 @@ class KelolaProfilPage extends Page implements HasForms
 
     private function saveData($halaman, $data, $successMessage)
     {
-        $record = KontenHalaman::firstOrNew(['halaman' => $halaman, 'kunci' => 'dokumen_utama']);
+        $file = null;
         if(isset($data['dokumen'])) {
             $file = is_array($data['dokumen']) ? array_values($data['dokumen'])[0] : $data['dokumen'];
-            $record->path_dokumen = $file;
         }
-        $record->save();
+
+        if ($halaman === 'profil_pjt_tt') {
+            $record = ProfilDaftarPJTTT::first() ?? new ProfilDaftarPJTTT();
+            if ($file) $record->dokumen = $file;
+            $record->save();
+        } elseif ($halaman === 'profil_struktur') {
+            $record = ProfilStrukturOrganisasi::first() ?? new ProfilStrukturOrganisasi();
+            if ($file) $record->gambar = $file;
+            $record->save();
+        } elseif ($halaman === 'profil_legalitas') {
+            $record = ProfilLegalitas::first() ?? new ProfilLegalitas();
+            if ($file) $record->dokumen = $file;
+            $record->save();
+        } elseif ($halaman === 'profil_sop') {
+            $record = KontenHalaman::firstOrNew(['halaman' => $halaman, 'kunci' => 'dokumen_utama']);
+            if ($file) $record->path_dokumen = $file;
+            $record->save();
+        }
+
         Notification::make()->success()->title($successMessage)->send();
     }
 

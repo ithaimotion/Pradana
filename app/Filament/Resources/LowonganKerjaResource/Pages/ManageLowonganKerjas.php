@@ -21,6 +21,7 @@ class ManageLowonganKerjas extends ManageRecords
     {
         return [
             LowonganKerjaResource\Widgets\LowonganKerjaStats::class,
+            \App\Filament\Resources\LowonganKerjaResource\Widgets\LowonganKerjaStatusChart::class,
         ];
     }
 }

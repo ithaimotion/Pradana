@@ -21,6 +21,7 @@ class ListProfilPeralatanKetenagalistrikans extends ListRecords
     {
         return [
             ProfilPeralatanKetenagalistrikanResource\Widgets\ProfilPeralatanKetenagalistrikanStats::class,
+            \App\Filament\Resources\ProfilPeralatanKetenagalistrikanResource\Widgets\PeralatanKategoriChart::class,
         ];
     }
 }

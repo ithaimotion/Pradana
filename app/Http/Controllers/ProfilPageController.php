@@ -7,6 +7,7 @@ use App\Models\ProfilPerusahaan;
 use App\Models\ProfilDaftarPJTTT;
 use App\Models\ProfilStrukturOrganisasi;
 use App\Models\ProfilLegalitas;
+use App\Models\ProfilPeralatanKetenagalistrikan;
 use Illuminate\Http\Request;
 
 class ProfilPageController extends Controller
@@ -98,7 +99,8 @@ class ProfilPageController extends Controller
             $konten->konten = null;
             $konten->url_gambar = null;
         }
-        return view('pages.profil.peralatan', compact('konten'));
+        $peralatans = ProfilPeralatanKetenagalistrikan::all();
+        return view('pages.profil.peralatan', compact('konten', 'peralatans'));
     }
 
     /**

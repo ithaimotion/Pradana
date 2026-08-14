@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\KontenHalaman;
+use App\Models\LegalSetting;
 use Illuminate\Http\Request;
 
 class FooterLegalPageController extends Controller
@@ -12,14 +12,22 @@ class FooterLegalPageController extends Controller
         $routeName = $request->route()->getName();
         $kunci = $this->mapRouteNameToKunci($routeName);
 
-        $content = KontenHalaman::where('halaman', 'footer_legal')
-            ->where('kunci', $kunci)
-            ->first();
+        $settings = LegalSetting::first();
+        $content = new \stdClass();
+        $content->judul = $this->defaultTitle($kunci);
+        $content->konten = null;
 
-        if (! $content) {
-            $content = new \stdClass();
-            $content->judul = $this->defaultTitle($kunci);
-            $content->konten = null;
+        if ($settings) {
+            if ($kunci === 'privacy') {
+                $content->judul = $settings->kebijakan_privasi_judul ?? $content->judul;
+                $content->konten = $settings->kebijakan_privasi_konten;
+            } elseif ($kunci === 'terms') {
+                $content->judul = $settings->syarat_ketentuan_judul ?? $content->judul;
+                $content->konten = $settings->syarat_ketentuan_konten;
+            } elseif ($kunci === 'cookie') {
+                $content->judul = $settings->kebijakan_cookie_judul ?? $content->judul;
+                $content->konten = $settings->kebijakan_cookie_konten;
+            }
         }
 
         return view('pages.legal.page', compact('content', 'kunci'));

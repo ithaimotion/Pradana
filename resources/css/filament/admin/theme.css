@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+@import '../../../../vendor/filament/filament/resources/css/base.css';
+
+@config 'tailwind.config.js';
+
+@layer components {
+    /* Background App */
+    body, .fi-body, .fi-layout {
+        @apply bg-[#F3F5F9] text-gray-800 dark:bg-gray-900 dark:text-gray-200 !important;
+    }
+
+    /* Topbar */
+    .fi-topbar {
+        @apply border-none bg-[#F3F5F9]/80 backdrop-blur-md shadow-none dark:bg-gray-900/80 !important;
+    }
+    .fi-topbar nav {
+        @apply border-none bg-transparent shadow-none !important;
+    }
+
+    /* Sidebar */
+    .fi-sidebar {
+        @apply border-r border-gray-100 bg-white shadow-sm dark:bg-gray-900 dark:border-gray-800 !important;
+    }
+    .fi-sidebar-header {
+        @apply bg-transparent border-none !important;
+    }
+    .fi-sidebar-nav {
+        @apply px-4 py-4 !important;
+    }
+    .fi-sidebar-item {
+        @apply mb-1 !important;
+    }
+    .fi-sidebar-item-button {
+        @apply rounded-xl px-4 py-2.5 transition-all duration-300 font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white !important;
+    }
+    .fi-sidebar-item-active .fi-sidebar-item-button {
+        @apply bg-[#155DFC] text-white shadow-md hover:bg-[#114bcf] dark:bg-[#155DFC] dark:text-white !important;
+    }
+    .fi-sidebar-item-active .fi-sidebar-item-icon {
+        @apply text-white !important;
+    }
+    .fi-sidebar-item-icon {
+        @apply text-gray-400 dark:text-gray-500 !important;
+    }
+    .fi-sidebar-group-label {
+        @apply font-bold text-gray-900 dark:text-white px-4 mt-4 !important;
+    }
+
+    /* Cards & Widgets */
+    .fi-wi-stats-overview-stat,
+    .fi-wi-chart,
+    .fi-ta-content,
+    .fi-section {
+        @apply rounded-2xl border border-gray-100/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] bg-white dark:bg-gray-800 dark:border-gray-700 dark:shadow-none !important;
+    }
+
+    .fi-wi-stats-overview-stat {
+        @apply overflow-hidden relative !important;
+    }
+
+    /* Charts inner spacing */
+    .fi-wi-chart canvas {
+        @apply p-4 !important;
+    }
+
+    /* Buttons */
+    .fi-btn {
+        @apply rounded-full shadow-sm font-semibold transition-all !important;
+    }
+    .fi-btn-color-primary {
+        @apply bg-[#155DFC] text-white hover:bg-[#114bcf] ring-0 !important;
+    }
+
+    /* Page Header */
+    .fi-header-heading {
+        @apply text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white !important;
+    }
+    .fi-header {
+        @apply mb-8 mt-2 !important;
+    }
+    
+    /* Main Content Container */
+    .fi-main {
+        @apply pb-12 !important;
+    }
+
+    /* Input Fields */
+    .fi-input-wrapper {
+        @apply rounded-xl border-gray-200 bg-white shadow-sm dark:bg-gray-800 dark:border-gray-700 !important;
+    }
+    .fi-input {
+        @apply rounded-xl !important;
+    }
+}

@@ -8,6 +8,7 @@ use App\Models\Galeri;
 use App\Models\Logo;
 use App\Models\LowonganKerja;
 use App\Models\KarirSettings;
+use App\Models\PesanMasuk;
 
 class BerandaController extends Controller
 {
@@ -49,5 +50,29 @@ class BerandaController extends Controller
         $lowongans = LowonganKerja::aktif()->get();
         $karirSettings = KarirSettings::first();
         return view('pages.karir', compact('lowongans', 'karirSettings'));
+    }
+
+    /**
+     * Simpan Pesan Masuk dari Form Publik Hubungi Kami.
+     */
+    public function storePublik(Request $request)
+    {
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'no_hp' => 'nullable|string|max:50',
+            'subjek' => 'nullable|string|max:255',
+            'pesan' => 'required|string',
+        ]);
+
+        PesanMasuk::create([
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'no_hp' => $request->no_hp,
+            'subjek' => $request->subjek,
+            'pesan' => $request->pesan,
+        ]);
+
+        return back()->with('success', 'Terima kasih! Pesan Anda telah berhasil terkirim. Tim kami akan segera menghubungi Anda.');
     }
 }

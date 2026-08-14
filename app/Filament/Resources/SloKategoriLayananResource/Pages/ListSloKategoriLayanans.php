@@ -21,6 +21,7 @@ class ListSloKategoriLayanans extends ListRecords
     {
         return [
             SloKategoriLayananResource\Widgets\SloKategoriLayananStats::class,
+            \App\Filament\Resources\SloKategoriLayananResource\Widgets\SloKategoriLayananChart::class,
         ];
     }
 }
