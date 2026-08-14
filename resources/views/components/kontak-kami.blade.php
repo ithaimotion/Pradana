@@ -12,7 +12,7 @@
         <img src="{{ $image }}" alt="Kontak Background" class="w-full h-full object-cover opacity-20">
     </div>
     
-    <div class="relative z-10 max-w-7xl mx-auto px-6 text-center reveal-scale">
+    <div class="relative z-10 max-w-7xl mx-auto px-6 text-center" data-aos="zoom-in">
         <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">
             {{ $title }}
         </h2>

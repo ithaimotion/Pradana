@@ -21,7 +21,7 @@
     
     <div class="max-w-7xl mx-auto px-6 relative z-10">
         <div class="grid md:grid-cols-2 gap-16 items-center">
-            <div class="reveal-left">
+            <div data-aos="fade-right">
                 <span class="text-blue-600 font-bold tracking-wider uppercase text-sm mb-4 block">Alasan Memilih Kami</span>
                 <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-12 leading-tight">
                     {{ $headerJudul }}
@@ -29,7 +29,7 @@
                 
                 <ul class="space-y-8">
                     @foreach($itemList as $index => $item)
-                        <li class="flex items-start gap-5 group">
+                        <li class="flex items-start gap-5 group" data-aos="fade-up" data-aos-delay="{{ 200 + ($loop->index * 100) }}">
                             <div class="w-12 h-12 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 group-hover:border-blue-600 transition-colors duration-300 shadow-sm">
                                 <svg class="w-6 h-6 text-blue-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
@@ -44,7 +44,7 @@
                 </ul>
             </div>
             
-            <div class="grid grid-cols-2 gap-6 reveal-right delay-200">
+            <div class="grid grid-cols-2 gap-6" data-aos="fade-left" data-aos-delay="200">
                 <div class="bg-gray-100 h-64 rounded-[2rem] overflow-hidden shadow-lg transform -translate-y-8 hover:-translate-y-10 transition-transform duration-500">
                     <img src="{{ $img1 }}" alt="Mengapa 1" class="w-full h-full object-cover">
                 </div>

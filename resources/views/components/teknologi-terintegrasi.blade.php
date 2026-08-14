@@ -82,7 +82,7 @@
 
 <section id="technology" class="py-24 bg-slate-50/70 overflow-hidden relative">
     <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="text-center max-w-3xl mx-auto mb-20 reveal-on-scroll">
+        <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
             <span class="text-blue-600 font-bold tracking-wider uppercase text-sm mb-4 block">Teknologi Kami</span>
             <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
                 {{ $headerJudul }}
@@ -92,7 +92,7 @@
         
         <div class="grid md:grid-cols-3 gap-8">
             @foreach($itemList as $index => $item)
-                <div class="tech-card-item rounded-[2rem] p-10 shadow-md reveal-on-scroll delay-{{ ($index + 1) * 100 }}">
+                <div class="tech-card-item rounded-[2rem] p-10 shadow-md" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
                     <div class="tech-icon-wrapper w-16 h-16 rounded-2xl flex items-center justify-center mb-8">
                         {!! renderTechCardIconHelper($item) !!}
                     </div>

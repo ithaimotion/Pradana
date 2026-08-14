@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Logo;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,6 +28,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if (config('app.env') === 'production' || str_contains(request()->url(), 'https://')) {
+            URL::forceScheme('https');
+        }
         try {
             $logos = Logo::where('aktif', true)->orderBy('urutan')->get();
         } catch (\Throwable $e) {

@@ -33,10 +33,24 @@
     @endif
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
     @yield('content')
 
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800, // Durasi animasi
+                once: true, // Hanya dianimasi sekali saat scroll ke bawah
+                offset: 50, // Offset sebelum animasi dimulai
+            });
+        });
+    </script>
 </body>
 </html>

@@ -15,7 +15,7 @@
 
 <section id="sustainability" class="py-24 bg-white overflow-hidden">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
             <span class="text-blue-600 font-bold tracking-wider uppercase text-sm mb-4 block">Mitra Kepercayaan</span>
             <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight">
                 {{ $headerJudul }}
@@ -25,7 +25,7 @@
     </div>
 
     @if($visibleClients->count() > 0)
-        <div class="relative w-full select-none space-y-4">
+        <div class="relative w-full select-none space-y-4" data-aos="fade-up" data-aos-delay="200">
             {{-- Fade edges --}}
             <div class="pointer-events-none absolute left-0 top-0 z-10 h-full w-28 bg-gradient-to-r from-white to-transparent"></div>
             <div class="pointer-events-none absolute right-0 top-0 z-10 h-full w-28 bg-gradient-to-l from-white to-transparent"></div>

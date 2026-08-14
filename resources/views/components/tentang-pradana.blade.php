@@ -14,7 +14,7 @@
 
     <div class="relative max-w-7xl mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-16 items-center">
-            <div class="reveal-left">
+            <div data-aos="fade-right">
                 <span class="text-blue-600 font-bold tracking-wider uppercase text-sm mb-4 block">Tentang Kami</span>
                 <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-8 leading-tight">{{ $title }}</h2>
                 <div class="space-y-6 text-lg text-slate-600 leading-relaxed font-light">
@@ -33,7 +33,7 @@
                 </div>
             </div>
             
-            <div class="relative reveal-right delay-200">
+            <div class="relative" data-aos="fade-left" data-aos-delay="200">
                 <!-- Decorative blue accent block behind image -->
                 <div class="absolute -inset-4 bg-gradient-to-tr from-blue-100 to-blue-50 rounded-[2.5rem] transform rotate-3"></div>
                 <div class="relative rounded-3xl overflow-hidden shadow-2xl bg-white aspect-[4/3] group">
