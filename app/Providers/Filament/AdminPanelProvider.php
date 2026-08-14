@@ -26,7 +26,10 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login()
+            ->brandName('slo-pradana')
+            ->brandLogo(asset('images/logo-pnusa.png'))
+            ->brandLogoHeight('3rem')
+            ->login(\App\Filament\Pages\Auth\CustomLogin::class)
             ->profile(\App\Filament\Pages\Auth\EditProfile::class)
             ->colors([
                 'primary' => \Filament\Support\Colors\Color::hex('#155DFC'),

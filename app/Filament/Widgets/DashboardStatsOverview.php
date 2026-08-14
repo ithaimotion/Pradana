@@ -12,6 +12,7 @@ use App\Models\PesanMasuk;
 class DashboardStatsOverview extends BaseWidget
 {
     protected static ?int $sort = 1;
+    protected int | string | array $columnSpan = 'full';
 
     protected function getStats(): array
     {

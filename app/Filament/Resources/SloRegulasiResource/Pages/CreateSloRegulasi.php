@@ -9,4 +9,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateSloRegulasi extends CreateRecord
 {
     protected static string $resource = SloRegulasiResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return static::getResource()::getUrl("index");
+    }
 }

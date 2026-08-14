@@ -76,7 +76,7 @@
                      onclick="bukaPopup('{{ addslashes($alat->nama_peralatan) }}', '{{ asset('storage_public/' . $alat->foto_alat) }}', '{{ addslashes(strip_tags($alat->deskripsi)) }}', '{{ addslashes($alat->merk) }}', '{{ addslashes($alat->tipe) }}', [
                         @if($alat->spesifikasi)
                             @foreach($alat->spesifikasi as $spek)
-                                '{{ addslashes($spek['spek']) }}',
+                                '{{ addslashes($spek) }}',
                             @endforeach
                         @endif
                         'Kalibrasi Terakhir: {{ $alat->tanggal_kalibrasi_terakhir ? \Carbon\Carbon::parse($alat->tanggal_kalibrasi_terakhir)->format('M Y') : '-' }}'

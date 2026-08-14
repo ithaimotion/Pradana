@@ -9,4 +9,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateProfilStrukturOrganisasiItem extends CreateRecord
 {
     protected static string $resource = ProfilStrukturOrganisasiItemResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return static::getResource()::getUrl("index");
+    }
 }

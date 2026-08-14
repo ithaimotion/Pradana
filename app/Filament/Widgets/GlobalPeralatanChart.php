@@ -8,6 +8,7 @@ class GlobalPeralatanChart extends ChartWidget
 {
     protected static ?string $heading = 'Distribusi Peralatan Inspeksi';
     protected static ?int $sort = 4;
+    protected int | string | array $columnSpan = 'full';
     protected static ?string $maxHeight = '300px';
     
     protected function getData(): array

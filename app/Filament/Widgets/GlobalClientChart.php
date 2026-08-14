@@ -9,6 +9,7 @@ class GlobalClientChart extends ChartWidget
 {
     protected static ?string $heading = 'Pertumbuhan Klien Baru (6 Bulan Terakhir)';
     protected static ?int $sort = 3;
+    protected int | string | array $columnSpan = 'full';
     
     protected function getData(): array
     {

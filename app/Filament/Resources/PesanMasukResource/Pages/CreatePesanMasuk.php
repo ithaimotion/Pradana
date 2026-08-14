@@ -9,4 +9,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreatePesanMasuk extends CreateRecord
 {
     protected static string $resource = PesanMasukResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return static::getResource()::getUrl("index");
+    }
 }

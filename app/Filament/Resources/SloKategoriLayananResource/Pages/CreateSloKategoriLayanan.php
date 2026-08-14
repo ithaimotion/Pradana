@@ -9,4 +9,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateSloKategoriLayanan extends CreateRecord
 {
     protected static string $resource = SloKategoriLayananResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return static::getResource()::getUrl("index");
+    }
 }

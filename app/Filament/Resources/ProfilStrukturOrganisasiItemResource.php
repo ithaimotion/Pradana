@@ -28,22 +28,12 @@ class ProfilStrukturOrganisasiItemResource extends Resource
             ->schema([
                 Forms\Components\Hidden::make('profil_struktur_organisasi_id')
                     ->default(fn () => \App\Models\ProfilStrukturOrganisasi::firstOrCreate([], ['judul' => 'Struktur Organisasi'])->id),
-                Forms\Components\TextInput::make('nama')
+                Forms\Components\FileUpload::make('foto')
+                    ->label('Upload Foto Struktur / Bagan')
+                    ->image()
+                    ->directory('uploads/struktur_organisasi')
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('jabatan')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('divisi')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('level')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('urutan')
-                    ->required()
-                    ->numeric()
-                    ->default(0),
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -51,18 +41,10 @@ class ProfilStrukturOrganisasiItemResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nama')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('jabatan')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('divisi')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('level')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('urutan')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\ImageColumn::make('foto')
+                    ->label('Foto Struktur')
+                    ->width(100)
+                    ->height(100),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -80,9 +62,23 @@ class ProfilStrukturOrganisasiItemResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+    public static function canCreate(): bool
+    {
+        return ProfilStrukturOrganisasiItem::count() === 0;
+    }
+
+    public static function canDelete(\Illuminate\Database\Eloquent\Model $record): bool
+    {
+        return false;
+    }
+
+    public static function canDeleteAny(): bool
+    {
+        return false;
     }
 
     public static function getRelations(): array

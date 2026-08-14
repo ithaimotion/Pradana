@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', (isset($logos) && $logos->count() > 0 ? ($logos->first()->nama ?? 'PRADANA NUSA ENERGI') : 'PRADANA NUSA ENERGI') . ' - Inspeksi & Sertifikasi Ketenagalistrikan SLO')
+@section('title', 'SLO Pradana | PRADANA NUSA ENERGI - Inspeksi & Sertifikasi Ketenagalistrikan')
+@section('meta_description', 'SLO Pradana - PRADANA NUSA ENERGI menyediakan layanan inspeksi dan Sertifikasi Laik Operasi (SLO) ketenagalistrikan yang profesional, terpercaya, dan sesuai ketentuan yang berlaku.')
 
 @php
     $__env->share('logos', $logos ?? null);

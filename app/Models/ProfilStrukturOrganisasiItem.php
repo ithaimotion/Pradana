@@ -8,6 +8,7 @@ class ProfilStrukturOrganisasiItem extends Model
 {
     protected $fillable = [
         'profil_struktur_organisasi_id',
+        'foto',
         'nama',
         'jabatan',
         'divisi',
