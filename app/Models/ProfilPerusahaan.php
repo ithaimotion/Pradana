@@ -23,5 +23,6 @@ class ProfilPerusahaan extends Model
 
     protected $casts = [
         'nilai_perusahaan' => 'array',
+        'misi' => 'array',
     ];
 }

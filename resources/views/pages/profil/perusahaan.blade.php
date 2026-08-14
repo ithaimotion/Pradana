@@ -113,114 +113,36 @@
                  </p>
             </div>
 
-            <!-- Misi Section - 4 quadrants -->
-            <div class="w-full flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-12 mt-10">
-                
-                <!-- Left Column (Misi 1 & 3) -->
-                <div class="flex-1 flex flex-col gap-8 md:gap-12 w-full max-w-lg lg:max-w-none z-20">
-                    <!-- Misi 1 -->
-                    <div class="flex flex-row lg:flex-row-reverse gap-4 items-start text-left lg:text-right reveal-left">
-                        <div class="w-12 h-12 shrink-0 mt-1 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center shadow-sm">
-                            <span class="font-bold text-xl">1</span>
+            <!-- Misi Section - Grid Layout -->
+            <div class="w-full mt-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 z-20">
+                @php
+                    $misiArray = is_array($konten->misi) ? $konten->misi : $misiList;
+                @endphp
+                @foreach($misiArray as $index => $misi)
+                    @php
+                        // Format misi depending on if it's the new array format or old string format
+                        $teksMisi = is_array($misi) ? ($misi['teks_misi'] ?? '') : $misi;
+                        $fotoMisi = is_array($misi) && isset($misi['foto_misi']) && !empty($misi['foto_misi']) 
+                            ? \Illuminate\Support\Facades\Storage::disk('public')->url($misi['foto_misi']) 
+                            : 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80'; // fallback
+                    @endphp
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-xl border border-slate-100 reveal-up hover:-translate-y-2 transition-transform duration-300 group">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="{{ $fotoMisi }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 filter grayscale group-hover:grayscale-0" alt="Misi {{ $index + 1 }}">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                            <div class="absolute bottom-4 left-4 w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-lg">
+                                {{ $index + 1 }}
+                            </div>
                         </div>
-                        <div class="flex-1">
-                            <h4 class="text-blue-900 font-bold mb-2">Misi Pertama</h4>
+                        <div class="p-6">
+                            <h4 class="text-blue-900 font-bold mb-3 text-lg">Misi {{ $index + 1 }}</h4>
                             <p class="text-slate-600 font-medium text-[15px] leading-relaxed">
-                                {{ $misiList[0] ?? '' }}
+                                {{ $teksMisi }}
                             </p>
                         </div>
                     </div>
-
-                    <!-- Misi 3 -->
-                    <div class="flex flex-row lg:flex-row-reverse gap-4 items-start text-left lg:text-right reveal-left" style="animation-delay: 0.2s;">
-                        <div class="w-12 h-12 shrink-0 mt-1 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center shadow-sm">
-                            <span class="font-bold text-xl">3</span>
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="text-blue-900 font-bold mb-2">Misi Ketiga</h4>
-                            <p class="text-slate-600 font-medium text-[15px] leading-relaxed">
-                                {{ $misiList[2] ?? '' }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Center Circular Image (Divided into 4 quadrants) -->
-                <div class="w-72 h-72 lg:w-[400px] lg:h-[400px] xl:w-[450px] xl:h-[450px] shrink-0 rounded-full overflow-hidden reveal-on-scroll relative bg-white shadow-2xl border-4 border-white z-10 order-first lg:order-none mb-10 lg:mb-0">
-                    <div class="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-2 p-2 bg-slate-100">
-                        <!-- Top Left Image -->
-                        <div class="relative w-full h-full rounded-tl-full overflow-hidden group">
-                            <img src="{{ optional($konten)->foto_misi ? \Illuminate\Support\Facades\Storage::disk('public')->url($konten->foto_misi) : 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80' }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0" alt="Misi 1">
-                        </div>
-                        <!-- Top Right Image -->
-                        <div class="relative w-full h-full rounded-tr-full overflow-hidden group">
-                            <img src="{{ optional($konten)->foto_visi ? \Illuminate\Support\Facades\Storage::disk('public')->url($konten->foto_visi) : 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=900&q=80' }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0" alt="Misi 2">
-                        </div>
-                        <!-- Bottom Left Image -->
-                        <div class="relative w-full h-full rounded-bl-full overflow-hidden group">
-                            <img src="{{ optional($konten)->url_gambar ? \Illuminate\Support\Facades\Storage::disk('public')->url($konten->url_gambar) : 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=900&q=80' }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0" alt="Misi 3">
-                        </div>
-                        <!-- Bottom Right Image -->
-                        <div class="relative w-full h-full rounded-br-full overflow-hidden group">
-                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0" alt="Misi 4">
-                        </div>
-                    </div>
-                    <!-- Center Inner Circle -->
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 lg:w-28 lg:h-28 bg-white rounded-full flex items-center justify-center z-20 shadow-inner">
-                        <div class="w-12 h-12 lg:w-16 lg:h-16 bg-blue-50 rounded-full flex items-center justify-center text-blue-600">
-                            <svg class="w-6 h-6 lg:w-8 lg:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column (Misi 2 & 4) -->
-                <div class="flex-1 flex flex-col gap-8 md:gap-12 w-full max-w-lg lg:max-w-none z-20">
-                    <!-- Misi 2 -->
-                    <div class="flex flex-row gap-4 items-start text-left reveal-right">
-                        <div class="w-12 h-12 shrink-0 mt-1 bg-blue-900 text-white rounded-xl flex items-center justify-center shadow-sm shadow-blue-900/20">
-                            <span class="font-bold text-xl">2</span>
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="text-blue-900 font-bold mb-2">Misi Kedua</h4>
-                            <p class="text-slate-600 font-medium text-[15px] leading-relaxed">
-                                {{ $misiList[1] ?? '' }}
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Misi 4 -->
-                    <div class="flex flex-row gap-4 items-start text-left reveal-right" style="animation-delay: 0.2s;">
-                        <div class="w-12 h-12 shrink-0 mt-1 bg-blue-900 text-white rounded-xl flex items-center justify-center shadow-sm shadow-blue-900/20">
-                            <span class="font-bold text-xl">4</span>
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="text-blue-900 font-bold mb-2">Misi Keempat</h4>
-                            <p class="text-slate-600 font-medium text-[15px] leading-relaxed">
-                                {{ $misiList[3] ?? '' }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
-
-            <!-- Tambahan jika Misi lebih dari 4 -->
-            @if(count($misiList) > 4)
-                <div class="w-full max-w-5xl mx-auto mt-24 grid grid-cols-1 md:grid-cols-2 gap-10 z-20 relative">
-                    @for($i=4; $i<count($misiList); $i++)
-                         <div class="flex gap-4 items-start reveal-up">
-                            <div class="w-12 h-12 shrink-0 mt-1 bg-slate-200 text-slate-700 rounded-xl flex items-center justify-center shadow-sm">
-                                <span class="font-bold text-xl">{{ $i+1 }}</span>
-                            </div>
-                            <div>
-                                <h4 class="text-blue-900 font-bold mb-2">Misi {{ $i+1 }}</h4>
-                                <p class="text-slate-600 font-medium text-[15px] leading-relaxed">
-                                    {{ $misiList[$i] }}
-                                </p>
-                            </div>
-                        </div>
-                    @endfor
-                </div>
-            @endif
         </div>
     </section>
 

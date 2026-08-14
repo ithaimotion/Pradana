@@ -31,13 +31,13 @@ use App\Http\Controllers\InformasiPublikPageController;
 
 Route::get('/', [BerandaController::class, 'index'])->name('home');
 
-// Admin Login & Logout Routes
-Route::get('/admin/login', [AdminController::class, 'showLogin'])->name('login');
-Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.login.submit');
-Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+// Admin Login & Logout Routes (Old)
+Route::get('/admin-old/login', [AdminController::class, 'showLogin'])->name('admin-old.login');
+Route::post('/admin-old/login', [AdminController::class, 'login'])->name('admin-old.login.submit');
+Route::post('/admin-old/logout', [AdminController::class, 'logout'])->name('admin-old.logout');
 
-// Protected Admin Panel Routes
-Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+// Protected Admin Panel Routes (Old)
+Route::prefix('admin-old')->name('admin-old.')->middleware('auth')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
     Route::resource('users', UserController::class)->except(['show']);
     Route::post('/hero', [AdminController::class, 'updateHero'])->name('hero.update');
