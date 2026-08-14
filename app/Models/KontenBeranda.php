@@ -50,6 +50,6 @@ class KontenBeranda extends Model
             return $path;
         }
 
-        return Storage::disk('public')->url($path);
+        return asset('storage_public/' . ltrim($path, '/'));
     }
 }
