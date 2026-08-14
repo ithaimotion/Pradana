@@ -73,7 +73,7 @@
 
                 @foreach($peralatans as $alat)
                 <div class="alat-card" data-kategori="{{ strtolower($alat->kategori) }}"
-                     onclick="bukaPopup('{{ addslashes($alat->nama_peralatan) }}', '{{ asset('storage/' . $alat->foto_alat) }}', '{{ addslashes(strip_tags($alat->deskripsi)) }}', '{{ addslashes($alat->merk) }}', '{{ addslashes($alat->tipe) }}', [
+                     onclick="bukaPopup('{{ addslashes($alat->nama_peralatan) }}', '{{ asset('storage_public/' . $alat->foto_alat) }}', '{{ addslashes(strip_tags($alat->deskripsi)) }}', '{{ addslashes($alat->merk) }}', '{{ addslashes($alat->tipe) }}', [
                         @if($alat->spesifikasi)
                             @foreach($alat->spesifikasi as $spek)
                                 '{{ addslashes($spek['spek']) }}',
@@ -83,7 +83,7 @@
                      ])">
                     <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
                         <div class="relative h-52 bg-gradient-to-br from-slate-50 to-slate-100 overflow-hidden flex items-center justify-center p-6">
-                            <img src="{{ asset('storage/' . $alat->foto_alat) }}" alt="{{ $alat->nama_peralatan }}" class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500">
+                            <img src="{{ asset('storage_public/' . $alat->foto_alat) }}" alt="{{ $alat->nama_peralatan }}" class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500">
                             <span class="absolute top-3 left-3 {{ strtolower($alat->kategori) == 'uji' ? 'bg-blue-900 text-white' : 'bg-blue-500 text-slate-900 dark:text-white' }} text-xs font-bold px-2.5 py-1 rounded-full">{{ ucfirst($alat->kategori) }}</span>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
                                 <span class="text-slate-900 dark:text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">👆 Klik untuk detail</span>

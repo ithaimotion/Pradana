@@ -20,7 +20,7 @@
             </p>
             @if(optional($konten)->url_dokumen)
                 @php
-                    $linkSop = str_starts_with($konten->url_dokumen, 'http') ? $konten->url_dokumen : asset('storage/' . $konten->url_dokumen);
+                    $linkSop = str_starts_with($konten->url_dokumen, 'http') ? $konten->url_dokumen : asset('storage_public/' . $konten->url_dokumen);
                 @endphp
                 <div class="mt-6">
                     <a href="{{ $linkSop }}" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
