@@ -70,10 +70,10 @@
                                         {{ $index + 1 }}
                                     </td>
                                     <td class="px-6 py-4 font-semibold text-slate-900 group-hover:text-blue-800 transition-colors">
-                                        {{ $item->nomor }}
+                                        {{ strip_tags($item->nomor) }}
                                     </td>
                                     <td class="px-6 py-4 text-slate-600 leading-relaxed">
-                                        {{ $item->keterangan }}
+                                        {{ strip_tags($item->keterangan) }}
                                     </td>
                                     <td class="px-6 py-4 text-center">
                                         @if(optional($item)->url_dokumen)

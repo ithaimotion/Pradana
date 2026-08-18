@@ -83,12 +83,12 @@
 
                         <!-- Title -->
                         <h3 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-3 leading-snug">
-                            {{ $layanan->judul }}
+                            {{ strip_tags($layanan->judul) }}
                         </h3>
 
                         <!-- Description -->
                         <p class="text-sm text-slate-500 leading-relaxed mb-4">
-                            {{ $layanan->deskripsi }}
+                            {{ strip_tags($layanan->deskripsi) }}
                         </p>
 
                         <!-- Tags (Badges) -->

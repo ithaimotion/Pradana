@@ -550,7 +550,7 @@
                 <div class="bg-slate-50 rounded-3xl border border-slate-200 shadow-lg overflow-hidden reveal-on-scroll">
                     <div class="p-6 border-b border-slate-200 flex justify-between items-center">
                         <div>
-                            <h3 class="text-xl font-bold text-slate-900">{{ $prosedur->nama_dokumen }}</h3>
+                            <h3 class="text-xl font-bold text-slate-900">{{ strip_tags($prosedur->nama_dokumen) }}</h3>
                             <p class="text-sm text-slate-500 mt-1">Diperbarui: {{ $prosedur->updated_at->format('d F Y') }}</p>
                         </div>
                         <div class="flex gap-2">

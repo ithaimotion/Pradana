@@ -13,10 +13,10 @@
                 Instrumen & Teknologi
             </span>
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
-                {{ $konten->judul ?? 'PERALATAN INSPEKSI' }}
+                {{ strip_tags($konten->judul ?? 'PERALATAN INSPEKSI') }}
             </h1>
             <p class="text-white/90 max-w-2xl mx-auto text-base md:text-lg">
-                {{ $konten->subjudul ?? 'Seluruh peralatan ukur dan uji yang digunakan PT Pradana Nusa Energi dalam proses inspeksi instalasi listrik dan penerbitan SLO telah terstandar dan terkalibrasi.' }}
+                {{ strip_tags($konten->subjudul ?? 'Seluruh peralatan ukur dan uji yang digunakan PT Pradana Nusa Energi dalam proses inspeksi instalasi listrik dan penerbitan SLO telah terstandar dan terkalibrasi.') }}
             </p>
             @if(optional($konten)->url_dokumen)
                 <div class="mt-6">

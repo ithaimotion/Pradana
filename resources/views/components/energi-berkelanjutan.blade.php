@@ -1,7 +1,7 @@
 @props(['header' => null, 'items' => null, 'clients' => null])
 
 @php
-    $headerJudul = $header->judul ?? 'DAFTAR KLIEN';
+    $headerJudul = strip_tags($header->judul ?? 'DAFTAR KLIEN');
     $clientList = $clients instanceof \Illuminate\Support\Collection ? $clients : collect($clients);
     $visibleClients = $clientList->filter(fn($c) => !empty($c->url_gambar ?? $c->path_gambar))->values();
 

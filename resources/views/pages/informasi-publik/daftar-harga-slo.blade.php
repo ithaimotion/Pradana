@@ -29,7 +29,7 @@
                 <!-- PDF Viewer -->
                 <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden reveal-on-scroll">
                     <div class="p-6 border-b border-slate-200">
-                        <h2 class="text-xl font-bold text-slate-900">{{ $daftarHarga->nama_dokumen }}</h2>
+                        <h2 class="text-xl font-bold text-slate-900">{{ strip_tags($daftarHarga->nama_dokumen) }}</h2>
                     </div>
                     
                     <div class="relative" style="height: 600px;">

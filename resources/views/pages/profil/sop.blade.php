@@ -13,7 +13,7 @@
                 Dokumen Mutu
             </span>
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
-                {{ $konten->judul ?? 'STANDAR OPERASI PROSEDUR' }}
+                {{ strip_tags($konten->judul ?? 'STANDAR OPERASI PROSEDUR') }}
             </h1>
            <p class="text-white/90 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed mb-8">
                 Seluruh SOP PT Pradana Nusa Energi disusun mengacu pada SNI ISO/IEC 17020:2012 dan peraturan ketenagalistrikan yang berlaku.

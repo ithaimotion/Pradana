@@ -20,7 +20,7 @@
                 {!! $styledPageTitle !!}
             </h1>
             <p class="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-                {{ $konten->subjudul ?? 'Lembaga Inspeksi Teknik (LIT) terkemuka dan terpercaya yang bergerak di bidang pengujian dan pemeriksaan kelistrikan untuk mewujudkan tenaga listrik yang aman, andal, dan ramah lingkungan.' }}
+                {{ strip_tags($konten->subjudul ?? 'Lembaga Inspeksi Teknik (LIT) terkemuka dan terpercaya yang bergerak di bidang pengujian dan pemeriksaan kelistrikan untuk mewujudkan tenaga listrik yang aman, andal, dan ramah lingkungan.') }}
             </p>
         </div>
     </section>
@@ -31,10 +31,10 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="reveal-left">
                     <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">
-                        {{ $konten->nilai ?? 'Komitmen Kami Terhadap Keselamatan & Ketenagalistrikan' }}
+                        {{ strip_tags($konten->nilai ?? 'Komitmen Kami Terhadap Keselamatan & Ketenagalistrikan') }}
                     </h2>
                     <p class="text-slate-600 mb-6 leading-relaxed">
-                        {{ $konten->konten ?? 'PT Pradana Nusa Energi berdiri sebagai Lembaga Inspeksi Teknik terakreditasi yang berkomitmen mendukung program pemerintah dalam penegakan Sertifikat Laik Operasi (SLO) di Indonesia. Dengan didukung oleh Tim Tenaga Teknik (TT) dan Penanggung Jawab Teknik (PJT) bersertifikat kompetensi resmi, kami memberikan layanan inspeksi ketenagalistrikan yang tepat waktu, presisi, independen, dan berstandar nasional.' }}
+                        {{ strip_tags($konten->konten ?? 'PT Pradana Nusa Energi berdiri sebagai Lembaga Inspeksi Teknik terakreditasi yang berkomitmen mendukung program pemerintah dalam penegakan Sertifikat Laik Operasi (SLO) di Indonesia. Dengan didukung oleh Tim Tenaga Teknik (TT) dan Penanggung Jawab Teknik (PJT) bersertifikat kompetensi resmi, kami memberikan layanan inspeksi ketenagalistrikan yang tepat waktu, presisi, independen, dan berstandar nasional.') }}
                     </p>
 
                     <div class="grid grid-cols-2 gap-6 border-t border-slate-200 pt-6">
@@ -113,7 +113,7 @@
                  </div>
                  <h3 class="text-xl font-bold text-slate-400 mb-2 uppercase tracking-widest">Visi Kami</h3>
                  <p class="text-xl md:text-2xl text-slate-800 leading-relaxed font-semibold italic">
-                     "{{ $konten->visi ?? 'Menjadi Lembaga Inspeksi Teknik yang ikut serta mewujudkan instalasi ketenagalistrikan yang memenuhi kaidah K2 (Keselamatan Ketenagalistrikan) yang aman, andal, dan ramah lingkungan di Indonesia.' }}"
+                     "{{ strip_tags($konten->visi ?? 'Menjadi Lembaga Inspeksi Teknik yang ikut serta mewujudkan instalasi ketenagalistrikan yang memenuhi kaidah K2 (Keselamatan Ketenagalistrikan) yang aman, andal, dan ramah lingkungan di Indonesia.') }}"
                  </p>
             </div>
 
@@ -126,6 +126,7 @@
                 // Helper to get text and image
                 $getMisiData = function($misi) {
                     $teks = is_array($misi) ? ($misi['teks_misi'] ?? '') : $misi;
+                    $teks = strip_tags($teks);
                     $foto = is_array($misi) && isset($misi['foto_misi']) && !empty($misi['foto_misi']) 
                         ? \Illuminate\Support\Facades\Storage::disk('public')->url($misi['foto_misi']) 
                         : 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80';
@@ -295,9 +296,9 @@
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3l7 4v5c0 4.8-3.1 8.1-7 9-3.9-.9-7-4.2-7-9V7l7-4z"></path></svg>
                             @endif
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-3">{{ $nilai['judul'] ?? 'Nilai Perusahaan' }}</h3>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">{{ strip_tags($nilai['judul'] ?? 'Nilai Perusahaan') }}</h3>
                         <p class="text-slate-600 text-sm leading-relaxed">
-                            {{ $nilai['deskripsi'] ?? 'Deskripsi nilai perusahaan' }}
+                            {{ strip_tags($nilai['deskripsi'] ?? 'Deskripsi nilai perusahaan') }}
                         </p>
                     </div>
                 @endforeach

@@ -85,7 +85,7 @@
         <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
             <span class="text-blue-600 font-bold tracking-wider uppercase text-sm mb-4 block">Teknologi Kami</span>
             <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
-                {{ $headerJudul }}
+                {{ strip_tags($headerJudul) }}
             </h2>
             <div class="w-24 h-1 bg-blue-600 mx-auto mt-6 rounded-full"></div>
         </div>
@@ -96,8 +96,8 @@
                     <div class="tech-icon-wrapper w-16 h-16 rounded-2xl flex items-center justify-center mb-8">
                         {!! renderTechCardIconHelper($item) !!}
                     </div>
-                    <h3 class="tech-card-title text-xl font-bold mb-4">{{ $item->judul }}</h3>
-                    <p class="tech-card-desc leading-relaxed font-light text-sm md:text-base">{{ $item->konten }}</p>
+                    <h3 class="tech-card-title text-xl font-bold mb-4">{{ strip_tags($item->judul) }}</h3>
+                    <p class="tech-card-desc leading-relaxed font-light text-sm md:text-base">{{ strip_tags($item->konten) }}</p>
                 </div>
             @endforeach
         </div>

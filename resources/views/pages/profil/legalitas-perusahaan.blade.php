@@ -13,10 +13,10 @@
                 Dokumen Legal & Perizinan
             </span>
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
-                {{ $konten->judul ?? 'LEGALITAS PERUSAHAAN' }}
+                {{ strip_tags($konten->judul ?? 'LEGALITAS PERUSAHAAN') }}
             </h1>
             <p class="text-white/90 max-w-2xl mx-auto text-base md:text-lg">
-                {{ $konten->subjudul ?? 'Seluruh dokumen legalitas, perizinan, dan akreditasi resmi PT Pradana Nusa Energi sebagai Lembaga Inspeksi Teknik terakreditasi.' }}
+                {{ strip_tags($konten->subjudul ?? 'Seluruh dokumen legalitas, perizinan, dan akreditasi resmi PT Pradana Nusa Energi sebagai Lembaga Inspeksi Teknik terakreditasi.') }}
             </p>
             @if(optional($konten)->url_dokumen)
                 <div class="mt-6">
@@ -95,15 +95,15 @@
                                             {{ $item->status }}
                                         </span>
                                     </div>
-                                    <h3 class="font-bold text-slate-900 mb-1 text-base">{{ $item->nama_dokumen }}</h3>
+                                    <h3 class="font-bold text-slate-900 mb-1 text-base">{{ strip_tags($item->nama_dokumen) }}</h3>
                                     @if($item->nomor)
-                                        <p class="text-xs text-slate-500 mb-1">No. Akta: <span class="font-semibold text-slate-700">{{ $item->nomor }}</span></p>
+                                        <p class="text-xs text-slate-500 mb-1">No. Akta: <span class="font-semibold text-slate-700">{{ strip_tags($item->nomor) }}</span></p>
                                     @endif
                                     @if($item->penerbit)
-                                        <p class="text-xs text-slate-500 mb-4">Penerbit: <span class="font-semibold text-slate-700">{{ $item->penerbit }}</span></p>
+                                        <p class="text-xs text-slate-500 mb-4">Penerbit: <span class="font-semibold text-slate-700">{{ strip_tags($item->penerbit) }}</span></p>
                                     @endif
                                     @if($item->deskripsi)
-                                        <p class="text-xs text-slate-500 mb-4">{{ $item->deskripsi }}</p>
+                                        <p class="text-xs text-slate-500 mb-4">{{ strip_tags($item->deskripsi) }}</p>
                                     @endif
                                     <div class="flex items-center justify-between pt-4 border-t border-slate-100">
                                         @if($item->tanggal_terbit)

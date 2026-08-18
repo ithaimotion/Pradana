@@ -1,7 +1,7 @@
 @props(['header' => null, 'items' => null])
 
 @php
-    $headerJudul = $header->judul ?? 'WHY CHOOSE PRADANA NUSA ENERGI';
+    $headerJudul = strip_tags($header->judul ?? 'WHY CHOOSE PRADANA NUSA ENERGI');
     $img1 = optional($header)->url_gambar ?? 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
     $img2 = (!empty($header->nilai) && (str_starts_with($header->nilai, 'http://') || str_starts_with($header->nilai, 'https://'))) ? $header->nilai : (($header->nilai ?? null) ? asset('/storage_public/' . $header->nilai) : 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
 
@@ -36,8 +36,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold text-slate-900 mb-2 uppercase">{{ $item->judul }}</h3>
-                                <p class="text-slate-600 leading-relaxed font-light">{{ $item->konten }}</p>
+                                <h3 class="text-xl font-bold text-slate-900 mb-2 uppercase">{{ strip_tags($item->judul) }}</h3>
+                                <p class="text-slate-600 leading-relaxed font-light">{{ strip_tags($item->konten) }}</p>
                             </div>
                         </li>
                     @endforeach

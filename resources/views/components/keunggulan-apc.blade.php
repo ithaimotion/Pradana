@@ -1,8 +1,8 @@
 @props(['header' => null, 'items' => null])
 
 @php
-    $headerJudul = $header->judul ?? 'APC+ — INTELLIGENCE THAT POWERS PERFORMANCE';
-    $headerKonten = $header->konten ?? 'Our Advanced Process Control+ system combines cutting-edge AI technology with decades of industry expertise to deliver unmatched smelting performance.';
+    $headerJudul = strip_tags($header->judul ?? 'APC+ — INTELLIGENCE THAT POWERS PERFORMANCE');
+    $headerKonten = strip_tags($header->konten ?? 'Our Advanced Process Control+ system combines cutting-edge AI technology with decades of industry expertise to deliver unmatched smelting performance.');
     $headerGambar = optional($header)->url_gambar ?? 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80';
 
     $defaultFeatureItems = collect([
@@ -43,9 +43,9 @@
                                 </svg>
                             </div>
                             <span class="text-white font-medium text-lg">
-                                <strong class="uppercase text-blue-200">{{ $feature->judul }}</strong>
+                                <strong class="uppercase text-blue-200">{{ strip_tags($feature->judul) }}</strong>
                                 @if(!empty($feature->konten))
-                                    <span class="text-blue-100/70 font-light block mt-1 text-sm">{{ $feature->konten }}</span>
+                                    <span class="text-blue-100/70 font-light block mt-1 text-sm">{{ strip_tags($feature->konten) }}</span>
                                 @endif
                             </span>
                         </li>

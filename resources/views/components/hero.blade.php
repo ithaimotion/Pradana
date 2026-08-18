@@ -11,8 +11,8 @@
     } else {
         $titleHtml = preg_replace('/(PT\.\?\s*Pradana Nusa)(\s+Energi)/i', '<span class="text-blue-500">$1</span><span class="text-green-500">$2</span>', nl2br($titleMain));
     }
-    $subtitle = $hero->subjudul ?? 'Advanced process control and optimization solutions for the primary aluminium industry';
-    $cta = $hero->konten ?? 'Contact Us';
+    $subtitle = strip_tags($hero->subjudul ?? 'Advanced process control and optimization solutions for the primary aluminium industry');
+    $cta = strip_tags($hero->konten ?? 'Contact Us');
     $slides = collect([
         $hero?->url_gambar,
         $hero?->url_gambar_2,

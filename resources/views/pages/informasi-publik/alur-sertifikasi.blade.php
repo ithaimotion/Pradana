@@ -35,7 +35,7 @@
                                 </svg>
                             </div>
                             <div>
-                                <h2 class="text-slate-900 text-white font-bold text-lg">{{ $alurSertifikasi->nama_dokumen }}</h2>
+                                <h2 class="text-slate-900 text-white font-bold text-lg">{{ strip_tags($alurSertifikasi->nama_dokumen) }}</h2>
                                 <p class="text-blue-200 text-sm">Dokumen Alur Sertifikasi SLO</p>
                             </div>
                         </div>

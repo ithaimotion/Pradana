@@ -13,10 +13,10 @@
                 Tenaga Ahli Bersertifikat
             </span>
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
-                {{ $konten->judul ?? 'DAFTAR PJT & TT' }}
+                {{ strip_tags($konten->judul ?? 'DAFTAR PJT & TT') }}
             </h1>
             <p class="text-white/90 max-w-2xl mx-auto text-base md:text-lg">
-                {{ $konten->subjudul ?? 'Daftar Penanggung Jawab Teknik (PJT) dan Tenaga Teknik (TT) terdaftar dan bersertifikasi kompetensi resmi PT Pradana Nusa Energi.' }}
+                {{ strip_tags($konten->subjudul ?? 'Daftar Penanggung Jawab Teknik (PJT) dan Tenaga Teknik (TT) terdaftar dan bersertifikasi kompetensi resmi PT Pradana Nusa Energi.') }}
             </p>
             @if(optional($konten)->url_dokumen)
                 <div class="mt-6">
