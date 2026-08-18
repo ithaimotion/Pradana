@@ -113,35 +113,130 @@
                  </p>
             </div>
 
-            <!-- Misi Section - Grid Layout -->
-            <div class="w-full mt-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 z-20">
-                @php
-                    $misiArray = is_array($konten->misi) ? $konten->misi : $misiList;
-                @endphp
-                @foreach($misiArray as $index => $misi)
-                    @php
-                        // Format misi depending on if it's the new array format or old string format
-                        $teksMisi = is_array($misi) ? ($misi['teks_misi'] ?? '') : $misi;
-                        $fotoMisi = is_array($misi) && isset($misi['foto_misi']) && !empty($misi['foto_misi']) 
-                            ? \Illuminate\Support\Facades\Storage::disk('public')->url($misi['foto_misi']) 
-                            : 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80'; // fallback
-                    @endphp
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-xl border border-slate-100 reveal-up hover:-translate-y-2 transition-transform duration-300 group">
-                        <div class="h-48 overflow-hidden relative">
-                            <img src="{{ $fotoMisi }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 filter grayscale group-hover:grayscale-0" alt="Misi {{ $index + 1 }}">
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4 w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-lg">
-                                {{ $index + 1 }}
-                            </div>
+            <!-- Misi Section -->
+            @php
+                $misiArray = is_array($konten->misi) ? $konten->misi : $misiList;
+                // Ensure we have exactly 4 items for the layout (or max 4)
+                $misiItems = array_slice($misiArray, 0, 4);
+                
+                // Helper to get text and image
+                $getMisiData = function($misi) {
+                    $teks = is_array($misi) ? ($misi['teks_misi'] ?? '') : $misi;
+                    $foto = is_array($misi) && isset($misi['foto_misi']) && !empty($misi['foto_misi']) 
+                        ? \Illuminate\Support\Facades\Storage::disk('public')->url($misi['foto_misi']) 
+                        : 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80';
+                    return ['teks' => $teks, 'foto' => $foto];
+                };
+            @endphp
+
+            <!-- Mobile Layout (Hidden on LG) -->
+            <div class="w-full mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 z-20 lg:hidden">
+                @foreach($misiItems as $index => $misi)
+                    @php $data = $getMisiData($misi); @endphp
+                    <div class="bg-white rounded-2xl p-6 shadow-xl border border-slate-100 flex items-start gap-4 reveal-up">
+                        <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center font-bold text-lg shrink-0">
+                            {{ $index + 1 }}
                         </div>
-                        <div class="p-6">
-                            <h4 class="text-blue-900 font-bold mb-3 text-lg">Misi {{ $index + 1 }}</h4>
+                        <div>
+                            <h4 class="text-blue-900 font-bold mb-2 text-lg">Misi {{ $index + 1 }}</h4>
                             <p class="text-slate-600 font-medium text-[15px] leading-relaxed">
-                                {{ $teksMisi }}
+                                {{ $data['teks'] }}
                             </p>
                         </div>
                     </div>
                 @endforeach
+            </div>
+
+            <!-- Desktop Circular Layout (Hidden below LG) -->
+            <div class="w-full mt-24 relative z-20 hidden lg:flex flex-row items-center justify-center gap-12 xl:gap-20 max-w-[1300px] mx-auto px-6">
+                
+                <!-- Left Side Texts (Misi 1 & 2) -->
+                <div class="flex-1 flex flex-col justify-center space-y-24 max-w-[320px]">
+                    @if(isset($misiItems[0]))
+                        @php $data0 = $getMisiData($misiItems[0]); @endphp
+                        <!-- Misi 1 (Top Left) -->
+                        <div class="flex flex-row items-start gap-5 text-right justify-end group reveal-left">
+                            <div class="flex-1 pt-1">
+                                <p class="text-blue-900 font-semibold text-sm leading-relaxed">{{ $data0['teks'] }}</p>
+                            </div>
+                            <div class="w-12 h-12 bg-white text-blue-600 rounded-full flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-[0_4px_20px_rgba(0,0,0,0.08)] group-hover:shadow-blue-600/40">
+                                <span class="font-bold text-lg">1</span>
+                            </div>
+                        </div>
+                    @endif
+
+                    @if(isset($misiItems[1]))
+                        @php $data1 = $getMisiData($misiItems[1]); @endphp
+                        <!-- Misi 2 (Bottom Left) -->
+                        <div class="flex flex-row items-start gap-5 text-right justify-end group reveal-left delay-200">
+                            <div class="flex-1 pt-1">
+                                <p class="text-blue-900 font-semibold text-sm leading-relaxed">{{ $data1['teks'] }}</p>
+                            </div>
+                            <div class="w-12 h-12 bg-white text-blue-600 rounded-full flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-[0_4px_20px_rgba(0,0,0,0.08)] group-hover:shadow-blue-600/40">
+                                <span class="font-bold text-lg">2</span>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+
+                <!-- Center Circular Images -->
+                <div class="relative w-[380px] h-[380px] xl:w-[440px] xl:h-[440px] rounded-full shrink-0 mx-auto bg-white p-2.5 shadow-2xl reveal-scale aspect-square">
+                    <!-- Cross/Plus Gap Background is achieved by the gap-2 on the grid and bg-white of container -->
+                    <div class="w-full h-full rounded-full overflow-hidden grid grid-cols-2 grid-rows-2 gap-2.5 relative bg-white">
+                        <!-- Quadrant 1 (Top Left) -->
+                        <div class="relative overflow-hidden group">
+                            <img src="{{ isset($misiItems[0]) ? $getMisiData($misiItems[0])['foto'] : 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80' }}" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" alt="Misi 1">
+                        </div>
+                        <!-- Quadrant 3 (Top Right - Misi 3) -->
+                        <div class="relative overflow-hidden group">
+                            <img src="{{ isset($misiItems[2]) ? $getMisiData($misiItems[2])['foto'] : 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=900&q=80' }}" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" alt="Misi 3">
+                        </div>
+                        <!-- Quadrant 2 (Bottom Left - Misi 2) -->
+                        <div class="relative overflow-hidden group">
+                            <img src="{{ isset($misiItems[1]) ? $getMisiData($misiItems[1])['foto'] : 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=900&q=80' }}" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" alt="Misi 2">
+                        </div>
+                        <!-- Quadrant 4 (Bottom Right - Misi 4) -->
+                        <div class="relative overflow-hidden group">
+                            <img src="{{ isset($misiItems[3]) ? $getMisiData($misiItems[3])['foto'] : 'https://images.unsplash.com/photo-1541888087640-1bc7bb1f016d?w=900&q=80' }}" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" alt="Misi 4">
+                        </div>
+                        
+                        <!-- Center Hole -->
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-28 h-28 bg-white rounded-full z-10 flex items-center justify-center shadow-[0_4px_15px_rgba(0,0,0,0.15)]">
+                            <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center">
+                                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side Texts (Misi 3 & 4) -->
+                <div class="flex-1 flex flex-col justify-center space-y-24 max-w-[320px]">
+                    @if(isset($misiItems[2]))
+                        @php $data2 = $getMisiData($misiItems[2]); @endphp
+                        <!-- Misi 3 (Top Right) -->
+                        <div class="flex flex-row items-start gap-5 text-left group reveal-right">
+                            <div class="w-12 h-12 bg-white text-blue-600 rounded-full flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-[0_4px_20px_rgba(0,0,0,0.08)] group-hover:shadow-blue-600/40">
+                                <span class="font-bold text-lg">3</span>
+                            </div>
+                            <div class="flex-1 pt-1">
+                                <p class="text-blue-900 font-semibold text-sm leading-relaxed">{{ $data2['teks'] }}</p>
+                            </div>
+                        </div>
+                    @endif
+
+                    @if(isset($misiItems[3]))
+                        @php $data3 = $getMisiData($misiItems[3]); @endphp
+                        <!-- Misi 4 (Bottom Right) -->
+                        <div class="flex flex-row items-start gap-5 text-left group reveal-right delay-200">
+                            <div class="w-12 h-12 bg-white text-blue-600 rounded-full flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-[0_4px_20px_rgba(0,0,0,0.08)] group-hover:shadow-blue-600/40">
+                                <span class="font-bold text-lg">4</span>
+                            </div>
+                            <div class="flex-1 pt-1">
+                                <p class="text-blue-900 font-semibold text-sm leading-relaxed">{{ $data3['teks'] }}</p>
+                            </div>
+                        </div>
+                    @endif
+                </div>
             </div>
         </div>
     </section>
