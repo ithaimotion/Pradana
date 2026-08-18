@@ -12,8 +12,8 @@
         </div>
 
         @if($items->count() > 0)
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
-            @foreach($items as $item)
+        <div class="grid grid-cols-1 gap-8 max-w-md mx-auto">
+            @foreach($items->take(1) as $item)
                 @php
                     $imageUrl = $item->url_gambar ?? $item->path_gambar ?? null;
                 @endphp

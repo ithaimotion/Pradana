@@ -53,6 +53,7 @@ class BerandaPage extends Page implements HasForms
             'hero_gambar' => $hero?->path_gambar,
             'hero_gambar_2' => $hero?->path_gambar_2,
             'hero_gambar_3' => $hero?->path_gambar_3,
+            'hero_overlay_opacity' => $hero?->nilai ?? '0.45',
         ]);
 
         // Load Statistik
@@ -170,6 +171,17 @@ class BerandaPage extends Page implements HasForms
                             RichEditor::make('hero_subjudul')
                                 ->label('Sub-Judul (Subtitle)')
                                 ->placeholder('Masukkan paragraf singkat untuk melengkapi judul utama...')
+                                ->columnSpanFull(),
+                            \Filament\Forms\Components\Select::make('hero_overlay_opacity')
+                                ->label('Kecerahan Efek Hitam (Overlay)')
+                                ->options([
+                                    '0.1' => 'Sangat Terang (10%)',
+                                    '0.25' => 'Terang (25%)',
+                                    '0.45' => 'Sedang (45%)',
+                                    '0.65' => 'Gelap (65%)',
+                                    '0.85' => 'Sangat Gelap (85%)',
+                                ])
+                                ->default('0.45')
                                 ->columnSpanFull(),
                         ]),
                         Placeholder::make('info_gambar')
@@ -434,6 +446,7 @@ class BerandaPage extends Page implements HasForms
         $hero->judul_energi = $data['hero_judul_energi'] ?? null;
         $hero->subjudul = $data['hero_subjudul'] ?? null;
         $hero->konten = $data['hero_konten'] ?? null;
+        $hero->nilai = $data['hero_overlay_opacity'] ?? '0.45';
         if(isset($data['hero_gambar'])) $hero->path_gambar = is_array($data['hero_gambar']) ? array_values($data['hero_gambar'])[0] : $data['hero_gambar'];
         if(isset($data['hero_gambar_2'])) $hero->path_gambar_2 = is_array($data['hero_gambar_2']) ? array_values($data['hero_gambar_2'])[0] : $data['hero_gambar_2'];
         if(isset($data['hero_gambar_3'])) $hero->path_gambar_3 = is_array($data['hero_gambar_3']) ? array_values($data['hero_gambar_3'])[0] : $data['hero_gambar_3'];

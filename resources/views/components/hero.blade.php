@@ -21,6 +21,13 @@
     ->filter()
     ->map(fn($image) => ['image' => $image])
     ->values();
+
+    // Default opacity jika tidak diset
+    $baseOpacity = floatval($hero->nilai ?? 0.45);
+    
+    // Gradasi dibuat berdasarkan baseOpacity
+    $opacityTop = min(1.0, $baseOpacity + 0.10);
+    $opacityBottom = min(1.0, $baseOpacity + 0.20);
 @endphp
 
 
@@ -38,7 +45,7 @@
                  class="absolute inset-0 bg-cover bg-center" 
                  :style="'background-image: url(' + slide.image + ')'">
                  <!-- Modern gradient overlay -->
-                <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.45), rgba(15,23,42,0.65));"></div>
+                <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,{{ $opacityTop }}), rgba(0,0,0,{{ $baseOpacity }}), rgba(15,23,42,{{ $opacityBottom }}));"></div>
             </div>
         </template>
     </div>

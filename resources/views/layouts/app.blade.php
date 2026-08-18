@@ -78,7 +78,7 @@
         /*
         | Gunakan logo sebagai fallback OG image.
         */
-        $ogImage = $faviconUrl ?: asset('favicon.ico');
+        $ogImage = $faviconUrl ?: asset('images/logo-pnusa.png');
 
         /*
         |--------------------------------------------------------------------------
@@ -170,7 +170,7 @@
     @if($faviconUrl)
         <link rel="icon" type="image/png" href="{{ $faviconUrl }}">
     @else
-        <link rel="icon" href="{{ asset('favicon.ico') }}">
+        <link rel="icon" href="{{ asset('images/logo-pnusa.png') }}">
     @endif
 
     {{-- =========================================================

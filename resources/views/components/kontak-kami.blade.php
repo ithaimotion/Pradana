@@ -13,7 +13,7 @@
     </div>
     
     <div class="relative z-10 max-w-7xl mx-auto px-6 text-center" data-aos="zoom-in">
-        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
             {{ $title }}
         </h2>
         <p class="text-white/90 text-lg mb-10 max-w-3xl mx-auto">
