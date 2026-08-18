@@ -15,7 +15,7 @@
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
                 {{ $konten->judul ?? 'STRUKTUR ORGANISASI' }}
             </h1>
-            <p class="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
+            <p class="text-white/90 max-w-2xl mx-auto text-base md:text-lg">
                 {{ $konten->subjudul ?? 'Susunan kepemimpinan dan manajemen PT Pradana Nusa Energi dalam menjalankan layanan inspeksi & sertifikasi ketenagalistrikan SLO.' }}
             </p>
         </div>

@@ -15,7 +15,7 @@
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
                 {{ $konten->judul ?? 'LEGALITAS PERUSAHAAN' }}
             </h1>
-            <p class="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
+            <p class="text-white/90 max-w-2xl mx-auto text-base md:text-lg">
                 {{ $konten->subjudul ?? 'Seluruh dokumen legalitas, perizinan, dan akreditasi resmi PT Pradana Nusa Energi sebagai Lembaga Inspeksi Teknik terakreditasi.' }}
             </p>
             @if(optional($konten)->url_dokumen)

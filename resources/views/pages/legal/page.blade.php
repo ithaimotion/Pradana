@@ -12,7 +12,7 @@
                 Halaman Legal
             </span>
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">{{ $content->judul ?? 'Halaman Legal' }}</h1>
-            <p class="text-slate-700 dark:text-slate-300 max-w-3xl mx-auto text-base md:text-lg">
+            <p class="text-white/90 max-w-3xl mx-auto text-base md:text-lg">
                 {{ $content->konten ? \Illuminate\Support\Str::limit(strip_tags($content->konten), 160) : 'Informasi hukuman dan kebijakan PT Pradana Nusa Energi terkait privasi, syarat penggunaan, dan cookie.' }}
             </p>
         </div>

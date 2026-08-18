@@ -33,7 +33,7 @@
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
                 HUBUNGI KAMI
             </h1>
-            <p class="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
+            <p class="text-white/90 max-w-2xl mx-auto text-base md:text-lg">
                 Punya pertanyaan mengenai layanan sertifikasi SLO? Tim kami siap membantu Anda dengan layanan yang cepat dan profesional.
             </p>
         </div>

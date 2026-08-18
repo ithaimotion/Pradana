@@ -19,7 +19,7 @@
             <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight leading-tight">
                 {!! $styledPageTitle !!}
             </h1>
-            <p class="text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p class="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
                 {{ $konten->subjudul ?? 'Lembaga Inspeksi Teknik (LIT) terkemuka dan terpercaya yang bergerak di bidang pengujian dan pemeriksaan kelistrikan untuk mewujudkan tenaga listrik yang aman, andal, dan ramah lingkungan.' }}
             </p>
         </div>
