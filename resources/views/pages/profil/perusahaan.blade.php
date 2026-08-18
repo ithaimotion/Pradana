@@ -81,9 +81,13 @@
             </div>
 
             @php
-                $misiText = $konten->misi ?? null;
-                if ($misiText) {
-                    $misiList = array_filter(array_map('trim', explode("\n", $misiText)));
+                $misiData = $konten->misi ?? null;
+                $misiList = [];
+                
+                if (is_array($misiData) && !empty($misiData)) {
+                    $misiList = $misiData;
+                } elseif (is_string($misiData) && trim($misiData) !== '') {
+                    $misiList = array_filter(array_map('trim', explode("\n", $misiData)));
                     $misiList = array_map(function($item) {
                         return preg_replace('/^\d+[\.\)]\s*/', '', $item);
                     }, $misiList);
