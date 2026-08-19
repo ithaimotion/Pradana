@@ -10,6 +10,8 @@ use Filament\Pages\Page;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\FileUpload;
 use Filament\Notifications\Notification;
 
 class KelolaFooterLegalPage extends Page implements HasForms
@@ -27,6 +29,7 @@ class KelolaFooterLegalPage extends Page implements HasForms
     public ?array $privasiData = [];
     public ?array $syaratData = [];
     public ?array $cookieData = [];
+    public ?array $sosmedData = [];
 
     public $activeTab = 'privasi';
 
@@ -46,6 +49,9 @@ class KelolaFooterLegalPage extends Page implements HasForms
                 'kebijakan_cookie_judul' => $settings->kebijakan_cookie_judul,
                 'kebijakan_cookie_konten' => $settings->kebijakan_cookie_konten,
             ]);
+            $this->sosmedForm->fill([
+                'social_media_links' => $settings->social_media_links ?? [],
+            ]);
         }
     }
 
@@ -55,6 +61,7 @@ class KelolaFooterLegalPage extends Page implements HasForms
             'privasiForm',
             'syaratForm',
             'cookieForm',
+            'sosmedForm',
         ];
     }
 
@@ -115,6 +122,45 @@ class KelolaFooterLegalPage extends Page implements HasForms
             ->statePath('cookieData');
     }
 
+    public function sosmedForm(Form $form): Form
+    {
+        return $form
+            ->schema([
+                Section::make('Ikon Sosial Media Footer')
+                    ->description('Tambah, edit, atau hapus ikon sosial media yang muncul di bagian bawah footer. Upload gambar ikon dan isi link URL-nya.')
+                    ->schema([
+                        Repeater::make('social_media_links')
+                            ->label('Daftar Sosial Media')
+                            ->schema([
+                                TextInput::make('nama')
+                                    ->label('Nama Platform')
+                                    ->placeholder('Contoh: Instagram, Twitter, LinkedIn')
+                                    ->required(),
+                                TextInput::make('url')
+                                    ->label('URL Profil')
+                                    ->placeholder('Contoh: https://instagram.com/pradananusaenergi')
+                                    ->url()
+                                    ->required(),
+                                FileUpload::make('ikon')
+                                    ->label('Ikon / Gambar')
+                                    ->image()
+                                    ->directory('uploads/sosmed')
+                                    ->imagePreviewHeight('60')
+                                    ->columnSpanFull()
+                                    ->helperText('Upload gambar ikon (PNG/SVG/JPG, disarankan transparan/PNG)'),
+                            ])
+                            ->columns(2)
+                            ->addActionLabel('+ Tambah Sosial Media')
+                            ->reorderable()
+                            ->collapsible()
+                            ->cloneable()
+                            ->itemLabel(fn (array $state): ?string => $state['nama'] ?? null)
+                            ->columnSpanFull(),
+                    ])
+            ])
+            ->statePath('sosmedData');
+    }
+
     public function savePrivasi(): void
     {
         $data = $this->privasiForm->getState();
@@ -143,5 +189,14 @@ class KelolaFooterLegalPage extends Page implements HasForms
         $settings->kebijakan_cookie_konten = $data['kebijakan_cookie_konten'] ?? null;
         $settings->save();
         Notification::make()->success()->title('Kebijakan Cookie Disimpan!')->send();
+    }
+
+    public function saveSosmed(): void
+    {
+        $data = $this->sosmedForm->getState();
+        $settings = LegalSetting::firstOrNew();
+        $settings->social_media_links = $data['social_media_links'] ?? [];
+        $settings->save();
+        Notification::make()->success()->title('Ikon Sosial Media Disimpan!')->send();
     }
 }

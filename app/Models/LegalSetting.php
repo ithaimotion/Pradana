@@ -15,5 +15,10 @@ class LegalSetting extends Model
         'syarat_ketentuan_konten',
         'kebijakan_cookie_judul',
         'kebijakan_cookie_konten',
+        'social_media_links',
+    ];
+
+    protected $casts = [
+        'social_media_links' => 'array',
     ];
 }

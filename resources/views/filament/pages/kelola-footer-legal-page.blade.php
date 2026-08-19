@@ -13,7 +13,7 @@
             x-on:click="activeTab = 'syarat'"
             icon="heroicon-m-document-text"
         >
-            Syarat & Ketentuan
+            Syarat &amp; Ketentuan
         </x-filament::tabs.item>
 
         <x-filament::tabs.item
@@ -25,6 +25,17 @@
         </x-filament::tabs.item>
     </x-filament::tabs>
 
+    {{-- === SECTION SOSIAL MEDIA – selalu muncul di bawah tabs (tidak berubah saat tab berpindah) === --}}
+    <div class="mt-6">
+        <form wire:submit="saveSosmed">
+            {{ $this->sosmedForm }}
+            <div class="mt-6 text-right">
+                <x-filament::button type="submit" size="lg">Simpan Sosial Media</x-filament::button>
+            </div>
+        </form>
+    </div>
+
+    {{-- === SECTION LEGAL – tampil hanya sesuai tab aktif === --}}
     <div class="mt-6">
         <div x-show="activeTab === 'privasi'" x-cloak>
             <form wire:submit="savePrivasi">
@@ -39,7 +50,7 @@
             <form wire:submit="saveSyarat">
                 {{ $this->syaratForm }}
                 <div class="mt-6 text-right">
-                    <x-filament::button type="submit" size="lg">Simpan Syarat & Ketentuan</x-filament::button>
+                    <x-filament::button type="submit" size="lg">Simpan Syarat &amp; Ketentuan</x-filament::button>
                 </div>
             </form>
         </div>
@@ -52,5 +63,6 @@
                 </div>
             </form>
         </div>
+
     </div>
 </x-filament-panels::page>
