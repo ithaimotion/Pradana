@@ -25,4 +25,17 @@ class ProfilPerusahaan extends Model
         'nilai_perusahaan' => 'array',
         'misi' => 'array',
     ];
+
+    public function getUrlGambarAttribute($value)
+    {
+        if (!$value) {
+            return null;
+        }
+
+        if (str_starts_with($value, 'http://') || str_starts_with($value, 'https://')) {
+            return $value;
+        }
+
+        return asset('storage_public/' . ltrim($value, '/'));
+    }
 }

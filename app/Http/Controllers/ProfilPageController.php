@@ -116,6 +116,7 @@ class ProfilPageController extends Controller
             $konten->konten = null;
             $konten->url_gambar = null;
         }
-        return view('pages.profil.sop', compact('konten'));
+        $sopItems = \App\Models\SopItem::where('status_aktif', true)->orderBy('urutan')->get();
+        return view('pages.profil.sop', compact('konten', 'sopItems'));
     }
 }

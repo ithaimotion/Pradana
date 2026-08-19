@@ -28,10 +28,12 @@
             <!-- Filters -->
             <div class="flex flex-wrap justify-center gap-3 mb-12 reveal-on-scroll">
                 <button onclick="filterGallery('all')" class="gallery-filter-btn active-filter px-6 py-2 rounded-full text-sm font-bold border transition-all">Semua</button>
-                <button onclick="filterGallery('inspeksi-tr')" class="gallery-filter-btn px-6 py-2 rounded-full text-sm font-bold border border-slate-200 text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-all">Tegangan Rendah (TR)</button>
-                <button onclick="filterGallery('inspeksi-tm')" class="gallery-filter-btn px-6 py-2 rounded-full text-sm font-bold border border-slate-200 text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-all">Tegangan Menengah (TM)</button>
-                <button onclick="filterGallery('pembangkit')" class="gallery-filter-btn px-6 py-2 rounded-full text-sm font-bold border border-slate-200 text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-all">PLTS & Genset</button>
-                <button onclick="filterGallery('kegiatan')" class="gallery-filter-btn px-6 py-2 rounded-full text-sm font-bold border border-slate-200 text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-all">Acara / Internal</button>
+                @php
+                    $uniqueCategories = collect($galeri)->pluck('badge_kategori')->filter()->unique()->values();
+                @endphp
+                @foreach($uniqueCategories as $kat)
+                    <button onclick="filterGallery('{{ Str::slug($kat) }}')" class="gallery-filter-btn px-6 py-2 rounded-full text-sm font-bold border border-slate-200 text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-all">{{ $kat }}</button>
+                @endforeach
             </div>
 
             <!-- Gallery Grid -->
@@ -40,25 +42,12 @@
                 @forelse($galeri as $index => $item)
                     @php
                         $delay = ($index % 3) * 100;
-                        
-                        // Set colors and labels based on category
-                        $category = $item->category ?? 'inspeksi-tr'; // fallback
+                        $label = $item->badge_kategori ?? 'Umum';
+                        $categorySlug = Str::slug($label);
                         $badgeColor = 'bg-blue-500';
-                        $label = 'Tegangan Rendah';
-                        
-                        if ($category == 'inspeksi-tm') {
-                            $badgeColor = 'bg-blue-600';
-                            $label = 'Tegangan Menengah';
-                        } elseif ($category == 'pembangkit') {
-                            $badgeColor = 'bg-teal-500';
-                            $label = 'PLTS & Genset';
-                        } elseif ($category == 'kegiatan') {
-                            $badgeColor = 'bg-purple-500';
-                            $label = 'Internal';
-                        }
                     @endphp
                     <!-- Item -->
-                    <div class="gallery-item group relative overflow-hidden rounded-2xl shadow-md hover:shadow-2xl hover:shadow-blue-900/30 transition-all duration-300 cursor-pointer reveal-on-scroll {{ $delay > 0 ? 'delay-'.$delay : '' }}" data-category="{{ $category }}" onclick="openLightbox(this)">
+                    <div class="gallery-item group relative overflow-hidden rounded-2xl shadow-md hover:shadow-2xl hover:shadow-blue-900/30 transition-all duration-300 cursor-pointer reveal-on-scroll {{ $delay > 0 ? 'delay-'.$delay : '' }}" data-category="{{ $categorySlug }}" onclick="openLightbox(this)">
                         <!-- Image -->
                         <div class="relative overflow-hidden h-60">
                             <img src="{{ optional($item)->url_gambar ?? 'https://placehold.co/600x400/e2e8f0/475569?text=Gallery' }}" alt="{{ $item->judul }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">

@@ -44,6 +44,11 @@ class GaleriResource extends Resource
                             ->label('Judul / Keterangan Foto')
                             ->placeholder('Contoh: Inspeksi Genset Sub-station')
                             ->columnSpanFull(),
+                        Forms\Components\TextInput::make('badge_kategori')
+                            ->label('Kategori (Badge)')
+                            ->placeholder('Contoh: Tegangan Rendah, Tegangan Tinggi')
+                            ->required()
+                            ->columnSpanFull(),
                         Forms\Components\TextInput::make('urutan')
                             ->label('Urutan Tampil')
                             ->numeric()
@@ -65,6 +70,10 @@ class GaleriResource extends Resource
                 Tables\Columns\TextColumn::make('judul')
                     ->label('Judul / Keterangan')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('badge_kategori')
+                    ->label('Kategori')
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('urutan')
                     ->label('Urutan')
                     ->sortable(),

@@ -36,11 +36,11 @@
     <section class="bg-white border-b border-slate-200 reveal-on-scroll">
         <div class="max-w-7xl mx-auto px-6 py-5 grid grid-cols-2 md:grid-cols-4 divide-x divide-slate-200">
             <div class="px-6 text-center">
-                <div class="text-2xl font-extrabold text-blue-900">12</div>
+                <div class="text-2xl font-extrabold text-blue-900">{{ count($sopItems ?? []) }}</div>
                 <div class="text-xs text-slate-500 font-medium mt-0.5">Total Dokumen SOP</div>
             </div>
             <div class="px-6 text-center">
-                <div class="text-2xl font-extrabold text-blue-900">4</div>
+                <div class="text-2xl font-extrabold text-blue-900">{{ collect($sopItems ?? [])->pluck('kategori')->unique()->count() }}</div>
                 <div class="text-xs text-slate-500 font-medium mt-0.5">Kategori SOP</div>
             </div>
             <div class="px-6 text-center">
@@ -64,24 +64,25 @@
                 <div class="flex flex-wrap gap-2">
                     <button onclick="filterSOP('semua')" id="btn-semua"
                         class="sop-filter-btn active-filter px-4 py-2 rounded-full text-sm font-semibold border transition-all">
-                        Semua (12)
+                        Semua ({{ count($sopItems ?? []) }})
                     </button>
-                    <button onclick="filterSOP('mutu')" id="btn-mutu"
-                        class="sop-filter-btn px-4 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:border-blue-700 hover:text-blue-700 transition-all">
-                        ?? Mutu & Manajemen
-                    </button>
-                    <button onclick="filterSOP('inspeksi')" id="btn-inspeksi"
-                        class="sop-filter-btn px-4 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:border-blue-500 hover:text-blue-500 transition-all">
-                        ?? Inspeksi Teknik
-                    </button>
-                    <button onclick="filterSOP('pelayanan')" id="btn-pelayanan"
-                        class="sop-filter-btn px-4 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:border-teal-600 hover:text-teal-600 transition-all">
-                        ?? Pelayanan
-                    </button>
-                    <button onclick="filterSOP('sdm')" id="btn-sdm"
-                        class="sop-filter-btn px-4 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:border-purple-600 hover:text-purple-600 transition-all">
-                        ?? SDM & Sarana
-                    </button>
+                    @php
+                        $uniqueKategori = collect($sopItems ?? [])->pluck('kategori')->unique()->filter()->values();
+                    @endphp
+                    @foreach($uniqueKategori as $kat)
+                        @php
+                            $katSlug = Str::slug($kat);
+                            $lowerKat = strtolower($kat);
+                            $hoverColor = 'blue-600';
+                            if (str_contains($lowerKat, 'pelayanan')) $hoverColor = 'teal-600';
+                            if (str_contains($lowerKat, 'sdm') || str_contains($lowerKat, 'sarana')) $hoverColor = 'purple-600';
+                            if (str_contains($lowerKat, 'mutu')) $hoverColor = 'blue-800';
+                        @endphp
+                        <button onclick="filterSOP('{{ $katSlug }}')" id="btn-{{ $katSlug }}"
+                            class="sop-filter-btn px-4 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:border-{{ $hoverColor }} hover:text-{{ $hoverColor }} transition-all">
+                            📄 {{ $kat }}
+                        </button>
+                    @endforeach
                 </div>
                 <!-- Search -->
                 <div class="relative w-full md:w-64">
@@ -97,372 +98,73 @@
             <!-- SOP List -->
             <div id="sop-list" class="space-y-4 reveal-on-scroll delay-100">
 
-                <!-- ======== MUTU & MANAJEMEN ======== -->
-                <div class="sop-item" data-kategori="mutu" data-nama="sop manual mutu iso">
-                    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                        <div class="flex items-stretch">
-                            <!-- Color accent + icon -->
-                            <div class="w-2 bg-blue-900 flex-shrink-0 rounded-l-2xl"></div>
-                            <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
-                                <!-- Icon -->
-                                <div class="w-12 h-12 bg-blue-50 text-blue-900 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    ??
-                                </div>
-                                <!-- Info -->
-                                <div class="flex-1">
-                                    <div class="flex flex-wrap items-center gap-2 mb-1">
-                                        <span class="text-xs font-bold bg-blue-100 text-blue-800 border border-blue-200 px-2 py-0.5 rounded-full">Mutu & Manajemen</span>
-                                        <span class="text-xs text-slate-600 dark:text-slate-400">SOP-MM-001</span>
+                @forelse($sopItems as $item)
+                    @php
+                        $kat = strtolower($item->kategori);
+                        $colorPrefix = 'blue';
+                        $iconStr = '📄';
+                        
+                        if (str_contains($kat, 'mutu') || str_contains($kat, 'manajemen')) {
+                            $colorPrefix = 'blue-900';
+                            $lightBg = 'bg-blue-50'; $darkText = 'text-blue-900'; $accentBg = 'bg-blue-900'; $badgeBg = 'bg-blue-100'; $badgeText = 'text-blue-800';
+                        } elseif (str_contains($kat, 'inspeksi') || str_contains($kat, 'teknik')) {
+                            $colorPrefix = 'blue-600';
+                            $lightBg = 'bg-blue-50'; $darkText = 'text-blue-700'; $accentBg = 'bg-blue-600'; $badgeBg = 'bg-blue-100'; $badgeText = 'text-blue-700';
+                        } elseif (str_contains($kat, 'pelayanan')) {
+                            $colorPrefix = 'teal-600';
+                            $lightBg = 'bg-teal-50'; $darkText = 'text-teal-700'; $accentBg = 'bg-teal-600'; $badgeBg = 'bg-teal-100'; $badgeText = 'text-teal-800';
+                        } elseif (str_contains($kat, 'sdm') || str_contains($kat, 'sarana')) {
+                            $colorPrefix = 'purple-600';
+                            $lightBg = 'bg-purple-50'; $darkText = 'text-purple-700'; $accentBg = 'bg-purple-600'; $badgeBg = 'bg-purple-100'; $badgeText = 'text-purple-800';
+                        } else {
+                            $colorPrefix = 'slate-600';
+                            $lightBg = 'bg-slate-100'; $darkText = 'text-slate-700'; $accentBg = 'bg-slate-600'; $badgeBg = 'bg-slate-200'; $badgeText = 'text-slate-800';
+                        }
+                    @endphp
+                    <div class="sop-item" data-kategori="{{ Str::slug($item->kategori) }}" data-nama="{{ strtolower($item->judul . ' ' . $item->deskripsi) }}">
+                        <div class="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
+                            <div class="flex items-stretch">
+                                <!-- Color accent -->
+                                <div class="w-2 {{ $accentBg }} flex-shrink-0 rounded-l-2xl"></div>
+                                <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
+                                    <!-- Icon -->
+                                    <div class="w-12 h-12 {{ $lightBg }} {{ $darkText }} rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
+                                        {{ $iconStr }}
                                     </div>
-                                    <h3 class="font-extrabold text-slate-900 text-base group-hover:text-blue-900 transition-colors">SOP Manual Mutu</h3>
-                                    <p class="text-xs text-slate-500 mt-0.5">Panduan sistem manajemen mutu berdasarkan standar SNI ISO/IEC 17020:2012 untuk seluruh kegiatan inspeksi.</p>
-                                </div>
-                                <!-- Meta & Action -->
-                                <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Jan 2026 � Rev.05</span>
-                                    <a href="#" class="flex items-center gap-1.5 bg-blue-900 hover:bg-blue-800 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
-                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
-                                        </svg>
-                                        Unduh PDF
-                                    </a>
+                                    <!-- Info -->
+                                    <div class="flex-1">
+                                        <div class="flex flex-wrap items-center gap-2 mb-1">
+                                            <span class="text-xs font-bold {{ $badgeBg }} {{ $badgeText }} border border-transparent px-2 py-0.5 rounded-full">{{ $item->kategori }}</span>
+                                            @if($item->kode)
+                                            <span class="text-xs text-slate-600 dark:text-slate-400">{{ $item->kode }}</span>
+                                            @endif
+                                        </div>
+                                        <h3 class="font-extrabold text-slate-900 text-base group-hover:{{ $darkText }} transition-colors">{{ $item->judul }}</h3>
+                                        <p class="text-xs text-slate-500 mt-0.5">{{ Str::limit($item->deskripsi, 150) }}</p>
+                                    </div>
+                                    <!-- Meta & Action -->
+                                    <div class="flex flex-col items-end gap-3 flex-shrink-0">
+                                        @if($item->revisi)
+                                        <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">{{ $item->revisi }}</span>
+                                        @endif
+                                        @if($item->url_dokumen)
+                                        <a href="{{ str_starts_with($item->url_dokumen, 'http') ? $item->url_dokumen : asset('storage_public/' . ltrim($item->url_dokumen, '/')) }}" target="_blank" class="flex items-center gap-1.5 {{ $accentBg }} hover:opacity-90 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+                                            </svg>
+                                            Unduh
+                                        </a>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- ======== INSPEKSI ======== -->
-                <div class="sop-item" data-kategori="inspeksi" data-nama="sop pemeriksaan pengujian inspeksi laik operasi plts">
-                    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                        <div class="flex items-stretch">
-                            <div class="w-2 bg-blue-600 flex-shrink-0 rounded-l-2xl"></div>
-                            <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
-                                <div class="w-12 h-12 bg-blue-50 text-blue-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    ??
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex flex-wrap items-center gap-2 mb-1">
-                                        <span class="text-xs font-bold bg-blue-100 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full">Inspeksi Teknik</span>
-                                        <span class="text-xs text-slate-600 dark:text-slate-400">SOP-INS-001</span>
-                                    </div>
-                                    <h3 class="font-extrabold text-slate-900 text-base group-hover:text-blue-600 transition-colors">SOP Pemeriksaan & Pengujian Laik Operasi PLTS</h3>
-                                    <p class="text-xs text-slate-500 mt-0.5">Prosedur inspeksi dan pengujian instalasi Pembangkit Listrik Tenaga Surya untuk penerbitan SLO.</p>
-                                </div>
-                                <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Feb 2026 � Rev.03</span>
-                                    <a href="#" class="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
-                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
-                                        </svg>
-                                        Unduh PDF
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                @empty
+                    <div class="col-span-full text-center py-10">
+                        <p class="text-slate-500">Belum ada dokumen SOP yang dipublikasikan.</p>
                     </div>
-                </div>
-
-                <div class="sop-item" data-kategori="inspeksi" data-nama="sop pemeriksaan sutm saluran udara tegangan menengah">
-                    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                        <div class="flex items-stretch">
-                            <div class="w-2 bg-blue-600 flex-shrink-0 rounded-l-2xl"></div>
-                            <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
-                                <div class="w-12 h-12 bg-blue-50 text-blue-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    ?
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex flex-wrap items-center gap-2 mb-1">
-                                        <span class="text-xs font-bold bg-blue-100 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full">Inspeksi Teknik</span>
-                                        <span class="text-xs text-slate-600 dark:text-slate-400">SOP-INS-002</span>
-                                    </div>
-                                    <h3 class="font-extrabold text-slate-900 text-base group-hover:text-blue-600 transition-colors">SOP Pemeriksaan SUTM</h3>
-                                    <p class="text-xs text-slate-500 mt-0.5">Prosedur pemeriksaan Saluran Udara Tegangan Menengah (SUTM) sesuai standar PLN & PUIL.</p>
-                                </div>
-                                <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Jan 2026 � Rev.04</span>
-                                    <a href="#" class="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
-                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
-                                        </svg>
-                                        Unduh PDF
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sop-item" data-kategori="inspeksi" data-nama="sop pemeriksaan sktm saluran kabel tegangan menengah">
-                    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                        <div class="flex items-stretch">
-                            <div class="w-2 bg-blue-600 flex-shrink-0 rounded-l-2xl"></div>
-                            <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
-                                <div class="w-12 h-12 bg-blue-50 text-blue-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    ??
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex flex-wrap items-center gap-2 mb-1">
-                                        <span class="text-xs font-bold bg-blue-100 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full">Inspeksi Teknik</span>
-                                        <span class="text-xs text-slate-600 dark:text-slate-400">SOP-INS-003</span>
-                                    </div>
-                                    <h3 class="font-extrabold text-slate-900 text-base group-hover:text-blue-600 transition-colors">SOP Pemeriksaan SKTM</h3>
-                                    <p class="text-xs text-slate-500 mt-0.5">Prosedur pemeriksaan Saluran Kabel Tegangan Menengah (SKTM) bawah tanah dan kabel laut.</p>
-                                </div>
-                                <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Mar 2026 � Rev.02</span>
-                                    <a href="#" class="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
-                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
-                                        </svg>
-                                        Unduh PDF
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sop-item" data-kategori="inspeksi" data-nama="sop inspeksi gardu distribusi pasangan luar">
-                    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                        <div class="flex items-stretch">
-                            <div class="w-2 bg-blue-600 flex-shrink-0 rounded-l-2xl"></div>
-                            <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
-                                <div class="w-12 h-12 bg-blue-50 text-blue-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    ???
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex flex-wrap items-center gap-2 mb-1">
-                                        <span class="text-xs font-bold bg-blue-100 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full">Inspeksi Teknik</span>
-                                        <span class="text-xs text-slate-600 dark:text-slate-400">SOP-INS-004</span>
-                                    </div>
-                                    <h3 class="font-extrabold text-slate-900 text-base group-hover:text-blue-600 transition-colors">SOP Inspeksi Gardu Distribusi Pasangan Luar</h3>
-                                    <p class="text-xs text-slate-500 mt-0.5">Prosedur inspeksi gardu distribusi tipe pasangan luar (outdoor) sesuai standar PLN P.85.</p>
-                                </div>
-                                <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Feb 2026 � Rev.03</span>
-                                    <a href="#" class="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
-                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
-                                        </svg>
-                                        Unduh PDF
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sop-item" data-kategori="inspeksi" data-nama="sop inspeksi gardu distribusi pasangan dalam">
-                    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                        <div class="flex items-stretch">
-                            <div class="w-2 bg-blue-600 flex-shrink-0 rounded-l-2xl"></div>
-                            <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
-                                <div class="w-12 h-12 bg-blue-50 text-blue-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    ??
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex flex-wrap items-center gap-2 mb-1">
-                                        <span class="text-xs font-bold bg-blue-100 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full">Inspeksi Teknik</span>
-                                        <span class="text-xs text-slate-600 dark:text-slate-400">SOP-INS-005</span>
-                                    </div>
-                                    <h3 class="font-extrabold text-slate-900 text-base group-hover:text-blue-600 transition-colors">SOP Inspeksi Gardu Distribusi Pasangan Dalam</h3>
-                                    <p class="text-xs text-slate-500 mt-0.5">Prosedur inspeksi gardu distribusi tipe pasangan dalam (indoor) untuk kawasan industri & gedung.</p>
-                                </div>
-                                <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Feb 2026 � Rev.03</span>
-                                    <a href="#" class="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
-                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
-                                        </svg>
-                                        Unduh PDF
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ======== PELAYANAN ======== -->
-                <div class="sop-item" data-kategori="pelayanan" data-nama="sop pengurusan slo tm tegangan menengah">
-                    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                        <div class="flex items-stretch">
-                            <div class="w-2 bg-teal-600 flex-shrink-0 rounded-l-2xl"></div>
-                            <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
-                                <div class="w-12 h-12 bg-teal-50 text-teal-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    ??
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex flex-wrap items-center gap-2 mb-1">
-                                        <span class="text-xs font-bold bg-teal-100 text-teal-800 border border-teal-200 px-2 py-0.5 rounded-full">Pelayanan</span>
-                                        <span class="text-xs text-slate-600 dark:text-slate-400">SOP-PLY-001</span>
-                                    </div>
-                                    <h3 class="font-extrabold text-slate-900 text-base group-hover:text-teal-700 transition-colors">SOP Pengurusan SLO Tegangan Menengah (TM)</h3>
-                                    <p class="text-xs text-slate-500 mt-0.5">Alur proses pengajuan, pemeriksaan, hingga penerbitan Sertifikat Laik Operasi tegangan menengah.</p>
-                                </div>
-                                <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Apr 2026 � Rev.06</span>
-                                    <a href="#" class="flex items-center gap-1.5 bg-teal-600 hover:bg-teal-700 text-slate-900 dark:text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
-                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
-                                        </svg>
-                                        Unduh PDF
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sop-item" data-kategori="pelayanan" data-nama="sop standar pelayanan">
-                    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                        <div class="flex items-stretch">
-                            <div class="w-2 bg-teal-600 flex-shrink-0 rounded-l-2xl"></div>
-                            <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
-                                <div class="w-12 h-12 bg-teal-50 text-teal-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    ??
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex flex-wrap items-center gap-2 mb-1">
-                                        <span class="text-xs font-bold bg-teal-100 text-teal-800 border border-teal-200 px-2 py-0.5 rounded-full">Pelayanan</span>
-                                        <span class="text-xs text-slate-600 dark:text-slate-400">SOP-PLY-002</span>
-                                    </div>
-                                    <h3 class="font-extrabold text-slate-900 text-base group-hover:text-teal-700 transition-colors">SOP Standar Pelayanan</h3>
-                                    <p class="text-xs text-slate-500 mt-0.5">Standar layanan kepada pemohon SLO mencakup waktu respons, etika komunikasi, dan penanganan permintaan.</p>
-                                </div>
-                                <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Jan 2026 � Rev.04</span>
-                                    <a href="#" class="flex items-center gap-1.5 bg-teal-600 hover:bg-teal-700 text-slate-900 dark:text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
-                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
-                                        </svg>
-                                        Unduh PDF
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sop-item" data-kategori="pelayanan" data-nama="sop pelayanan sarana dan prasarana">
-                    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                        <div class="flex items-stretch">
-                            <div class="w-2 bg-teal-600 flex-shrink-0 rounded-l-2xl"></div>
-                            <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
-                                <div class="w-12 h-12 bg-teal-50 text-teal-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    ???
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex flex-wrap items-center gap-2 mb-1">
-                                        <span class="text-xs font-bold bg-teal-100 text-teal-800 border border-teal-200 px-2 py-0.5 rounded-full">Pelayanan</span>
-                                        <span class="text-xs text-slate-600 dark:text-slate-400">SOP-PLY-003</span>
-                                    </div>
-                                    <h3 class="font-extrabold text-slate-900 text-base group-hover:text-teal-700 transition-colors">SOP Pelayanan Sarana & Prasarana</h3>
-                                    <p class="text-xs text-slate-500 mt-0.5">Prosedur pengelolaan dan pemeliharaan fasilitas, ruang kerja, dan sarana pendukung operasional.</p>
-                                </div>
-                                <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Mar 2026 � Rev.02</span>
-                                    <a href="#" class="flex items-center gap-1.5 bg-teal-600 hover:bg-teal-700 text-slate-900 dark:text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
-                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
-                                        </svg>
-                                        Unduh PDF
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sop-item" data-kategori="pelayanan" data-nama="sop keluhan dan banding">
-                    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                        <div class="flex items-stretch">
-                            <div class="w-2 bg-teal-600 flex-shrink-0 rounded-l-2xl"></div>
-                            <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
-                                <div class="w-12 h-12 bg-teal-50 text-teal-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    ??
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex flex-wrap items-center gap-2 mb-1">
-                                        <span class="text-xs font-bold bg-teal-100 text-teal-800 border border-teal-200 px-2 py-0.5 rounded-full">Pelayanan</span>
-                                        <span class="text-xs text-slate-600 dark:text-slate-400">SOP-PLY-004</span>
-                                    </div>
-                                    <h3 class="font-extrabold text-slate-900 text-base group-hover:text-teal-700 transition-colors">SOP Keluhan & Banding</h3>
-                                    <p class="text-xs text-slate-500 mt-0.5">Mekanisme penerimaan, penanganan, dan tindak lanjut atas keluhan dan banding dari pemohon atau pelanggan.</p>
-                                </div>
-                                <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Jan 2026 � Rev.03</span>
-                                    <a href="#" class="flex items-center gap-1.5 bg-teal-600 hover:bg-teal-700 text-slate-900 dark:text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
-                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
-                                        </svg>
-                                        Unduh PDF
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ======== SDM ======== -->
-                <div class="sop-item" data-kategori="sdm" data-nama="sop kalibrasi peralatan">
-                    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                        <div class="flex items-stretch">
-                            <div class="w-2 bg-purple-600 flex-shrink-0 rounded-l-2xl"></div>
-                            <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
-                                <div class="w-12 h-12 bg-purple-50 text-purple-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    ??
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex flex-wrap items-center gap-2 mb-1">
-                                        <span class="text-xs font-bold bg-purple-100 text-purple-800 border border-purple-200 px-2 py-0.5 rounded-full">SDM & Sarana</span>
-                                        <span class="text-xs text-slate-600 dark:text-slate-400">SOP-SDM-001</span>
-                                    </div>
-                                    <h3 class="font-extrabold text-slate-900 text-base group-hover:text-purple-700 transition-colors">SOP Kalibrasi Peralatan</h3>
-                                    <p class="text-xs text-slate-500 mt-0.5">Prosedur kalibrasi berkala seluruh instrumen ukur dan uji untuk menjamin akurasi dan ketertelusuran hasil.</p>
-                                </div>
-                                <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Apr 2026 � Rev.04</span>
-                                    <a href="#" class="flex items-center gap-1.5 bg-purple-600 hover:bg-purple-700 text-slate-900 dark:text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
-                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
-                                        </svg>
-                                        Unduh PDF
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sop-item" data-kategori="sdm" data-nama="sop pengelolaan sdm sumber daya manusia">
-                    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                        <div class="flex items-stretch">
-                            <div class="w-2 bg-purple-600 flex-shrink-0 rounded-l-2xl"></div>
-                            <div class="flex-1 flex flex-col md:flex-row items-start md:items-center gap-4 p-5 md:p-6">
-                                <div class="w-12 h-12 bg-purple-50 text-purple-700 rounded-xl flex items-center justify-center flex-shrink-0 text-xl font-bold shadow-sm">
-                                    ??
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex flex-wrap items-center gap-2 mb-1">
-                                        <span class="text-xs font-bold bg-purple-100 text-purple-800 border border-purple-200 px-2 py-0.5 rounded-full">SDM & Sarana</span>
-                                        <span class="text-xs text-slate-600 dark:text-slate-400">SOP-SDM-002</span>
-                                    </div>
-                                    <h3 class="font-extrabold text-slate-900 text-base group-hover:text-purple-700 transition-colors">SOP Pengelolaan SDM</h3>
-                                    <p class="text-xs text-slate-500 mt-0.5">Prosedur rekrutmen, pelatihan, evaluasi kompetensi, dan pengembangan tenaga teknik perusahaan.</p>
-                                </div>
-                                <div class="flex flex-col items-end gap-3 flex-shrink-0">
-                                    <span class="text-xs text-slate-600 dark:text-slate-400 whitespace-nowrap">Revisi: Feb 2026 � Rev.03</span>
-                                    <a href="#" class="flex items-center gap-1.5 bg-purple-600 hover:bg-purple-700 text-slate-900 dark:text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
-                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
-                                        </svg>
-                                        Unduh PDF
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                @endforelse>
                 </div>
 
                 <!-- Empty state -->
