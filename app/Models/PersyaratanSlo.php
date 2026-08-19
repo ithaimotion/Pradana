@@ -9,26 +9,24 @@ class PersyaratanSlo extends Model
     protected $table = 'persyaratan_slo';
     
     protected $fillable = [
-        'tr_admin',
-        'tr_teknis',
-        'tm_admin',
-        'tm_teknis',
+        'distribusi_admin',
+        'distribusi_teknis',
+        'iptl_tm_admin',
+        'iptl_tm_teknis',
         'plts_admin',
         'plts_teknis',
-        'genset_admin',
-        'genset_teknis',
-        'iptl_tm',
+        'pltd_admin',
+        'pltd_teknis',
     ];
     
     protected $casts = [
-        'tr_admin' => 'array',
-        'tr_teknis' => 'array',
-        'tm_admin' => 'array',
-        'tm_teknis' => 'array',
+        'distribusi_admin' => 'array',
+        'distribusi_teknis' => 'array',
+        'iptl_tm_admin' => 'array',
+        'iptl_tm_teknis' => 'array',
         'plts_admin' => 'array',
         'plts_teknis' => 'array',
-        'genset_admin' => 'array',
-        'genset_teknis' => 'array',
-        'iptl_tm' => 'array',
+        'pltd_admin' => 'array',
+        'pltd_teknis' => 'array',
     ];
 }

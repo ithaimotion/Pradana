@@ -35,29 +35,40 @@ class PersyaratanSloPage extends Page
             ->schema([
                 Tabs::make('Persyaratan SLO')
                     ->tabs([
-                        Tabs\Tab::make('Tegangan Rendah')
+                        Tabs\Tab::make('SLO IPTL TM')
                             ->schema([
-                                Repeater::make('tr_admin')
+                                Repeater::make('iptl_tm_admin')
                                     ->label('Persyaratan Administrasi')
                                     ->simple(TextInput::make('item')->required())
                                     ->addActionLabel('Tambah Item'),
-                                Repeater::make('tr_teknis')
+                                Repeater::make('iptl_tm_teknis')
                                     ->label('Persyaratan Teknis')
                                     ->simple(TextInput::make('item')->required())
                                     ->addActionLabel('Tambah Item'),
                             ]),
-                        Tabs\Tab::make('Tegangan Menengah')
+                        Tabs\Tab::make('SLO Distribusi')
                             ->schema([
-                                Repeater::make('tm_admin')
+                                Repeater::make('distribusi_admin')
                                     ->label('Persyaratan Administrasi')
                                     ->simple(TextInput::make('item')->required())
                                     ->addActionLabel('Tambah Item'),
-                                Repeater::make('tm_teknis')
+                                Repeater::make('distribusi_teknis')
                                     ->label('Persyaratan Teknis')
                                     ->simple(TextInput::make('item')->required())
                                     ->addActionLabel('Tambah Item'),
                             ]),
-                        Tabs\Tab::make('PLTS')
+                        Tabs\Tab::make('SLO PLTD')
+                            ->schema([
+                                Repeater::make('pltd_admin')
+                                    ->label('Persyaratan Administrasi')
+                                    ->simple(TextInput::make('item')->required())
+                                    ->addActionLabel('Tambah Item'),
+                                Repeater::make('pltd_teknis')
+                                    ->label('Persyaratan Teknis')
+                                    ->simple(TextInput::make('item')->required())
+                                    ->addActionLabel('Tambah Item'),
+                            ]),
+                        Tabs\Tab::make('SLO PLTS')
                             ->schema([
                                 Repeater::make('plts_admin')
                                     ->label('Persyaratan Administrasi')
@@ -65,25 +76,6 @@ class PersyaratanSloPage extends Page
                                     ->addActionLabel('Tambah Item'),
                                 Repeater::make('plts_teknis')
                                     ->label('Persyaratan Teknis')
-                                    ->simple(TextInput::make('item')->required())
-                                    ->addActionLabel('Tambah Item'),
-                            ]),
-                        Tabs\Tab::make('Genset')
-                            ->schema([
-                                Repeater::make('genset_admin')
-                                    ->label('Persyaratan Administrasi')
-                                    ->simple(TextInput::make('item')->required())
-                                    ->addActionLabel('Tambah Item'),
-                                Repeater::make('genset_teknis')
-                                    ->label('Persyaratan Teknis')
-                                    ->simple(TextInput::make('item')->required())
-                                    ->addActionLabel('Tambah Item'),
-                            ]),
-                        Tabs\Tab::make('IPTL TM')
-                            ->schema([
-                                Repeater::make('iptl_tm')
-                                    ->label('Daftar Persyaratan')
-                                    ->helperText('Persyaratan Dokumen SLO IPTL TM PT Pradana Nusa Energi')
                                     ->simple(TextInput::make('item')->required())
                                     ->addActionLabel('Tambah Item'),
                             ]),
