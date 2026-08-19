@@ -47,10 +47,13 @@
         
         $warningDocs = 0;
         foreach($allItems as $item) {
-            if ($item->berlaku_sampai && \Carbon\Carbon::parse($item->berlaku_sampai)->isPast()) {
-                $warningDocs++;
-            } elseif ($item->berlaku_sampai && \Carbon\Carbon::parse($item->berlaku_sampai)->diffInDays(now()) < 30) {
-                $warningDocs++;
+            if ($item->berlaku_sampai) {
+                $berlakuDate = \Carbon\Carbon::parse($item->berlaku_sampai)->startOfDay();
+                if ($berlakuDate->isPast()) {
+                    $warningDocs++;
+                } elseif (now()->startOfDay()->diffInDays($berlakuDate, false) <= 30) {
+                    $warningDocs++;
+                }
             }
         }
     @endphp
@@ -94,106 +97,196 @@
             @endif
 
             {{-- Tables per Kategori --}}
-            <div class="space-y-14">
+            <div class="space-y-10">
                 @forelse($grouped as $kategori => $items)
-                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden reveal-on-scroll">
-                        
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-md overflow-hidden reveal-on-scroll">
+
                         {{-- Header kategori --}}
-                        <div class="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-slate-50 to-white border-b border-slate-200">
-                            <div class="flex items-center gap-3">
-                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 border border-blue-200">
-                                    <svg class="w-4 h-4 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="flex items-center justify-between px-7 py-5 bg-gradient-to-r from-blue-900 via-slate-800 to-slate-900">
+                            <div class="flex items-center gap-3.5">
+                                <div class="w-9 h-9 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0 ring-1 ring-white/20">
+                                    <svg class="w-5 h-5 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                     </svg>
                                 </div>
                                 <div>
-                                    <h2 class="text-slate-800 font-extrabold text-lg leading-tight">{{ $kategori }}</h2>
+                                    <p class="text-blue-300 text-[10px] font-bold tracking-widest uppercase mb-0.5">Dokumen Legalitas</p>
+                                    <h2 class="text-white font-extrabold text-base leading-tight">{{ $kategori }}</h2>
                                 </div>
                             </div>
+                            <span class="text-xs font-bold bg-white/10 text-white/80 px-3 py-1 rounded-full border border-white/10">
+                                {{ $items->count() }} Dokumen
+                            </span>
                         </div>
 
                         {{-- Table --}}
                         <div class="overflow-x-auto">
                             <table class="w-full text-left">
                                 <thead>
-                                    <tr class="bg-white border-b border-slate-100">
-                                        <th class="py-5 px-5 w-12 text-center text-[11px] font-extrabold text-slate-500 uppercase tracking-wider">No</th>
-                                        <th class="py-5 px-5 text-[11px] font-extrabold text-slate-500 uppercase tracking-wider">Jenis Perizinan</th>
-                                        <th class="py-5 px-5 text-[11px] font-extrabold text-slate-500 uppercase tracking-wider">Bidang</th>
-                                        <th class="py-5 px-5 text-[11px] font-extrabold text-slate-500 uppercase tracking-wider">Sub Bidang</th>
-                                        <th class="py-5 px-5 text-[11px] font-extrabold text-slate-500 uppercase tracking-wider whitespace-nowrap">Nomor Sertifikat</th>
-                                        <th class="py-5 px-5 text-[11px] font-extrabold text-slate-500 uppercase tracking-wider whitespace-nowrap">Nomor Registrasi</th>
-                                        <th class="py-5 px-5 text-[11px] font-extrabold text-slate-500 uppercase tracking-wider whitespace-nowrap">Tanggal Terbit</th>
-                                        <th class="py-5 px-5 text-[11px] font-extrabold text-slate-500 uppercase tracking-wider whitespace-nowrap">Tanggal Habis Berlaku</th>
-                                        <th class="py-5 px-5 text-[11px] font-extrabold text-slate-500 uppercase tracking-wider text-center">Dokumen</th>
+                                    <tr class="bg-slate-50 border-b-2 border-slate-200">
+                                        <th class="py-4 px-4 w-14 text-center text-[10px] font-extrabold text-slate-400 uppercase tracking-widest whitespace-nowrap">No</th>
+                                        <th class="py-4 px-4 text-[10px] font-extrabold text-slate-400 uppercase tracking-widest whitespace-nowrap">Jenis Perizinan</th>
+                                        <th class="py-4 px-4 text-[10px] font-extrabold text-slate-400 uppercase tracking-widest whitespace-nowrap">Bidang</th>
+                                        <th class="py-4 px-4 text-[10px] font-extrabold text-slate-400 uppercase tracking-widest whitespace-nowrap">Sub Bidang</th>
+                                        <th class="py-4 px-4 text-[10px] font-extrabold text-slate-400 uppercase tracking-widest whitespace-nowrap">No. Sertifikat</th>
+                                        <th class="py-4 px-4 text-[10px] font-extrabold text-slate-400 uppercase tracking-widest whitespace-nowrap">No. Registrasi</th>
+                                        <th class="py-4 px-4 text-[10px] font-extrabold text-slate-400 uppercase tracking-widest whitespace-nowrap">Tgl. Terbit</th>
+                                        <th class="py-4 px-4 text-[10px] font-extrabold text-slate-400 uppercase tracking-widest whitespace-nowrap">Habis Berlaku</th>
+                                        <th class="py-4 px-4 text-[10px] font-extrabold text-slate-400 uppercase tracking-widest text-center whitespace-nowrap">Dokumen</th>
                                     </tr>
                                 </thead>
-                                <tbody class="divide-y divide-slate-100">
+                                <tbody>
                                     @foreach($items->sortBy('urutan') as $index => $item)
                                         @php
                                             $isWarning = false;
+                                            $isExpired = false;
                                             $warningText = '';
+                                            $sisaHariVal = null;
                                             if ($item->berlaku_sampai) {
-                                                $sisaHari = \Carbon\Carbon::parse($item->berlaku_sampai)->diffInDays(now());
-                                                if (\Carbon\Carbon::parse($item->berlaku_sampai)->isPast()) {
+                                                $berlakuDate = \Carbon\Carbon::parse($item->berlaku_sampai)->startOfDay();
+                                                if ($berlakuDate->isPast()) {
                                                     $isWarning = true;
+                                                    $isExpired = true;
                                                     $warningText = 'Expired';
-                                                } elseif ($sisaHari < 30) {
-                                                    $isWarning = true;
-                                                    $warningText = 'Hampir Habis';
+                                                } else {
+                                                    $sisaHariVal = (int) now()->startOfDay()->diffInDays($berlakuDate, false);
+                                                    if ($sisaHariVal <= 30) {
+                                                        $isWarning = true;
+                                                        $warningText = 'Hampir Habis';
+                                                    }
                                                 }
                                             }
+                                            $rowBg = $index % 2 === 0 ? 'bg-white' : 'bg-slate-50/60';
+                                            if ($isExpired) $rowBg = 'bg-red-50/60';
+                                            elseif ($isWarning) $rowBg = 'bg-amber-50/60';
                                         @endphp
-                                        <tr class="hover:bg-blue-50/50 transition-colors duration-200 {{ $isWarning ? 'bg-red-50/40' : '' }}">
-                                            <td class="py-5 px-5 text-center text-slate-500 font-semibold text-xs">{{ $index + 1 }}</td>
-                                            
-                                            <td class="py-5 px-5 text-sm font-semibold text-slate-800">
-                                                <div class="flex flex-col gap-2">
-                                                    <span>{{ $item->nama_dokumen }}</span>
+                                        <tr class="{{ $rowBg }} hover:bg-blue-50/50 transition-colors duration-200 border-b border-slate-100 last:border-0">
+
+                                            {{-- No --}}
+                                            <td class="py-4 px-4 text-center align-middle">
+                                                <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-blue-50 text-blue-700 text-xs font-black border border-blue-100">
+                                                    {{ $index + 1 }}
+                                                </span>
+                                            </td>
+
+                                            {{-- Nama Dokumen + Status --}}
+                                            <td class="py-4 px-4 align-middle" style="min-width:180px; max-width:240px">
+                                                <div class="flex flex-col gap-1.5">
+                                                    <span class="text-sm font-bold text-slate-800 leading-snug">{{ $item->nama_dokumen }}</span>
                                                     @if($item->status === 'Aktif')
-                                                        <span class="inline-flex w-max items-center justify-center bg-emerald-100 text-emerald-700 border border-emerald-200 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Aktif</span>
+                                                        <span class="inline-flex w-max items-center gap-1.5 bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold px-2.5 py-0.5 rounded-full whitespace-nowrap">
+                                                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse flex-shrink-0"></span>
+                                                            Aktif
+                                                        </span>
                                                     @elseif($item->status === 'Dalam Proses Perpanjangan')
-                                                        <span class="inline-flex w-max items-center justify-center bg-amber-100 text-amber-700 border border-amber-200 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Proses Perpanjangan</span>
+                                                        <span class="inline-flex w-max items-center gap-1.5 bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-bold px-2.5 py-0.5 rounded-full whitespace-nowrap">
+                                                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500 flex-shrink-0"></span>
+                                                            Proses Perpanjangan
+                                                        </span>
                                                     @else
-                                                        <span class="inline-flex w-max items-center justify-center bg-rose-100 text-rose-700 border border-rose-200 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Tidak Aktif</span>
+                                                        <span class="inline-flex w-max items-center gap-1.5 bg-slate-100 text-slate-500 border border-slate-200 text-[10px] font-bold px-2.5 py-0.5 rounded-full whitespace-nowrap">
+                                                            <span class="w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0"></span>
+                                                            Tidak Aktif
+                                                        </span>
                                                     @endif
                                                 </div>
                                             </td>
-                                            
-                                            <td class="py-5 px-5 text-sm text-slate-600 leading-relaxed">{{ $item->bidang ?: '-' }}</td>
-                                            <td class="py-5 px-5 text-sm text-slate-600 leading-relaxed">{{ $item->sub_bidang ?: '-' }}</td>
-                                            
-                                            <td class="py-5 px-5 text-sm text-slate-600 font-mono whitespace-nowrap">{{ $item->no_sertifikat ?: ($item->nomor ?: '-') }}</td>
-                                            <td class="py-5 px-5 text-sm text-slate-600 font-mono whitespace-nowrap">{{ $item->no_registrasi ?: '-' }}</td>
-                                            
-                                            <td class="py-5 px-5 text-sm text-slate-600 whitespace-nowrap">
-                                                {{ $item->tanggal_terbit ? \Carbon\Carbon::parse($item->tanggal_terbit)->translatedFormat('d F Y') : '-' }}
+
+                                            {{-- Bidang --}}
+                                            <td class="py-4 px-4 text-sm text-slate-600 align-middle whitespace-nowrap">
+                                                @if($item->bidang)
+                                                    {{ $item->bidang }}
+                                                @else
+                                                    <span class="text-slate-300">—</span>
+                                                @endif
                                             </td>
-                                            
-                                            <td class="py-5 px-5 text-sm whitespace-nowrap">
+
+                                            {{-- Sub Bidang --}}
+                                            <td class="py-4 px-4 text-sm text-slate-600 align-middle" style="min-width:140px">
+                                                @if($item->sub_bidang)
+                                                    {{ $item->sub_bidang }}
+                                                @else
+                                                    <span class="text-slate-300">—</span>
+                                                @endif
+                                            </td>
+
+                                            {{-- No Sertifikat --}}
+                                            <td class="py-4 px-4 whitespace-nowrap align-middle">
+                                                @php $noSert = $item->no_sertifikat ?: ($item->nomor ?: null); @endphp
+                                                @if($noSert)
+                                                    <span class="inline-block bg-slate-100 text-slate-700 font-mono text-xs font-semibold px-2.5 py-1 rounded-lg border border-slate-200 whitespace-nowrap">
+                                                        {{ $noSert }}
+                                                    </span>
+                                                @else
+                                                    <span class="text-slate-300">—</span>
+                                                @endif
+                                            </td>
+
+                                            {{-- No Registrasi --}}
+                                            <td class="py-4 px-4 whitespace-nowrap align-middle">
+                                                @if($item->no_registrasi)
+                                                    <span class="inline-block bg-slate-100 text-slate-700 font-mono text-xs font-semibold px-2.5 py-1 rounded-lg border border-slate-200 whitespace-nowrap">
+                                                        {{ $item->no_registrasi }}
+                                                    </span>
+                                                @else
+                                                    <span class="text-slate-300">—</span>
+                                                @endif
+                                            </td>
+
+                                            {{-- Tanggal Terbit --}}
+                                            <td class="py-4 px-4 whitespace-nowrap align-middle">
+                                                @if($item->tanggal_terbit)
+                                                    <span class="text-sm text-slate-600">
+                                                        {{ \Carbon\Carbon::parse($item->tanggal_terbit)->translatedFormat('d M Y') }}
+                                                    </span>
+                                                @else
+                                                    <span class="text-slate-300">—</span>
+                                                @endif
+                                            </td>
+
+                                            {{-- Tanggal Habis Berlaku --}}
+                                            <td class="py-4 px-4 whitespace-nowrap align-middle">
                                                 @if($item->berlaku_sampai)
                                                     <div class="flex flex-col gap-1.5">
-                                                        <span class="{{ $isWarning ? 'text-rose-600 font-bold' : 'text-slate-600' }}">
-                                                            {{ \Carbon\Carbon::parse($item->berlaku_sampai)->translatedFormat('d F Y') }}
+                                                        <span class="text-sm font-semibold whitespace-nowrap {{ $isExpired ? 'text-rose-600' : ($isWarning ? 'text-amber-600' : 'text-slate-700') }}">
+                                                            {{ \Carbon\Carbon::parse($item->berlaku_sampai)->translatedFormat('d M Y') }}
                                                         </span>
-                                                        @if($isWarning)
-                                                            <span class="inline-flex w-max items-center justify-center bg-rose-100 text-rose-700 border border-rose-200 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">{{ $warningText }}</span>
+                                                        @if($isExpired)
+                                                            <span class="inline-flex w-max items-center gap-1 bg-rose-100 text-rose-700 border border-rose-200 text-[10px] font-black px-2.5 py-0.5 rounded-full whitespace-nowrap">
+                                                                <svg class="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>
+                                                                EXPIRED
+                                                            </span>
+                                                        @elseif($isWarning)
+                                                            <span class="inline-flex w-max items-center gap-1 bg-amber-100 text-amber-700 border border-amber-200 text-[10px] font-black px-2.5 py-0.5 rounded-full whitespace-nowrap">
+                                                                <svg class="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+                                                                HAMPIR HABIS {{ $sisaHariVal !== null ? '('.$sisaHariVal.'h)' : '' }}
+                                                            </span>
+                                                        @else
+                                                            @if($sisaHariVal !== null)
+                                                                <span class="inline-flex w-max items-center gap-1 bg-blue-50 text-blue-600 border border-blue-100 text-[10px] font-semibold px-2.5 py-0.5 rounded-full whitespace-nowrap">
+                                                                    <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                                                    {{ $sisaHariVal }} hari lagi
+                                                                </span>
+                                                            @endif
                                                         @endif
                                                     </div>
                                                 @else
-                                                    <span class="text-slate-600">-</span>
+                                                    <span class="text-slate-300">—</span>
                                                 @endif
                                             </td>
-                                            
-                                            <td class="py-5 px-5 text-center">
+
+                                            {{-- Dokumen --}}
+                                            <td class="py-4 px-4 text-center align-middle">
                                                 @if($item->url_file)
                                                     <div class="flex flex-col items-center gap-2">
                                                         @if(Str::endsWith(strtolower($item->url_file), ['.jpg', '.jpeg', '.png']))
-                                                            <a href="{{ $item->url_file }}" target="_blank" class="block w-16 h-20 bg-slate-100 border border-slate-200 rounded-md overflow-hidden shadow-sm hover:shadow-md hover:scale-105 transition duration-300">
+                                                            <a href="{{ $item->url_file }}" target="_blank"
+                                                               class="block w-14 h-18 rounded-xl border-2 border-slate-200 overflow-hidden shadow-sm hover:shadow-lg hover:border-blue-300 hover:scale-105 transition-all duration-300">
                                                                 <img src="{{ $item->url_file }}" alt="Dokumen" class="w-full h-full object-cover">
                                                             </a>
                                                         @endif
-                                                        <a href="{{ $item->url_file }}" target="_blank" class="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold px-3.5 py-1.5 rounded-lg transition-all shadow-sm whitespace-nowrap">
+                                                        <a href="{{ $item->url_file }}" target="_blank"
+                                                           class="inline-flex items-center gap-1.5 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white text-[11px] font-bold px-3.5 py-1.5 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 whitespace-nowrap">
                                                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
@@ -202,13 +295,18 @@
                                                         </a>
                                                     </div>
                                                 @else
-                                                    <span class="text-slate-300 text-xs italic">-</span>
+                                                    <span class="text-slate-300 text-xs">—</span>
                                                 @endif
                                             </td>
+
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="px-7 py-3 bg-slate-50 border-t border-slate-100 flex items-center gap-2">
+                            <svg class="w-3.5 h-3.5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <p class="text-xs text-slate-400">Menampilkan {{ $items->count() }} dokumen dalam kategori ini.</p>
                         </div>
                     </div>
                 @empty

@@ -123,7 +123,7 @@
                 </div>
                 <div class="flex-1 text-center md:text-left">
                     <h3 class="text-xl font-extrabold mb-2">Kalibrasi Berkala & Tertelusur</h3>
-                    <p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                    <p class="text-white text-sm leading-relaxed">
                         Seluruh peralatan kami dikalibrasi secara berkala oleh laboratorium kalibrasi terakreditasi KAN.
                         Sertifikat kalibrasi dapat diminta pada saat proses inspeksi berlangsung.
                     </p>
