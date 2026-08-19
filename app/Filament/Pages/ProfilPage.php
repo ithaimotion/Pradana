@@ -45,10 +45,10 @@ class ProfilPage extends Page implements HasForms
                             TextInput::make('subjudul')->label('Sub-Highlight')->placeholder('Contoh: Nusa Energi'),
                             Textarea::make('konten')->label('Deskripsi Ringkasan Profil')->rows(4)->columnSpanFull(),
                         ]),
-                        Grid::make(2)->schema([
-                            FileUpload::make('gambar1')->label('Foto Profil 1 (Kiri)')->image(),
-                            FileUpload::make('gambar2')->label('Foto Profil 2 (Kanan)')->image(),
-                        ]),
+                        FileUpload::make('gambar1')
+                            ->label('Foto Profil Perusahaan')
+                            ->image()
+                            ->columnSpanFull(),
                     ])
             ])
             ->statePath('data');

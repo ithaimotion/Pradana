@@ -9,13 +9,6 @@
                 Hero Banner
             </x-filament::tabs.item>
             
-            <x-filament::tabs.item
-                alpine-active="activeTab === 'statistik'"
-                x-on:click="activeTab = 'statistik'"
-                icon="heroicon-m-chart-bar"
-            >
-                Statistik Performa
-            </x-filament::tabs.item>
 
             <x-filament::tabs.item
                 alpine-active="activeTab === 'tentang'"
@@ -81,17 +74,6 @@
                     <div class="mt-6 text-right">
                         <x-filament::button type="submit" color="primary">
                             Simpan Hero Banner
-                        </x-filament::button>
-                    </div>
-                </form>
-            </div>
-
-            <div x-show="activeTab === 'statistik'" x-cloak>
-                <form wire:submit="saveStatistik">
-                    {{ $this->statistikForm }}
-                    <div class="mt-6 text-right">
-                        <x-filament::button type="submit" color="primary">
-                            Simpan Statistik
                         </x-filament::button>
                     </div>
                 </form>
