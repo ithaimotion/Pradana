@@ -72,7 +72,7 @@
         
         <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-center items-center gap-4">
             <p class="text-white/70 text-sm">
-                © {{ date('Y') }} PT Pradana Nusa Energi. Hak Cipta Dilindungi.
+                © {{ date('Y') }} Hai Motion - Created for PT Pradana Nusa Energi. All rights reserved.
             </p>
             <!-- <div class="flex flex-wrap gap-4 text-sm">
                 @if($legalLinks->count())
