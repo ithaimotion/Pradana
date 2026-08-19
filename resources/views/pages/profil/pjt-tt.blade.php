@@ -227,7 +227,7 @@
                         Seluruh PJT dan TT PT Pradana Nusa Energi memiliki sertifikat kompetensi resmi yang diterbitkan oleh Lembaga Sertifikasi Kompetensi (LSK) terakreditasi BNSP. Sertifikat dapat diverifikasi melalui sistem resmi Kementerian ESDM.
                     </p>
                 </div>
-                <a href="{{ route('home') }}"
+                <a href="{{ route('hubungi-kami') }}"
                    class="flex-shrink-0 bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-2.5 rounded-xl transition text-sm">
                     Hubungi Kami
                 </a>
