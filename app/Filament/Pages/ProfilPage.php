@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use App\Models\ProfilPerusahaan;
 use Filament\Pages\Page;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -12,6 +13,7 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Form;
 use Filament\Actions\Action;
+use Filament\Notifications\Notification;
 
 class ProfilPage extends Page implements HasForms
 {
@@ -30,7 +32,13 @@ class ProfilPage extends Page implements HasForms
 
     public function mount(): void
     {
-        $this->form->fill();
+        $profil = ProfilPerusahaan::first();
+        $this->form->fill([
+            'judul'      => $profil?->judul,
+            'subjudul'   => $profil?->subjudul,
+            'konten'     => $profil?->konten,
+            'url_gambar' => $profil?->url_gambar,
+        ]);
     }
 
     public function form(Form $form): Form
@@ -45,9 +53,10 @@ class ProfilPage extends Page implements HasForms
                             TextInput::make('subjudul')->label('Sub-Highlight')->placeholder('Contoh: Nusa Energi'),
                             Textarea::make('konten')->label('Deskripsi Ringkasan Profil')->rows(4)->columnSpanFull(),
                         ]),
-                        FileUpload::make('gambar1')
+                        FileUpload::make('url_gambar')
                             ->label('Foto Profil Perusahaan')
                             ->image()
+                            ->directory('uploads/profil')
                             ->columnSpanFull(),
                     ])
             ])
@@ -66,10 +75,18 @@ class ProfilPage extends Page implements HasForms
 
     public function save(): void
     {
-        // Logika save bisa ditambahkan di sini
-        \Filament\Notifications\Notification::make()
-            ->success()
-            ->title('Berhasil disimpan')
-            ->send();
+        $data = $this->form->getState();
+        $profil = ProfilPerusahaan::firstOrNew([]);
+        $profil->judul      = $data['judul'] ?? null;
+        $profil->subjudul   = $data['subjudul'] ?? null;
+        $profil->konten     = $data['konten'] ?? null;
+        if (!empty($data['url_gambar'])) {
+            $profil->url_gambar = is_array($data['url_gambar'])
+                ? array_values($data['url_gambar'])[0]
+                : $data['url_gambar'];
+        }
+        $profil->save();
+
+        Notification::make()->success()->title('Profil Perusahaan berhasil disimpan!')->send();
     }
 }
