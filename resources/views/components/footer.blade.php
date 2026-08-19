@@ -14,9 +14,9 @@
                 <ul class="space-y-2">
                     <li><a href="{{ route('profil.perusahaan') }}" class="text-white/70 hover:text-blue-500 transition">Profil Perusahaan</a></li>
                     <li><a href="#about" class="text-white/70 hover:text-blue-500 transition">Tentang Kami</a></li>
-                    <li><a href="#products" class="text-white/70 hover:text-blue-500 transition">Layanan SLO</a></li>
-                    <li><a href="#technology" class="text-white/70 hover:text-blue-500 transition">Regulasi & Standar</a></li>
-                    <li><a href="#contact" class="text-white/70 hover:text-blue-500 transition">Kontak</a></li>
+                    <li><a href="{{ route('slo.bidang-layanan') }}" class="text-white/70 hover:text-blue-500 transition">Layanan SLO</a></li>
+                    <li><a href="{{route('slo.regulasi')}}" class="text-white/70 hover:text-blue-500 transition">Regulasi & Standar</a></li>
+                    <li><a href="{{route('hubungi-kami')}}" class="text-white/70 hover:text-blue-500 transition">Kontak</a></li>
                 </ul>
             </div>
             
@@ -70,11 +70,11 @@
             </div>
         </div>
         
-        <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-center items-center gap-4">
             <p class="text-white/70 text-sm">
                 © {{ date('Y') }} PT Pradana Nusa Energi. Hak Cipta Dilindungi.
             </p>
-            <div class="flex flex-wrap gap-4 text-sm">
+            <!-- <div class="flex flex-wrap gap-4 text-sm">
                 @if($legalLinks->count())
                     @foreach($legalLinks as $link)
                         <a href="{{ $link->url }}" target="{{ str_starts_with($link->url, 'http://') || str_starts_with($link->url, 'https://') ? '_blank' : '_self' }}" class="text-white/70 hover:text-blue-500 transition">{{ $link->label }}</a>
@@ -84,7 +84,7 @@
                     <a href="{{ route('legal.terms') }}" class="text-white/70 hover:text-blue-500 transition">Syarat &amp; Ketentuan</a>
                     <a href="{{ route('legal.cookie') }}" class="text-white/70 hover:text-blue-500 transition">Kebijakan Cookie</a>
                 @endif
-            </div>
+            </div> -->
         </div>
     </div>
 </footer>

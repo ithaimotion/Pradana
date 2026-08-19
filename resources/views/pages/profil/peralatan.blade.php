@@ -47,7 +47,7 @@
             <div class="px-6 text-center">
                 @php
                     $latestYear = $peralatans->max(function($alat) {
-                        return $alat->tanggal_kalibrasi_terakhir ? \Carbon\Carbon::parse($alat->tanggal_kalibrasi_terakhir)->format('Y') : null;
+                        return $alat->tanggal_kalibrasi ? \Carbon\Carbon::parse($alat->tanggal_kalibrasi)->format('Y') : null;
                     }) ?? date('Y');
                 @endphp
                 <div class="text-2xl font-extrabold text-blue-900">{{ $latestYear }}</div>
@@ -61,42 +61,46 @@
         <div class="max-w-7xl mx-auto px-6">
 
             <!-- Filter tabs -->
+            @php
+                $kategoriList = $peralatans->pluck('kategori')->unique()->filter()->values();
+            @endphp
             <div class="flex flex-wrap gap-2 mb-10 reveal-on-scroll">
                 <button onclick="filterAlat('semua')" id="btn-semua" class="filter-btn active-filter px-4 py-2 rounded-full text-sm font-semibold border transition-all">Semua</button>
-                <button onclick="filterAlat('ukur')" id="btn-ukur" class="filter-btn px-4 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:border-blue-500 hover:text-blue-600 transition-all">Alat Ukur</button>
-                <button onclick="filterAlat('uji')" id="btn-uji" class="filter-btn px-4 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:border-blue-500 hover:text-blue-600 transition-all">Alat Uji</button>
-                <button onclick="filterAlat('safety')" id="btn-safety" class="filter-btn px-4 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:border-blue-500 hover:text-blue-600 transition-all">Keselamatan</button>
+                @foreach($kategoriList as $kat)
+                    @php $katSlug = Str::slug($kat); @endphp
+                    <button onclick="filterAlat('{{ $katSlug }}')" id="btn-{{ $katSlug }}" class="filter-btn px-4 py-2 rounded-full text-sm font-semibold border border-slate-200 text-slate-600 hover:border-blue-500 hover:text-blue-600 transition-all">{{ $kat }}</button>
+                @endforeach
             </div>
 
             <!-- Grid Peralatan -->
             <div id="equipment-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7 reveal-on-scroll delay-100">
 
                 @foreach($peralatans as $alat)
-                <div class="alat-card" data-kategori="{{ strtolower($alat->kategori) }}"
-                     onclick="bukaPopup('{{ addslashes($alat->nama_peralatan) }}', '{{ asset('storage_public/' . $alat->foto_alat) }}', '{{ addslashes(strip_tags($alat->deskripsi)) }}', '{{ addslashes($alat->merk) }}', '{{ addslashes($alat->tipe) }}', [
-                        @if($alat->spesifikasi)
+                @php $katSlug = Str::slug($alat->kategori); @endphp
+                <div class="alat-card" data-kategori="{{ $katSlug }}"
+                     onclick="bukaPopup('{{ addslashes($alat->nama) }}', '{{ $alat->url_gambar }}', '{{ addslashes(strip_tags($alat->deskripsi_singkat)) }}', '{{ addslashes($alat->jenis_alat) }}', '{{ addslashes($alat->model) }}', [
+                        @if(is_array($alat->spesifikasi))
                             @foreach($alat->spesifikasi as $spek)
                                 '{{ addslashes($spek) }}',
                             @endforeach
                         @endif
-                        'Kalibrasi Terakhir: {{ $alat->tanggal_kalibrasi_terakhir ? \Carbon\Carbon::parse($alat->tanggal_kalibrasi_terakhir)->format('M Y') : '-' }}'
+                        'Kalibrasi Terakhir: {{ $alat->tanggal_kalibrasi ? \Carbon\Carbon::parse($alat->tanggal_kalibrasi)->format('M Y') : '-' }}'
                      ])">
-                    <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group">
-                        <div class="relative h-52 bg-gradient-to-br from-slate-50 to-slate-100 overflow-hidden flex items-center justify-center p-6">
-                            <img src="{{ asset('storage_public/' . $alat->foto_alat) }}" alt="{{ $alat->nama_peralatan }}" class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-3 left-3 {{ strtolower($alat->kategori) == 'uji' ? 'bg-blue-900 text-white' : 'bg-blue-500 text-slate-900 dark:text-white' }} text-xs font-bold px-2.5 py-1 rounded-full">{{ ucfirst($alat->kategori) }}</span>
+                    <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group flex flex-col h-full">
+                        <div class="relative h-52 bg-gradient-to-br from-slate-50 to-slate-100 overflow-hidden flex items-center justify-center p-6 flex-shrink-0">
+                            <img src="{{ $alat->url_gambar }}" alt="{{ $alat->nama }}" class="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 left-3 bg-blue-500 text-slate-900 dark:text-white text-xs font-bold px-2.5 py-1 rounded-full">{{ ucfirst($alat->kategori) }}</span>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
                                 <span class="text-slate-900 dark:text-white text-xs font-semibold bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">👆 Klik untuk detail</span>
                             </div>
                         </div>
-                        <div class="p-5">
-                            <h3 class="font-extrabold text-slate-900 mb-1">{{ $alat->nama_peralatan }}</h3>
-                            <p class="text-xs text-slate-500 mb-3 leading-relaxed">{{ Str::limit(strip_tags($alat->deskripsi), 80) }}</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs font-medium text-slate-600 dark:text-slate-400">Model: {{ $alat->tipe }}</span>
-                                <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full">✔️ Terkalibrasi</span>
+                        <div class="p-5 flex flex-col flex-grow">
+                            <h3 class="font-extrabold text-slate-900 mb-1">{{ $alat->nama }}</h3>
+                            <p class="text-xs text-slate-500 mb-3 leading-relaxed flex-grow">{{ Str::limit(strip_tags($alat->deskripsi_singkat), 80) }}</p>
+                            <div class="flex items-center justify-between mt-auto">
+                                <span class="text-xs font-medium text-slate-600 dark:text-slate-400">Model: {{ $alat->model ?? $alat->jenis_alat }}</span>
+                                <span class="text-xs font-bold text-green-600 bg-green-50 border border-green-200 px-2.5 py-0.5 rounded-full">✔️ {{ $alat->status_kalibrasi }}</span>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </div>

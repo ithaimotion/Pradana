@@ -37,14 +37,10 @@ class ProfilPeralatanKetenagalistrikanResource extends Resource
                             ->maxLength(255)
                             ->columnSpanFull(),
                         Forms\Components\Grid::make(2)->schema([
-                            Forms\Components\Select::make('kategori')
+                            Forms\Components\TextInput::make('kategori')
                                 ->label('Kategori')
-                                ->options([
-                                    'Alat Ukur' => 'Alat Ukur',
-                                    'Alat Uji' => 'Alat Uji',
-                                    'Alat Pelindung Diri' => 'Alat Pelindung Diri',
-                                ])
-                                ->placeholder('-- Pilih Kategori --')
+                                ->placeholder('Contoh: Alat Ukur')
+                                ->maxLength(255)
                                 ->required(),
                             Forms\Components\TextInput::make('jenis_alat')
                                 ->label('Jenis Alat')

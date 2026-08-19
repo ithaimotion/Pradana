@@ -19,7 +19,7 @@ class PesanMasukResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-inbox';
     protected static ?string $navigationGroup = 'Hubungi Kami';
-    protected static ?string $navigationLabel = 'Pesan Masuk';
+    protected static ?string $navigationLabel = 'Pesan Masuk & Kontak';
     protected static ?string $pluralModelLabel = 'Pesan Masuk';
     protected static ?int $navigationSort = 3;
 

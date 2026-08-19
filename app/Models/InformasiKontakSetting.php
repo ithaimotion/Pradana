@@ -9,6 +9,7 @@ class InformasiKontakSetting extends Model
     protected $table = 'informasi_kontak_settings';
 
     protected $fillable = [
+        'deskripsi_utama',
         'alamat_kantor',
         'telepon_whatsapp',
         'email_resmi',

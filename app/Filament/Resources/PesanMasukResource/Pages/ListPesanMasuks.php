@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\PesanMasukResource\Pages;
 
 use App\Filament\Resources\PesanMasukResource;
+use App\Filament\Resources\PesanMasukResource\Widgets\PengaturanKontakWidget;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
@@ -21,6 +22,13 @@ class ListPesanMasuks extends ListRecords
     {
         return [
             PesanMasukResource\Widgets\PesanMasukStats::class,
+        ];
+    }
+
+    protected function getFooterWidgets(): array
+    {
+        return [
+            PengaturanKontakWidget::class,
         ];
     }
 }

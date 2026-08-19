@@ -1,15 +1,14 @@
 @extends('layouts.app')
 
 @php
-    $setting = function ($key) {
-        return app('db')->table('konten_beranda')->where('bagian', 'hubungi_kami')->where('kunci', $key)->value('konten') ?? '';
-    };
-
-    $alamatKantor = $setting('alamat_kantor');
-    $teleponWhatsapp = $setting('telepon_whatsapp');
-    $emailResmi = $setting('email_resmi');
-    $jamOperasional = $setting('jam_operasional');
-    $mapsEmbedRaw = $setting('maps_embed');
+    $settings = \App\Models\InformasiKontakSetting::first();
+    
+    $alamatKantor = $settings?->alamat_kantor;
+    $teleponWhatsapp = $settings?->telepon_whatsapp;
+    $emailResmi = $settings?->email_resmi;
+    $jamOperasional = $settings?->jam_operasional;
+    $mapsEmbedRaw = $settings?->embed_maps ?? '';
+    $deskripsiUtama = $settings?->deskripsi_utama ?? 'Kunjungi kantor kami atau hubungi kami melalui saluran komunikasi di bawah ini untuk konsultasi terkait Sertifikat Laik Operasi (SLO) instalasi Anda.';
     
     // Auto-extract URL if user pastes the full <iframe ...> snippet
     $mapsEmbed = $mapsEmbedRaw;
@@ -51,7 +50,7 @@
                 <div class="reveal-on-scroll">
                     <h2 class="text-3xl font-extrabold text-slate-900 mb-6">Kantor Pusat Kami</h2>
                     <p class="text-slate-600 leading-relaxed mb-10">
-                        Kunjungi kantor kami atau hubungi kami melalui saluran komunikasi di bawah ini untuk konsultasi terkait Sertifikat Laik Operasi (SLO) instalasi Anda.
+                        {{ $deskripsiUtama }}
                     </p>
 
                     <div class="space-y-6">
