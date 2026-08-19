@@ -28,6 +28,62 @@ class ProfilPeralatanKetenagalistrikanResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Actions::make([
+                    Forms\Components\Actions\Action::make('auto_fill_ai')
+                        ->label('✨ Auto-Fill dengan AI')
+                        ->color('primary')
+                        ->icon('heroicon-m-sparkles')
+                        ->form([
+                            Forms\Components\TextInput::make('ai_prompt')
+                                ->label('Nama Alat / Deskripsi Singkat')
+                                ->placeholder('Contoh: Alat ukur tahanan isolasi (Megger)')
+                                ->required(),
+                        ])
+                        ->action(function (array $data, Forms\Set $set, $livewire) {
+                            $result = \App\Services\GeminiService::generatePeralatanData($data['ai_prompt']);
+                            
+                            if (is_string($result) && str_starts_with($result, 'Error:')) {
+                                \Filament\Notifications\Notification::make()
+                                    ->title('Gagal Auto-Fill')
+                                    ->body($result)
+                                    ->danger()
+                                    ->send();
+                                return;
+                            }
+
+                            if (is_array($result)) {
+                                $set('nama', $result['nama'] ?? null);
+                                $set('kategori', $result['kategori'] ?? null);
+                                $set('jenis_alat', $result['jenis_alat'] ?? null);
+                                $set('model', $result['model'] ?? null);
+                                $set('deskripsi_singkat', $result['deskripsi_singkat'] ?? null);
+                                $set('spesifikasi', is_array($result['spesifikasi'] ?? []) ? implode("\n", $result['spesifikasi']) : ($result['spesifikasi'] ?? ''));
+                                
+                                // Set specific default fields based on user request
+                                $set('tanggal_kalibrasi', now()->format('Y-m-d'));
+                                $set('status_kalibrasi', 'Terkalibrasi');
+                                $set('urutan', \App\Models\ProfilPeralatanKetenagalistrikan::max('urutan') + 1);
+                                
+                                // Process Image Downloading
+                                $imageKeyword = $result['image_keyword'] ?? null;
+                                if ($imageKeyword) {
+                                    $imagePath = \App\Services\GeminiService::downloadImage($imageKeyword);
+                                    if ($imagePath) {
+                                        // Filament FileUpload expects the state to be an array
+                                        $set('gambar', [
+                                            (string) \Illuminate\Support\Str::uuid() => $imagePath
+                                        ]);
+                                    }
+                                }
+
+                                \Filament\Notifications\Notification::make()
+                                    ->title('Form Berhasil Diisi!')
+                                    ->success()
+                                    ->send();
+                            }
+                        })
+                ])->columnSpanFull(),
+
                 Forms\Components\Section::make('Informasi Utama')
                     ->schema([
                         Forms\Components\TextInput::make('nama')
@@ -85,8 +141,8 @@ class ProfilPeralatanKetenagalistrikanResource extends Resource
                             ->label('Spesifikasi (satu per baris)')
                             ->placeholder("Contoh:\nRentang: 0.01Ω - 20kΩ\nTegangan uji: 25V & 50V")
                             ->rows(5)
-                            ->formatStateUsing(fn ($state) => is_array($state) ? implode("\n", $state) : $state)
-                            ->dehydrateStateUsing(fn ($state) => array_filter(array_map('trim', explode("\n", $state))))
+                            ->formatStateUsing(fn ($state) => is_array($state) ? implode("\n", $state) : (string) $state)
+                            ->dehydrateStateUsing(fn ($state) => array_filter(array_map('trim', is_array($state) ? $state : explode("\n", (string) $state))))
                             ->columnSpanFull(),
                     ])
             ]);
