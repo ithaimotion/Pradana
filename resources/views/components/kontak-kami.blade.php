@@ -28,8 +28,9 @@
                     {{ $cta }}
                 </a>
             </div>
-            <div class="rounded-2xl overflow-hidden shadow-2xl">
-                <img src="{{ $image }}" alt="Kontak Image" class="w-full h-full object-cover aspect-[4/3] md:aspect-video lg:aspect-auto lg:h-[400px]">
+            <div class="flex justify-center lg:justify-end relative">
+                <!-- Drop shadow applied directly to image so transparent PNG cutouts will have a realistic shadow, not a box shadow -->
+                <img src="{{ $image }}" alt="Kontak Image" class="w-full max-w-lg h-auto object-contain drop-shadow-2xl">
             </div>
         </div>
     </div>
