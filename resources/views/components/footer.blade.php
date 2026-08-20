@@ -1,15 +1,15 @@
 <footer id="contact" class="bg-blue-900 text-white overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 py-16">
-        <div class="grid md:grid-cols-4 gap-12 mb-12 reveal-on-scroll">
-            <div>
-                <div class="text-3xl font-bold mb-2">PRADANA</div>
-                <div class="text-sm text-white/70 mb-6">NUSA ENERGI</div>
-                <p class="text-white/80 text-sm leading-relaxed">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-12 reveal-on-scroll">
+            <div class="lg:col-span-4 xl:col-span-5">
+                <div class="text-2xl lg:text-3xl font-bold mb-2 whitespace-nowrap">PRADANA NUSA ENERGI</div>
+                <!-- <div class="text-sm text-white/70 mb-6">NUSA ENERGI</div> -->
+                <p class="text-white/80 text-sm leading-relaxed mt-4 pr-4">
                     Lembaga Inspeksi Teknik (LIT) terkemuka dalam pemeriksaan & sertifikasi kelistrikan SLO di Indonesia.
                 </p>
             </div>
             
-            <div>
+            <div class="lg:col-span-2 xl:col-span-2">
                 <h3 class="text-lg font-semibold mb-4">Tautan Penting</h3>
                 <ul class="space-y-2">
                     <li><a href="{{ route('profil.perusahaan') }}" class="text-white/70 hover:text-blue-500 transition">Profil Perusahaan</a></li>
@@ -20,7 +20,7 @@
                 </ul>
             </div>
             
-            <div>
+            <div class="lg:col-span-2 xl:col-span-2">
                 <h3 class="text-lg font-semibold mb-4">LEGAL</h3>
                 <ul class="space-y-2">
                     @php
@@ -39,12 +39,12 @@
                 </ul>
             </div>
             
-            <div>
+            <div class="lg:col-span-4 xl:col-span-3">
                 <h3 class="text-lg font-semibold mb-4">KONTAK</h3>
                 <ul class="space-y-2 text-white/70">
                     <li>contact@slo-pradana.id</li>
-                    <li>+62 (021) 8498-7154</li>
-                    <li>Jakarta, Indonesia</li>
+                    <li>(021) 8498-7154</li>
+                    <li>Bekasi, Jawa Barat, Indonesia</li>
                 </ul>
             </div>
         </div>

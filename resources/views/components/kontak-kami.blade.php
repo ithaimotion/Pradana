@@ -15,20 +15,23 @@
 @endphp
 
 <section class="relative py-20 bg-blue-900 overflow-hidden">
-    <div class="absolute inset-0">
-        <img src="{{ $image }}" alt="Kontak Background" class="w-full h-full object-cover opacity-20">
-    </div>
-    
-    <div class="relative z-10 max-w-7xl mx-auto px-6 text-center" data-aos="zoom-in">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
-            {{ $title }}
-        </h2>
-        <p class="text-white/90 text-lg mb-10 max-w-3xl mx-auto">
-            {{ $subtitle }}
-        </p>
-        <a href="{{ $link }}" class="inline-block bg-blue-600 text-white px-8 py-4 rounded font-semibold text-lg hover:bg-blue-700 transition shadow-lg hover:scale-105">
-            {{ $cta }}
-        </a>
+    <div class="relative z-10 max-w-7xl mx-auto px-6" data-aos="zoom-in">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="text-left">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+                    {{ $title }}
+                </h2>
+                <p class="text-white/90 text-lg mb-10">
+                    {{ $subtitle }}
+                </p>
+                <a href="{{ $link }}" class="inline-block bg-blue-600 text-white px-8 py-4 rounded font-semibold text-lg hover:bg-blue-700 transition shadow-lg hover:scale-105">
+                    {{ $cta }}
+                </a>
+            </div>
+            <div class="rounded-2xl overflow-hidden shadow-2xl">
+                <img src="{{ $image }}" alt="Kontak Image" class="w-full h-full object-cover aspect-[4/3] md:aspect-video lg:aspect-auto lg:h-[400px]">
+            </div>
+        </div>
     </div>
 </section>
 

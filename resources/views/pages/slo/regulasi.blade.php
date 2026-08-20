@@ -52,7 +52,7 @@
             </div>
 
             <!-- Data Table Section -->
-            <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden reveal-on-scroll delay-100">
+            <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden reveal-on-scroll delay-100 mb-8">
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm text-left">
                         <thead>

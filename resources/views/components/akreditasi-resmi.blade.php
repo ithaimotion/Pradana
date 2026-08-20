@@ -21,9 +21,9 @@
                     onclick="openAkreditasiModal('{{ $imageUrl ?? '' }}', '{{ addslashes($item->judul) }}')"
                     class="group text-left w-full rounded-[28px] border border-slate-200 bg-white p-3 shadow-[0_18px_45px_-20px_rgba(15,23,42,0.35)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_28px_60px_-22px_rgba(15,23,42,0.45)]"
                     data-aos="fade-up" data-aos-delay="{{ 100 + ($loop->index * 100) }}">
-                    <div class="aspect-[16/9] overflow-hidden rounded-[20px] bg-slate-100">
+                    <div class="aspect-auto h-64 w-full overflow-hidden rounded-[20px] bg-slate-100 flex items-center justify-center p-4">
                         @if($imageUrl)
-                            <img src="{{ $imageUrl }}" alt="{{ $item->judul }}" class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
+                            <img src="{{ $imageUrl }}" alt="{{ $item->judul }}" class="h-full w-full object-contain transition duration-500 group-hover:scale-105">
                         @else
                             <div class="flex h-full w-full items-center justify-center text-sm text-slate-500">Foto Sertifikat</div>
                         @endif

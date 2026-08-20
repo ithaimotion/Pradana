@@ -63,7 +63,7 @@
                 <ul class="absolute left-0 mt-2 w-56 bg-white/90 backdrop-blur-md shadow-xl rounded-lg py-2 hidden group-hover:block z-50 border border-white/50 before:absolute before:-top-4 before:left-0 before:w-full before:h-4">
                     <li><a href="{{ route('slo.regulasi') }}" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-500 text-slate-700 text-sm transition font-medium">Regulasi</a></li>
                     <li><a href="{{ route('slo.verifikasi') }}" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-500 text-slate-700 text-sm transition font-medium">Verifikasi SLO</a></li>
-                    <li><a href="{{ route('slo.cek-permohonan') }}" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-500 text-slate-700 text-sm transition font-medium">Cek Permohonan SLO</a></li>
+                    <li><a href="https://siujang.esdm.go.id/Cek-Status-Permohonan" target="_blank" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-500 text-slate-700 text-sm transition font-medium">Cek Permohonan SLO</a></li>
                     <li><a href="{{ route('slo.bidang-layanan') }}" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-500 text-slate-700 text-sm transition font-medium">Bidang Layanan</a></li>
                 </ul>
             </li>
@@ -161,7 +161,7 @@
                 <ul x-show="openSLO" x-collapse class="pl-4 mt-2 border-l-2 border-slate-100 space-y-3 pt-2" style="display: none;">
                     <li><a href="{{ route('slo.regulasi') }}" class="block text-sm text-slate-600 hover:text-blue-600">Regulasi</a></li>
                     <li><a href="{{ route('slo.verifikasi') }}" class="block text-sm text-slate-600 hover:text-blue-600">Verifikasi SLO</a></li>
-                    <li><a href="{{ route('slo.cek-permohonan') }}" class="block text-sm text-slate-600 hover:text-blue-600">Cek Permohonan SLO</a></li>
+                    <li><a href="https://siujang.esdm.go.id/Cek-Status-Permohonan" target="_blank" class="block text-sm text-slate-600 hover:text-blue-600">Cek Permohonan SLO</a></li>
                     <li><a href="{{ route('slo.bidang-layanan') }}" class="block text-sm text-slate-600 hover:text-blue-600">Bidang Layanan</a></li>
                 </ul>
             </li>

@@ -38,7 +38,7 @@
                             <div class="logo-card">
                                 <img src="{{ $client->url_gambar ?? $client->path_gambar }}"
                                      alt="{{ $client->judul ?? 'Client' }}"
-                                     class="h-10 w-auto max-w-full object-contain">
+                                     class="h-16 md:h-20 w-auto max-w-full object-contain">
                             </div>
                         @endforeach
                     </div>
@@ -53,7 +53,7 @@
                             <div class="logo-card">
                                 <img src="{{ $client->url_gambar ?? $client->path_gambar }}"
                                      alt="{{ $client->judul ?? 'Client' }}"
-                                     class="h-10 w-auto max-w-full object-contain">
+                                     class="h-16 md:h-20 w-auto max-w-full object-contain">
                             </div>
                         @endforeach
                     </div>
@@ -77,14 +77,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 76px;
-        width: 160px;
-        margin-right: 20px;
-        border-radius: 14px;
+        height: 100px;
+        width: 220px;
+        margin-right: 24px;
+        border-radius: 16px;
         border: 1.5px solid #e2e8f0;
         background: #ffffff;
         box-shadow: 0 1px 4px 0 rgba(15, 23, 42, 0.06);
-        padding: 0 20px;
+        padding: 0 24px;
     }
 
     .ticker-row-1 {

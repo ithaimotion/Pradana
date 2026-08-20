@@ -102,9 +102,7 @@
                                             </li>
                                         @endforeach
                                     @else
-                                        <li class="flex items-start gap-2 text-sm text-slate-600"><span class="text-blue-500">•</span> KTP Pemilik / Penanggung Jawab</li>
-                                        <li class="flex items-start gap-2 text-sm text-slate-600"><span class="text-blue-500">•</span> NIB Perusahaan</li>
-                                        <li class="flex items-start gap-2 text-sm text-slate-600"><span class="text-blue-500">•</span> NPWP Perusahaan</li>
+                                        <li class="flex items-start gap-2 text-sm text-slate-600"><span class="text-blue-500">•</span> -</li>
                                     @endif
                                 </ul>
                             </div>
@@ -122,9 +120,7 @@
                                             </li>
                                         @endforeach
                                     @else
-                                        <li class="flex items-start gap-2 text-sm text-slate-600"><span class="text-blue-600">•</span> Single Line Diagram</li>
-                                        <li class="flex items-start gap-2 text-sm text-slate-600"><span class="text-blue-600">•</span> Nomor Identitas Data Instalasi (NIDI)</li>
-                                        <li class="flex items-start gap-2 text-sm text-slate-600"><span class="text-blue-600">•</span> Hasil Test Report</li>
+                                        <li class="flex items-start gap-2 text-sm text-slate-600"><span class="text-blue-600">•</span> -</li>
                                     @endif
                                 </ul>
                             </div>
@@ -156,7 +152,7 @@
                                     @else
                                         <li class="flex items-start gap-2 text-sm text-slate-600">
                                             <span class="text-blue-500">•</span>
-                                            KTP (Individu) atau NIB/Akta Perusahaan (Badan Usaha)
+                                            -
                                         </li>
                                     @endif
                                 </ul>
@@ -177,7 +173,7 @@
                                     @else
                                         <li class="flex items-start gap-2 text-sm text-slate-600">
                                             <span class="text-blue-600">•</span>
-                                            Gambar instalasi listrik (Single Line Diagram)
+                                            -
                                         </li>
                                     @endif
                                 </ul>
@@ -210,7 +206,7 @@
                                     @else
                                         <li class="flex items-start gap-2 text-sm text-slate-600">
                                             <span class="text-blue-500">•</span>
-                                            KTP (Individu) atau NIB/Akta Perusahaan (Badan Usaha)
+                                            -
                                         </li>
                                     @endif
                                 </ul>
@@ -231,7 +227,7 @@
                                     @else
                                         <li class="flex items-start gap-2 text-sm text-slate-600">
                                             <span class="text-blue-600">•</span>
-                                            Gambar instalasi PLTD
+                                            -
                                         </li>
                                     @endif
                                 </ul>
@@ -264,7 +260,7 @@
                                     @else
                                         <li class="flex items-start gap-2 text-sm text-slate-600">
                                             <span class="text-blue-500">•</span>
-                                            KTP (Individu) atau NIB/Akta Perusahaan (Badan Usaha)
+                                            -
                                         </li>
                                     @endif
                                 </ul>
@@ -285,7 +281,7 @@
                                     @else
                                         <li class="flex items-start gap-2 text-sm text-slate-600">
                                             <span class="text-blue-600">•</span>
-                                            Gambar instalasi PLTS (Single Line Diagram)
+                                            -
                                         </li>
                                     @endif
                                 </ul>
