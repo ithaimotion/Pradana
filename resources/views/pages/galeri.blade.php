@@ -57,7 +57,7 @@
                         <!-- Title bar — default: white bg + dark blue text -->
                         <div class="bg-white group-hover:bg-[#1e3a5f] transition-colors duration-300 px-3 py-3 mt-2 rounded-[16px] flex items-center gap-3">
                             <span class="{{ $badgeColor }} text-white text-[10px] font-bold px-2.5 py-1 rounded-lg shrink-0 uppercase tracking-wider">{{ $label }}</span>
-                            <h3 class="font-bold text-sm leading-snug transition-colors duration-300 group-hover:text-white" style="color: #1e3a5f;">{{ $item->judul }}</h3>
+                            <h3 class="font-bold text-sm leading-snug text-[#1e3a5f] group-hover:text-white transition-colors duration-300">{{ $item->judul }}</h3>
                         </div>
                     </div>
                 @empty
