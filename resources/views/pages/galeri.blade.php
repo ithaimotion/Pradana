@@ -47,17 +47,17 @@
                         $badgeColor = 'bg-blue-500';
                     @endphp
                     <!-- Item -->
-                    <div class="gallery-item group relative overflow-hidden rounded-2xl shadow-md hover:shadow-2xl hover:shadow-blue-900/30 transition-all duration-300 cursor-pointer reveal-on-scroll {{ $delay > 0 ? 'delay-'.$delay : '' }}" data-category="{{ $categorySlug }}" onclick="openLightbox(this)">
+                    <div class="gallery-item group relative overflow-hidden rounded-[28px] border border-slate-200 bg-white p-3 shadow-md hover:shadow-2xl hover:shadow-blue-900/20 hover:-translate-y-1 transition-all duration-300 cursor-pointer reveal-on-scroll {{ $delay > 0 ? 'delay-'.$delay : '' }}" data-category="{{ $categorySlug }}" onclick="openLightbox(this)">
                         <!-- Image -->
-                        <div class="relative overflow-hidden h-60">
-                            <img src="{{ optional($item)->url_gambar ?? 'https://placehold.co/600x400/e2e8f0/475569?text=Gallery' }}" alt="{{ $item->judul }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="relative overflow-hidden h-64 w-full rounded-[20px] bg-slate-100/90 flex items-center justify-center p-4 border border-slate-200/60">
+                            <img src="{{ optional($item)->url_gambar ?? 'https://placehold.co/600x400/e2e8f0/475569?text=Gallery' }}" alt="{{ $item->judul }}" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105">
                             <!-- Hover blue overlay on image -->
-                            <div class="absolute inset-0 bg-[#1e3a5f]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute inset-0 bg-[#1e3a5f]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-[20px]"></div>
                         </div>
                         <!-- Title bar — default: white bg + dark blue text -->
-                        <div class="bg-white group-hover:bg-[#1e3a5f] transition-colors duration-300 px-4 py-3 flex items-center gap-3">
-                            <span class="{{ $badgeColor }} text-white text-[10px] font-bold px-2 py-0.5 rounded shrink-0">{{ $label }}</span>
-                            <h3 class="font-bold text-sm leading-snug transition-colors duration-300" style="color: #1e3a5f;" onmouseenter="this.style.color='white'" onmouseleave="this.style.color='#1e3a5f'">{{ $item->judul }}</h3>
+                        <div class="bg-white group-hover:bg-[#1e3a5f] transition-colors duration-300 px-3 py-3 mt-2 rounded-[16px] flex items-center gap-3">
+                            <span class="{{ $badgeColor }} text-white text-[10px] font-bold px-2.5 py-1 rounded-lg shrink-0 uppercase tracking-wider">{{ $label }}</span>
+                            <h3 class="font-bold text-sm leading-snug transition-colors duration-300 group-hover:text-white" style="color: #1e3a5f;">{{ $item->judul }}</h3>
                         </div>
                     </div>
                 @empty
@@ -93,11 +93,11 @@
         </button>
         
         <div class="max-w-5xl w-full flex flex-col items-center">
-            <img id="lightbox-img" src="" alt="Gallery Image" class="max-h-[75vh] w-auto rounded-xl shadow-2xl mb-6">
+            <img id="lightbox-img" src="" alt="Gallery Image" class="max-h-[75vh] w-auto object-contain rounded-2xl shadow-2xl mb-6 p-3 bg-slate-800/80 border border-white/10">
             <div class="text-center max-w-2xl">
                 <span id="lightbox-tag" class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-3 inline-block"></span>
-                <h3 id="lightbox-title" class="text-slate-900 dark:text-white font-extrabold text-2xl mb-2"></h3>
-                <p id="lightbox-desc" class="text-slate-600 dark:text-slate-400 text-sm"></p>
+                <h3 id="lightbox-title" class="text-white font-extrabold text-2xl mb-2"></h3>
+                <p id="lightbox-desc" class="text-slate-300 text-sm"></p>
             </div>
         </div>
     </div>

@@ -51,13 +51,22 @@
     </div>
 
     <div class="relative z-10 text-center px-6 max-w-6xl mt-16">
-        <h1 data-aos="fade-down" data-aos-duration="1000" class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-4 leading-[1.1] uppercase tracking-tight drop-shadow-2xl">
+        <h1 data-aos="fade-down" data-aos-duration="1000" class="text-3xl md:text-5xl lg:text-7xl font-extrabold text-white mb-2 leading-[1.1] uppercase tracking-tight drop-shadow-2xl text-center whitespace-nowrap w-full">
             {!! $titleHtml !!}
         </h1>
-        <div class="flex flex-col items-center gap-2 mb-8">
-            <div data-aos="fade-right" data-aos-delay="200" class="h-1 w-72 md:w-96 rounded-full bg-red-500"></div>
-            <div data-aos="fade-left" data-aos-delay="400" class="h-1 w-44 md:w-56 rounded-full bg-blue-500"></div>
-            <div data-aos="fade-right" data-aos-delay="600" class="h-1 w-24 md:w-32 rounded-full bg-green-500"></div>
+        <div class="flex justify-center w-full mb-10 px-2 sm:px-4 pointer-events-none" data-aos="zoom-in" data-aos-delay="200">
+            <!-- SVG Petir Lebar & Tinggi yang presisi. Petir maksimal di X=200 agar aman dari teks -->
+            <svg viewBox="150 10     1920 220" class="w-full max-w-5xl md:max-w-6xl lg:max-w-7xl overflow-visible drop-shadow-[0_0_8px_rgba(255,255,255,0.15)]" xmlns="http://www.w3.org/2000/svg">
+                <!-- Red Lightning & Underline -->
+                <!-- Zigzag diatur ketat di sisi kiri (maks x=200) agar teks yang center sempurna tidak tertabrak -->
+                <polyline points="200,-150 50,-150 -25,-50 125,-50 10,100 50,50 1900,50" fill="none" stroke="#ef4444" stroke-width="9" stroke-linejoin="miter" stroke-linecap="square"/>
+                
+                <!-- Yellow Line (X dimulai dari 75 agar tidak tembus garis merah) -->
+                <line x1="75" y1="80" x2="1880" y2="80" stroke="#facc15" stroke-width="9" stroke-linecap="square"/>
+                
+                <!-- Black Line (X dimulai dari 40 karena merah sudah habis di Y=100) -->
+                <line x1="40" y1="110" x2="1920" y2="110" stroke="#000000" stroke-width="9" stroke-linecap="square"/>
+            </svg>
         </div>
         <p data-aos="fade-up" data-aos-delay="800" class="text-xl md:text-2xl text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed font-light drop-shadow">
             {{ $subtitle }}
