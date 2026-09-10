@@ -91,3 +91,70 @@
     </div>
 </footer>
 
+@php
+    $sosmedLinks = $sosmedLinks ?? (\App\Models\LegalSetting::first()?->social_media_links ?? []);
+    $waUrl = null;
+    $waIkon = null;
+    $waNama = 'Hubungi Kami via WhatsApp';
+
+    if (is_array($sosmedLinks)) {
+        foreach ($sosmedLinks as $sosmed) {
+            if (empty($sosmed['url'])) continue;
+            $nama = strtolower($sosmed['nama'] ?? '');
+            $url = strtolower($sosmed['url'] ?? '');
+            if (str_contains($nama, 'whatsapp') || preg_match('/\bwa\b/i', $nama) || str_contains($url, 'wa.me') || str_contains($url, 'whatsapp.com')) {
+                $waUrl = $sosmed['url'];
+                $waIkon = $sosmed['ikon'] ?? null;
+                if (!empty($sosmed['nama'])) {
+                    $waNama = $sosmed['nama'];
+                }
+                break;
+            }
+        }
+    }
+
+    if (!$waUrl) {
+        try {
+            $kontakSetting = \App\Models\InformasiKontakSetting::first();
+            $noWa = $kontakSetting?->telepon_whatsapp;
+            if ($noWa) {
+                $cleanNo = preg_replace('/[^0-9]/', '', $noWa);
+                if (str_starts_with($cleanNo, '08')) {
+                    $cleanNo = '628' . substr($cleanNo, 2);
+                }
+                if ($cleanNo) {
+                    $waUrl = 'https://wa.me/' . $cleanNo;
+                }
+            }
+        } catch (\Throwable $e) {}
+    }
+    
+    if (!$waUrl) {
+        $waUrl = 'https://wa.me/6287857603660';
+    }
+@endphp
+
+<!-- Sticky Floating WhatsApp Button -->
+<div class="fixed bottom-6 right-6 z-50 flex items-center group" style="position: fixed !important; bottom: 24px !important; right: 24px !important; z-index: 99999 !important; display: flex !important; align-items: center !important;">
+    <span class="mr-3 px-3 py-1.5 bg-slate-900/90 text-white text-xs font-semibold rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap backdrop-blur-md border border-white/10" style="margin-right: 12px; padding: 6px 12px; background-color: rgba(15, 23, 42, 0.9); color: #ffffff; font-size: 12px; font-weight: 600; border-radius: 12px; white-space: nowrap; border: 1px solid rgba(255,255,255,0.1);">
+        {{ $waNama }}
+    </span>
+
+    <a href="{{ $waUrl }}" target="_blank" rel="noopener noreferrer"
+       class="relative flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 hover:shadow-green-500/50"
+       style="position: relative !important; width: 56px !important; height: 56px !important; background-color: #25D366 !important; color: #ffffff !important; border-radius: 9999px !important; display: flex !important; align-items: center !important; justify-content: center !important; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3) !important; text-decoration: none !important;"
+       aria-label="WhatsApp Sticky Button">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-40" style="position: absolute; width: 100%; height: 100%; border-radius: 9999px; background-color: #25D366; opacity: 0.4;"></span>
+
+        @if(!empty($waIkon))
+            <img src="{{ asset('storage_public/' . ltrim($waIkon, '/')) }}" alt="WhatsApp" class="w-7 h-7 object-contain relative z-10" style="width: 28px; height: 28px; object-fit: contain; position: relative; z-index: 10;">
+        @else
+            <svg class="w-7 h-7 fill-current relative z-10" style="width: 28px; height: 28px; fill: #ffffff; position: relative; z-index: 10;" viewBox="0 0 24 24">
+                <path d="M12 2C6.477 2 2 6.477 2 12c0 2.137.603 4.131 1.644 5.828L2.05 21.95l4.244-1.579C7.94 21.378 9.897 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm-3.5 11.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3.5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3.5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+            </svg>
+        @endif
+    </a>
+</div>
+
+
+

@@ -126,22 +126,22 @@
                         <div class="grid grid-cols-2 gap-5">
                             <div>
                                 <label class="block text-xs font-bold text-slate-700 mb-1.5">Nama Lengkap <span class="text-red-500">*</span></label>
-                                <input type="text" name="nama" placeholder="John Doe" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-900/30 focus:border-blue-900 bg-slate-50 transition-all text-sm" required>
+                                <input type="text" name="nama" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-900/30 focus:border-blue-900 bg-slate-50 transition-all text-sm" required>
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-slate-700 mb-1.5">Perusahaan <span class="text-slate-600 dark:text-slate-400 font-normal">(Opsional)</span></label>
-                                <input type="text" name="perusahaan" placeholder="PT Maju Bersama" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-900/30 focus:border-blue-900 bg-slate-50 transition-all text-sm">
+                                <input type="text" name="perusahaan" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-900/30 focus:border-blue-900 bg-slate-50 transition-all text-sm">
                             </div>
                         </div>
 
                         <div class="grid grid-cols-2 gap-5">
                             <div>
                                 <label class="block text-xs font-bold text-slate-700 mb-1.5">Email <span class="text-red-500">*</span></label>
-                                <input type="email" name="email" placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-900/30 focus:border-blue-900 bg-slate-50 transition-all text-sm" required>
+                                <input type="email" name="email" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-900/30 focus:border-blue-900 bg-slate-50 transition-all text-sm" required>
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-slate-700 mb-1.5">No. Telepon / WA <span class="text-red-500">*</span></label>
-                                <input type="tel" name="no_hp" placeholder="0812xxxx" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-900/30 focus:border-blue-900 bg-slate-50 transition-all text-sm" required>
+                                <input type="tel" name="no_hp" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-900/30 focus:border-blue-900 bg-slate-50 transition-all text-sm" required>
                             </div>
                         </div>
 
@@ -159,7 +159,7 @@
 
                         <div>
                             <label class="block text-xs font-bold text-slate-700 mb-1.5">Pesan Anda <span class="text-red-500">*</span></label>
-                            <textarea name="pesan" rows="4" placeholder="Tulis pesan atau pertanyaan Anda di sini..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-900/30 focus:border-blue-900 bg-slate-50 transition-all text-sm resize-none" required></textarea>
+                            <textarea name="pesan" rows="4" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-900/30 focus:border-blue-900 bg-slate-50 transition-all text-sm resize-none" required></textarea>
                         </div>
 
                         <button type="submit" class="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-3.5 rounded-xl transition shadow-lg text-sm flex items-center justify-center gap-2">
