@@ -214,6 +214,9 @@
 
 <body>
 
+    {{-- Splash Screen Animation --}}
+    <x-splash-screen :logos="$resolvedLogos" />
+
     @yield('content')
 
     {{-- =========================================================
